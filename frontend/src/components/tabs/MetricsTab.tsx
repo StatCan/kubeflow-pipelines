@@ -28,9 +28,11 @@ import {
 import Banner from '../Banner';
 import { RoutePageFactory } from '../Router';
 import { MetricsVisualizations } from '../viewers/MetricsVisualizations';
+import { TFunction } from 'i18next';
 
 type MetricsTabProps = {
   execution: Execution;
+  t: TFunction;
 };
 
 /**
@@ -39,9 +41,10 @@ type MetricsTabProps = {
  * Detail can be found in https://github.com/kubeflow/pipelines/blob/master/sdk/python/kfp/dsl/io_types.py
  * Note that these metrics are only available on KFP v2 mode.
  */
-export function MetricsTab({ execution }: MetricsTabProps) {
+export function MetricsTab(this: any, { execution }: MetricsTabProps) {
   let executionCompleted = false;
   const executionState = execution.getLastKnownState();
+  const { t } = this.props;
   if (
     !(
       executionState === Execution.State.NEW ||
@@ -122,6 +125,7 @@ export function MetricsTab({ execution }: MetricsTabProps) {
             <MetricsVisualizations
               artifacts={artifacts}
               artifactTypes={artifactTypes}
+              t={t}
             ></MetricsVisualizations>
           )}
         </div>

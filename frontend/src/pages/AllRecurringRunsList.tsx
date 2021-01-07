@@ -22,13 +22,15 @@ import { classes } from 'typestyle';
 import { commonCss, padding } from '../Css';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
 import RecurringRunList from './RecurringRunList';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next'
 
 interface AllRecurringRunsListState {
   selectedIds: string[];
   recurringRunListRefreshCount: number;
 }
 
-export class AllRecurringRunsList extends Page<{ namespace?: string }, AllRecurringRunsListState> {
+export class AllRecurringRunsList extends Page<{ namespace?: string; t: TFunction }, AllRecurringRunsListState> {
   constructor(props: any) {
     super(props);
 
@@ -40,6 +42,7 @@ export class AllRecurringRunsList extends Page<{ namespace?: string }, AllRecurr
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
+    const { t } = this.props;
     return {
       actions: buttons
         .newRun()
@@ -47,10 +50,12 @@ export class AllRecurringRunsList extends Page<{ namespace?: string }, AllRecurr
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: 'Recurring Runs',
+      t,
     };
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'))}>
         <RecurringRunList
@@ -87,4 +92,4 @@ const EnhancedAllRecurringRunsList = (props: PageProps) => {
   return <AllRecurringRunsList key={namespace} {...props} namespace={namespace} />;
 };
 
-export default EnhancedAllRecurringRunsList;
+export default withTranslation(['common'])(EnhancedAllRecurringRunsList);

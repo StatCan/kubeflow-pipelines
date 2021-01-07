@@ -25,10 +25,11 @@ import { QueryClient } from 'react-query';
 import { match } from 'react-router';
 // @ts-ignore
 import createRouterContext from 'react-router-test-context';
-import snapshotDiff from 'snapshot-diff';
-import { ToolbarActionConfig } from './components/Toolbar';
 import { logger } from './lib/Utils';
-import { Page, PageProps } from './pages/Page';
+import { PageProps, Page } from './pages/Page';
+import { ToolbarActionConfig, ToolbarProps } from './components/Toolbar';
+import snapshotDiff from 'snapshot-diff';
+import { TFunction } from 'i18next';
 
 export default class TestUtils {
   /**
@@ -71,7 +72,7 @@ export default class TestUtils {
    * to be set after component initialization.
    */
   // tslint:disable-next-line:variable-name
-  public static generatePageProps(
+  public static generatePageProps<P>(
     PageElement: new (_: PageProps) => Page<any, any>,
     location: Location,
     matchValue: match,
@@ -80,24 +81,31 @@ export default class TestUtils {
     updateDialogSpy: jest.SpyInstance<unknown> | null,
     updateToolbarSpy: jest.SpyInstance<unknown> | null,
     updateSnackbarSpy: jest.SpyInstance<unknown> | null,
-  ): PageProps {
+    propOverrides: P = {} as P,
+    t: TFunction = (key: string) => key,
+  ): PageProps & P {
     const pageProps = {
       history: { push: historyPushSpy } as any,
       location: location as any,
       match: matchValue,
-      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: '' },
+      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: '', t },
       updateBanner: updateBannerSpy as any,
       updateDialog: updateDialogSpy as any,
       updateSnackbar: updateSnackbarSpy as any,
       updateToolbar: updateToolbarSpy as any,
+      t,
     } as PageProps;
-    pageProps.toolbarProps = new PageElement(pageProps).getInitialToolbarState();
+    const props = {
+      ...pageProps,
+      ...propOverrides,
+    };
+    props.toolbarProps = new PageElement(props).getInitialToolbarState();
     // The toolbar spy gets called in the getInitialToolbarState method, reset it
     // in order to simplify tests
     if (updateToolbarSpy) {
       updateToolbarSpy.mockReset();
     }
-    return pageProps;
+    return props;
   }
 
   public static getToolbarButton(
@@ -170,4 +178,12 @@ export function testBestPractices() {
     jest.resetAllMocks();
     jest.restoreAllMocks();
   });
+}
+export function defaultToolbarProps(): ToolbarProps {
+  return {
+    pageTitle: '',
+    breadcrumbs: [{ displayName: '', href: '' }],
+    actions: {},
+    t: (key: string) => key,
+  };
 }

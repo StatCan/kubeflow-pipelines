@@ -20,6 +20,8 @@ import { render, act, fireEvent } from '@testing-library/react';
 import { Apis } from 'src/lib/Apis';
 import TestUtils from 'src/TestUtils';
 
+let mockedValue = '';
+jest.mock('i18next', () => ({ t: () => mockedValue }));
 // Original ./Editor uses a complex external editor inside, we use a simple mock
 // for testing instead.
 jest.mock('./Editor', () => {
@@ -46,7 +48,9 @@ describe('PodInfo', () => {
         },
       }),
     );
-    const { container } = render(<PodInfo name='test-pod' namespace='test-ns' />);
+    const { container } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     // Renders nothing when loading
     expect(container).toMatchInlineSnapshot(`<div />`);
 
@@ -77,7 +81,9 @@ describe('PodInfo', () => {
         },
       }),
     );
-    const { container } = render(<PodInfo name='test-pod' namespace='test-ns' />);
+    const { container } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     await act(TestUtils.flushPromises);
     expect(container).toMatchInlineSnapshot(`
       <div>
@@ -97,17 +103,18 @@ describe('PodInfo', () => {
 
   it('shows a warning banner when request fails', async () => {
     podInfoSpy.mockImplementation(() => Promise.reject('Pod not found'));
-    const { getByText } = render(<PodInfo name='test-pod' namespace='test-ns' />);
-    await act(TestUtils.flushPromises);
-    getByText(
-      'Failed to retrieve pod info. Possible reasons include cluster autoscaling, pod preemption or pod cleaned up by time to live configuration',
+    const { getByText } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
     );
+    await act(TestUtils.flushPromises);
+    getByText('common:retrievePodInfoFailed');
   });
-
   it('can be retried when request fails', async () => {
     // Network was bad initially
     podInfoSpy.mockImplementation(() => Promise.reject('Network failed'));
-    const { getByText } = render(<PodInfo name='test-pod' namespace='test-ns' />);
+    const { getByText } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     await act(TestUtils.flushPromises);
 
     // Now network gets healthy
@@ -116,7 +123,7 @@ describe('PodInfo', () => {
         kind: 'Pod',
       }),
     );
-    const refreshButton = getByText('Refresh');
+    const refreshButton = getByText('common:refresh');
     fireEvent.click(refreshButton);
     await act(TestUtils.flushPromises);
     getByText('kind: Pod');
@@ -129,7 +136,9 @@ describe('PodInfo', () => {
         metadata: { name: 'pod-1' },
       }),
     );
-    const { getByText, rerender } = render(<PodInfo name='test-pod-1' namespace='test-ns' />);
+    const { getByText, rerender } = render(
+      <PodInfo t={(key: any) => key} name='test-pod-1' namespace='test-ns' />,
+    );
     expect(podInfoSpy).toHaveBeenLastCalledWith('test-pod-1', 'test-ns');
     await act(TestUtils.flushPromises);
     getByText(/pod-1/);
@@ -139,7 +148,7 @@ describe('PodInfo', () => {
         metadata: { name: 'pod-2' },
       }),
     );
-    rerender(<PodInfo name='test-pod-2' namespace='test-ns' />);
+    rerender(<PodInfo t={(key: any) => key} name='test-pod-2' namespace='test-ns' />);
     expect(podInfoSpy).toHaveBeenLastCalledWith('test-pod-2', 'test-ns');
     await act(TestUtils.flushPromises);
     getByText(/pod-2/);
@@ -159,7 +168,9 @@ describe('PodEvents', () => {
         kind: 'EventList',
       }),
     );
-    const { container } = render(<PodEvents name='test-pod' namespace='test-ns' />);
+    const { container } = render(
+      <PodEvents t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     await act(TestUtils.flushPromises);
     expect(container).toMatchInlineSnapshot(`
       <div>
@@ -175,10 +186,10 @@ describe('PodEvents', () => {
 
   it('shows a warning banner when request fails', async () => {
     podEventsSpy.mockImplementation(() => Promise.reject('Pod not found'));
-    const { getByText } = render(<PodEvents name='test-pod' namespace='test-ns' />);
-    await act(TestUtils.flushPromises);
-    getByText(
-      'Failed to retrieve pod events. Possible reasons include cluster autoscaling, pod preemption or pod cleaned up by time to live configuration',
+    const { getByText } = render(
+      <PodEvents t={(key: any) => key} name='test-pod' namespace='test-ns' />,
     );
+    await act(TestUtils.flushPromises);
+    getByText('common:retrievePodEventsFailed');
   });
 });

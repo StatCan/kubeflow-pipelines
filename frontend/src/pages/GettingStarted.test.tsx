@@ -15,13 +15,25 @@
  */
 
 import React from 'react';
-import { GettingStarted } from './GettingStarted';
+import GettingStarted from './GettingStarted';
 import TestUtils, { diffHTML } from '../TestUtils';
 import { render } from '@testing-library/react';
 import { PageProps } from './Page';
 import { Apis } from '../lib/Apis';
 import { ApiListPipelinesResponse } from '../apis/pipeline/api';
 
+jest.mock('react-i18next', () => ({
+  withTranslation: () => (Component: { defaultProps: any }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
+    return Component;
+  },
+
+  useTranslation: () => {
+    return {
+      t: (key: string) => key as any,
+    };
+  },
+}));
 const PATH_BACKEND_CONFIG = '../../../backend/src/apiserver/config/sample_config.json';
 const PATH_FRONTEND_CONFIG = '../config/sample_config_from_backend.json';
 describe(`${PATH_FRONTEND_CONFIG}`, () => {
@@ -143,6 +155,7 @@ describe('GettingStarted page', () => {
                     Shows how to use conditional execution and exit handlers.
                     <a
                       href="https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/DSL%20-%20Control%20structures"
+      Compared values have no visual difference.
     `);
   });
 
@@ -189,6 +202,7 @@ describe('GettingStarted page', () => {
                     Shows how to use conditional execution and exit handlers.
                     <a
                       href="https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/DSL%20-%20Control%20structures"
+      Compared values have no visual difference.
     `);
   });
 });

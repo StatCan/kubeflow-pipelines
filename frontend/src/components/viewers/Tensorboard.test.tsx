@@ -20,6 +20,8 @@ import TestUtils, { diff } from '../../TestUtils';
 import { Apis } from '../../lib/Apis';
 import { PlotType } from './Viewer';
 import { ReactWrapper, ShallowWrapper, shallow, mount } from 'enzyme';
+import { TFunction } from 'i18next';
+import { componentMap } from './ViewerContainer';
 
 const DEFAULT_CONFIG: TensorboardViewerConfig = {
   type: PlotType.TENSORBOARD,
@@ -34,7 +36,16 @@ const GET_APP_FOUND = {
   image: 'tensorflow/tensorflow:1.14.0',
 };
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  withTranslation: () => (component: React.ComponentClass) => {
+    component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
+    return component;
+  },
+}));
+
 describe.only('Tensorboard', () => {
+  let t: TFunction = (key: string) => key;
   let tree: ReactWrapper | ShallowWrapper;
   const flushPromisesAndTimers = async () => {
     jest.runOnlyPendingTimers();
@@ -160,7 +171,7 @@ describe.only('Tensorboard', () => {
               className="buttonAction"
               disabled={false}
               onClick={[Function]}
-              title="Start Tensorboard"
+              title="common:start Tensorboard"
             />
           </div>
         </div>
@@ -186,8 +197,8 @@ describe.only('Tensorboard', () => {
               </WithStyles(FormControl)>
             </div>
             <div>
-      -       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={true} title="Start Tensorboard" />
-      +       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={false} title="Start Tensorboard" />
+      -       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={true} title="common:start Tensorboard" />
+      +       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={false} title="common:start Tensorboard" />
             </div>
           </div>
         </div>
@@ -213,8 +224,8 @@ describe.only('Tensorboard', () => {
               </WithStyles(FormControl)>
             </div>
             <div>
-      -       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={true} title="Start Tensorboard" />
-      +       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={false} title="Start Tensorboard" />
+      -       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={true} title="common:start Tensorboard" />
+      +       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={false} title="common:start Tensorboard" />
             </div>
           </div>
         </div>
@@ -240,29 +251,33 @@ describe.only('Tensorboard', () => {
       "<div>
         <div>
           <div className=\\"\\">
-            Tensorboard tensorflow/tensorflow:1.14.0 is running for this output.
+            Tensorboard tensorflow/tensorflow:1.14.0common:runningForOutput.
           </div>
           <a href=\\"apis/v1beta1/_proxy/test/address\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\" className=\\"unstyled\\">
             <WithStyles(Button) className=\\"buttonAction button\\" disabled={false} color=\\"primary\\">
-              Open Tensorboard
+              $
+              common:openTensorboard
             </WithStyles(Button)>
           </a>
           <div>
-            <WithStyles(Button) className=\\"button\\" disabled={false} id=\\"delete\\" title=\\"stop tensorboard and delete its instance\\" onClick={[Function]} color=\\"default\\">
-              Stop Tensorboard
+            <WithStyles(Button) className=\\"button\\" disabled={false} id=\\"delete\\" title=\\"common:stopTensorboardDelete\\" onClick={[Function]} color=\\"default\\">
+              $
+              common:stopTensorboard
             </WithStyles(Button)>
             <WithStyles(Dialog) open={false} onClose={[Function]} aria-labelledby=\\"dialog-title\\">
               <WithStyles(DialogTitle) id=\\"dialog-title\\">
-                Stop Tensorboard?
+                common:stopTensorboard?
               </WithStyles(DialogTitle)>
               <WithStyles(DialogContent)>
                 <WithStyles(DialogContentText)>
-                  You can stop the current running tensorboard. The tensorboard viewer will also be deleted from your workloads.
+                  $
+                  common:deleteRunningTensorboard
                 </WithStyles(DialogContentText)>
               </WithStyles(DialogContent)>
               <WithStyles(DialogActions)>
                 <WithStyles(Button) className=\\"shortButton\\" id=\\"cancel\\" autoFocus={true} onClick={[Function]} color=\\"primary\\">
-                  Cancel
+                  $
+                  common:cancel
                 </WithStyles(Button)>
                 <BusyButton className=\\"buttonAction shortButton\\" onClick={[Function]} busy={false} color=\\"primary\\" title=\\"Stop\\" />
               </WithStyles(DialogActions)>
@@ -299,8 +314,8 @@ describe.only('Tensorboard', () => {
               </WithStyles(FormControl)>
             </div>
             <div>
-      -       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={true} title="Start Tensorboard" />
-      +       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={false} title="Start Tensorboard" />
+      -       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={true} title="common:start Tensorboard" />
+      +       <BusyButton className="buttonAction" disabled={false} onClick={[Function]} busy={false} title="common:start Tensorboard" />
             </div>
           </div>
         </div>
@@ -347,11 +362,11 @@ describe.only('Tensorboard', () => {
   });
 
   it('returns friendly display name', () => {
-    expect(TensorboardViewer.prototype.getDisplayName()).toBe('Tensorboard');
+    expect((componentMap[PlotType.TENSORBOARD].displayNameKey = 'common:tensorboard'));
   });
 
   it('is aggregatable', () => {
-    expect(TensorboardViewer.prototype.isAggregatable()).toBeTruthy();
+    expect((componentMap[PlotType.TENSORBOARD].isAggregatable = true));
   });
 
   it('select a version, then start a tensorboard of the corresponding version', async () => {
@@ -406,7 +421,7 @@ describe.only('Tensorboard', () => {
     await TestUtils.flushPromises();
     tree.update();
     // the tree has returned to 'start tensorboard' page
-    expect(tree.findWhere(el => el.text() === 'Start Tensorboard').exists()).toBeTruthy();
+    expect(tree.findWhere(el => el.text() === 'common:start Tensorboard').exists()).toBeTruthy();
   });
 
   it('show version info in delete confirming dialog, \
@@ -421,7 +436,7 @@ describe.only('Tensorboard', () => {
       .find('#delete')
       .find('Button')
       .simulate('click');
-    expect(tree.findWhere(el => el.text() === 'Stop Tensorboard?').exists()).toBeTruthy();
+    expect(tree.findWhere(el => el.text() === 'common:stopTensorboard?').exists()).toBeTruthy();
   });
 
   it('click on cancel on delete tensorboard dialog, then return back to previous page', async () => {
@@ -441,8 +456,8 @@ describe.only('Tensorboard', () => {
       .find('Button')
       .simulate('click');
 
-    expect(tree.findWhere(el => el.text() === 'Open Tensorboard').exists()).toBeTruthy();
-    expect(tree.findWhere(el => el.text() === 'Stop Tensorboard').exists()).toBeTruthy();
+    expect(tree.findWhere(el => el.text() === 'common:openTensorboard').exists()).toBeTruthy();
+    expect(tree.findWhere(el => el.text() === 'common:stopTensorboard').exists()).toBeTruthy();
   });
 
   it('asks user to wait when Tensorboard status is not ready', async () => {
@@ -458,16 +473,9 @@ describe.only('Tensorboard', () => {
     tree.update();
     expect(Apis.isTensorboardPodReady).toHaveBeenCalledTimes(1);
     expect(Apis.isTensorboardPodReady).toHaveBeenCalledWith('apis/v1beta1/_proxy/podaddress');
-    expect(tree.findWhere(el => el.text() === 'Open Tensorboard').exists()).toBeTruthy();
-    expect(
-      tree
-        .findWhere(
-          el =>
-            el.text() === 'Tensorboard is starting, and you may need to wait for a few minutes.',
-        )
-        .exists(),
-    ).toBeTruthy();
-    expect(tree.findWhere(el => el.text() === 'Stop Tensorboard').exists()).toBeTruthy();
+    expect(tree.findWhere(el => el.text() === 'common:openTensorboard').exists()).toBeTruthy();
+    expect(tree.findWhere(el => el.text() === 'common:tensorboardStarting').exists()).toBeTruthy();
+    expect(tree.findWhere(el => el.text() === 'common:stopTensorboard').exists()).toBeTruthy();
 
     // After a while, it is ready and wait message is not shwon any more
     jest.spyOn(Apis, 'isTensorboardPodReady').mockImplementation(() => Promise.resolve(true));

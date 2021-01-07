@@ -23,6 +23,8 @@ import { RoutePage } from '../components/Router';
 import { ToolbarProps } from '../components/Toolbar';
 import { classes } from 'typestyle';
 import { commonCss, padding } from '../Css';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 export enum AllExperimentsAndArchiveTab {
   EXPERIMENTS = 0,
@@ -31,6 +33,7 @@ export enum AllExperimentsAndArchiveTab {
 
 export interface AllExperimentsAndArchiveProps extends PageProps {
   view: AllExperimentsAndArchiveTab;
+  t: TFunction;
 }
 
 interface AllExperimentsAndArchiveState {
@@ -42,14 +45,16 @@ class AllExperimentsAndArchive extends Page<
   AllExperimentsAndArchiveState
 > {
   public getInitialToolbarState(): ToolbarProps {
-    return { actions: {}, breadcrumbs: [], pageTitle: '' };
+    const { t } = this.props;
+    return { actions: {}, breadcrumbs: [], pageTitle: '', t };
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     return (
       <div className={classes(commonCss.page, padding(20, 't'))}>
         <MD2Tabs
-          tabs={['Active', 'Archived']}
+          tabs={[t('common:active'), t('common:archived')]}
           selectedTab={this.props.view}
           onSwitch={this._tabSwitched.bind(this)}
         />
@@ -73,4 +78,4 @@ class AllExperimentsAndArchive extends Page<
   }
 }
 
-export default AllExperimentsAndArchive;
+export default withTranslation(['experiments', 'common'])(AllExperimentsAndArchive);

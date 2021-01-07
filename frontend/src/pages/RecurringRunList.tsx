@@ -24,6 +24,8 @@ import { commonCss, color } from '../Css';
 import { formatDateString, errorToMessage } from '../lib/Utils';
 import Tooltip from '@material-ui/core/Tooltip';
 import { ApiJob, ApiTrigger } from '../apis/job';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 interface DisplayRecurringRun {
   experiment?: ExperimentInfo;
@@ -49,6 +51,7 @@ export type RecurringRunListProps = MaskProps &
     recurringRunIdListMask?: string[];
     selectedIds?: string[];
     refreshCount: number;
+    t: TFunction;
   };
 
 interface RecurringRunListState {
@@ -74,6 +77,7 @@ class RecurringRunList extends React.PureComponent<RecurringRunListProps, Recurr
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     const columns: Column[] = [
       {
         customRenderer: this._nameCustomRenderer,
@@ -137,6 +141,7 @@ class RecurringRunList extends React.PureComponent<RecurringRunListProps, Recurr
                 : ''
             }.`
           }
+          t={t}
         />
       </div>
     );
@@ -334,4 +339,5 @@ class RecurringRunList extends React.PureComponent<RecurringRunListProps, Recurr
   }
 }
 
+withTranslation(['common'])(RecurringRunList);
 export default RecurringRunList;

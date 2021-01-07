@@ -26,17 +26,19 @@ import ConfusionMatrix, { ConfusionMatrixConfig } from './ConfusionMatrix';
 import PagedTable from './PagedTable';
 import ROCCurve, { ROCCurveConfig } from './ROCCurve';
 import { PlotType } from './Viewer';
+import { TFunction } from 'i18next';
 
 interface MetricsVisualizationsProps {
   artifacts: Artifact[];
   artifactTypes: ArtifactType[];
+  t: TFunction;
 }
 
 /**
  * Visualize system metrics based on artifact input. There can be multiple artifacts
  * and multiple visualizations associated with one artifact.
  */
-export function MetricsVisualizations({ artifacts, artifactTypes }: MetricsVisualizationsProps) {
+export function MetricsVisualizations({ artifacts, artifactTypes, t }: MetricsVisualizationsProps) {
   // There can be multiple system.ClassificationMetrics or system.Metrics artifacts per execution.
   // Get scalar metrics, confidenceMetrics and confusionMatrix from artifact.
   // If there is no available metrics, show banner to notify users.
@@ -145,10 +147,10 @@ interface ConfidenceMetricsSectionProps {
   artifact: Artifact;
 }
 
-function ConfidenceMetricsSection({ artifact }: ConfidenceMetricsSectionProps) {
+function ConfidenceMetricsSection(this: any, { artifact }: ConfidenceMetricsSectionProps) {
   const customProperties = artifact.getCustomPropertiesMap();
   const name = customProperties.get('name')?.getStringValue();
-
+  const {t} = this.props;
   const confidenceMetrics = customProperties
     .get('confidenceMetrics')
     ?.getStructValue()
@@ -163,6 +165,7 @@ function ConfidenceMetricsSection({ artifact }: ConfidenceMetricsSectionProps) {
     const errorMsg = 'Error in ' + name + " artifact's confidenceMetrics data format.";
     return <Banner message={errorMsg} mode='error' additionalInfo={error} />;
   }
+  
   return (
     <div className={padding(40, 'lrt')}>
       <div className={padding(40, 'b')}>
@@ -175,7 +178,7 @@ function ConfidenceMetricsSection({ artifact }: ConfidenceMetricsSectionProps) {
           ></IconWithTooltip>
         </h3>
       </div>
-      <ROCCurve configs={buildRocCurveConfig((confidenceMetrics as any).list)} />
+      <ROCCurve configs={buildRocCurveConfig((confidenceMetrics as any).list)} t = {t}/>
     </div>
   );
 }

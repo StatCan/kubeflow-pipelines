@@ -19,8 +19,14 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import MarkdownViewer, { MarkdownViewerConfig } from './MarkdownViewer';
 import { PlotType } from './Viewer';
+import { TFunction } from 'i18next';
+import { componentMap } from './ViewerContainer';
+
+let mockValue = '';
+jest.mock('i18next', () => ({ t: () => mockValue }));
 
 describe('MarkdownViewer', () => {
+  let t: TFunction = (key: string) => key;
   it('does not break on empty data', () => {
     const tree = mount(<MarkdownViewer configs={[]} />).getDOMNode();
     expect(tree).toMatchSnapshot();
@@ -52,7 +58,8 @@ describe('MarkdownViewer', () => {
   });
 
   it('returns a user friendly display name', () => {
-    expect(MarkdownViewer.prototype.getDisplayName()).toBe('Markdown');
+    mockValue = 'common:markdown';
+    expect((componentMap[PlotType.MARKDOWN].displayNameKey = 'common:markdown'));
   });
 
   it('capped at maximum markdown size', () => {

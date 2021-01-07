@@ -36,6 +36,8 @@ import { logger } from '../lib/Utils';
 import { useNamespaceChangeEvent } from 'src/lib/KubeflowClient';
 import { Redirect } from 'react-router-dom';
 import { ApiRunStorageState } from 'src/apis/run';
+import { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const css = stylesheet({
   card: {
@@ -109,10 +111,12 @@ interface ExperimentDetailsState {
   runlistRefreshCount: number;
 }
 
-export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
+export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsState> {
   constructor(props: any) {
     super(props);
 
+    const buttons = new Buttons(this.props, this.refresh.bind(this));
+    const { t } = this.props;
     this.state = {
       activeRecurringRunsCount: 0,
       experiment: null,
@@ -120,8 +124,9 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
       runListToolbarProps: {
         actions: this._getRunInitialToolBarButtons().getToolbarActionMap(),
         breadcrumbs: [],
-        pageTitle: 'Runs',
+        pageTitle: t('runs'),
         topLevelToolbar: false,
+        t,
       },
       // TODO: remove
       selectedIds: [],
@@ -142,17 +147,20 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
+    const { t } = this.props;
     return {
       actions: buttons.refresh(this.refresh.bind(this)).getToolbarActionMap(),
-      breadcrumbs: [{ displayName: 'Experiments', href: RoutePage.EXPERIMENTS }],
+      breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       // TODO: determine what to show if no props.
       pageTitle: this.props ? this.props.match.params[RouteParams.experimentId] : '',
+      t,
     };
   }
 
   public render(): JSX.Element {
     const { activeRecurringRunsCount, experiment } = this.state;
     const description = experiment ? experiment.description || '' : '';
+    const { t } = this.props;
 
     return (
       <div className={classes(commonCss.page, padding(20, 'lrt'))}>
@@ -169,14 +177,14 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
                 elevation={0}
               >
                 <div>
-                  <div className={css.cardTitle}>Recurring run configs</div>
+                  <div className={css.cardTitle}>{t('recurringRunConfigs')}</div>
                   <div
                     className={classes(
                       css.cardContent,
                       !!activeRecurringRunsCount && css.recurringRunsActive,
                     )}
                   >
-                    {activeRecurringRunsCount + ' active'}
+                    {activeRecurringRunsCount + ` ${t('experiments:active')}`}
                   </div>
                   <Button
                     className={css.cardBtn}
@@ -184,7 +192,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
                     disableRipple={true}
                     onClick={() => this.setState({ recurringRunsManagerOpen: true })}
                   >
-                    Manage
+                    {t('common:manage')}
                   </Button>
                 </div>
               </Paper>
@@ -194,18 +202,18 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
                 elevation={0}
               >
                 <div className={css.cardTitle}>
-                  <span>Experiment description</span>
+                  <span>{t('experimentDescription')}</span>
                   <Button
                     id='expandExperimentDescriptionBtn'
                     onClick={() =>
                       this.props.updateDialog({
                         content: description,
-                        title: 'Experiment description',
+                        title: t('experimentDescription'),
                       })
                     }
                     className={classes(css.popOutIcon, 'popOutButton')}
                   >
-                    <Tooltip title='Read more'>
+                    <Tooltip title={t('common:readMore')}>
                       <PopOutIcon style={{ fontSize: 18 }} />
                     </Tooltip>
                   </Button>
@@ -254,7 +262,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
                   onClick={this._recurringRunsManagerClosed.bind(this)}
                   color='secondary'
                 >
-                  Close
+                  {t('common:close')}
                 </Button>
               </DialogActions>
             </Dialog>
@@ -277,6 +285,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
     this.clearBanner();
 
     const experimentId = this.props.match.params[RouteParams.experimentId];
+    const { t } = this.props;
 
     try {
       const experiment = await Apis.experimentServiceApi.getExperiment(experimentId);
@@ -308,7 +317,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
       const actions = buttons.getToolbarActionMap();
       this.props.updateToolbar({
         actions,
-        breadcrumbs: [{ displayName: 'Experiments', href: RoutePage.EXPERIMENTS }],
+        breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
         pageTitle,
         pageTitleTooltip: pageTitle,
       });
@@ -329,7 +338,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
           .length;
       } catch (err) {
         await this.showPageError(
-          `Error: failed to retrieve recurring runs for experiment: ${experimentId}.`,
+          `${t('errorRetrieveRecurrRunsExperiment')}: ${experimentId}.`,
           err,
         );
         logger.error(`Error fetching recurring runs for experiment: ${experimentId}`, err);
@@ -344,7 +353,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
       });
       this._selectionChanged([]);
     } catch (err) {
-      await this.showPageError(`Error: failed to retrieve experiment: ${experimentId}.`, err);
+      await this.showPageError(`${t('errorRetrieveExperiment')}: ${experimentId}.`, err);
       logger.error(`Error loading experiment: ${experimentId}`, err);
     }
   }
@@ -375,6 +384,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
 
   _selectionChanged = (selectedIds: string[]) => {
     const toolbarButtons = this._getRunInitialToolBarButtons();
+    const { t } = this.props;
     // If user selects to show Active runs list, shows `Archive` button for selected runs.
     // If user selects to show Archive runs list, shows `Restore` button for selected runs.
     if (this.state.runStorageState === ApiRunStorageState.AVAILABLE) {
@@ -404,6 +414,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
     }
     this.setState({
       runListToolbarProps: {
+        t,
         actions: toolbarActions,
         breadcrumbs: this.state.runListToolbarProps.breadcrumbs,
         pageTitle: this.state.runListToolbarProps.pageTitle,
@@ -424,11 +435,12 @@ const EnhancedExperimentDetails: React.FC<PageProps> = props => {
   // When namespace changes, this experiment no longer belongs to new namespace.
   // So we redirect to experiment list page instead.
   const namespaceChanged = useNamespaceChangeEvent();
+  const { t } = useTranslation(['experiments', 'common']);
   if (namespaceChanged) {
     return <Redirect to={RoutePage.EXPERIMENTS} />;
   }
 
-  return <ExperimentDetails {...props} />;
+  return <ExperimentDetails {...props} t={t} />;
 };
 
 export default EnhancedExperimentDetails;

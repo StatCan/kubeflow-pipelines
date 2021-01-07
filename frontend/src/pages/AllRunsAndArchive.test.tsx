@@ -20,8 +20,17 @@ import AllRunsAndArchive, {
   AllRunsAndArchiveTab,
 } from './AllRunsAndArchive';
 import { shallow } from 'enzyme';
+import { TFunction } from 'i18next';
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => '' };
+    return Component;
+  },
+}));
 function generateProps(): AllRunsAndArchiveProps {
+  let t: TFunction = (key: string) => key;
   return {
     history: {} as any,
     location: '' as any,
@@ -32,6 +41,7 @@ function generateProps(): AllRunsAndArchiveProps {
     updateSnackbar: jest.fn(),
     updateToolbar: () => null,
     view: AllRunsAndArchiveTab.RUNS,
+    t
   };
 }
 

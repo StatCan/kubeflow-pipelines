@@ -21,6 +21,17 @@ import { PageProps } from './Page';
 import { ApiExperimentStorageState } from '../apis/experiment';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
+import { TFunction } from 'i18next';
+
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: ((key: string) => key) as any,
+  }),
+  withTranslation: () => (Component: { defaultProps: any }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
+    return Component;
+  },
+}));
 
 describe('ArchivedExperiemnts', () => {
   const updateBannerSpy = jest.fn();
@@ -29,8 +40,9 @@ describe('ArchivedExperiemnts', () => {
   const updateDialogSpy = jest.fn();
   const updateSnackbarSpy = jest.fn();
   let tree: ShallowWrapper;
+  let t: TFunction = (key: string) => key;
 
-  function generateProps(): PageProps {
+  function generateProps() {
     return TestUtils.generatePageProps(
       ArchivedExperiments,
       {} as any,
@@ -40,6 +52,8 @@ describe('ArchivedExperiemnts', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
+      { t },
+      t,
     );
   }
 
@@ -57,7 +71,7 @@ describe('ArchivedExperiemnts', () => {
   it('removes error banner on unmount', () => {
     tree = shallow(<ArchivedExperiments {...generateProps()} />);
     tree.unmount();
-    expect(updateBannerSpy).toHaveBeenCalledWith({});
+    expect(updateBannerSpy).toHaveBeenCalledWith({ t });
   });
 
   it('refreshes the experiment list when refresh button is clicked', async () => {

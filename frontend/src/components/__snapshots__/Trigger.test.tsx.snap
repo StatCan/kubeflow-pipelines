@@ -3,7 +3,7 @@
 exports[`Trigger enables a single day on click 1`] = `
 <div>
   <Input
-    label="Trigger type"
+    label="experiments:triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -14,18 +14,18 @@ exports[`Trigger enables a single day on click 1`] = `
       key="0"
       value={0}
     >
-      Periodic
+      experiments:triggerTypeEnum.periodic
     </WithStyles(MenuItem)>
     <WithStyles(MenuItem)
       key="1"
       value={1}
     >
-      Cron
+      experiments:triggerTypeEnum.cron
     </WithStyles(MenuItem)>
   </Input>
   <div>
     <Input
-      label="Maximum concurrent runs"
+      label="experiments:maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -42,7 +42,7 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="Has start date"
+        label="experiments:hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -53,7 +53,7 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="Start date"
+        label="common:startDate"
         onChange={[Function]}
         style={
           Object {
@@ -75,7 +75,7 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="Start time"
+        label="common:startTime"
         onChange={[Function]}
         style={
           Object {
@@ -108,7 +108,7 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="Has end date"
+        label="experiments:hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -119,7 +119,7 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="End date"
+        label="common:endDate"
         onChange={[Function]}
         style={
           Object {
@@ -141,7 +141,7 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="End time"
+        label="common:endTime"
         onChange={[Function]}
         style={
           Object {
@@ -174,19 +174,19 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="Catchup"
+        label="experiments:catchup"
       />
       <HelpButton
         helpText={
           <div>
             <p>
-              Whether the recurring run should catch up if behind schedule. Defaults to true.
+              experiments:catchupHelpText1
             </p>
             <p>
-              For example, if the recurring run is paused for a while and re-enabled afterwards. If catchup=true, the scheduler will catch up on (backfill) each missed interval. Otherwise, it only schedules the latest interval if more than one interval is ready to be scheduled.
+              experiments:catchupHelpText2
             </p>
             <p>
-              Usually, if your pipeline handles backfill internally, you should turn catchup off to avoid duplicate backfill.
+              experiments:catchupHelpText3
             </p>
           </div>
         }
@@ -195,46 +195,46 @@ exports[`Trigger enables a single day on click 1`] = `
     <span
       className="flex"
     >
-      Run every
+      experiments:runEvery
       <Separator />
       <Input
         height={30}
         onChange={[Function]}
         required={true}
         select={true}
-        value="Week"
+        value="experiments:periodicIntervalEnum.week"
         variant="outlined"
         width={95}
       >
         <WithStyles(MenuItem)
           key="0"
-          value="Minute"
+          value="experiments:periodicIntervalEnum.minute"
         >
-          Minute
+          experiments:periodicIntervalEnum.minute
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
-          value="Hour"
+          value="experiments:periodicIntervalEnum.hour"
         >
-          Hour
+          experiments:periodicIntervalEnum.hour
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
-          value="Day"
+          value="experiments:periodicIntervalEnum.day"
         >
-          Day
+          experiments:periodicIntervalEnum.day
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
-          value="Week"
+          value="experiments:periodicIntervalEnum.week"
         >
-          Week
+          experiments:periodicIntervalEnum.week
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
-          value="Month"
+          value="experiments:periodicIntervalEnum.month"
         >
-          Month
+          experiments:periodicIntervalEnum.month
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -242,7 +242,8 @@ exports[`Trigger enables a single day on click 1`] = `
   <div>
     <div>
       <span>
-        On:
+        common:on
+        :
       </span>
       <WithStyles(WithFormControlContext(FormControlLabel))
         control={
@@ -252,7 +253,7 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="All"
+        label="common:all"
       />
       <Separator />
       <WithStyles(Button)
@@ -332,12 +333,12 @@ exports[`Trigger enables a single day on click 1`] = `
         }
         label={
           <span>
-            Allow editing cron expression. ( format is specified
+            experiments:editingCronExpression
              
             <a
               href="https://pkg.go.dev/github.com/robfig/cron#hdr-CRON_Expression_Format"
             >
-              here
+              common:here
             </a>
             )
           </span>
@@ -346,14 +347,14 @@ exports[`Trigger enables a single day on click 1`] = `
     </div>
     <Input
       disabled={true}
-      label="cron expression"
+      label="experiments:cronExpression"
       onChange={[Function]}
       value="0 0 0 ? * 0,2,4,5,6"
       variant="outlined"
       width={300}
     />
     <div>
-      Note: Start and end dates/times are handled outside of cron.
+      experiments:noteStartEndDateCron
     </div>
   </div>
 </div>
@@ -362,7 +363,7 @@ exports[`Trigger enables a single day on click 1`] = `
 exports[`Trigger renders all week days enabled 1`] = `
 <div>
   <Input
-    label="Trigger type"
+    label="experiments:triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -373,18 +374,18 @@ exports[`Trigger renders all week days enabled 1`] = `
       key="0"
       value={0}
     >
-      Periodic
+      experiments:triggerTypeEnum.periodic
     </WithStyles(MenuItem)>
     <WithStyles(MenuItem)
       key="1"
       value={1}
     >
-      Cron
+      experiments:triggerTypeEnum.cron
     </WithStyles(MenuItem)>
   </Input>
   <div>
     <Input
-      label="Maximum concurrent runs"
+      label="experiments:maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -401,7 +402,7 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="Has start date"
+        label="experiments:hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -412,7 +413,7 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="Start date"
+        label="common:startDate"
         onChange={[Function]}
         style={
           Object {
@@ -434,7 +435,7 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="Start time"
+        label="common:startTime"
         onChange={[Function]}
         style={
           Object {
@@ -467,7 +468,7 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="Has end date"
+        label="experiments:hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -478,7 +479,7 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="End date"
+        label="common:endDate"
         onChange={[Function]}
         style={
           Object {
@@ -500,7 +501,7 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="End time"
+        label="common:endTime"
         onChange={[Function]}
         style={
           Object {
@@ -533,19 +534,19 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="Catchup"
+        label="experiments:catchup"
       />
       <HelpButton
         helpText={
           <div>
             <p>
-              Whether the recurring run should catch up if behind schedule. Defaults to true.
+              experiments:catchupHelpText1
             </p>
             <p>
-              For example, if the recurring run is paused for a while and re-enabled afterwards. If catchup=true, the scheduler will catch up on (backfill) each missed interval. Otherwise, it only schedules the latest interval if more than one interval is ready to be scheduled.
+              experiments:catchupHelpText2
             </p>
             <p>
-              Usually, if your pipeline handles backfill internally, you should turn catchup off to avoid duplicate backfill.
+              experiments:catchupHelpText3
             </p>
           </div>
         }
@@ -554,46 +555,46 @@ exports[`Trigger renders all week days enabled 1`] = `
     <span
       className="flex"
     >
-      Run every
+      experiments:runEvery
       <Separator />
       <Input
         height={30}
         onChange={[Function]}
         required={true}
         select={true}
-        value="Week"
+        value="experiments:periodicIntervalEnum.week"
         variant="outlined"
         width={95}
       >
         <WithStyles(MenuItem)
           key="0"
-          value="Minute"
+          value="experiments:periodicIntervalEnum.minute"
         >
-          Minute
+          experiments:periodicIntervalEnum.minute
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
-          value="Hour"
+          value="experiments:periodicIntervalEnum.hour"
         >
-          Hour
+          experiments:periodicIntervalEnum.hour
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
-          value="Day"
+          value="experiments:periodicIntervalEnum.day"
         >
-          Day
+          experiments:periodicIntervalEnum.day
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
-          value="Week"
+          value="experiments:periodicIntervalEnum.week"
         >
-          Week
+          experiments:periodicIntervalEnum.week
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
-          value="Month"
+          value="experiments:periodicIntervalEnum.month"
         >
-          Month
+          experiments:periodicIntervalEnum.month
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -601,7 +602,8 @@ exports[`Trigger renders all week days enabled 1`] = `
   <div>
     <div>
       <span>
-        On:
+        common:on
+        :
       </span>
       <WithStyles(WithFormControlContext(FormControlLabel))
         control={
@@ -611,7 +613,7 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="All"
+        label="common:all"
       />
       <Separator />
       <WithStyles(Button)
@@ -691,12 +693,12 @@ exports[`Trigger renders all week days enabled 1`] = `
         }
         label={
           <span>
-            Allow editing cron expression. ( format is specified
+            experiments:editingCronExpression
              
             <a
               href="https://pkg.go.dev/github.com/robfig/cron#hdr-CRON_Expression_Format"
             >
-              here
+              common:here
             </a>
             )
           </span>
@@ -705,14 +707,14 @@ exports[`Trigger renders all week days enabled 1`] = `
     </div>
     <Input
       disabled={true}
-      label="cron expression"
+      label="experiments:cronExpression"
       onChange={[Function]}
       value="0 0 0 ? *"
       variant="outlined"
       width={300}
     />
     <div>
-      Note: Start and end dates/times are handled outside of cron.
+      experiments:noteStartEndDateCron
     </div>
   </div>
 </div>
@@ -721,7 +723,7 @@ exports[`Trigger renders all week days enabled 1`] = `
 exports[`Trigger renders periodic schedule controls for initial render 1`] = `
 <div>
   <Input
-    label="Trigger type"
+    label="experiments:triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -732,18 +734,18 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
       key="0"
       value={0}
     >
-      Periodic
+      experiments:triggerTypeEnum.periodic
     </WithStyles(MenuItem)>
     <WithStyles(MenuItem)
       key="1"
       value={1}
     >
-      Cron
+      experiments:triggerTypeEnum.cron
     </WithStyles(MenuItem)>
   </Input>
   <div>
     <Input
-      label="Maximum concurrent runs"
+      label="experiments:maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -760,7 +762,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             onClick={[Function]}
           />
         }
-        label="Has start date"
+        label="experiments:hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -771,7 +773,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="Start date"
+        label="common:startDate"
         onChange={[Function]}
         style={
           Object {
@@ -793,7 +795,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="Start time"
+        label="common:startTime"
         onChange={[Function]}
         style={
           Object {
@@ -826,7 +828,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             onClick={[Function]}
           />
         }
-        label="Has end date"
+        label="experiments:hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -837,7 +839,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="End date"
+        label="common:endDate"
         onChange={[Function]}
         style={
           Object {
@@ -859,7 +861,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="End time"
+        label="common:endTime"
         onChange={[Function]}
         style={
           Object {
@@ -892,19 +894,19 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             onClick={[Function]}
           />
         }
-        label="Catchup"
+        label="experiments:catchup"
       />
       <HelpButton
         helpText={
           <div>
             <p>
-              Whether the recurring run should catch up if behind schedule. Defaults to true.
+              experiments:catchupHelpText1
             </p>
             <p>
-              For example, if the recurring run is paused for a while and re-enabled afterwards. If catchup=true, the scheduler will catch up on (backfill) each missed interval. Otherwise, it only schedules the latest interval if more than one interval is ready to be scheduled.
+              experiments:catchupHelpText2
             </p>
             <p>
-              Usually, if your pipeline handles backfill internally, you should turn catchup off to avoid duplicate backfill.
+              experiments:catchupHelpText3
             </p>
           </div>
         }
@@ -913,7 +915,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
     <span
       className="flex"
     >
-      Run every
+      experiments:runEvery
       <div
         className="flex"
       >
@@ -935,39 +937,39 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
         onChange={[Function]}
         required={true}
         select={true}
-        value="Hour"
+        value="experiments:periodicIntervalEnum.hour"
         variant="outlined"
         width={95}
       >
         <WithStyles(MenuItem)
           key="0"
-          value="Minute"
+          value="experiments:periodicIntervalEnum.minute"
         >
-          Minutes
+          experiments:periodicIntervalEnum.minute
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
-          value="Hour"
+          value="experiments:periodicIntervalEnum.hour"
         >
-          Hours
+          experiments:periodicIntervalEnum.hour
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
-          value="Day"
+          value="experiments:periodicIntervalEnum.day"
         >
-          Days
+          experiments:periodicIntervalEnum.day
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
-          value="Week"
+          value="experiments:periodicIntervalEnum.week"
         >
-          Weeks
+          experiments:periodicIntervalEnum.week
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
-          value="Month"
+          value="experiments:periodicIntervalEnum.month"
         >
-          Months
+          experiments:periodicIntervalEnum.month
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -978,7 +980,7 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
 exports[`Trigger renders periodic schedule controls if the trigger type is CRON 1`] = `
 <div>
   <Input
-    label="Trigger type"
+    label="experiments:triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -989,18 +991,18 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
       key="0"
       value={0}
     >
-      Periodic
+      experiments:triggerTypeEnum.periodic
     </WithStyles(MenuItem)>
     <WithStyles(MenuItem)
       key="1"
       value={1}
     >
-      Cron
+      experiments:triggerTypeEnum.cron
     </WithStyles(MenuItem)>
   </Input>
   <div>
     <Input
-      label="Maximum concurrent runs"
+      label="experiments:maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -1017,7 +1019,7 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             onClick={[Function]}
           />
         }
-        label="Has start date"
+        label="experiments:hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -1028,7 +1030,7 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="Start date"
+        label="common:startDate"
         onChange={[Function]}
         style={
           Object {
@@ -1050,7 +1052,7 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="Start time"
+        label="common:startTime"
         onChange={[Function]}
         style={
           Object {
@@ -1083,7 +1085,7 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             onClick={[Function]}
           />
         }
-        label="Has end date"
+        label="experiments:hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -1094,7 +1096,7 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="End date"
+        label="common:endDate"
         onChange={[Function]}
         style={
           Object {
@@ -1116,7 +1118,7 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="End time"
+        label="common:endTime"
         onChange={[Function]}
         style={
           Object {
@@ -1149,19 +1151,19 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             onClick={[Function]}
           />
         }
-        label="Catchup"
+        label="experiments:catchup"
       />
       <HelpButton
         helpText={
           <div>
             <p>
-              Whether the recurring run should catch up if behind schedule. Defaults to true.
+              experiments:catchupHelpText1
             </p>
             <p>
-              For example, if the recurring run is paused for a while and re-enabled afterwards. If catchup=true, the scheduler will catch up on (backfill) each missed interval. Otherwise, it only schedules the latest interval if more than one interval is ready to be scheduled.
+              experiments:catchupHelpText2
             </p>
             <p>
-              Usually, if your pipeline handles backfill internally, you should turn catchup off to avoid duplicate backfill.
+              experiments:catchupHelpText3
             </p>
           </div>
         }
@@ -1170,46 +1172,46 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
     <span
       className="flex"
     >
-      Run every
+      experiments:runEvery
       <Separator />
       <Input
         height={30}
         onChange={[Function]}
         required={true}
         select={true}
-        value="Hour"
+        value="experiments:periodicIntervalEnum.hour"
         variant="outlined"
         width={95}
       >
         <WithStyles(MenuItem)
           key="0"
-          value="Minute"
+          value="experiments:periodicIntervalEnum.minute"
         >
-          Minute
+          experiments:periodicIntervalEnum.minute
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
-          value="Hour"
+          value="experiments:periodicIntervalEnum.hour"
         >
-          Hour
+          experiments:periodicIntervalEnum.hour
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
-          value="Day"
+          value="experiments:periodicIntervalEnum.day"
         >
-          Day
+          experiments:periodicIntervalEnum.day
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
-          value="Week"
+          value="experiments:periodicIntervalEnum.week"
         >
-          Week
+          experiments:periodicIntervalEnum.week
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
-          value="Month"
+          value="experiments:periodicIntervalEnum.month"
         >
-          Month
+          experiments:periodicIntervalEnum.month
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -1228,12 +1230,12 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
         }
         label={
           <span>
-            Allow editing cron expression. ( format is specified
+            experiments:editingCronExpression
              
             <a
               href="https://pkg.go.dev/github.com/robfig/cron#hdr-CRON_Expression_Format"
             >
-              here
+              common:here
             </a>
             )
           </span>
@@ -1242,14 +1244,14 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
     </div>
     <Input
       disabled={true}
-      label="cron expression"
+      label="experiments:cronExpression"
       onChange={[Function]}
       value="0 0 * * * ?"
       variant="outlined"
       width={300}
     />
     <div>
-      Note: Start and end dates/times are handled outside of cron.
+      experiments:noteStartEndDateCron
     </div>
   </div>
 </div>
@@ -1258,7 +1260,7 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
 exports[`Trigger renders week days if the trigger type is CRON and interval is weekly 1`] = `
 <div>
   <Input
-    label="Trigger type"
+    label="experiments:triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -1269,18 +1271,18 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
       key="0"
       value={0}
     >
-      Periodic
+      experiments:triggerTypeEnum.periodic
     </WithStyles(MenuItem)>
     <WithStyles(MenuItem)
       key="1"
       value={1}
     >
-      Cron
+      experiments:triggerTypeEnum.cron
     </WithStyles(MenuItem)>
   </Input>
   <div>
     <Input
-      label="Maximum concurrent runs"
+      label="experiments:maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -1297,7 +1299,7 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="Has start date"
+        label="experiments:hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -1308,7 +1310,7 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="Start date"
+        label="common:startDate"
         onChange={[Function]}
         style={
           Object {
@@ -1330,7 +1332,7 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="Start time"
+        label="common:startTime"
         onChange={[Function]}
         style={
           Object {
@@ -1363,7 +1365,7 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="Has end date"
+        label="experiments:hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -1374,7 +1376,7 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="End date"
+        label="common:endDate"
         onChange={[Function]}
         style={
           Object {
@@ -1396,7 +1398,7 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="End time"
+        label="common:endTime"
         onChange={[Function]}
         style={
           Object {
@@ -1429,19 +1431,19 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="Catchup"
+        label="experiments:catchup"
       />
       <HelpButton
         helpText={
           <div>
             <p>
-              Whether the recurring run should catch up if behind schedule. Defaults to true.
+              experiments:catchupHelpText1
             </p>
             <p>
-              For example, if the recurring run is paused for a while and re-enabled afterwards. If catchup=true, the scheduler will catch up on (backfill) each missed interval. Otherwise, it only schedules the latest interval if more than one interval is ready to be scheduled.
+              experiments:catchupHelpText2
             </p>
             <p>
-              Usually, if your pipeline handles backfill internally, you should turn catchup off to avoid duplicate backfill.
+              experiments:catchupHelpText3
             </p>
           </div>
         }
@@ -1450,46 +1452,46 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
     <span
       className="flex"
     >
-      Run every
+      experiments:runEvery
       <Separator />
       <Input
         height={30}
         onChange={[Function]}
         required={true}
         select={true}
-        value="Week"
+        value="experiments:periodicIntervalEnum.week"
         variant="outlined"
         width={95}
       >
         <WithStyles(MenuItem)
           key="0"
-          value="Minute"
+          value="experiments:periodicIntervalEnum.minute"
         >
-          Minute
+          experiments:periodicIntervalEnum.minute
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
-          value="Hour"
+          value="experiments:periodicIntervalEnum.hour"
         >
-          Hour
+          experiments:periodicIntervalEnum.hour
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
-          value="Day"
+          value="experiments:periodicIntervalEnum.day"
         >
-          Day
+          experiments:periodicIntervalEnum.day
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
-          value="Week"
+          value="experiments:periodicIntervalEnum.week"
         >
-          Week
+          experiments:periodicIntervalEnum.week
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
-          value="Month"
+          value="experiments:periodicIntervalEnum.month"
         >
-          Month
+          experiments:periodicIntervalEnum.month
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -1497,7 +1499,8 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
   <div>
     <div>
       <span>
-        On:
+        common:on
+        :
       </span>
       <WithStyles(WithFormControlContext(FormControlLabel))
         control={
@@ -1507,7 +1510,7 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="All"
+        label="common:all"
       />
       <Separator />
       <WithStyles(Button)
@@ -1587,12 +1590,12 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
         }
         label={
           <span>
-            Allow editing cron expression. ( format is specified
+            experiments:editingCronExpression
              
             <a
               href="https://pkg.go.dev/github.com/robfig/cron#hdr-CRON_Expression_Format"
             >
-              here
+              common:here
             </a>
             )
           </span>
@@ -1601,14 +1604,14 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
     </div>
     <Input
       disabled={true}
-      label="cron expression"
+      label="experiments:cronExpression"
       onChange={[Function]}
       value="0 0 0 ? * *"
       variant="outlined"
       width={300}
     />
     <div>
-      Note: Start and end dates/times are handled outside of cron.
+      experiments:noteStartEndDateCron
     </div>
   </div>
 </div>
