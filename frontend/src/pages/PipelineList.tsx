@@ -269,4 +269,4 @@ class PipelineList extends Page<{ t: TFunction }, PipelineListState> {
   }
 }
 
-export default withTranslation()(PipelineList);
+export default withTranslation('common')(PipelineList);
