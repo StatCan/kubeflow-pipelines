@@ -381,7 +381,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 onClick={() => this._pipelineVersionSelectorClosed(false)}
                 color='secondary'
               >
-                Cancel
+                {t('common:cancel')}
               </Button>
               <Button
                 id='usePipelineVersionBtn'
@@ -915,7 +915,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
 
     if (!embeddedPipelineSpec) {
       await this.showPageError(
-        `Error: somehow the run provided in the query params: ${embeddedRunId} had no embedded pipeline.`,
+        `${t('errorRunProvided')}: ${embeddedRunId} ${t('noEmbeddedPipeline')}.`,
       );
       return;
     }
@@ -925,13 +925,13 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       const parameters = RunUtils.getParametersFromRun(runWithEmbeddedPipeline);
       this.setStateSafe({
         parameters,
-        usePipelineFromRunLabel: 'Using pipeline from previous page',
+        usePipelineFromRunLabel: t('usePipelinePrevPage'),
         useWorkflowFromRun: true,
         workflowFromRun: workflow,
       });
     } catch (err) {
       await this.showPageError(
-        `Error: failed to parse the embedded pipeline's spec: ${embeddedPipelineSpec}.`,
+        `${t('errorParsePipeline')}: ${embeddedPipelineSpec}.`,
         err,
       );
       logger.error(`Failed to parse the embedded pipeline's spec from run: ${embeddedRunId}`, err);
@@ -945,8 +945,9 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     originalRun?: ApiRun | ApiJob,
     runtime?: ApiPipelineRuntime,
   ): Promise<void> {
+    const { t } = this.props;
     if (!originalRun) {
-      logger.error('Could not get cloned run details');
+      logger.error(t('clonedRunDetails'));
       return;
     }
 
@@ -979,7 +980,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         name = pipeline.name || '';
       } catch (err) {
         await this.showPageError(
-          'Error: failed to find a pipeline version corresponding to that of the original run:' +
+          t('errorFindPipelineVersion') +
             ` ${originalRun.id}.`,
           err,
         );
@@ -991,7 +992,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         name = pipeline.name || '';
       } catch (err) {
         await this.showPageError(
-          'Error: failed to find a pipeline corresponding to that of the original run:' +
+          t('errorFindPipeline') +
             ` ${originalRun.id}.`,
           err,
         );
@@ -1002,18 +1003,18 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         workflowFromRun = JSON.parse(embeddedPipelineSpec);
         name = workflowFromRun!.metadata.name || '';
       } catch (err) {
-        await this.showPageError("Error: failed to read the clone run's pipeline definition.", err);
+        await this.showPageError(t('errorReadPipelineDef'), err);
         return;
       }
       useWorkflowFromRun = true;
-      usePipelineFromRunLabel = 'Using pipeline from cloned run';
+      usePipelineFromRunLabel = t('usePipelineClonedRun');
     } else {
-      await this.showPageError("Could not find the cloned run's pipeline definition.");
+      await this.showPageError(t('clonedRunPipelineDef'));
       return;
     }
 
     if (!originalRun.pipeline_spec || !originalRun.pipeline_spec.workflow_manifest) {
-      await this.showPageError(`Error: run ${originalRun.id} had no workflow manifest`);
+      await this.showPageError(`${t('errorRun')} ${originalRun.id} ${t('noWorkflowManifest')}`);
       return;
     }
 
@@ -1039,19 +1040,21 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   }
 
   private _runParametersMessage(): string {
+    const { t } = this.props;
     if (this.state.pipeline || this.state.workflowFromRun) {
       if (this.state.parameters.length) {
-        return 'Specify parameters required by the pipeline';
+        return t('specifyParams');
       } else {
-        return 'This pipeline has no parameters';
+        return t('noParams');
       }
     }
-    return 'Parameters will appear after you select a pipeline';
+    return t('parametersAppearSelectPipeline');
   }
 
   private _start(): void {
+    const { t } = this.props;
     if (!this.state.pipelineVersion && !this.state.workflowFromRun) {
-      this.showErrorDialog('Run creation failed', 'Cannot start run without pipeline version');
+      this.showErrorDialog(t('runCreationFailed'), t('cannotStartRun'));
       logger.error('Cannot start run without pipeline version');
       return;
     }
@@ -1109,7 +1112,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           : await Apis.runServiceApi.createRun(newRun);
       } catch (err) {
         const errorMessage = await errorToMessage(err);
-        this.showErrorDialog('Run creation failed', errorMessage);
+        this.showErrorDialog(t('runCreationFailed'), errorMessage);
         logger.error('Error creating Run:', err);
         return;
       } finally {
@@ -1127,7 +1130,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         this.props.history.push(RoutePage.RUNS);
       }
       this.props.updateSnackbar({
-        message: `Successfully started new Run: ${newRun.name}`,
+        message: `${t('startNewRunSuccess')}: ${newRun.name}`,
         open: true,
       });
     });
@@ -1164,14 +1167,15 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   }
 
   private _validate(): void {
+    const { t } = this.props;
     // Validate state
     const { pipelineVersion, workflowFromRun, maxConcurrentRuns, runName, trigger } = this.state;
     try {
       if (!pipelineVersion && !workflowFromRun) {
-        throw new Error('A pipeline version must be selected');
+        throw new Error(t('pipelineVersionSelected'));
       }
       if (!runName) {
-        throw new Error('Run name is required');
+        throw new Error(t('runNameRequired'));
       }
 
       const hasTrigger = trigger && (!!trigger.cron_schedule || !!trigger.periodic_schedule);
@@ -1183,13 +1187,13 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           ? trigger!.cron_schedule!.end_time
           : trigger!.periodic_schedule!.end_time;
         if (startDate && endDate && startDate > endDate) {
-          throw new Error('End date/time cannot be earlier than start date/time');
+          throw new Error(t('endDateBeforeStartDate'));
         }
         const validMaxConcurrentRuns = (input: string) =>
           !isNaN(Number.parseInt(input, 10)) && +input > 0;
 
         if (maxConcurrentRuns !== undefined && !validMaxConcurrentRuns(maxConcurrentRuns)) {
-          throw new Error('For triggered runs, maximum concurrent runs must be a positive number');
+          throw new Error(t('maxConcurrentRunsPositive'));
         }
       }
 

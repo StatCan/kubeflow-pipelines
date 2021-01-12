@@ -37,6 +37,8 @@ import {
   ParsedTrigger,
 } from '../lib/TriggerUtils';
 import { logger } from 'src/lib/Utils';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 type TriggerInitialProps = {
   maxConcurrentRuns?: string;
@@ -51,6 +53,7 @@ interface TriggerProps {
     maxConcurrentRuns?: string;
     catchup: boolean;
   }) => void;
+  t: TFunction;
 }
 
 interface TriggerState {
@@ -76,8 +79,9 @@ const css = stylesheet({
   },
 });
 
-export default class Trigger extends React.Component<TriggerProps, TriggerState> {
+class Trigger extends React.Component<TriggerProps, TriggerState> {
   public state: TriggerState = (() => {
+    const { t } = this.props;
     const { maxConcurrentRuns, catchup, trigger } =
       this.props.initialProps || ({} as TriggerInitialProps);
     let parsedTrigger: Partial<ParsedTrigger> = {};
@@ -86,7 +90,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
         parsedTrigger = parseTrigger(trigger);
       }
     } catch (err) {
-      logger.warn('Failed to parse original trigger: ', trigger);
+      logger.warn(`${t('parseTriggerFailed')}: `, trigger);
       logger.warn(err);
     }
     const startDateTime = parsedTrigger.startDateTime ?? new Date();
@@ -130,6 +134,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     const {
       cron,
       editCron,
@@ -151,7 +156,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
       <div>
         <Input
           select={true}
-          label='Trigger type'
+          label={t('triggerType')}
           required={true}
           onChange={this.handleChange('type')}
           value={type}
@@ -166,7 +171,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
 
         <div>
           <Input
-            label='Maximum concurrent runs'
+            label={t('maxConcurrentRuns')}
             required={true}
             onChange={this.handleChange('maxConcurrentRuns')}
             value={maxConcurrentRuns}
@@ -182,10 +187,10 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
                   onClick={this.handleChange('hasStartDate')}
                 />
               }
-              label='Has start date'
+              label={t('hasStartDate')}
             />
             <Input
-              label='Start date'
+              label={t('common:startDate')}
               type='date'
               onChange={this.handleChange('startDate')}
               value={startDate}
@@ -196,7 +201,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
             />
             <Separator />
             <Input
-              label='Start time'
+              label={t('common:startTime')}
               type='time'
               onChange={this.handleChange('startTime')}
               value={startTime}
@@ -216,10 +221,10 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
                   onClick={this.handleChange('hasEndDate')}
                 />
               }
-              label='Has end date'
+              label={t('hasEndDate')}
             />
             <Input
-              label='End date'
+              label={t('common:endDate')}
               type='date'
               onChange={this.handleChange('endDate')}
               value={endDate}
@@ -230,7 +235,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
             />
             <Separator />
             <Input
-              label='End time'
+              label={t('common:endTime')}
               type='time'
               onChange={this.handleChange('endTime')}
               value={endTime}
@@ -249,23 +254,19 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
                   onClick={this.handleChange('catchup')}
                 />
               }
-              label='Catchup'
+              label={t('catchup')}
             />
             <HelpButton
               helpText={
                 <div>
                   <p>
-                    Whether the recurring run should catch up if behind schedule. Defaults to true.
+                    {t('catchupHelpText1')}
                   </p>
                   <p>
-                    For example, if the recurring run is paused for a while and re-enabled
-                    afterwards. If catchup=true, the scheduler will catch up on (backfill) each
-                    missed interval. Otherwise, it only schedules the latest interval if more than
-                    one interval is ready to be scheduled.
+                    {t('catchupHelpText2')}
                   </p>
                   <p>
-                    Usually, if your pipeline handles backfill internally, you should turn catchup
-                    off to avoid duplicate backfill.
+                    {t('catchupHelpText3')}
                   </p>
                 </div>
               }
@@ -273,7 +274,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
           </span>
 
           <span className={commonCss.flex}>
-            Run every
+            {t('runEvery')}
             {type === TriggerType.INTERVALED && (
               <div className={commonCss.flex}>
                 <Separator />
@@ -312,7 +313,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
           <div>
             {intervalCategory === PeriodicInterval.WEEK && (
               <div>
-                <span>On:</span>
+                <span>{t('common:on')}:</span>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -321,7 +322,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
                       onClick={this._toggleCheckAllDays.bind(this)}
                     />
                   }
-                  label='All'
+                  label={t('common:all')}
                 />
                 <Separator />
                 {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, i) => (
@@ -349,9 +350,9 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
                 }
                 label={
                   <span>
-                    Allow editing cron expression. ( format is specified{' '}
+                    {t('editingCronExpression')}{' '}
                     <a href='https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format'>
-                      here
+                      {t('common:here')}
                     </a>
                     )
                   </span>
@@ -360,7 +361,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
             </div>
 
             <Input
-              label='cron expression'
+              label={t('cronExpression')}
               onChange={this.handleChange('cron')}
               value={cron}
               width={300}
@@ -368,7 +369,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
               variant='outlined'
             />
 
-            <div>Note: Start and end dates/times are handled outside of cron.</div>
+            <div>{t('noteStartEndDateCron')}</div>
           </div>
         )}
       </div>
@@ -468,3 +469,5 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
     );
   }
 }
+
+export default withTranslation(['experiments', 'common'])(Trigger);

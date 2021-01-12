@@ -592,7 +592,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                   {workflowParameters && !!workflowParameters.length && (
                     <div>
                       <DetailsTable
-                        title='Run parameters'
+                        title='Run parameters TEST'
                         fields={workflowParameters.map(p => [p.name, p.value || ''])}
                       />
                     </div>
