@@ -680,7 +680,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         }
       } catch (err) {
         await this.showPageError(
-          `${t('errorRetrieveRecurrRun')}: ${originalRunId}.`,
+          `${t('errorRetrieveOrigRecurrRun')}: ${originalRunId}.`,
           err,
         );
         logger.error(`Failed to retrieve original recurring run: ${originalRunId}`, err);
@@ -756,7 +756,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         });
       } catch (err) {
         await this.showPageError(
-          `${t('errorRetrieveExperiment')}: ${experimentId}.`,
+          `${t('errorRetrieveAssocExperiment')}: ${experimentId}.`,
           err,
         );
         logger.error(`Failed to retrieve associated experiment: ${experimentId}`, err);

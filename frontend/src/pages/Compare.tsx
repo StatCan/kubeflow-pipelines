@@ -39,6 +39,8 @@ import { logger } from '../lib/Utils';
 import WorkflowParser from '../lib/WorkflowParser';
 import { Page, PageProps } from './Page';
 import RunList from './RunList';
+import { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const css = stylesheet({
   outputsRow: {
@@ -68,7 +70,7 @@ const overviewSectionName = 'Run overview';
 const paramsSectionName = 'Parameters';
 const metricsSectionName = 'Metrics';
 
-class Compare extends Page<{}, CompareState> {
+class Compare extends Page<{t: TFunction}, CompareState> {
   constructor(props: any) {
     super(props);
 
@@ -86,19 +88,21 @@ class Compare extends Page<{}, CompareState> {
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
+    const { t } = this.props;
     return {
       actions: buttons
         .expandSections(() => this.setState({ collapseSections: {} }))
         .collapseSections(this._collapseAllSections.bind(this))
         .refresh(this.refresh.bind(this))
         .getToolbarActionMap(),
-      breadcrumbs: [{ displayName: 'Experiments', href: RoutePage.EXPERIMENTS }],
-      pageTitle: 'Compare runs',
+      breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
+      pageTitle: t('compareRuns'),
     };
   }
 
   public render(): JSX.Element {
     const { collapseSections, selectedIds, viewersMap } = this.state;
+    const { t } = this.props;
 
     const queryParamRunIds = new URLParser(this.props).get(QUERY_PARAMS.runlist);
     const runIds = queryParamRunIds ? queryParamRunIds.split(',') : [];
@@ -182,7 +186,7 @@ class Compare extends Page<{}, CompareState> {
                           <PlotCard
                             configs={runsPerViewerType(viewerType).map(t => t.config)}
                             maxDimension={400}
-                            title='Aggregated view'
+                            title={t('aggregatedView')}
                           />
                         )}
 
@@ -224,6 +228,7 @@ class Compare extends Page<{}, CompareState> {
     const workflowObjects: Workflow[] = [];
     const failingRuns: string[] = [];
     let lastError: Error | null = null;
+    const { t } = this.props;
 
     await Promise.all(
       runIds.map(async id => {
@@ -239,7 +244,7 @@ class Compare extends Page<{}, CompareState> {
     );
 
     if (lastError) {
-      await this.showPageError(`Error: failed loading ${failingRuns.length} runs.`, lastError);
+      await this.showPageError(`${t('errorLoadRuns1')} ${failingRuns.length}${t('errorLoadRuns2')}`, lastError);
       logger.error(
         `Failed loading ${failingRuns.length} runs, last failed with the error: ${lastError}`,
       );
@@ -332,12 +337,13 @@ class Compare extends Page<{}, CompareState> {
 
 const EnhancedCompare: React.FC<PageProps> = props => {
   const namespaceChanged = useNamespaceChangeEvent();
+  const { t } = useTranslation(['experiments', 'common']);
   if (namespaceChanged) {
     // Compare page compares two runs, when namespace changes, the runs don't
     // exist in the new namespace, so we should redirect to experiment list page.
     return <Redirect to={RoutePage.EXPERIMENTS} />;
   }
-  return <Compare {...props} />;
+  return <Compare {...props} t={t}/>;
 };
 
 export default EnhancedCompare;
