@@ -1,0 +1,5 @@
+{
+    "getExecutionsFailed": "Failed getting executions",
+    "noExecutionsFound": "No executions found.",
+    "runWorkspacePipeline" : "Run ID/Workspace/Pipeline"
+}

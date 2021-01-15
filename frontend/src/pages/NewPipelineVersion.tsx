@@ -42,7 +42,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { ExternalLink } from '../atoms/ExternalLink';
 import { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { withTranslation, useTranslation } from 'react-i18next';
 
 interface NewPipelineVersionState {
   validationError: string;
@@ -671,12 +671,15 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
 
 export default withTranslation(['pipelines', 'common'])(NewPipelineVersion);
 
-const DocumentationCompilePipeline: React.FC = () => (
-  <div className={padding(10, 'b')}>
-    For expected file format, refer to{' '}
-    <ExternalLink href='https://www.kubeflow.org/docs/pipelines/sdk/build-component/#compile-the-pipeline'>
-      Compile Pipeline Documentation
-    </ExternalLink>
-    .
-  </div>
-);
+const DocumentationCompilePipeline: React.FC = () => {
+  const { t } = useTranslation('pipelines');
+  return (
+    <div className={padding(10, 'b')}>
+      {t('expectedFileFormat')}{' '}
+      <ExternalLink href='https://www.kubeflow.org/docs/pipelines/sdk/build-component/#compile-the-pipeline'>
+        {t('compilePipelineDoc')}
+      </ExternalLink>
+      .
+    </div>
+  )
+};

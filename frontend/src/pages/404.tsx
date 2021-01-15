@@ -17,8 +17,10 @@
 import * as React from 'react';
 import { Page } from './Page';
 import { ToolbarProps } from '../components/Toolbar';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
-export default class Page404 extends Page<{}, {}> {
+class Page404 extends Page<{t: TFunction}, {}> {
   public getInitialToolbarState(): ToolbarProps {
     return { actions: {}, breadcrumbs: [], pageTitle: '' };
   }
@@ -28,11 +30,14 @@ export default class Page404 extends Page<{}, {}> {
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     return (
       <div style={{ margin: '100px auto', textAlign: 'center' }}>
         <div style={{ color: '#aaa', fontSize: 50, fontWeight: 'bold' }}>404</div>
-        <div style={{ fontSize: 16 }}>Page Not Found: {this.props.location.pathname}</div>
+        <div style={{ fontSize: 16 }}>{t('pageNotFound')}: {this.props.location.pathname}</div>
       </div>
     );
   }
 }
+
+export default withTranslation('common')(Page404);

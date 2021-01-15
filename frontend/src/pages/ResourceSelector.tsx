@@ -21,6 +21,8 @@ import { ListRequest } from '../lib/Apis';
 import { RouteComponentProps } from 'react-router-dom';
 import { logger, errorToMessage, formatDateString } from '../lib/Utils';
 import { DialogProps } from '../components/Router';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 interface BaseResponse {
   resources: BaseResource[];
@@ -45,6 +47,7 @@ export interface ResourceSelectorProps extends RouteComponentProps {
   title: string;
   toolbarActionMap?: ToolbarActionMap;
   updateDialog: (dialogProps: DialogProps) => void;
+  t: TFunction;
 }
 
 interface ResourceSelectorState {
@@ -101,15 +104,16 @@ class ResourceSelector extends React.Component<ResourceSelectorProps, ResourceSe
   }
 
   protected _selectionChanged(selectedIds: string[]): void {
+    const { t } = this.props;
     if (!Array.isArray(selectedIds) || selectedIds.length !== 1) {
-      logger.error(`${selectedIds.length} resources were selected somehow`, selectedIds);
+      logger.error(`${selectedIds.length} ${t('resourcesSelected')}`, selectedIds);
       return;
     }
     const selected = this.state.resources.find(r => r.id === selectedIds[0]);
     if (selected) {
       this.props.selectionChanged(selected);
     } else {
-      logger.error(`Somehow no resource was found with ID: ${selectedIds[0]}`);
+      logger.error(`${t('noResourceFoundWithId')}: ${selectedIds[0]}`);
       return;
     }
     this.setStateSafe({ selectedIds });
@@ -117,6 +121,7 @@ class ResourceSelector extends React.Component<ResourceSelectorProps, ResourceSe
 
   protected async _load(request: ListRequest): Promise<string> {
     let nextPageToken = '';
+    const { t } = this.props;
     try {
       const response = await this.props.listApi(
         request.pageToken,
@@ -134,11 +139,11 @@ class ResourceSelector extends React.Component<ResourceSelectorProps, ResourceSe
     } catch (err) {
       const errorMessage = await errorToMessage(err);
       this.props.updateDialog({
-        buttons: [{ text: 'Dismiss' }],
-        content: 'List request failed with:\n' + errorMessage,
-        title: 'Error retrieving resources',
+        buttons: [{ text: t('dismiss') }],
+        content: `${t('listRequestFailed')}:\n` + errorMessage,
+        title: t('errorRetrieveResources'),
       });
-      logger.error('Could not get requested list of resources', errorMessage);
+      logger.error(t('listResourcesFailed'), errorMessage);
     }
     return nextPageToken;
   }
@@ -155,4 +160,4 @@ class ResourceSelector extends React.Component<ResourceSelectorProps, ResourceSe
   }
 }
 
-export default ResourceSelector;
+export default withTranslation('common')(ResourceSelector);

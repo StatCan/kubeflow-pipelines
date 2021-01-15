@@ -23,6 +23,8 @@ import { RoutePage } from '../components/Router';
 import { ToolbarProps } from '../components/Toolbar';
 import { classes } from 'typestyle';
 import { commonCss, padding } from '../Css';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 export enum ArchivedExperimentsAndRunsTab {
   RUNS = 0,
@@ -31,6 +33,7 @@ export enum ArchivedExperimentsAndRunsTab {
 
 export interface ArchivedExperimentAndRunsProps extends PageProps {
   view: ArchivedExperimentsAndRunsTab;
+  t: TFunction;
 }
 
 interface ArchivedExperimentAndRunsState {
@@ -46,10 +49,11 @@ class ArchivedExperimentsAndRuns extends Page<
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     return (
       <div className={classes(commonCss.page, padding(20, 't'))}>
         <MD2Tabs
-          tabs={['Runs', 'Experiments']}
+          tabs={[t('runs'), t('common:experiments')]}
           selectedTab={this.props.view}
           onSwitch={this._tabSwitched.bind(this)}
         />
@@ -75,4 +79,4 @@ class ArchivedExperimentsAndRuns extends Page<
   }
 }
 
-export default ArchivedExperimentsAndRuns;
+export default withTranslation(['experiments', 'common'])(ArchivedExperimentsAndRuns);

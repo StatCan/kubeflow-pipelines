@@ -1139,12 +1139,13 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   private _getCloneName(oldName: string): string {
     const numberRegex = /Clone(?: \(([0-9]*)\))? of (.*)/;
     const match = oldName.match(numberRegex);
+    const { t } = this.props;
     if (!match) {
       // No match, add Clone prefix
-      return 'Clone of ' + oldName;
+      return `${t('common:cloneOf')} ` + oldName;
     } else {
       const cloneNumber = match[1] ? +match[1] : 1;
-      return `Clone (${cloneNumber + 1}) of ${match[2]}`;
+      return `${t('common:clone')} (${cloneNumber + 1}) ${t('common:of')} ${match[2]}`;
     }
   }
 
