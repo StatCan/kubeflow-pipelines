@@ -43,6 +43,8 @@ import { commonCss, padding } from '../Css';
 import { ResourceInfo, ResourceType } from '../components/ResourceInfo';
 import { serviceErrorToString } from '../lib/Utils';
 import { GetExecutionTypesByIDRequest } from '@kubeflow/frontend/src/mlmd/generated/ml_metadata/proto/metadata_store_service_pb';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 type ArtifactIdList = number[];
 
@@ -53,7 +55,7 @@ interface ExecutionDetailsState {
   artifactTypeMap?: Map<number, ArtifactType>;
 }
 
-export default class ExecutionDetails extends Page<{}, ExecutionDetailsState> {
+class ExecutionDetails extends Page<{t: TFunction}, ExecutionDetailsState> {
   public state: ExecutionDetailsState = {};
 
   private get id(): number {
@@ -61,6 +63,7 @@ export default class ExecutionDetails extends Page<{}, ExecutionDetailsState> {
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'))}>
         <ExecutionDetailsContent
@@ -72,16 +75,19 @@ export default class ExecutionDetails extends Page<{}, ExecutionDetailsState> {
               pageTitle: title,
             })
           }
+          t={t}
         />
       </div>
     );
   }
 
   public getInitialToolbarState(): ToolbarProps {
+    const { t } = this.props;
     return {
       actions: {},
       breadcrumbs: [{ displayName: 'Executions', href: RoutePage.EXECUTIONS }],
       pageTitle: `${this.id} details`,
+      t: t,
     };
   }
 
@@ -94,6 +100,7 @@ interface ExecutionDetailsContentProps {
   id: number;
   onError: PageErrorHandler;
   onTitleUpdate: (title: string) => void;
+  t: TFunction;
 }
 export class ExecutionDetailsContent extends Component<
   ExecutionDetailsContentProps,
@@ -148,10 +155,12 @@ export class ExecutionDetailsContent extends Component<
   }
 
   public getInitialToolbarState(): ToolbarProps {
+    const { t } = this.props;
     return {
       actions: {},
       breadcrumbs: [{ displayName: 'Executions', href: RoutePage.EXECUTIONS }],
       pageTitle: `Execution #${this.props.id} details`,
+      t: t,
     };
   }
 
@@ -418,3 +427,5 @@ const css = stylesheet({
     textAlign: 'left',
   },
 });
+
+export default withTranslation('common')(ExecutionDetails);

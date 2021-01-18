@@ -231,6 +231,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
         .getToolbarActionMap(),
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: this.props.runId!,
+      t: t,
     };
   }
 
@@ -304,6 +305,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                         onError={(message, additionalInfo) =>
                           this.props.updateBanner({ message, additionalInfo, mode: 'error' })
                         }
+                        t={t}
                       />
 
                       <SidePanel
@@ -429,6 +431,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                                           }
                                           // No title here
                                           onTitleUpdate={() => null}
+                                          t={t}
                                         />
                                       </>
                                     )}

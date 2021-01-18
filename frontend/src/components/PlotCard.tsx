@@ -26,6 +26,8 @@ import ViewerContainer, { componentMap } from '../components/viewers/ViewerConta
 import { ViewerConfig } from '../components/viewers/Viewer';
 import { color, fontsize } from '../Css';
 import { stylesheet, classes } from 'typestyle';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 const css = stylesheet({
   dialogTitle: {
@@ -84,6 +86,7 @@ export interface PlotCardProps {
   title: string;
   configs: ViewerConfig[];
   maxDimension: number;
+  t: TFunction;
 }
 
 interface PlotCardState {
@@ -107,7 +110,7 @@ class PlotCard extends React.Component<PlotCardProps, PlotCardState> {
   }
 
   public render(): JSX.Element | null {
-    const { title, configs, maxDimension, ...otherProps } = this.props;
+    const { title, configs, maxDimension, t, ...otherProps } = this.props;
 
     if (!configs || !configs.length) {
       return null;
@@ -126,7 +129,7 @@ class PlotCard extends React.Component<PlotCardProps, PlotCardState> {
                 style={{ padding: 4, minHeight: 0, minWidth: 0 }}
                 className='popOutButton'
               >
-                <Tooltip title='Pop out'>
+                <Tooltip title={t('popOut')}>
                   <PopOutIcon classes={{ root: css.popoutIcon }} />
                 </Tooltip>
               </Button>
@@ -160,4 +163,4 @@ class PlotCard extends React.Component<PlotCardProps, PlotCardState> {
   }
 }
 
-export default PlotCard;
+export default withTranslation('common')(PlotCard);

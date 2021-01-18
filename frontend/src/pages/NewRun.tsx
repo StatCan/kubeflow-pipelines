@@ -179,6 +179,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       actions: {},
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: t('startNewRun'),
+      t: t,
     };
   }
 

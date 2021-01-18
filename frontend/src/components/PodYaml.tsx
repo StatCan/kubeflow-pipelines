@@ -4,17 +4,19 @@ import { Apis, JSONObject } from 'src/lib/Apis';
 import { serviceErrorToString } from 'src/lib/Utils';
 import Banner from './Banner';
 import Editor from './Editor';
+import { useTranslation } from 'react-i18next';
 
 async function getPodYaml(name: string, namespace: string): Promise<string> {
   const response = await Apis.getPodInfo(name, namespace);
   return JsYaml.safeDump(reorderPodJson(response), { skipInvalid: true });
 }
 export const PodInfo: React.FC<{ name: string; namespace: string }> = ({ name, namespace }) => {
+  const { t } = useTranslation('common');
   return (
     <PodYaml
       name={name}
       namespace={namespace}
-      errorMessage='Failed to retrieve pod info. Possible reasons include cluster autoscaling, pod preemption or pod cleaned up by time to live configuration'
+      errorMessage={t('retrievePodInfoFailed')}
       getYaml={getPodYaml}
     />
   );
@@ -28,11 +30,12 @@ export const PodEvents: React.FC<{
   name: string;
   namespace: string;
 }> = ({ name, namespace }) => {
+  const { t } = useTranslation('common');
   return (
     <PodYaml
       name={name}
       namespace={namespace}
-      errorMessage='Failed to retrieve pod events. Possible reasons include cluster autoscaling, pod preemption or pod cleaned up by time to live configuration'
+      errorMessage={t('retrievePodEventsFailed')}
       getYaml={getPodEventsYaml}
     />
   );

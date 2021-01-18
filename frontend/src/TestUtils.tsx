@@ -27,6 +27,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { object } from 'prop-types';
 import { format } from 'prettier';
 import snapshotDiff from 'snapshot-diff';
+import { useTranslation } from 'react-i18next';
 
 export default class TestUtils {
   /**
@@ -79,11 +80,12 @@ export default class TestUtils {
     updateToolbarSpy: jest.SpyInstance<unknown> | null,
     updateSnackbarSpy: jest.SpyInstance<unknown> | null,
   ): PageProps {
+    const { t } = useTranslation('common');
     const pageProps = {
       history: { push: historyPushSpy } as any,
       location: location as any,
       match: matchValue,
-      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: '' },
+      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: '', t: t},
       updateBanner: updateBannerSpy as any,
       updateDialog: updateDialogSpy as any,
       updateSnackbar: updateSnackbarSpy as any,

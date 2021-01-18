@@ -38,6 +38,8 @@ import { commonCss, padding } from '../Css';
 import { logger, serviceErrorToString } from '../lib/Utils';
 import { Page, PageProps } from './Page';
 import { GetArtifactTypesByIDRequest } from '@kubeflow/frontend/src/mlmd/generated/ml_metadata/proto/metadata_store_service_pb';
+import { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export enum ArtifactDetailsTab {
   OVERVIEW = 0,
@@ -60,7 +62,7 @@ interface ArtifactDetailsState {
   artifactType?: ArtifactType;
 }
 
-class ArtifactDetails extends Page<{}, ArtifactDetailsState> {
+class ArtifactDetails extends Page<{t: TFunction}, ArtifactDetailsState> {
   private get fullTypeName(): string {
     return this.state.artifactType?.getName() || '';
   }
@@ -153,10 +155,12 @@ class ArtifactDetails extends Page<{}, ArtifactDetailsState> {
   }
 
   public getInitialToolbarState(): ToolbarProps {
+    const { t } = this.props;
     return {
       actions: {},
       breadcrumbs: [{ displayName: 'Artifacts', href: RoutePage.ARTIFACTS }],
       pageTitle: `Artifact #${this.id} details`,
+      t: t,
     };
   }
 
@@ -215,7 +219,8 @@ class ArtifactDetails extends Page<{}, ArtifactDetailsState> {
 
 // This guarantees that each artifact renders a different <ArtifactDetails /> instance.
 const EnhancedArtifactDetails = (props: PageProps) => {
-  return <ArtifactDetails {...props} key={props.match.params[RouteParams.ID]} />;
+  const { t } = useTranslation('common');
+  return <ArtifactDetails {...props} key={props.match.params[RouteParams.ID]} t={t}/>;
 };
 
 export default EnhancedArtifactDetails;

@@ -154,6 +154,7 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
       actions: {},
       breadcrumbs: [{ displayName: t('pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION }],
       pageTitle: t('uploadPipelineTitle'),
+      t: t,
     };
   }
 

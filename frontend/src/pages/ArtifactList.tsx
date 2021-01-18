@@ -104,6 +104,7 @@ class ArtifactList extends Page<{t: TFunction}, ArtifactListState> {
       actions: {},
       breadcrumbs: [],
       pageTitle: t('common:artifacts'),
+      t: t,
     };
   }
 

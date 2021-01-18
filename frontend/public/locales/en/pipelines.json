@@ -33,6 +33,7 @@
     "pleaeSpecifyUrlFileError": "Please specify either package url or file in .yaml, .zip, or .tar.gz",
     "retrieveNodeInfoFailed": "Unable to retrieve node info",
     "staticPipelineGraph": "Static pipeline graph",
+    "uploadNamePipeline": "Upload and name your pipeline",
     "uploadPackagePipelineFileInstructions": "Choose a pipeline package file from your computer, and give the pipeline a unique name.",
     "uploadPipelinePackage": "Upload pipeline with the specified package.",
     "uploadPipelineTitle" : "Upload Pipeline or Pipeline Version",
