@@ -90,7 +90,6 @@ class PipelineList extends Page<{ t: TFunction }, PipelineListState> {
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('pipelines'),
-      t: t,
     };
   }
 

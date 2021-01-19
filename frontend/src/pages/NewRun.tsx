@@ -134,7 +134,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     pipelineVersionSelectorOpen: false,
     runName: '',
     uploadDialogOpen: false,
-    usePipelineFromRunLabel: 'Using pipeline from cloned run',
+    usePipelineFromRunLabel: this.props.t('usePipelineClonedRun'),
     useWorkflowFromRun: false,
   };
 
@@ -142,35 +142,35 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     {
       customRenderer: NameWithTooltip,
       flex: 1,
-      label: 'Pipeline name',
+      label: this.props.t('common:pipelineName'),
       sortKey: PipelineSortKeys.NAME,
     },
-    { label: 'Description', flex: 2, customRenderer: descriptionCustomRenderer },
-    { label: 'Uploaded on', flex: 1, sortKey: PipelineSortKeys.CREATED_AT },
+    { label: this.props.t('common:description'), flex: 2, customRenderer: descriptionCustomRenderer },
+    { label: this.props.t('common:uploadedOn'), flex: 1, sortKey: PipelineSortKeys.CREATED_AT },
   ];
 
   private pipelineVersionSelectorColumns = [
     {
       customRenderer: NameWithTooltip,
       flex: 2,
-      label: 'Version name',
+      label: this.props.t('common:versionName'),
       sortKey: PipelineVersionSortKeys.NAME,
     },
     // TODO(jingzhang36): version doesn't have description field; remove it and
     // fix the rendering.
-    { label: 'Description', flex: 1, customRenderer: descriptionCustomRenderer },
-    { label: 'Uploaded on', flex: 1, sortKey: PipelineVersionSortKeys.CREATED_AT },
+    { label: this.props.t('common:description'), flex: 1, customRenderer: descriptionCustomRenderer },
+    { label: this.props.t('common:uploadedOn'), flex: 1, sortKey: PipelineVersionSortKeys.CREATED_AT },
   ];
 
   private experimentSelectorColumns = [
     {
       customRenderer: NameWithTooltip,
       flex: 1,
-      label: 'Experiment name',
+      label: this.props.t('experimentName'),
       sortKey: ExperimentSortKeys.NAME,
     },
-    { label: 'Description', flex: 2 },
-    { label: 'Created at', flex: 1, sortKey: ExperimentSortKeys.CREATED_AT },
+    { label: this.props.t('common:description'), flex: 2 },
+    { label: this.props.t('common:createdAt'), flex: 1, sortKey: ExperimentSortKeys.CREATED_AT },
   ];
 
   public getInitialToolbarState(): ToolbarProps {
@@ -179,7 +179,6 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       actions: {},
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: t('startNewRun'),
-      t: t,
     };
   }
 

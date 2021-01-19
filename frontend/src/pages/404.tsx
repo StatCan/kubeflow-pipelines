@@ -22,8 +22,7 @@ import { withTranslation } from 'react-i18next';
 
 class Page404 extends Page<{t: TFunction}, {}> {
   public getInitialToolbarState(): ToolbarProps {
-    const { t } = this.props;
-    return { actions: {}, breadcrumbs: [], pageTitle: '', t: t };
+    return { actions: {}, breadcrumbs: [], pageTitle: ''};
   }
 
   public async refresh(): Promise<void> {

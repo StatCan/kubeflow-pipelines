@@ -70,7 +70,6 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
       actions: {},
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: t('newExperiment'),
-      t: t,
     };
   }
 

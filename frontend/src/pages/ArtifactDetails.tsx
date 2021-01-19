@@ -158,9 +158,8 @@ class ArtifactDetails extends Page<{t: TFunction}, ArtifactDetailsState> {
     const { t } = this.props;
     return {
       actions: {},
-      breadcrumbs: [{ displayName: 'Artifacts', href: RoutePage.ARTIFACTS }],
-      pageTitle: `Artifact #${this.id} details`,
-      t: t,
+      breadcrumbs: [{ displayName: t('common:artifacts'), href: RoutePage.ARTIFACTS }],
+      pageTitle: `${t('artifactNum')}${this.id} ${t('common:details')}`,
     };
   }
 
@@ -170,16 +169,17 @@ class ArtifactDetails extends Page<{t: TFunction}, ArtifactDetailsState> {
 
   private load = async (): Promise<void> => {
     const request = new GetArtifactsByIDRequest();
+    const { t } = this.props;
     request.setArtifactIdsList([Number(this.id)]);
 
     try {
       const response = await this.api.metadataStoreService.getArtifactsByID(request);
       if (response.getArtifactsList().length === 0) {
-        this.showPageError(`No artifact identified by id: ${this.id}`);
+        this.showPageError(`${t('noArtifactsFoundById')}: ${this.id}`);
         return;
       }
       if (response.getArtifactsList().length > 1) {
-        this.showPageError(`Found multiple artifacts with ID: ${this.id}`);
+        this.showPageError(`${t('multiArtifactsFoundById')}: ${this.id}`);
         return;
       }
       const artifact = response.getArtifactsList()[0];
@@ -194,7 +194,7 @@ class ArtifactDetails extends Page<{t: TFunction}, ArtifactDetailsState> {
       let title = artifactName ? artifactName.toString() : '';
       const version = getResourceProperty(artifact, ArtifactProperties.VERSION);
       if (version) {
-        title += ` (version: ${version})`;
+        title += ` (${t('common:version')}: ${version})`;
       }
       this.props.updateToolbar({
         pageTitle: title,

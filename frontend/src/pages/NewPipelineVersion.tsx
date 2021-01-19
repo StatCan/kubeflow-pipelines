@@ -118,9 +118,9 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
   private _pipelineDescriptionRef = React.createRef<HTMLInputElement>();
 
   private pipelineSelectorColumns = [
-    { label: 'Pipeline name', flex: 1, sortKey: PipelineSortKeys.NAME },
-    { label: 'Description', flex: 2, customRenderer: descriptionCustomRenderer },
-    { label: 'Uploaded on', flex: 1, sortKey: PipelineSortKeys.CREATED_AT },
+    { label: this.props.t('common:pipelineName'), flex: 1, sortKey: PipelineSortKeys.NAME },
+    { label: this.props.t('common:description'), flex: 2, customRenderer: descriptionCustomRenderer },
+    { label: this.props.t('common:uploadedOn'), flex: 1, sortKey: PipelineSortKeys.CREATED_AT },
   ];
 
   constructor(props: any) {
@@ -154,7 +154,6 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
       actions: {},
       breadcrumbs: [{ displayName: t('pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION }],
       pageTitle: t('uploadPipelineTitle'),
-      t: t,
     };
   }
 

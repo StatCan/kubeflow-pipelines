@@ -60,7 +60,6 @@ export class AllRunsList extends Page<{ namespace?: string, t: TFunction }, AllR
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('common:experiments'),
-      t: t,
     };
   }
 

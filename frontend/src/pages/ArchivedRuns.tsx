@@ -57,7 +57,6 @@ export class ArchivedRuns extends Page<{ namespace?: string, t: TFunction }, Arc
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('archive'),
-      t: t,
     };
   }
 

@@ -231,7 +231,6 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
         .getToolbarActionMap(),
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: this.props.runId!,
-      t: t,
     };
   }
 

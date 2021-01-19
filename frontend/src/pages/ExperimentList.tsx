@@ -90,7 +90,6 @@ export class ExperimentList extends Page<{ namespace?: string, t: TFunction }, E
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('common:experiments'),
-      t: t,
     };
   }
 

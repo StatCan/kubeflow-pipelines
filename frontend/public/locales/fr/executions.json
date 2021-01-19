@@ -1,5 +1,17 @@
 {
+    "artifactEmptyId": "Artifact has empty id [fr]",
+    "declaredInputs": "Declared Inputs [fr]",
+    "declaredOutputs": "Declared Outputs [fr]",
+    "executionNum": "Execution # [fr]",
+    "fetchArtifactTypesFailed": "Failed to fetch artifact types [fr]",
     "getExecutionsFailed": "Failed getting executions [fr]",
+    "inputs": "Inputs [fr]",
+    "invalidExecutionId": "Invalid execution id [fr]",
+    "multiExecutionsFoundById": "Found multiple executions with ID [fr]",
+    "multiExecutionTypeFoundById": "More than one execution type found with id [fr]",
     "noExecutionsFound": "No executions found. [fr]",
+    "noExecutionsFoundById": "No execution identified by id [fr]",
+    "noExecutionTypeFoundById": "Cannot find execution type with id [fr]",
+    "outputs": "Outputs [fr]",
     "runWorkspacePipeline" : "Run ID/Workspace/Pipeline [fr]"
 }

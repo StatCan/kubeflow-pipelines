@@ -95,7 +95,6 @@ class ExecutionList extends Page<{t: TFunction}, ExecutionListState> {
       actions: {},
       breadcrumbs: [],
       pageTitle: t('common:executions'),
-      t: t,
     };
   }
 

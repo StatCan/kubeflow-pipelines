@@ -154,7 +154,6 @@ class PipelineDetails extends Page<{t: TFunction}, PipelineDetailsState> {
           },
         ],
         pageTitle: t('pipelineDetails'),
-        t: t,
       };
     } else {
       // Add buttons for creating experiment and deleting pipeline version
@@ -176,7 +175,6 @@ class PipelineDetails extends Page<{t: TFunction}, PipelineDetailsState> {
         actions: buttons.getToolbarActionMap(),
         breadcrumbs: [{ displayName: t('common:pipelines'), href: RoutePage.PIPELINES }],
         pageTitle: this.props.match.params[RouteParams.pipelineId],
-        t: t,
       };
     }
   }

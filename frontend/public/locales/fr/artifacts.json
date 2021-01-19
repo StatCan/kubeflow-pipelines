@@ -1,4 +1,7 @@
 {
+    "artifactNum": "Artifact # [fr]",
+    "multiArtifactsFoundById": "Found multiple artifacts with ID [fr]",
     "noArtifactsFound": "No artifacts found. [fr]",
+    "noArtifactsFoundById": "No artifact identified by id [fr]",
     "pipelineWorkspace": "Pipeline/Workspace [fr]"
 }

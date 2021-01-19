@@ -26,8 +26,6 @@ import { commonCss, padding } from '../Css';
 import { Apis } from '../lib/Apis';
 import Buttons from '../lib/Buttons';
 import { Page } from './Page';
-import { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
 
 const DEMO_PIPELINES: string[] = SAMPLE_CONFIG.slice(0, 4);
 const DEMO_PIPELINES_ID_MAP = {
@@ -107,19 +105,17 @@ const OPTIONS = {
   overrides: { a: { component: AutoLink } },
 };
 
-export class GettingStarted extends Page<{t: TFunction}, { links: string[] }> {
+export class GettingStarted extends Page<{}, { links: string[] }> {
   public state = {
     links: ['', '', '', ''].map(getPipelineLink),
   };
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
-    const { t } = this.props;
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: 'Getting Started',
-      t: t,
     };
   }
 
@@ -182,5 +178,3 @@ function createAndEncodeFilter(filterString: string): string {
   };
   return encodeURIComponent(JSON.stringify(filter));
 }
-
-withTranslation('common')(GettingStarted);
