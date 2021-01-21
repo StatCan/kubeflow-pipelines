@@ -41,6 +41,7 @@ import { Page, PageProps } from './Page';
 import RunList from './RunList';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 
 const css = stylesheet({
   outputsRow: {
@@ -66,9 +67,9 @@ export interface CompareState {
   workflowObjects: Workflow[];
 }
 
-const overviewSectionName = 'Run overview';
-const paramsSectionName = 'Parameters';
-const metricsSectionName = 'Metrics';
+const overviewSectionName = i18n.t('experiments:runOverview');
+const paramsSectionName = i18n.t('experiments:parameters');
+const metricsSectionName = i18n.t('experiments:metrics');
 
 class Compare extends Page<{t: TFunction}, CompareState> {
   constructor(props: any) {
