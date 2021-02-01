@@ -41,6 +41,7 @@ import { Page, PageProps } from './Page';
 import RunList from './RunList';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
+import '../i18n';
 import i18n from '../i18n';
 
 const css = stylesheet({
@@ -67,9 +68,9 @@ export interface CompareState {
   workflowObjects: Workflow[];
 }
 
-const overviewSectionName = i18n.t('experiments:runOverview');
-const paramsSectionName = i18n.t('experiments:parameters');
-const metricsSectionName = i18n.t('experiments:metrics');
+const overviewSectionName = 'experiments:runOverview';
+const paramsSectionName = 'experiments:parameters';
+const metricsSectionName = 'experiments:metrics';
 
 class Compare extends Page<{t: TFunction}, CompareState> {
   constructor(props: any) {
@@ -102,9 +103,8 @@ class Compare extends Page<{t: TFunction}, CompareState> {
   }
 
   public render(): JSX.Element {
-    const { collapseSections, selectedIds, viewersMap } = this.state;
     const { t } = this.props;
-
+    const { collapseSections, selectedIds, viewersMap } = this.state;
     const queryParamRunIds = new URLParser(this.props).get(QUERY_PARAMS.runlist);
     const runIds = queryParamRunIds ? queryParamRunIds.split(',') : [];
 
@@ -118,11 +118,11 @@ class Compare extends Page<{t: TFunction}, CompareState> {
       <div className={classes(commonCss.page, padding(20, 'lrt'))}>
         {/* Overview section */}
         <CollapseButton
-          sectionName={overviewSectionName}
+          sectionName={t('experiments:runOverview')}
           collapseSections={collapseSections}
           compareSetState={this.setStateSafe.bind(this)}
         />
-        {!collapseSections[overviewSectionName] && (
+        {!collapseSections[t('experiments:runOverview')] && (
           <div className={commonCss.noShrink}>
             <RunList
               onError={this.showPageError.bind(this)}
@@ -139,11 +139,11 @@ class Compare extends Page<{t: TFunction}, CompareState> {
 
         {/* Parameters section */}
         <CollapseButton
-          sectionName={paramsSectionName}
+          sectionName={t('experiments:parameters')}
           collapseSections={collapseSections}
           compareSetState={this.setStateSafe.bind(this)}
         />
-        {!collapseSections[paramsSectionName] && (
+        {!collapseSections[t('experiments:parameters')] && (
           <div className={classes(commonCss.noShrink, css.outputsRow)}>
             <Separator orientation='vertical' />
             <CompareTable {...this.state.paramsCompareProps} />
@@ -153,11 +153,11 @@ class Compare extends Page<{t: TFunction}, CompareState> {
 
         {/* Metrics section */}
         <CollapseButton
-          sectionName={metricsSectionName}
+          sectionName={t('experiments:metrics')}
           collapseSections={collapseSections}
           compareSetState={this.setStateSafe.bind(this)}
         />
-        {!collapseSections[metricsSectionName] && (
+        {!collapseSections[t('experiments:metrics')] && (
           <div className={classes(commonCss.noShrink, css.outputsRow)}>
             <Separator orientation='vertical' />
             <CompareTable {...this.state.metricsCompareProps} />
@@ -338,7 +338,8 @@ class Compare extends Page<{t: TFunction}, CompareState> {
 
 const EnhancedCompare: React.FC<PageProps> = props => {
   const namespaceChanged = useNamespaceChangeEvent();
-  const { t } = useTranslation(['experiments', 'common']);
+  const { t, i18n } = useTranslation(['experiments', 'common']);
+  //const { t } = useTranslation(['experiments', 'common']);
   if (namespaceChanged) {
     // Compare page compares two runs, when namespace changes, the runs don't
     // exist in the new namespace, so we should redirect to experiment list page.

@@ -16,7 +16,7 @@
 
 import * as React from 'react';
 import Buttons, { ButtonKeys } from '../lib/Buttons';
-import RunList from './RunList';
+import RunList, {RunListProps} from './RunList';
 import { Page, PageProps } from './Page';
 import { RunStorageState } from '../apis/run';
 import { ToolbarProps } from '../components/Toolbar';
@@ -25,17 +25,17 @@ import { commonCss, padding } from '../Css';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 interface AllRunsListState {
   selectedIds: string[];
 }
 
-export class AllRunsList extends Page<{ namespace?: string, t: TFunction }, AllRunsListState> {
+export class AllRunsList extends Page<{ namespace?: string, t: TFunction }, AllRunsListState> 
+ {
   private _runlistRef = React.createRef<RunList>();
-
   constructor(props: any) {
     super(props);
-
     this.state = {
       selectedIds: [],
     };
@@ -64,6 +64,7 @@ export class AllRunsList extends Page<{ namespace?: string, t: TFunction }, AllR
   }
 
   public render(): JSX.Element {
+    //const { t } = this.props;
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'))}>
         <RunList
@@ -101,11 +102,12 @@ export class AllRunsList extends Page<{ namespace?: string, t: TFunction }, AllR
     this.setState({ selectedIds });
   }
 }
+ withTranslation(['runs', 'common'])(AllRunsList);
+ export default AllRunsList;
+//const EnhancedAllRunsList = (props: PageProps) => {
+  //const namespace = React.useContext(NamespaceContext);
+  //const { t } = useTranslation(['runs', 'common']);
+  //return <AllRunsList key={namespace} {...props} namespace={namespace} t={t}/>;
+//};
 
-const EnhancedAllRunsList = (props: PageProps) => {
-  const namespace = React.useContext(NamespaceContext);
-  const { t } = useTranslation(['experiments', 'common']);
-  return <AllRunsList key={namespace} {...props} namespace={namespace} t={t}/>;
-};
-
-export default EnhancedAllRunsList;
+//export default EnhancedAllRunsList;

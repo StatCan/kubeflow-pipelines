@@ -15,8 +15,11 @@ import RunList from '../pages/RunList';
 import { PredicateOp, ApiFilter } from '../apis/filter';
 import produce from 'immer';
 import Tooltip from '@material-ui/core/Tooltip';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 export interface ExperimentListProps extends RouteComponentProps {
+  t: TFunction;
   namespace?: string;
   storageState?: ExperimentStorageState;
   onError: (message: string, error: Error) => void;
@@ -43,16 +46,17 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
   }
 
   public render(): JSX.Element {
+    const { t } = this.props;
     const columns: Column[] = [
       {
         customRenderer: this._nameCustomRenderer,
         flex: 1,
-        label: 'Experiment name',
+        label: t('Experiment name'),
         sortKey: ExperimentSortKeys.NAME,
       },
       {
         flex: 2,
-        label: 'Description',
+        label: t('Description'),
       },
     ];
 
@@ -175,7 +179,7 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
       <RunList
         hideExperimentColumn={true}
         experimentIdMask={experiment.id}
-        onError={() => null}
+        //onError={() => null}
         {...this.props}
         disablePaging={false}
         noFilterBox={true}
@@ -190,5 +194,5 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
     );
   }
 }
-
+withTranslation(['experiments', 'common'])(ExperimentList);
 export default ExperimentList;

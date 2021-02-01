@@ -15,6 +15,10 @@
  */
 
 import { ApiTrigger, ApiPeriodicSchedule, ApiCronSchedule } from '../../src/apis/job';
+import { withTranslation,useTranslation } from 'react-i18next';
+import i18next, { TFunction } from 'i18next';
+import '../i18n';
+
 
 export enum TriggerType {
   INTERVALED,
@@ -28,6 +32,7 @@ export enum PeriodicInterval {
   WEEK = 'Week',
   MONTH = 'Month',
 }
+
 const INTERVAL_SECONDS = {
   [PeriodicInterval.MINUTE]: 60,
   [PeriodicInterval.HOUR]: 60 * 60,
@@ -44,9 +49,10 @@ const PERIODIC_INTERVAL_DESCENDING = [
 ];
 
 export const triggers = new Map<TriggerType, { displayName: string }>([
-  [TriggerType.INTERVALED, { displayName: 'Periodic' }],
-  [TriggerType.CRON, { displayName: 'Cron' }],
+  [TriggerType.INTERVALED, { displayName: 'periodic'}],
+  [TriggerType.CRON, { displayName: 'Cron'}],
 ]);
+
 
 export function getPeriodInSeconds(interval: PeriodicInterval, count: number): number {
   const intervalSeconds = INTERVAL_SECONDS[interval];
@@ -71,6 +77,7 @@ export function parsePeriodFromSeconds(
 }
 
 export function buildCron(
+  
   startDateTime: Date | undefined,
   intervalCategory: PeriodicInterval,
   selectedDays: boolean[],
@@ -205,6 +212,7 @@ export type ParsedTrigger =
     };
 
 export function parseTrigger(trigger: ApiTrigger): ParsedTrigger {
+
   if (trigger.periodic_schedule) {
     const periodicSchedule = trigger.periodic_schedule;
     const intervalSeconds = parseInt(periodicSchedule.interval_second || '', 10);
@@ -310,4 +318,10 @@ export function triggerDisplayString(trigger?: ApiTrigger): string {
     }
   }
   return '-';
+
 }
+
+
+
+
+

@@ -29,6 +29,8 @@ import { commonCss, color } from '../Css';
 import { formatDateString, logger, errorToMessage, getRunDuration } from '../lib/Utils';
 import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 interface PipelineVersionInfo {
   displayName?: string;
@@ -75,6 +77,7 @@ export type RunListProps = MaskProps &
     runIdListMask?: string[];
     selectedIds?: string[];
     storageState?: RunStorageState;
+    t: TFunction;
   };
 
 interface RunListState {
@@ -84,10 +87,8 @@ interface RunListState {
 
 class RunList extends React.PureComponent<RunListProps, RunListState> {
   private _tableRef = React.createRef<CustomTable>();
-
   constructor(props: any) {
     super(props);
-
     this.state = {
       metrics: [],
       runs: [],
@@ -96,26 +97,27 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
 
   public render(): JSX.Element {
     // Only show the two most prevalent metrics
+    const { t } = this.props;
     const metricMetadata: MetricMetadata[] = this.state.metrics.slice(0, 2);
     const columns: Column[] = [
-      {
+      { 
         customRenderer: this._nameCustomRenderer,
         flex: 1.5,
-        label: 'Run name',
+        label: t('runName'),
         sortKey: RunSortKeys.NAME,
       },
-      { customRenderer: this._statusCustomRenderer, flex: 0.5, label: 'Status' },
-      { label: 'Duration', flex: 0.5 },
-      { customRenderer: this._pipelineVersionCustomRenderer, label: 'Pipeline Version', flex: 1 },
-      { customRenderer: this._recurringRunCustomRenderer, label: 'Recurring Run', flex: 0.5 },
-      { label: 'Start time', flex: 1, sortKey: RunSortKeys.CREATED_AT },
+      { customRenderer: this._statusCustomRenderer, flex: 0.5, label: t('status') },
+      { label: t('duration'), flex: 0.5 },
+      { customRenderer: this._pipelineVersionCustomRenderer, label: t('pipelineVersion'), flex: 1 },
+      { customRenderer: this._recurringRunCustomRenderer, label: t('recurringrun'), flex: 0.5 },
+      { label: t('starttime'), flex: 1, sortKey: RunSortKeys.CREATED_AT },
     ];
 
     if (!this.props.hideExperimentColumn) {
       columns.splice(3, 0, {
         customRenderer: this._experimentCustomRenderer,
         flex: 1,
-        label: 'Experiment',
+        label: t('experiment'),
       });
     }
 
@@ -515,5 +517,5 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
     }
   }
 }
-
-export default RunList;
+ withTranslation(['experiments', 'common'])(RunList);
+ export default RunList;

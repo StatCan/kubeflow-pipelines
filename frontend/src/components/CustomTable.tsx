@@ -37,6 +37,9 @@ import { ApiFilter, PredicateOp } from '../apis/filter/api';
 import { debounce } from 'lodash';
 import { InputAdornment } from '@material-ui/core';
 import { CustomTableRow } from './CustomTableRow';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
+
 
 export enum ExpandState {
   COLLAPSED,
@@ -61,6 +64,7 @@ export interface Row {
   error?: string;
   id: string;
   otherFields: any[];
+  
 }
 
 const rowHeight = 40;

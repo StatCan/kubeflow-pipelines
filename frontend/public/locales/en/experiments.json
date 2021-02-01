@@ -120,6 +120,7 @@
     "runNameRequired": "Run name is required",
     "runOutput": "Run output",
     "runOverview": "Run overview",
+    "minutes": "Minutes ",
     "runParams": "Run parameters",
     "runs": "Runs",
     "runStatusError": "Error: failed to retrieve run statuses for experiment",

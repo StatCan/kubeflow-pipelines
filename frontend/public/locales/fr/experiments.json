@@ -18,6 +18,11 @@
     "clonedRunPipelineDef": "Could not find the cloned run's pipeline definition. [fr]",
     "closeJsonEditor": "Close Json Editor [fr]",
     "compareRuns": "Compare runs [fr]",
+    "TriggerType ":
+    { 
+        "periodic":"Periodic [fr] ",
+        "cron":"Cron [fr]"
+    },
     "cronExpression": "cron expression [fr]",
     "editingCronExpression": "Allow editing cron expression. ( format is specified [fr]",
     "endDateBeforeStartDate": "End date/time cannot be earlier than start date/time [fr]",
@@ -76,6 +81,8 @@
     "maxConcurrentRunsAbbr": "Max. concurrent runs [fr]",
     "maxConcurrentRunsPositive": "For triggered runs, maximum concurrent runs must be a positive number [fr]",
     "metrics": "Metrics [fr]",
+    "minutes": "Minutes [fr]",
+    "hours": "Hours [fr]",
     "minPermissionsArgoWorkflow": "minimum permissions required by argo workflows [fr]",
     "mlMetadata": "ML Metadata [fr]",
     "mlMetadataNotFound": "Corresponding ML Metadata not found. [fr]",
@@ -122,6 +129,11 @@
     "runOverview": "Run overview [fr]",
     "runParams": "Run parameters [fr]",
     "runs": "Runs [fr]",
+    "status": "Status [fr]",
+    "experiment": "Experiments [fr]",
+    "recurringrun": "Recurring Run [fr]",
+    "starttime": "Start Time [fr]",
+    "duration": "Duration [fr]",
     "runStatusError": "Error: failed to retrieve run statuses for experiment [fr]",
     "runTerminated": "This run was terminated [fr]",
     "runtimeExecGraph": "Runtime execution graph. Only steps that are currently running or have already completed are shown. [fr]",
