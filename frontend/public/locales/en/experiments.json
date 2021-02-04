@@ -102,6 +102,14 @@
     "parametersAppearSelectPipeline": "Parameters will appear after you select a pipeline",
     "parametersMissingValues": "Some parameters are missing values",
     "parseTriggerFailed": "Failed to parse original trigger",
+    "periodicIntervalEnum":
+    {
+        "minute": "Minute",
+        "hour": "Hour",
+        "day": "Day",
+        "week": "Week",
+        "month": "Month"
+    },
     "pipelineVersion": "Pipeline Version",
     "pipelineVersionSelected": "A pipeline version must be selected",
     "pod": "Pod",
@@ -145,6 +153,11 @@
     "threshold": "threshold",
     "trigger": "Trigger",
     "triggerType": "Trigger type",
+    "triggerTypeEnum":
+    { 
+        "periodic":"Periodic",
+        "cron":"Cron"
+    },
     "useExperiment": "Use this experiment",
     "usePipelineClonedRun": "Using pipeline from cloned run",
     "usePipelinePrevPage": "Using pipeline from previous page",

@@ -18,11 +18,6 @@
     "clonedRunPipelineDef": "Could not find the cloned run's pipeline definition. [fr]",
     "closeJsonEditor": "Close Json Editor [fr]",
     "compareRuns": "Compare runs [fr]",
-    "TriggerType ":
-    { 
-        "periodic":"Periodic [fr] ",
-        "cron":"Cron [fr]"
-    },
     "cronExpression": "cron expression [fr]",
     "editingCronExpression": "Allow editing cron expression. ( format is specified [fr]",
     "endDateBeforeStartDate": "End date/time cannot be earlier than start date/time [fr]",
@@ -111,6 +106,14 @@
     "parseTriggerFailed": "Failed to parse original trigger [fr]",
     "pipelineVersion": "Pipeline Version [fr]",
     "pipelineVersionSelected": "A pipeline version must be selected [fr]",
+    "periodicIntervalEnum":
+    {
+        "minute": "Minute [fr]",
+        "hour": "Hour [fr]",
+        "day": "Day [fr]",
+        "week": "Week [fr]",
+        "month": "Month [fr]"
+    },
     "pod": "Pod [fr]",
     "recurring": "Recurring [fr]",
     "recurringRunConfigs": "Recurring run configs [fr]",
@@ -156,6 +159,11 @@
     "threshold": "threshold [fr]",
     "trigger": "Trigger [fr]",
     "triggerType": "Trigger type [fr]",
+    "triggerTypeEnum":
+    { 
+        "periodic":"Periodic [fr] ",
+        "cron":"Cron [fr]"
+    },
     "useExperiment": "Use this experiment [fr]",
     "usePipelineClonedRun": "Using pipeline from cloned run [fr]",
     "usePipelinePrevPage": "Using pipeline from previous page [fr]",

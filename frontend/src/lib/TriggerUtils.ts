@@ -26,11 +26,11 @@ export enum TriggerType {
 }
 
 export enum PeriodicInterval {
-  MINUTE = 'Minute',
-  HOUR = 'Hour',
-  DAY = 'Day',
-  WEEK = 'Week',
-  MONTH = 'Month',
+  MINUTE = 'experiments:periodicIntervalEnum.minute',
+  HOUR = 'experiments:periodicIntervalEnum.hour',
+  DAY = 'experiments:periodicIntervalEnum.day',
+  WEEK = 'experiments:periodicIntervalEnum.week',
+  MONTH = 'experiments:periodicIntervalEnum.month',
 }
 
 const INTERVAL_SECONDS = {
@@ -49,8 +49,8 @@ const PERIODIC_INTERVAL_DESCENDING = [
 ];
 
 export const triggers = new Map<TriggerType, { displayName: string }>([
-  [TriggerType.INTERVALED, { displayName: 'periodic'}],
-  [TriggerType.CRON, { displayName: 'Cron'}],
+  [TriggerType.INTERVALED, { displayName: 'experiments:triggerTypeEnum.periodic'}],
+  [TriggerType.CRON, { displayName: 'experiments:triggerTypeEnum.cron'}],
 ]);
 
 
