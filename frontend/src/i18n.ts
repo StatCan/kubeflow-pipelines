@@ -17,6 +17,8 @@ i18n
         detection: {
             order: ['navigator']
         }
+        
+        
     });
 
 export default i18n;

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import i18next from 'i18next';
 import Markdown from 'markdown-to-jsx';
 import * as React from 'react';
 import { classes, cssRaw } from 'typestyle';
@@ -26,13 +27,8 @@ import { commonCss, padding } from '../Css';
 import { Apis } from '../lib/Apis';
 import Buttons from '../lib/Buttons';
 import { Page } from './Page';
-import '../i18n';
-import i18next, { TFunction } from 'i18next';
-import { useTranslation, withTranslation } from 'react-i18next'; 
-import { Trans } from 'react-i18next';
 
 const DEMO_PIPELINES: string[] = SAMPLE_CONFIG.slice(0, 4);
-
 const DEMO_PIPELINES_ID_MAP = {
   control: 4,
   data: 3,
@@ -40,76 +36,61 @@ const DEMO_PIPELINES_ID_MAP = {
   tfx: 1,
   xgboost: 0,
 };
-  const PAGE_CONTENT_MD = ({
-    control,
-    data,
-    tfxKeras,
-    tfx,
-    xgboost,
-  }: {
-    control: string;
-    data: string;
-    tfxKeras: string;
-    tfx: string;
-    xgboost: string;}) => 
-  `
-  <br/>
-  ## Build your own pipeline with
 
-    * TensorFlow Extended (TFX) [SDK](https://www.tensorflow.org/tfx/guide) with end-to-end ML Pipeline Template ([Open TF 2.1 Notebook](https://console.cloud.google.com/mlengine/notebooks/deploy-notebook?q=download_url%3Dhttps%253A%252F%252Fraw.githubusercontent.com%252Ftensorflow%252Ftfx%252Fmaster%252Fdocs%252Ftutorials%252Ftfx%252Ftemplate.ipynb))
-    * Kubeflow Pipelines [SDK](https://www.kubeflow.org/docs/pipelines/sdk/)
-
-  <br/>
-
-  ## Demonstrations and Tutorials
-  This section contains demo and tutorial pipelines.
-
-  **Demos** - Try an end-to-end demonstration pipeline.
-
-    * [TFX pipeline demo with Keras](${tfxKeras}) - Classification pipeline based on Keras. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/core/iris)
-    * [TFX pipeline demo with Estimator](${tfx}) - Classification pipeline with model analysis, based on a public BigQuery dataset of taxicab trips. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/core/parameterized_tfx_oss)
-    * [XGBoost Pipeline demo](${xgboost}) - An example of end-to-end distributed training for an XGBoost model. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/core/xgboost_training_cm)
-
-  <br/>
-
-  **Tutorials** - Learn pipeline concepts by following a tutorial.
-
-    * [Data passing in python components](${data}) - Shows how to pass data between python components. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/Data%20passing%20in%20python%20components)
-    * [DSL - Control structures](${control}) - Shows how to use conditional execution and exit handlers. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/DSL%20-%20Control%20structures)
-
-  Want to learn more? [Learn from sample and tutorial pipelines.](https://www.kubeflow.org/docs/pipelines/tutorials/)
-  `;
-
-  cssRaw(`
-  .kfp-start-page li {
-    font-size: 14px;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-left: 2em;
-  }
-  .kfp-start-page p {
-    font-size: 14px;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-  }
-  .kfp-start-page h2 {
-    font-size: 18px;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-  }
-  .kfp-start-page h3 {
-    font-size: 16px;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-  }
-  `);
+const PAGE_CONTENT_MD = ({
+  control,
+  data,
+  tfxKeras,
+  tfx,
+  xgboost,
+}: {
+  control: string;
+  data: string;
+  tfxKeras: string;
+  tfx: string;
+  xgboost: string;
+}) => i18next.t('common:key1', {val: '$t(common:key2)'})+ '  \n ' +
+i18next.t('common:key3', {val: '$t(common:key4)'})+   ' \n  '  +  
+i18next.t('common:key5', {val: '$t(common:key6)'})+  ' \n  '  + 
+i18next.t('common:key7', {val: '$t(common:key8)'})+  '   \n  '  +
+i18next.t('common:key9', {val: '$t(common:key10)'})+ '   \n  '  +
+i18next.t('common:key11', {val: '$t(common:key12)'})+ '   \n  '  +
+i18next.t('common:key13', {val: '$t(common:key14)'})+ '   \n  '  +
+i18next.t('common:key15', {val: '$t(common:key16)'})+ '   \n  '  +
+i18next.t('common:key17', {val: '$t(common:key18)'})+ '   \n  '  +
+i18next.t('common:key19', {val: '$t(common:key20)'})+ '   \n  '  +
+i18next.t('common:key21', {val: '$t(common:key22)'})+ '   \n  '  +
+i18next.t('common:key22', {val: '$t(common:key23)'})+ '   \n  '  +
+i18next.t('common:key24', {val: '$t(common:key25)'})
+cssRaw(`
+.kfp-start-page li {
+  font-size: 14px;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-left: 2em;
+}
+.kfp-start-page p {
+  font-size: 14px;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+}
+.kfp-start-page h2 {
+  font-size: 18px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+.kfp-start-page h3 {
+  font-size: 16px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+`);
 
 const OPTIONS = {
   overrides: { a: { component: AutoLink } },
 };
 
-
-export class GettingStarted extends Page<{ namespace?: string, t: TFunction }, { links: string[] }> {
+export class GettingStarted extends Page<{}, { links: string[] }> {
   public state = {
     links: ['', '', '', ''].map(getPipelineLink),
   };
@@ -119,7 +100,7 @@ export class GettingStarted extends Page<{ namespace?: string, t: TFunction }, {
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
-      pageTitle: i18next.t('gettingstarted','Getting Started [fr]'),
+      pageTitle: i18next.t('common:key27', {val: '$t(common:key28)'}),
     };
   }
 
@@ -147,14 +128,13 @@ export class GettingStarted extends Page<{ namespace?: string, t: TFunction }, {
   }
 
   public render(): JSX.Element {
-    //const {t} = useTranslation('Getting started');
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'), 'kfp-start-page')}>
         <Markdown options={OPTIONS}>
           {PAGE_CONTENT_MD({
             control: this.state.links[DEMO_PIPELINES_ID_MAP.control],
             data: this.state.links[DEMO_PIPELINES_ID_MAP.data],
-            tfxKeras:this.state.links[DEMO_PIPELINES_ID_MAP.tfxKeras],
+            tfxKeras: this.state.links[DEMO_PIPELINES_ID_MAP.tfxKeras],
             tfx: this.state.links[DEMO_PIPELINES_ID_MAP.tfx],
             xgboost: this.state.links[DEMO_PIPELINES_ID_MAP.xgboost],
           })}
@@ -183,4 +163,3 @@ function createAndEncodeFilter(filterString: string): string {
   };
   return encodeURIComponent(JSON.stringify(filter));
 }
-withTranslation('common')(GettingStarted);
