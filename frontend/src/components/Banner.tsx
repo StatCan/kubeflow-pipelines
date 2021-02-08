@@ -26,6 +26,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import { classes, stylesheet } from 'typestyle';
 
 import { color, commonCss, spacing } from '../Css';
+import i18next from 'i18next';
 
 export type Mode = 'error' | 'warning' | 'info';
 
@@ -89,11 +90,12 @@ class Banner extends React.Component<BannerProps, BannerState> {
 
   public render(): JSX.Element {
     // Default to error styles.
+
     let bannerModeCss = stylesheet({
       mode: { backgroundColor: color.errorBg, color: color.errorText },
     });
     let bannerIcon = <ErrorIcon className={css.icon} />;
-    let dialogTitle = 'An error occurred';
+    let dialogTitle ='An error occurred' ;
     let showTroubleshootingGuideLink = false;
     let showRefreshButton = true;
 
@@ -103,7 +105,7 @@ class Banner extends React.Component<BannerProps, BannerState> {
           mode: { backgroundColor: color.errorBg, color: color.errorText },
         });
         bannerIcon = <ErrorIcon className={css.icon} />;
-        dialogTitle = 'An error occurred';
+        dialogTitle = i18next.t('common:errorOccurred');
         showTroubleshootingGuideLink = this.props.showTroubleshootingGuideLink || false;
         break;
       case 'warning':
@@ -138,7 +140,7 @@ class Banner extends React.Component<BannerProps, BannerState> {
               className={css.troubleShootingLink}
               href='https://www.kubeflow.org/docs/pipelines/troubleshooting'
             >
-              Troubleshooting guide
+              {i18next.t('common:troubleshooting')}
             </a>
           )}
           {this.props.additionalInfo && (
@@ -146,15 +148,17 @@ class Banner extends React.Component<BannerProps, BannerState> {
               className={classes(css.button, css.detailsButton)}
               onClick={this._showAdditionalInfo.bind(this)}
             >
-              Details
+              {i18next.t('common:details1')}
+              
             </Button>
+
           )}
           {showRefreshButton && this.props.refresh && (
             <Button
               className={classes(css.button, css.refreshButton)}
               onClick={this._refresh.bind(this)}
             >
-              Refresh
+              {i18next.t('common:refresh')}
             </Button>
           )}
         </div>

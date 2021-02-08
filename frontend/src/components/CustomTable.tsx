@@ -39,6 +39,7 @@ import { InputAdornment } from '@material-ui/core';
 import { CustomTableRow } from './CustomTableRow';
 import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
+import i18next from 'i18next'
 
 
 export enum ExpandState {
@@ -434,7 +435,7 @@ export default class CustomTable extends React.Component<CustomTableProps, Custo
         {/* Footer */}
         {!this.props.disablePaging && (
           <div className={css.footer}>
-            <span className={padding(10, 'r')}>Rows per page:</span>
+            <span className={padding(10, 'r')}>{i18next.t('common:rowsperpage')}</span>
             <TextField
               select={true}
               variant='standard'

@@ -21,6 +21,8 @@ import { BannerProps } from '../components/Banner';
 import { SnackbarProps } from '@material-ui/core/Snackbar';
 import { DialogProps } from '../components/Router';
 import { errorToMessage } from '../lib/Utils';
+import i18next from 'i18next';
+
 
 export interface PageProps extends RouteComponentProps {
   toolbarProps: ToolbarProps;
@@ -74,7 +76,7 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
     }
     this.props.updateBanner({
       additionalInfo: errorMessage ? errorMessage : undefined,
-      message: message + (errorMessage ? ' Click Details for more information.' : ''),
+      message: message + (errorMessage ? i18next.t('common:key29', {val: '$t(common:key30)'}) : ''),
       mode: mode || 'error',
       refresh: refresh || this.refresh.bind(this),
     });

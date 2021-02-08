@@ -27,6 +27,10 @@ import { commonCss, padding } from '../Css';
 import { Apis } from '../lib/Apis';
 import Buttons from '../lib/Buttons';
 import { Page } from './Page';
+import i18n from '../i18n';
+import { TFunction } from 'i18next';
+import { withTranslation} from 'react-i18next';
+
 
 const DEMO_PIPELINES: string[] = SAMPLE_CONFIG.slice(0, 4);
 const DEMO_PIPELINES_ID_MAP = {
@@ -49,19 +53,20 @@ const PAGE_CONTENT_MD = ({
   tfxKeras: string;
   tfx: string;
   xgboost: string;
-}) => i18next.t('common:key1', {val: '$t(common:key2)'})+ '  \n ' +
-i18next.t('common:key3', {val: '$t(common:key4)'})+   ' \n  '  +  
-i18next.t('common:key5', {val: '$t(common:key6)'})+  ' \n  '  + 
-i18next.t('common:key7', {val: '$t(common:key8)'})+  '   \n  '  +
-i18next.t('common:key9', {val: '$t(common:key10)'})+ '   \n  '  +
-i18next.t('common:key11', {val: '$t(common:key12)'})+ '   \n  '  +
-i18next.t('common:key13', {val: '$t(common:key14)'})+ '   \n  '  +
-i18next.t('common:key15', {val: '$t(common:key16)'})+ '   \n  '  +
-i18next.t('common:key17', {val: '$t(common:key18)'})+ '   \n  '  +
-i18next.t('common:key19', {val: '$t(common:key20)'})+ '   \n  '  +
-i18next.t('common:key21', {val: '$t(common:key22)'})+ '   \n  '  +
-i18next.t('common:key22', {val: '$t(common:key23)'})+ '   \n  '  +
-i18next.t('common:key24', {val: '$t(common:key25)'})
+}) => 
+i18next.t('common:key1', {val: '$t(common:key2)'})+ '  \n ' +
+i18next.t('common:key3', {val: '$t(common:key2)'})+   ' \n  '  +  
+i18next.t('common:key5', {val: '$t(common:key2)'})+  ' \n  '  + 
+i18next.t('common:key7', {val: '$t(common:key2)'})+  '   \n  '  +
+i18next.t('common:key9', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key11', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key13', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key15', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key17', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key19', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key21', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key23', {val: '$t(common:key2)'})+ '   \n  '  +
+i18next.t('common:key25', {val: '$t(common:key2)'})
 cssRaw(`
 .kfp-start-page li {
   font-size: 14px;
@@ -94,13 +99,13 @@ export class GettingStarted extends Page<{}, { links: string[] }> {
   public state = {
     links: ['', '', '', ''].map(getPipelineLink),
   };
-
+  
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
-      pageTitle: i18next.t('common:key27', {val: '$t(common:key28)'}),
+      pageTitle:i18next.t('common:key27'),
     };
   }
 
@@ -142,7 +147,7 @@ export class GettingStarted extends Page<{}, { links: string[] }> {
       </div>
     );
   }
-}
+} 
 
 function getPipelineLink(id: string) {
   if (!id) {
@@ -163,3 +168,7 @@ function createAndEncodeFilter(filterString: string): string {
   };
   return encodeURIComponent(JSON.stringify(filter));
 }
+
+
+
+

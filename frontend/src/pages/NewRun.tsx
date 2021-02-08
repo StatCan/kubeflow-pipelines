@@ -1146,7 +1146,9 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     } else {
       const cloneNumber = match[1] ? +match[1] : 1;
       return `${t('common:clone')} (${cloneNumber + 1}) ${t('common:of')} ${match[2]}`;
-    }
+
+  }
+
   }
 
   private _generateRandomString(length: number): string {

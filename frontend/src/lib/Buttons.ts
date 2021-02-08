@@ -193,9 +193,7 @@ export default class Buttons {
         );
       },
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource
-        ? undefined
-        : `${i18n.t('common:selectPipelineDelete')}`,
+      disabledTitle: useCurrentResource ? undefined : `${i18n.t('common:selectPipelineDelete')}`,
       id: 'deletePipelinesAndPipelineVersionsBtn',
       title: i18n.t('common:delete'),
       tooltip: i18n.t('common:delete'),
@@ -407,7 +405,7 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `Run${s(selectedIds)} will be moved to the Archive section, where you can still view ` +
+      ` Run'${s(selectedIds)} will be moved to the Archive section, where you can still view ` +
         `${
           selectedIds.length === 1 ? 'its' : 'their'
         } details. Please note that the run will not ` +
@@ -607,7 +605,11 @@ export default class Buttons {
             unsuccessfulIds.push(id);
             const errorMessage = await errorToMessage(err);
             errorMessages.push(
-              `${i18n.t('common:failedTo')} ${actionName.toLowerCase()} ${resourceName}: ${id} ${i18n.t('common:withError')}: "${errorMessage}"`,
+              `${i18n.t(
+                'common:failedTo',
+              )} ${actionName.toLowerCase()} ${resourceName}: ${id} ${i18n.t(
+                'common:withError',
+              )}: "${errorMessage}"`,
             );
           }
         }),
@@ -702,7 +704,9 @@ export default class Buttons {
         this._props.updateDialog({
           buttons: [{ text: i18n.t('common:dismiss') }],
           content: errorMessage,
-          title: `${i18n.t('common:failedTo')} ${enabled ? i18n.t('common:enable') : i18n.t('common:disable')} ${i18n.t('common:recurringRun')}`,
+          title: `${i18n.t('common:failedTo')} ${
+            enabled ? i18n.t('common:enable') : i18n.t('common:disable')
+          } ${i18n.t('common:recurringRun')}`,
         });
       } finally {
         toolbarActions[buttonKey].busy = false;
@@ -726,7 +730,11 @@ export default class Buttons {
     callback: (pipelineId: string | undefined, selectedIds: string[]) => void,
   ): void {
     const numVersionIds = this._deepCountDictionary(selectedVersionIds);
-    const pipelineMessage = this._nouns(selectedIds.length, `${i18n.t('common:pipeline')}`, `${i18n.t('common:pipelines')}`);
+    const pipelineMessage = this._nouns(
+      selectedIds.length,
+      `${i18n.t('common:pipeline')}`,
+      `${i18n.t('common:pipelines')}`,
+    );
     const pipelineVersionMessage = this._nouns(
       numVersionIds,
       `${i18n.t('common:pipelineVersion')}`,
@@ -763,7 +771,8 @@ export default class Buttons {
           selectedVersionIds,
           callback,
         ),
-      title: `${i18n.t('common:delete')} ` + pipelineMessage + andMessage + pipelineVersionMessage + `?`,
+      title:
+        `${i18n.t('common:delete')} ` + pipelineMessage + andMessage + pipelineVersionMessage + `?`,
     });
   }
 
@@ -792,7 +801,11 @@ export default class Buttons {
           unsuccessfulIds.push(id);
           succeededfulIds.delete(id);
           const errorMessage = await errorToMessage(err);
-          errorMessages.push(`${i18n.t('common:deletePipelineFailed')}: ${id} ${i18n.t('common:withError')}: "${errorMessage}"`);
+          errorMessages.push(
+            `${i18n.t('common:deletePipelineFailed')}: ${id} ${i18n.t(
+              'common:withError',
+            )}: "${errorMessage}"`,
+          );
         }
       }),
     );
@@ -818,7 +831,9 @@ export default class Buttons {
             unsuccessfulVersionIds[pipelineId].push(versionId);
             const errorMessage = await errorToMessage(err);
             errorMessages.push(
-              `${i18n.t('common:deletePipelineVersionFailed')}: ${versionId} ${i18n.t('common:withError')}: "${errorMessage}"`,
+              `${i18n.t('common:deletePipelineVersionFailed')}: ${versionId} ${i18n.t(
+                'common:withError',
+              )}: "${errorMessage}"`,
             );
           }
         });
@@ -828,16 +843,25 @@ export default class Buttons {
     const unsuccessfulVersionIdsCt = this._deepCountDictionary(unsuccessfulVersionIds);
 
     // Display successful and/or unsuccessful messages.
-    const pipelineMessage = this._nouns(succeededfulIds.size, `${i18n.t('common:pipeline')}`, `${i18n.t('common:pipelines')}`);
+    const pipelineMessage = this._nouns(
+      succeededfulIds.size,
+      `${i18n.t('common:pipeline')}`,
+      `${i18n.t('common:pipelines')}`,
+    );
     const pipelineVersionMessage = this._nouns(
       selectedVersionIdsCt - unsuccessfulVersionIdsCt,
       `${i18n.t('common:pipelineVersion')}`,
       `${i18n.t('common:pipelineVersions')}`,
     );
-    const andMessage = pipelineMessage !== `` && pipelineVersionMessage !== `` ? ` ${i18n.t('common:and')} ` : ``;
+    const andMessage =
+      pipelineMessage !== `` && pipelineVersionMessage !== `` ? ` ${i18n.t('common:and')} ` : ``;
     if (pipelineMessage !== `` || pipelineVersionMessage !== ``) {
       this._props.updateSnackbar({
-        message: `${i18n.t('common:deletionSucceeded')} ` + pipelineMessage + andMessage + pipelineVersionMessage,
+        message:
+          `${i18n.t('common:deletionSucceeded')} ` +
+          pipelineMessage +
+          andMessage +
+          pipelineVersionMessage,
         open: true,
       });
     }
@@ -881,7 +905,7 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `Experiment${s(selectedIds)} will be moved to the Archive section, where you can still view${
+      `Experiments${s(selectedIds)} will be moved to the Archive section, where you can still view${
         selectedIds.length === 1 ? 'its' : 'their'
       } details. All runs in this archived experiment will be archived. All jobs in this archived experiment will be disabled. Use the Restore action on the experiment details page to restore the experiment${s(
         selectedIds,
