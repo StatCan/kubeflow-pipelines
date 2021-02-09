@@ -165,7 +165,3 @@ function createAndEncodeFilter(filterString: string): string {
   };
   return encodeURIComponent(JSON.stringify(filter));
 }
-
-
-
-

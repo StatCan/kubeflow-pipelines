@@ -1,7 +1,7 @@
 {
-    "artifactNum": "Artefact # ",
-    "multiArtifactsFoundById": "Plusieurs artefacts trouvés avec un identifiant.",
-    "noArtifactsFound": "Aucun artefact trouvé. ",
-    "noArtifactsFoundById": "Aucun artefact identifié par un identifiant ",
-    "pipelineWorkspace": " Pipeline/Espace de travail"
+  "artifactNum": "Artefact # ",
+  "multiArtifactsFoundById": "Plusieurs artefacts trouvés avec un identifiant.",
+  "noArtifactsFound": "Aucun artefact trouvé. ",
+  "noArtifactsFoundById": "Aucun artefact identifié par un identifiant ",
+  "pipelineWorkspace": " Pipeline/Espace de travail"
 }

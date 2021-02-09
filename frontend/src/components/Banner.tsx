@@ -95,7 +95,7 @@ class Banner extends React.Component<BannerProps, BannerState> {
       mode: { backgroundColor: color.errorBg, color: color.errorText },
     });
     let bannerIcon = <ErrorIcon className={css.icon} />;
-    let dialogTitle ='An error occurred' ;
+    let dialogTitle = 'An error occurred';
     let showTroubleshootingGuideLink = false;
     let showRefreshButton = true;
 
@@ -149,9 +149,7 @@ class Banner extends React.Component<BannerProps, BannerState> {
               onClick={this._showAdditionalInfo.bind(this)}
             >
               {i18next.t('common:details1')}
-              
             </Button>
-
           )}
           {showRefreshButton && this.props.refresh && (
             <Button
