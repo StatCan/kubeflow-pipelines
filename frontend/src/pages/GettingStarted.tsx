@@ -28,9 +28,6 @@ import { Apis } from '../lib/Apis';
 import Buttons from '../lib/Buttons';
 import { Page } from './Page';
 import i18n from '../i18n';
-import { TFunction } from 'i18next';
-import { withTranslation} from 'react-i18next';
-
 
 const DEMO_PIPELINES: string[] = SAMPLE_CONFIG.slice(0, 4);
 const DEMO_PIPELINES_ID_MAP = {
@@ -54,19 +51,19 @@ const PAGE_CONTENT_MD = ({
   tfx: string;
   xgboost: string;
 }) => 
-i18next.t('common:key1', {val: '$t(common:key2)'})+ '  \n ' +
-i18next.t('common:key3', {val: '$t(common:key2)'})+   ' \n  '  +  
-i18next.t('common:key5', {val: '$t(common:key2)'})+  ' \n  '  + 
-i18next.t('common:key7', {val: '$t(common:key2)'})+  '   \n  '  +
-i18next.t('common:key9', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key11', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key13', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key15', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key17', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key19', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key21', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key23', {val: '$t(common:key2)'})+ '   \n  '  +
-i18next.t('common:key25', {val: '$t(common:key2)'})
+i18next.t('home:key1', {val: '$t(home:key2)'})+ '  \n ' +
+i18next.t('home:key3', {val: '$t(home:key2)'})+   ' \n  '  +  
+i18next.t('home:key5', {val: '$t(home:key2)'})+  ' \n  '  + 
+i18next.t('home:key7', {val: '$t(home:key2)'})+  '   \n  '  +
+i18next.t('home:key9', {val:  '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key11', {val: '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key13', {val: '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key15', {val: '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key17', {val: '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key19', {val: '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key21', {val: '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key23', {val: '$t(home:key2)'})+ '   \n  '  +
+i18next.t('home:key25', {val: '$t(home:key2)'})
 cssRaw(`
 .kfp-start-page li {
   font-size: 14px;
@@ -105,7 +102,7 @@ export class GettingStarted extends Page<{}, { links: string[] }> {
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
-      pageTitle:i18next.t('common:key27'),
+      pageTitle:i18next.t('home:Getting Started', {val: '$t(home:key2)'}),
     };
   }
 
