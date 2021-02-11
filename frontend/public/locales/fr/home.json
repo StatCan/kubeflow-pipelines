@@ -1,6 +1,6 @@
 {
   "key2": " {{val}}",
-  "Getting Started ": "Mise en route",
+  "gettingstarted": "Mise en route",
   "key1": "  **Construisez votre propre pipeline :  **",
   "key3": "   - TensorFlow Étendu (TFX) [SDK](https://www.tensorflow.org/tfx/guide) avec modèle de pipeline ML de bout en bout ([Open TF 2.1 Notebook](https://console.cloud.google.com/mlengine/notebooks/deploy-notebook?q=download_url%3Dhttps%253 )). ",
   "key5": "   - Kubeflow Pipelines [SDK](https://www.kubeflow.org/docs/pipelines/sdk/). ",

@@ -1,4 +1,5 @@
 {
+  "active": " actif",
   "addVisInstruc1": "Ajoutez des visualisations à vos propres composants en suivant les instructions ",
   "addVisInstruc2": "Visualiser les résultats dans l’interface utilisateur pipelines ",
   "aggregatedView": "Vue agrégée ",
@@ -7,7 +8,7 @@
   "allExperiments": "Toutes les expériences ",
   "allRuns": "Toutes les exécutions ",
   "cannotStartRun": "Impossible de démarrer l’exécution sans version pipeline ",
-  "catchup": "rattrapage",
+  "catchup": "Rattrapage",
   "catchupHelpText1": "Si l’exécution périodique doit rattraper si en retard. Valeur par défaut true.",
   "catchupHelpText2": "Par exemple, si l’exécution périodique est interrompue pendant un certain temps et réassée par la suite. Si rattrapage=vrai, le planificateur rattrapera  chaque intervalle manqué. Dans le cas contraire, il ne planifie l’intervalle le plus récent que si plusieurs intervalles sont prêts à être planifiés. [fr]",
   "catchupHelpText3": "Habituellement, si votre pipeline gère le remblai à l’interne, vous devez désactiver le rattrapage pour éviter le remblai en double.",
@@ -58,6 +59,7 @@
   "filterExperiments": "Filtrer les expériences ",
   "filterPipelineVersions": "Filtrer les versions de pipeline ",
   "filterRecurRuns": "Filtrer les exécutions récurrentes",
+  "filterruns":"Filtrer les exécutions ",
   "genVisFailedComponent": "Impossible de générer la visualisation, aucun composant sélectionné.",
   "genVisFailedError": "Impossible de générer la visualisation, une erreur inattendue s’est produite. ",
   "genVisFailedJSON": "Impossible de générer la visualisation, JSON non valide fourni.",
@@ -77,7 +79,7 @@
   "maxConcurrentRunsPositive": "Pour les exécutions déclenchées, les exécutions simultanées maximales doivent être un nombre positif",
   "metrics": "Mesures",
   "minutes": "Minutes ",
-  "hours": "Heurs",
+  "hours": "Heures",
   "minPermissionsArgoWorkflow": "autorisations minimales requises par les flux de travail argo",
   "mlMetadata": "toutes les métadonnées",
   "mlMetadataNotFound": "  Métadonnées ML correspondantes non trouvées.",
@@ -107,11 +109,11 @@
   "pipelineVersion": " Version de pipeline ",
   "pipelineVersionSelected": "Une version de pipeline doit être sélectionnée ",
   "periodicIntervalEnum": {
-    "minute": "Minute ",
-    "hour": "Heure ",
-    "day": "jour ",
-    "week": "semaine ",
-    "month": "mois "
+    "minute": "Minute",
+    "hour": "Heure",
+    "day": "jour",
+    "week": "semaine",
+    "month": "mois"
   },
   "pod": "Pod ",
   "recurring": "Récurrents",

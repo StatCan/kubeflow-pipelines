@@ -183,7 +183,7 @@ export class ExperimentDetails extends Page<{t: TFunction}, ExperimentDetailsSta
                       !!activeRecurringRunsCount && css.recurringRunsActive,
                     )}
                   >
-                    {activeRecurringRunsCount + ` ${t('common:active')}`}
+                    {activeRecurringRunsCount + ` ${t('experiments:active')}`}
                   </div>
                   <Button
                     className={css.cardBtn}

@@ -51,19 +51,19 @@ const PAGE_CONTENT_MD = ({
   tfx: string;
   xgboost: string;
 }) => 
-i18next.t('home:key1', {val: '$t(home:key2)'})+ '  \n ' +
-i18next.t('home:key3', {val: '$t(home:key2)'})+   ' \n  '  +  
-i18next.t('home:key5', {val: '$t(home:key2)'})+  ' \n  '  + 
-i18next.t('home:key7', {val: '$t(home:key2)'})+  '   \n  '  +
-i18next.t('home:key9', {val:  '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key11', {val: '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key13', {val: '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key15', {val: '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key17', {val: '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key19', {val: '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key21', {val: '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key23', {val: '$t(home:key2)'})+ '   \n  '  +
-i18next.t('home:key25', {val: '$t(home:key2)'})
+i18next.t('home:key1')+ '  \n ' +
+i18next.t('home:key3')+   ' \n  '  +  
+i18next.t('home:key5')+  ' \n  '  + 
+i18next.t('home:key7')+  '   \n  '  +
+i18next.t('home:key9')+ '   \n  '  +
+i18next.t('home:key11')+ '   \n  '  +
+i18next.t('home:key13')+ '   \n  '  +
+i18next.t('home:key15')+ '   \n  '  +
+i18next.t('home:key17')+ '   \n  '  +
+i18next.t('home:key19')+ '   \n  '  +
+i18next.t('home:key21')+ '   \n  '  +
+i18next.t('home:key23')+ '   \n  '  +
+i18next.t('home:key25')
 cssRaw(`
 .kfp-start-page li {
   font-size: 14px;
@@ -102,7 +102,7 @@ export class GettingStarted extends Page<{}, { links: string[] }> {
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
-      pageTitle:i18next.t('home:Getting Started', {val: '$t(home:key2)'}),
+      pageTitle:i18next.t('home:gettingstarted'),
     };
   }
 

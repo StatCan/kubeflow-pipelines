@@ -16,7 +16,7 @@ i18n
   .init({
     ns: ['common', 'home', 'artifacts','executions','experiments','pipelines'],
     defaultNS: 'common',
-    fallbackLng: ['en', 'fr'],
+    fallbackLng: ['en','fr'],
     debug: true,
     interpolation: {
       escapeValue: false,

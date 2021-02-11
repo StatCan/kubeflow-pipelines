@@ -1,5 +1,4 @@
 {
-  "active": " actif",
   "all": "Tout",
   "and": "et",
   "archive": "Archive ",
@@ -81,7 +80,7 @@
   "experiments": "Expériences",
   "failedTo": "N’a pas réussi à",
   "file": "Fichier",
-  "filter": "Filtre",
+  "filter": "Filtrer",
   "filterPipelines": "Filtrer les pipelines",
   "finishedAt": "Terminé à",
   "github": "Github",

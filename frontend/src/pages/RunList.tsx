@@ -182,7 +182,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
           selectedIds={this.props.selectedIds}
           initialSortColumn={RunSortKeys.CREATED_AT}
           ref={this._tableRef}
-          filterLabel='Filter runs'
+          filterLabel= {t('filterruns')}
           updateSelection={this.props.onSelectionChange}
           reload={this._loadRuns.bind(this)}
           disablePaging={this.props.disablePaging}

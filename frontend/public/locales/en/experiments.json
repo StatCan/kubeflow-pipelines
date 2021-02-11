@@ -1,4 +1,5 @@
 {
+  "active": "active",
   "addVisInstruc1": "Add visualizations to your own components following instructions in",
   "addVisInstruc2": "Visualize Results in the Pipelines UI",
   "aggregatedView": "Aggregated view",
@@ -58,6 +59,7 @@
   "filterExperiments": "Filter experiments",
   "filterPipelineVersions": "Filter pipeline versions",
   "filterRecurRuns": "Filter recurring runs",
+  "filterruns":"Filter runs",
   "genVisFailedComponent": "Unable to generate visualization, no component selected.",
   "genVisFailedError": "Unable to generate visualization, an unexpected error was encountered.",
   "genVisFailedJSON": "Unable to generate visualization, invalid JSON provided.",
