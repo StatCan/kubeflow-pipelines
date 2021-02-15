@@ -148,7 +148,7 @@ class Banner extends React.Component<BannerProps, BannerState> {
               className={classes(css.button, css.detailsButton)}
               onClick={this._showAdditionalInfo.bind(this)}
             >
-              {i18next.t('common:details1')}
+              {i18next.t('common:detailsLowercase')}
             </Button>
           )}
           {showRefreshButton && this.props.refresh && (

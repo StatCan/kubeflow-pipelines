@@ -33,6 +33,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { classes, stylesheet } from 'typestyle';
 
+
 export const css = stylesheet({
   button: {
     marginBottom: 20,
@@ -96,7 +97,7 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
   }
 
   public getDisplayName(): string {
-    return 'Tensorboard';
+    return'Tensorboard';
   }
 
   public isAggregatable(): boolean {

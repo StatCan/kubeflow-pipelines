@@ -301,9 +301,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
               variant='outlined'
             >
               {Object.keys(PeriodicInterval).map((interval, i) => (
-                <MenuItem key={i} value={PeriodicInterval[interval]}>
+                 <MenuItem key={i} value={PeriodicInterval[interval]}>
                   {/* Add "s" based on interval */}
-                  {t(PeriodicInterval[interval])+(type === TriggerType.INTERVALED ?'s':'')}
+                  {t(PeriodicInterval[interval])+('(s)')}
                 </MenuItem>
               ))}
             </Input>

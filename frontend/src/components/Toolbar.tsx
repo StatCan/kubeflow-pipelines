@@ -27,8 +27,6 @@ import BusyButton from '../atoms/BusyButton';
 import { color, commonCss, dimension, fonts, fontsize, spacing } from '../Css';
 import i18next from 'i18next';
 
-import i18n from '../i18n';
-
 export interface ToolbarActionMap {
   [key: string]: ToolbarActionConfig;
 }

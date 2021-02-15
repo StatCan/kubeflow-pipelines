@@ -27,7 +27,6 @@ import { commonCss, padding } from '../Css';
 import { Apis } from '../lib/Apis';
 import Buttons from '../lib/Buttons';
 import { Page } from './Page';
-import i18n from '../i18n';
 
 const DEMO_PIPELINES: string[] = SAMPLE_CONFIG.slice(0, 4);
 const DEMO_PIPELINES_ID_MAP = {
@@ -102,7 +101,7 @@ export class GettingStarted extends Page<{}, { links: string[] }> {
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
-      pageTitle:i18next.t('home:gettingstarted'),
+      pageTitle:i18next.t('home:gettingStarted'),
     };
   }
 

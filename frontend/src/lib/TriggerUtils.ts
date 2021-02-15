@@ -318,10 +318,4 @@ export function triggerDisplayString(trigger?: ApiTrigger): string {
     }
   }
   return '-';
-
 }
-
-
-
-
-

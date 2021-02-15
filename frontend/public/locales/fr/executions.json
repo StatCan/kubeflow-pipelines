@@ -1,4 +1,5 @@
 {
+  "archiveRun": "sera déplacé vers la section Archive, où vous pouvez toujours consulter",
   "artifactEmptyId": "Artefact a un identifiant vide",
   "declaredInputs": "Entrées déclarées ",
   "declaredOutputs": "Sorties déclarées ",
@@ -7,11 +8,17 @@
   "getExecutionsFailed": "Échec de l’obtention des exécutions ",
   "inputs": "Entrées ",
   "invalidExecutionId": "Identifiant d’exécution non valide ",
-  "multiExecutionsFoundById": "Trouvé plusieurs exécutions avec identifiant ",
   "multiExecutionTypeFoundById": "Plusieurs types d’exécution trouvés avec identifiant",
+  "multiExecutionsFoundById": "Trouvé plusieurs exécutions avec identifiant ",
+  "noExecutionTypeFoundById": "Impossible de trouver le type d’exécution avec identifiant",
   "noExecutionsFound": "Aucune exécution trouvée.",
   "noExecutionsFoundById": "Aucune exécution identifiée par identifiant ",
-  "noExecutionTypeFoundById": "Impossible de trouver le type d’exécution avec identifiant",
+  "originalLocation": "emplacement d'origine ?",
   "outputs": "Sorties ",
-  "runWorkspacePipeline": "Exécuter Espace de travail de Pipeline "
+  "restore": "Voulez-vous restaurer ",
+  "runArchiveText": "des détails. Veuillez noter que la course ne sera pas",
+  "runArchiveTextSuite": "être arrêté s'il est en cours d'exécution lorsqu'il est archivé. Utilisez l'action de restauration pour restaurer l'",
+  "runWorkspacePipeline": "Exécuter Espace de travail de Pipeline ",
+  "theseRunsToTheir": "cette exécution à ses",
+  "thisRunToIts": "cette course à son"
 }

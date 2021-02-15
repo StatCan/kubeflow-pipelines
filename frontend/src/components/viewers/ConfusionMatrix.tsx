@@ -18,6 +18,7 @@ import * as React from 'react';
 import Viewer, { ViewerConfig, PlotType } from './Viewer';
 import { color, commonCss, fontsize } from '../../Css';
 import { classes, stylesheet } from 'typestyle';
+import i18next from 'i18next';
 
 const legendNotches = 5;
 
@@ -194,7 +195,7 @@ class ConfusionMatrix extends Viewer<ConfusionMatrixProps, ConfusionMatrixState>
   }
 
   public getDisplayName(): string {
-    return 'Confusion matrix';
+    return i18next.t('common:confusionMatrix');
   }
 
   public render(): JSX.Element | null {

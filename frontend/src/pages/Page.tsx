@@ -76,7 +76,7 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
     }
     this.props.updateBanner({
       additionalInfo: errorMessage ? errorMessage : undefined,
-      message: message + (errorMessage ? i18next.t('common:key29', {val: '$t(common:key30)'}) : ''),
+      message: message + (errorMessage ? i18next.t('common:clickDetails', {val: '$t(common:key30)'}) : ''),
       mode: mode || 'error',
       refresh: refresh || this.refresh.bind(this),
     });

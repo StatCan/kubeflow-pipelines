@@ -1,11 +1,6 @@
 {
-  "key2": " {{val}}",
-  "gettingstarted": "Mise en route",
+  "gettingStarted": "Mise en route",
   "key1": "  **Construisez votre propre pipeline :  **",
-  "key3": "   - TensorFlow Étendu (TFX) [SDK](https://www.tensorflow.org/tfx/guide) avec modèle de pipeline ML de bout en bout ([Open TF 2.1 Notebook](https://console.cloud.google.com/mlengine/notebooks/deploy-notebook?q=download_url%3Dhttps%253 )). ",
-  "key5": "   - Kubeflow Pipelines [SDK](https://www.kubeflow.org/docs/pipelines/sdk/). ",
-  "key7": "  **Démonstrations et tutoriels  :   **",
-  "key9": "  Cette section contient  des démonstrations et des tutoriels de pipelines :  ",
   "key11": "  **Démos** - Essayez un pipeline de démonstration de bout en bout.  ",
   "key13": "    - Démonstration de pipeline TFX avec Keras . Pipeline de classification basé sur Keras. [code source](https://github.com/kubeflow/pipelines/tree/master/samples/core/iris).  ",
   "key15": "    - Démonstration de pipeline TFX avec estimateur . Pipeline de classification avec analyse de modèle, basé sur un ensemble de données BigQuery public de déplacements en taxi. [code source](https://github.com/kubeflow/pipelines/tree/master/samples/core/parameterized_tfx_oss)   ",
@@ -13,5 +8,9 @@
   "key19": "    **Tutoriels** - Apprenez les concepts de pipeline en suivant un tutoriel.   ",
   "key21": "     - Transmission de données dans des composants python . Montre comment transmettre des données entre les composants python. [code source](https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/Data%20passing%20in%20python%20components)   ",
   "key23": "     - DSL - Structures de contrôle - Montre comment utiliser les gestionnaires d’exécution conditionnelles et de sorties. [code source](https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/DSL%20-%20Control%20structures)",
-  "key25": "     - Vous voulez en savoir plus? [Apprenez à partir d’exemples et de pipelines de tutoriels.](https://www.kubeflow.org/docs/pipelines/tutorials/)   "
+  "key25": "     - Vous voulez en savoir plus? [Apprenez à partir d’exemples et de pipelines de tutoriels.](https://www.kubeflow.org/docs/pipelines/tutorials/)   ",
+  "key3": "   - TensorFlow Étendu (TFX) [SDK](https://www.tensorflow.org/tfx/guide) avec modèle de pipeline ML de bout en bout ([Open TF 2.1 Notebook](https://console.cloud.google.com/mlengine/notebooks/deploy-notebook?q=download_url%3Dhttps%253 )). ",
+  "key5": "   - Kubeflow Pipelines [SDK](https://www.kubeflow.org/docs/pipelines/sdk/). ",
+  "key7": "  **Démonstrations et tutoriels  :   **",
+  "key9": "  Cette section contient  des démonstrations et des tutoriels de pipelines :  "
 }

@@ -31,6 +31,7 @@ import 'react-vis/dist/style.css';
 import Viewer, { ViewerConfig } from './Viewer';
 import { color, fontsize, commonCss } from '../../Css';
 import { stylesheet } from 'typestyle';
+import i18next from 'i18next';
 
 const css = stylesheet({
   axis: {
@@ -97,7 +98,7 @@ class ROCCurve extends Viewer<ROCCurveProps, ROCCurveState> {
   }
 
   public getDisplayName(): string {
-    return 'ROC Curve';
+    return i18next.t('common:rocCurve');
   }
 
   public isAggregatable(): boolean {
@@ -206,5 +207,4 @@ class ROCCurve extends Viewer<ROCCurveProps, ROCCurveState> {
     this.setState({ hoveredValues });
   }
 }
-
 export default ROCCurve;

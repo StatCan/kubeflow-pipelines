@@ -26,6 +26,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Viewer, { ViewerConfig, PlotType } from './Viewer';
 import { color, fontsize, commonCss } from '../../Css';
 import { stylesheet } from 'typestyle';
+import i18next from 'i18next';
 
 enum SortOrder {
   ASC = 'asc',
@@ -86,7 +87,7 @@ class PagedTable extends Viewer<PagedTableProps, PagedTableState> {
   }
 
   public getDisplayName(): string {
-    return 'Table';
+    return i18next.t('common:table');
   }
 
   public render(): JSX.Element | null {

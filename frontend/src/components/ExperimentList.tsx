@@ -51,12 +51,12 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
       {
         customRenderer: this._nameCustomRenderer,
         flex: 1,
-        label: t('Experiment name'),
+        label: t('experiments:experimentName'),
         sortKey: ExperimentSortKeys.NAME,
       },
       {
         flex: 2,
-        label: t('Description'),
+        label: t('experiments:description'),
       },
     ];
 
@@ -179,7 +179,6 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
       <RunList
         hideExperimentColumn={true}
         experimentIdMask={experiment.id}
-        //onError={() => null}
         {...this.props}
         disablePaging={false}
         noFilterBox={true}

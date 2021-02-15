@@ -405,12 +405,12 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      ` Run'${s(selectedIds)} will be moved to the Archive section, where you can still view ` +
+      ` ${i18n.t('experiments:runs')} ${s(selectedIds)} ${i18n.t('executions:archiveRun')} ` +
         `${
-          selectedIds.length === 1 ? 'its' : 'their'
-        } details. Please note that the run will not ` +
-        `be stopped if it's running when it's archived. Use the Restore action to restore the ` +
-        `run${s(selectedIds)} to ${selectedIds.length === 1 ? 'its' : 'their'} original location.`,
+          selectedIds.length === 1 ? i18n.t('experiments:its'):i18n.t('experiments:their')
+        } ${i18n.t('executions:runArchiveText')}` +
+        `${i18n.t('executions:runArchiveTextSuite')} ` +
+        `${i18n.t('experiments:runs')}${s(selectedIds)} ${i18n.t('experiments:to')} ${selectedIds.length === 1 ? i18n.t('experiments:its'):i18n.t('experiments:their')} ${i18n.t('experiments:originalLocation')}`,
       useCurrent,
       id => Apis.runServiceApi.archiveRun(id),
       callback,
@@ -426,9 +426,9 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `Do you want to restore ${
-        selectedIds.length === 1 ? 'this run to its' : 'these runs to their'
-      } original location?`,
+      `${i18n.t('executions:restore')} ${
+        selectedIds.length === 1 ? i18n.t('executions:thisRunToIts'):i18n.t('executions:theseRunsToTheir')
+      } ${i18n.t('executions:originalLocation')}`,
       useCurrent,
       id => Apis.runServiceApi.unarchiveRun(id),
       callback,
@@ -444,13 +444,14 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `Do you want to restore ${
-        selectedIds.length === 1 ? 'this experiment to its' : 'these experiments to their'
-      } original location? All runs and jobs in ${
-        selectedIds.length === 1 ? 'this experiment' : 'these experiments'
-      } will stay at their current locations in spite that ${
-        selectedIds.length === 1 ? 'this experiment' : 'these experiments'
-      } will be moved to ${selectedIds.length === 1 ? 'its' : 'their'} original location${s(
+      
+      `${i18n.t('executions:restore')}${
+        selectedIds.length === 1 ? i18n.t('experiments:thisExperimentToIts') : i18n.t('experiments:thisExperimentToTheir') 
+      } ${i18n.t('experiments:RestoreExperimentText')}${
+        selectedIds.length === 1 ? i18n.t('experiments:thisxperiment') : i18n.t('experiments:theseExperiments')
+      } ${i18n.t('experiments:ExperimentTextsuite')} ${
+        selectedIds.length === 1 ? i18n.t('experiments:thisxperiment'): i18n.t('experiments:theseExperiments')
+      } ${i18n.t('experiments:WillbeMovedTo')}${selectedIds.length === 1 ? i18n.t('experiments:its') : i18n.t('experiments:their')} ${i18n.t('experiments:originalLocation')}${s(
         selectedIds,
       )}.`,
       useCurrent,
@@ -468,9 +469,9 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `Do you want to delete ${
-        selectedIds.length === 1 ? 'this Pipeline' : 'these Pipelines'
-      }? This action cannot be undone.`,
+      `${i18n.t('pipelines:deletePipeline')} ${
+        selectedIds.length === 1 ? i18n.t('pipelines:thisPipeline') :i18n.t('pipelines:thesePipelines') 
+      }${i18n.t('pipelines:cannotBeDone')} `,
       useCurrentResource,
       id => Apis.pipelineServiceApi.deletePipeline(id),
       callback,
@@ -486,9 +487,9 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `Do you want to delete ${
-        selectedIds.length === 1 ? 'this Pipeline Version' : 'these Pipeline Versions'
-      }? This action cannot be undone.`,
+      `${i18n.t('pipelines:deletePipeline')} ${
+        selectedIds.length === 1 ? i18n.t('pipelines:thisPipelineVersion')  : i18n.t('pipelines:thesePipelinesVersion') 
+      }${i18n.t('pipelines:cannotBeDone')} `,
       useCurrentResource,
       id => Apis.pipelineServiceApi.deletePipelineVersion(id),
       callback,
@@ -520,8 +521,7 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       ids,
-      'Do you want to terminate this run? This action cannot be undone. This will terminate any' +
-        ' running pods, but they will not be deleted.',
+      i18n.t('pipelines:terminateRun') + i18n.t('pipelines:terminateRunSuite'),
       useCurrentResource,
       id => Apis.runServiceApi.terminateRun(id),
       callback,
@@ -905,11 +905,11 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `Experiments${s(selectedIds)} will be moved to the Archive section, where you can still view${
-        selectedIds.length === 1 ? 'its' : 'their'
-      } details. All runs in this archived experiment will be archived. All jobs in this archived experiment will be disabled. Use the Restore action on the experiment details page to restore the experiment${s(
+      `${i18n.t('experiments:experiments')}${s(selectedIds)} ${i18n.t('experiments:moveExperiments')}${
+        selectedIds.length === 1 ? i18n.t('experiments:its'):i18n.t('experiments:their')} 
+        ${i18n.t('experiments:experimentTextArchive')}  ${s(
         selectedIds,
-      )} to ${selectedIds.length === 1 ? 'its' : 'their'} original location.`,
+      )} ${i18n.t('experiments:to')} ${selectedIds.length === 1 ? i18n.t('experiments:its') : i18n.t('experiments:their')} ${i18n.t('experiments:originalLocation')}`,
       useCurrent,
       id => Apis.experimentServiceApi.archiveExperiment(id),
       callback,

@@ -31,6 +31,7 @@ import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
 import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 interface PipelineVersionInfo {
   displayName?: string;
@@ -182,7 +183,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
           selectedIds={this.props.selectedIds}
           initialSortColumn={RunSortKeys.CREATED_AT}
           ref={this._tableRef}
-          filterLabel= {t('filterruns')}
+          filterLabel= {t('experiments:filterRruns')}
           updateSelection={this.props.onSelectionChange}
           reload={this._loadRuns.bind(this)}
           disablePaging={this.props.disablePaging}

@@ -18,6 +18,7 @@ import * as React from 'react';
 import Viewer, { ViewerConfig } from './Viewer';
 import { color } from '../../Css';
 import { stylesheet } from 'typestyle';
+import i18next from 'i18next';
 
 export interface HTMLViewerConfig extends ViewerConfig {
   htmlContent: string;
@@ -44,7 +45,7 @@ class HTMLViewer extends Viewer<HTMLViewerProps, any> {
   });
 
   public getDisplayName(): string {
-    return 'Static HTML';
+    return i18next.t('common:staticHtml');
   }
 
   public componentDidMount(): void {
