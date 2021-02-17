@@ -5,7 +5,7 @@
   "key13": "    - TFX pipeline demo with Keras  . Classification pipeline based on Keras. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/core/iris) .  ",
   "key15": "    - TFX pipeline demo with Etimator  . Classification pipeline with model analysis, based on a public BigQuery dataset of taxicab trips. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/core/parameterized_tfx_oss)  ",
   "key17": "    - XGBoost Pipeline demo . An example of end-to-end distributed training for an XGBoost model. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/core/xgboost_training_cm)   ",
-  "key19": "    **Tutorials** - Learn pipeline concepts by following a tutorial.[fr]  ",
+  "key19": "    **Tutorials** - Learn pipeline concepts by following a tutorial.  ",
   "key21": "     - Data passing in python components . Shows how to pass data between python components. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/Data%20passing%20in%20python%20components)  ",
   "key23": "     - DSL - Control structures - Shows how to use conditional execution and exit handlers. [source code](https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/DSL%20-%20Control%20structures)  ",
   "key25": "     - Want to learn more? [Learn from sample and tutorial pipelines.](https://www.kubeflow.org/docs/pipelines/tutorials/)  ",

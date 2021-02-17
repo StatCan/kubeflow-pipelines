@@ -67,7 +67,7 @@
   "filterExperiments": "Filtrer les expériences ",
   "filterPipelineVersions": "Filtrer les versions de pipeline ",
   "filterRecurRuns": "Filtrer les exécutions récurrentes",
-  "filterRruns": "Filtrer les exécutions ",
+  "filterRuns": "Filtrer les exécutions ",
   "genVisFailedComponent": "Impossible de générer la visualisation, aucun composant sélectionné.",
   "genVisFailedError": "Impossible de générer la visualisation, une erreur inattendue s’est produite. ",
   "genVisFailedJSON": "Impossible de générer la visualisation, JSON non valide fourni.",
