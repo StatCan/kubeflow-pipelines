@@ -37,8 +37,7 @@ import {
   ParsedTrigger,
 } from '../lib/TriggerUtils';
 import { logger } from 'src/lib/Utils';
-import { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 type TriggerInitialProps = {
   maxConcurrentRuns?: string;
@@ -53,7 +52,6 @@ interface TriggerProps {
     maxConcurrentRuns?: string;
     catchup: boolean;
   }) => void;
-  t: TFunction;
 }
 
 interface TriggerState {
@@ -79,9 +77,8 @@ const css = stylesheet({
   },
 });
 
-class Trigger extends React.Component<TriggerProps, TriggerState> {
+export default class Trigger extends React.Component<TriggerProps, TriggerState> {
   public state: TriggerState = (() => {
-    const { t } = this.props;
     const { maxConcurrentRuns, catchup, trigger } =
       this.props.initialProps || ({} as TriggerInitialProps);
     let parsedTrigger: Partial<ParsedTrigger> = {};
@@ -90,7 +87,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         parsedTrigger = parseTrigger(trigger);
       }
     } catch (err) {
-      logger.warn(`${t('parseTriggerFailed')}: `, trigger);
+      logger.warn(`${i18next.t('experiments:parseTriggerFailed')}: `, trigger);
       logger.warn(err);
     }
     const startDateTime = parsedTrigger.startDateTime ?? new Date();
@@ -134,7 +131,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
   public render(): JSX.Element {
-    const { t } = this.props;
     const {
       cron,
       editCron,
@@ -156,7 +152,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       <div>
         <Input
           select={true}
-          label={t('triggerType')}
+          label={i18next.t('experiments:triggerType')}
           required={true}
           onChange={this.handleChange('type')}
           value={type}
@@ -164,14 +160,14 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         >
           {Array.from(triggers.entries()).map((trigger, i) => (
             <MenuItem key={i} value={trigger[0]}>
-              {t(trigger[1].displayName)}
+              {i18next.t(trigger[1].displayName)}
             </MenuItem>
           ))}
         </Input>
 
         <div>
           <Input
-            label={t('maxConcurrentRuns')}
+            label={i18next.t('experiments:maxConcurrentRuns')}
             required={true}
             onChange={this.handleChange('maxConcurrentRuns')}
             value={maxConcurrentRuns}
@@ -187,10 +183,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
                   onClick={this.handleChange('hasStartDate')}
                 />
               }
-              label={t('hasStartDate')}
+              label={i18next.t('experiments:hasStartDate')}
             />
             <Input
-              label={t('common:startDate')}
+              label={i18next.t('common:startDate')}
               type='date'
               onChange={this.handleChange('startDate')}
               value={startDate}
@@ -201,7 +197,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
             />
             <Separator />
             <Input
-              label={t('common:startTime')}
+              label={i18next.t('common:startTime')}
               type='time'
               onChange={this.handleChange('startTime')}
               value={startTime}
@@ -221,10 +217,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
                   onClick={this.handleChange('hasEndDate')}
                 />
               }
-              label={t('hasEndDate')}
+              label={i18next.t('experiments:hasEndDate')}
             />
             <Input
-              label={t('common:endDate')}
+              label={i18next.t('common:endDate')}
               type='date'
               onChange={this.handleChange('endDate')}
               value={endDate}
@@ -235,7 +231,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
             />
             <Separator />
             <Input
-              label={t('common:endTime')}
+              label={i18next.t('common:endTime')}
               type='time'
               onChange={this.handleChange('endTime')}
               value={endTime}
@@ -254,19 +250,19 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
                   onClick={this.handleChange('catchup')}
                 />
               }
-              label={t('catchup')}
+              label={i18next.t('experiments:catchup')}
             />
             <HelpButton
               helpText={
                 <div>
                   <p>
-                    {t('catchupHelpText1')}
+                    {i18next.t('experiments:catchupHelpText1')}
                   </p>
                   <p>
-                    {t('catchupHelpText2')}
+                    {i18next.t('experiments:catchupHelpText2')}
                   </p>
                   <p>
-                    {t('catchupHelpText3')}
+                    {i18next.t('experiments:catchupHelpText3')}
                   </p>
                 </div>
               }
@@ -274,7 +270,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
           </span>
 
           <span className={commonCss.flex}>
-            {t('runEvery')}
+            {i18next.t('experiments:runEvery')}
             {type === TriggerType.INTERVALED && (
               <div className={commonCss.flex}>
                 <Separator />
@@ -303,8 +299,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
               {Object.keys(PeriodicInterval).map((interval, i) => (
                  <MenuItem key={i} value={PeriodicInterval[interval]}>
                   {/* Add "s" based on interval */}
-                  {t(PeriodicInterval[interval])+('(s)')}
-                </MenuItem>
+                  {i18next.t(PeriodicInterval[interval])+ (type === TriggerType.INTERVALED ? 's' : '')}
+                  </MenuItem>
               ))}
             </Input>
           </span>
@@ -314,7 +310,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
           <div>
             {intervalCategory === PeriodicInterval.WEEK && (
               <div>
-                <span>{t('common:on')}:</span>
+                <span>{i18next.t('common:on')}:</span>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -323,7 +319,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
                       onClick={this._toggleCheckAllDays.bind(this)}
                     />
                   }
-                  label={t('common:all')}
+                  label={i18next.t('common:all')}
                 />
                 <Separator />
                 {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, i) => (
@@ -351,9 +347,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
                 }
                 label={
                   <span>
-                    {t('editingCronExpression')}{' '}
+                    {i18next.t('experiments:editingCronExpression')}{' '}
                     <a href='https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format'>
-                      {t('common:here')}
+                      {i18next.t('common:here')}
                     </a>
                     )
                   </span>
@@ -362,7 +358,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
             </div>
 
             <Input
-              label={t('cronExpression')}
+              label={i18next.t('experiments:cronExpression')}
               onChange={this.handleChange('cron')}
               value={cron}
               width={300}
@@ -370,7 +366,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
               variant='outlined'
             />
 
-            <div>{t('noteStartEndDateCron')}</div>
+            <div>{i18next.t('experiments:noteStartEndDateCron')}</div>
           </div>
         )}
       </div>
@@ -470,5 +466,3 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     );
   }
 }
-
-export default withTranslation(['experiments', 'common'])(Trigger);
