@@ -28,6 +28,7 @@ import { graphlib } from 'dagre';
 import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 
+
 describe('PipelineDetails', () => {
   const updateBannerSpy = jest.fn();
   const updateDialogSpy = jest.fn();

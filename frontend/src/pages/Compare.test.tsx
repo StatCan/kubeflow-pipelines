@@ -31,6 +31,7 @@ import { render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
 
+
 const Compare = TEST_ONLY.Compare;
 class TestCompare extends Compare {
   public _selectionChanged(selectedIds: string[]): void {
@@ -123,7 +124,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run-with-workflow-1,run-with-workflow-2`;
 
-    tree = shallow(<TestCompare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
   }
 
@@ -154,7 +155,7 @@ describe('Compare', () => {
   });
 
   it('clears banner upon initial load', () => {
-    tree = shallow(<Compare {...generateProps()} />);
+    tree = shallow(<EnhancedCompare {...generateProps()} />);
     expect(updateBannerSpy).toHaveBeenCalledTimes(1);
     expect(updateBannerSpy).toHaveBeenLastCalledWith({});
   });
@@ -163,7 +164,7 @@ describe('Compare', () => {
     const props = generateProps();
     // Ensure there are no run IDs in the query
     props.location.search = '';
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
 
     expect(updateBannerSpy).toHaveBeenCalledTimes(1);
@@ -177,7 +178,7 @@ describe('Compare', () => {
     // Ensure there are run IDs in the query
     props.location.search = `?${QUERY_PARAMS.runlist}=${MOCK_RUN_1_ID},${MOCK_RUN_2_ID},${MOCK_RUN_3_ID}`;
 
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
     expect(tree).toMatchSnapshot();
   });
@@ -187,7 +188,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run-1,run-2,run-3`;
 
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
 
     expect(getRunSpy).toHaveBeenCalledTimes(3);
@@ -199,7 +200,7 @@ describe('Compare', () => {
   it('shows an error banner if fetching any run fails', async () => {
     TestUtils.makeErrorResponseOnce(getRunSpy, 'test error');
 
-    tree = shallow(<Compare {...generateProps()} />);
+    tree = shallow(<EnhancedCompare {...generateProps()} />);
     await TestUtils.flushPromises();
 
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
@@ -218,7 +219,7 @@ describe('Compare', () => {
       };
     });
 
-    tree = shallow(<Compare {...generateProps()} />);
+    tree = shallow(<EnhancedCompare {...generateProps()} />);
     await TestUtils.flushPromises();
 
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
@@ -233,13 +234,13 @@ describe('Compare', () => {
   it('clears the error banner on refresh', async () => {
     TestUtils.makeErrorResponseOnce(getRunSpy, 'test error');
 
-    tree = shallow(<Compare {...generateProps()} />);
+    tree = shallow(<EnhancedCompare {...generateProps()} />);
     await TestUtils.flushPromises();
 
     // Verify that error banner is being shown
     expect(updateBannerSpy).toHaveBeenLastCalledWith(expect.objectContaining({ mode: 'error' }));
 
-    (tree.instance() as Compare).refresh();
+    (tree.instance() as EnhancedCompare).refresh();
 
     // Error banner should be cleared
     expect(updateBannerSpy).toHaveBeenLastCalledWith({});
@@ -264,7 +265,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run-with-parameters`;
 
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
     tree.update();
 
@@ -307,7 +308,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run1,run2`;
 
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
     tree.update();
 
@@ -325,7 +326,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run-with-metrics`;
 
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
     tree.update();
 
@@ -350,7 +351,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run1,run2`;
 
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
     tree.update();
 
@@ -387,7 +388,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run-with-workflow`;
 
-    tree = shallow(<Compare {...props} />);
+    tree = shallow(<EnhancedCompare {...props} />);
     await TestUtils.flushPromises();
 
     const expectedViewerMap = new Map([
@@ -465,7 +466,7 @@ describe('Compare', () => {
   });
 
   it('allows individual viewers to be collapsed and expanded', async () => {
-    tree = TestUtils.mountWithRouter(<Compare {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<EnhancedCompare {...generateProps()} />);
     await TestUtils.flushPromises();
 
     expect(tree.state('collapseSections')).toEqual({});

@@ -21,6 +21,7 @@ import { RoutePage } from '../components/Router';
 import { RunStorageState } from '../apis/run';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
+import ComponentWithTranslation from './AllRunsList';
 
 describe('AllRunsList', () => {
   const updateBannerSpy = jest.fn();
@@ -36,6 +37,7 @@ describe('AllRunsList', () => {
     updateDialog: jest.fn(),
     updateSnackbar: jest.fn(),
     updateToolbar: updateToolbarSpy,
+    
   };
   let tree: ShallowWrapper;
 

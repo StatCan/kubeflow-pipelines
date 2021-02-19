@@ -18,6 +18,7 @@ import * as React from 'react';
 import CollapseButton from './CollapseButton';
 import { shallow } from 'enzyme';
 
+
 describe('CollapseButton', () => {
   const compareComponent = {
     setState: jest.fn(),
