@@ -4,19 +4,18 @@ import { Apis, JSONObject } from 'src/lib/Apis';
 import { serviceErrorToString } from 'src/lib/Utils';
 import Banner from './Banner';
 import Editor from './Editor';
-import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 async function getPodYaml(name: string, namespace: string): Promise<string> {
   const response = await Apis.getPodInfo(name, namespace);
   return JsYaml.safeDump(reorderPodJson(response), { skipInvalid: true });
 }
 export const PodInfo: React.FC<{ name: string; namespace: string }> = ({ name, namespace }) => {
-  const { t } = useTranslation('common');
   return (
     <PodYaml
       name={name}
       namespace={namespace}
-      errorMessage={t('retrievePodInfoFailed')}
+      errorMessage={i18next.t('common:retrievePodInfoFailed')}
       getYaml={getPodYaml}
     />
   );
@@ -30,12 +29,12 @@ export const PodEvents: React.FC<{
   name: string;
   namespace: string;
 }> = ({ name, namespace }) => {
-  const { t } = useTranslation('common');
+  
   return (
     <PodYaml
       name={name}
       namespace={namespace}
-      errorMessage={t('retrievePodEventsFailed')}
+      errorMessage={i18next.t('common:retrievePodEventsFailed')}
       getYaml={getPodEventsYaml}
     />
   );

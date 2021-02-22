@@ -55,6 +55,7 @@
   "documentation": "Documentation",
   "dropFiles": "Drop files..",
   "duration": "Duration",
+  "end":"End",
   "enable": "Enable",
   "enableRunsTrigger": "Enable the run's trigger",
   "enabled": "Enabled",

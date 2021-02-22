@@ -30,7 +30,7 @@ export interface NewRunParametersProps {
   initialParams: ApiParameter[];
   titleMessage: string;
   handleParamChange: (index: number, value: string) => void;
-  t: TFunction;
+  t:TFunction;
 }
 
 const css = stylesheet({

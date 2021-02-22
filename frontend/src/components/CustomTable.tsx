@@ -37,8 +37,6 @@ import { ApiFilter, PredicateOp } from '../apis/filter/api';
 import { debounce } from 'lodash';
 import { InputAdornment } from '@material-ui/core';
 import { CustomTableRow } from './CustomTableRow';
-import { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
 import i18next from 'i18next'
 
 

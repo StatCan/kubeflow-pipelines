@@ -20,6 +20,7 @@ import TestUtils from '../TestUtils';
 import { ListRequest } from '../lib/Apis';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { Row } from '../components/CustomTable';
+import { TFunction } from 'i18next';
 
 class TestResourceSelector extends ResourceSelector {
   public async _load(request: ListRequest): Promise<string> {
@@ -78,6 +79,7 @@ describe('ResourceSelector', () => {
       selectionChanged: selectionChangedCbSpy,
       title: testTitle,
       updateDialog: updateDialogSpy,
+      t:{} as TFunction
     };
   }
 

@@ -94,7 +94,7 @@ describe('ROCCurve', () => {
   });
 
   it('returns friendly display name', () => {
-    expect(ROCCurve.prototype.getDisplayName()).toBe('ROC Curve');
+    expect(ROCCurve.prototype.getDisplayName()).toBe('rocCurve');
   });
 
   it('is aggregatable', () => {
