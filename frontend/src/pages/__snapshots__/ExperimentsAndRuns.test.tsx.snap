@@ -9,8 +9,8 @@ exports[`ExperimentsAndRuns renders experiments page 1`] = `
     selectedTab={0}
     tabs={
       Array [
-        "All experiments",
-        "All runs",
+        "allExperiments",
+        "allRuns",
       ]
     }
   />
@@ -37,8 +37,8 @@ exports[`ExperimentsAndRuns renders runs page 1`] = `
     selectedTab={1}
     tabs={
       Array [
-        "All experiments",
-        "All runs",
+        "allExperimentsts",
+        "allRuns",
       ]
     }
   />

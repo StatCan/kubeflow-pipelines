@@ -10,7 +10,7 @@ exports[`PipelineList renders a list of one pipeline 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline name",
+          "label": "pipelineName",
           "sortKey": "name",
         },
         Object {
@@ -64,7 +64,7 @@ exports[`PipelineList renders a list of one pipeline with error 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline name",
+          "label": "pipelineName",
           "sortKey": "name",
         },
         Object {
@@ -118,7 +118,7 @@ exports[`PipelineList renders a list of one pipeline with no description or crea
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline name",
+          "label": "pipelineName",
           "sortKey": "name",
         },
         Object {
@@ -172,7 +172,7 @@ exports[`PipelineList renders an empty list with empty state message 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline name",
+          "label": "pipelineName",
           "sortKey": "name",
         },
         Object {

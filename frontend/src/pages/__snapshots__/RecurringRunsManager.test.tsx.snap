@@ -5,7 +5,7 @@ exports[`RecurringRunsManager calls API to load recurring runs 1`] = `
   <Toolbar
     actions={Object {}}
     breadcrumbs={Array []}
-    pageTitle="Recurring runs"
+    pageTitle="recurringRuns"
   />
   <CustomTable
     columns={

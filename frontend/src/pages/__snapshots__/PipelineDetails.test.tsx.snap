@@ -97,7 +97,7 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Version source
+                versionSource
               </a>
             </div>
             <div
@@ -166,7 +166,7 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
               <span
                 className="infoSpan"
               >
-                Static pipeline graph
+                staticPipelineGraph
               </span>
             </div>
           </div>
@@ -264,7 +264,7 @@ exports[`PipelineDetails collapses summary card when summary shown state is fals
               <span
                 className="infoSpan"
               >
-                Static pipeline graph
+                staticPipelineGraph
               </span>
             </div>
           </div>
@@ -372,7 +372,7 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Version source
+                versionSource
               </a>
             </div>
             <div
@@ -441,7 +441,7 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
               <span
                 className="infoSpan"
               >
-                Static pipeline graph
+                staticPipelineGraph
               </span>
             </div>
           </div>
@@ -549,7 +549,7 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Version source
+                versionSource
               </a>
             </div>
             <div
@@ -712,7 +712,7 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
               <span
                 className="infoSpan"
               >
-                Static pipeline graph
+                staticPipelineGraph
               </span>
             </div>
           </div>
@@ -820,7 +820,7 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Version source
+                versionSource
               </a>
             </div>
             <div
@@ -889,7 +889,7 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
               <span
                 className="infoSpan"
               >
-                Static pipeline graph
+                staticPipelineGraph
               </span>
             </div>
           </div>
@@ -997,7 +997,7 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Version source
+                versionSource
               </a>
             </div>
             <div
@@ -1066,7 +1066,7 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
               <span
                 className="infoSpan"
               >
-                Static pipeline graph
+                staticPipelineGraph
               </span>
             </div>
           </div>

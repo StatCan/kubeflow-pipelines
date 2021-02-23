@@ -19,7 +19,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
           Object {
             "customRenderer": [Function],
             "flex": 2,
-            "label": "Version name",
+            "label": "versionName",
             "sortKey": "name",
           },
           Object {

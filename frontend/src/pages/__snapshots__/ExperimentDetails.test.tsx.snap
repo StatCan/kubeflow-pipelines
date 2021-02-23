@@ -85,32 +85,32 @@ exports[`ExperimentDetails fetches this experiment's recurring runs 1`] = `
           "archive": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select at least one resource to archive",
+            "disabledTitle": "selectResourceArchive",
             "id": "archiveBtn",
-            "title": "Archive",
-            "tooltip": "Archive",
+            "title": "archive",
+            "tooltip": "archive",
           },
           "cloneRun": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select a run to clone",
+            "disabledTitle": "selectRunClone",
             "id": "cloneBtn",
             "style": Object {
               "minWidth": 100,
             },
-            "title": "Clone run",
-            "tooltip": "Create a copy from this runs initial state",
+            "title": "cloneRun",
+            "tooltip": "copyRunInitialState",
           },
           "compare": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select multiple runs to compare",
+            "disabledTitle": "selectRunsCompare",
             "id": "compareBtn",
             "style": Object {
               "minWidth": 125,
             },
-            "title": "Compare runs",
-            "tooltip": "Compare up to 10 selected runs",
+            "title": "compareRuns",
+            "tooltip": "compareUpToTenRuns",
           },
           "newRecurringRun": Object {
             "action": [Function],
@@ -120,8 +120,8 @@ exports[`ExperimentDetails fetches this experiment's recurring runs 1`] = `
             "style": Object {
               "minWidth": 195,
             },
-            "title": "Create recurring run",
-            "tooltip": "Create a new recurring run",
+            "title": "createRecurRun",
+            "tooltip": "createNewRecurRun",
           },
           "newRun": Object {
             "action": [Function],
@@ -132,8 +132,8 @@ exports[`ExperimentDetails fetches this experiment's recurring runs 1`] = `
             "style": Object {
               "minWidth": 130,
             },
-            "title": "Create run",
-            "tooltip": "Create a new run",
+            "title": "createRun",
+            "tooltip": "createNewRun",
           },
         }
       }
@@ -347,7 +347,7 @@ exports[`ExperimentDetails removes all description text after second newline and
           "archive": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select at least one resource to archive",
+            "disabledTitle": "selectResourceArchive",
             "id": "archiveBtn",
             "title": "Archive",
             "tooltip": "Archive",
@@ -355,24 +355,24 @@ exports[`ExperimentDetails removes all description text after second newline and
           "cloneRun": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select a run to clone",
+            "disabledTitle": "selectRunClone",
             "id": "cloneBtn",
             "style": Object {
               "minWidth": 100,
             },
-            "title": "Clone run",
-            "tooltip": "Create a copy from this runs initial state",
+            "title": "cloneRun",
+            "tooltip": "copyRunInitialState",
           },
           "compare": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select multiple runs to compare",
+            "disabledTitle": "selectRunsCompare",
             "id": "compareBtn",
             "style": Object {
               "minWidth": 125,
             },
             "title": "Compare runs",
-            "tooltip": "Compare up to 10 selected runs",
+            "tooltip": "compareUpToTenRuns",
           },
           "newRecurringRun": Object {
             "action": [Function],
@@ -382,8 +382,8 @@ exports[`ExperimentDetails removes all description text after second newline and
             "style": Object {
               "minWidth": 195,
             },
-            "title": "Create recurring run",
-            "tooltip": "Create a new recurring run",
+            "title": "createRecurRun",
+            "tooltip": "createNewRecurRun",
           },
           "newRun": Object {
             "action": [Function],
@@ -395,7 +395,7 @@ exports[`ExperimentDetails removes all description text after second newline and
               "minWidth": 130,
             },
             "title": "Create run",
-            "tooltip": "Create a new run",
+            "tooltip": "createNewRun",
           },
         }
       }
@@ -429,8 +429,8 @@ exports[`ExperimentDetails removes all description text after second newline and
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
@@ -478,8 +478,8 @@ exports[`ExperimentDetails removes all description text after second newline and
                 "refresh": Object {
                   "action": [Function],
                   "id": "refreshBtn",
-                  "title": "Refresh",
-                  "tooltip": "Refresh the list",
+                  "title": "refresh",
+                  "tooltip": "refreshList",
                 },
               },
               "breadcrumbs": Array [
@@ -596,32 +596,32 @@ exports[`ExperimentDetails renders a page with no runs or recurring runs 1`] = `
           "archive": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select at least one resource to archive",
+            "disabledTitle": "selectResourceArchive",
             "id": "archiveBtn",
-            "title": "Archive",
-            "tooltip": "Archive",
+            "title": "archive",
+            "tooltip": "archive",
           },
           "cloneRun": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select a run to clone",
+            "disabledTitle": "selectRunClone",
             "id": "cloneBtn",
             "style": Object {
               "minWidth": 100,
             },
-            "title": "Clone run",
-            "tooltip": "Create a copy from this runs initial state",
+            "title": "cloneRun",
+            "tooltip": "copyRunInitialState",
           },
           "compare": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select multiple runs to compare",
+            "disabledTitle": "selectRunsCompare",
             "id": "compareBtn",
             "style": Object {
               "minWidth": 125,
             },
             "title": "Compare runs",
-            "tooltip": "Compare up to 10 selected runs",
+            "tooltip": "compareUpToTenRuns",
           },
           "newRecurringRun": Object {
             "action": [Function],
@@ -631,8 +631,8 @@ exports[`ExperimentDetails renders a page with no runs or recurring runs 1`] = `
             "style": Object {
               "minWidth": 195,
             },
-            "title": "Create recurring run",
-            "tooltip": "Create a new recurring run",
+            "title": "createRecurRun",
+            "tooltip": "createNewRecurRun",
           },
           "newRun": Object {
             "action": [Function],
@@ -643,8 +643,8 @@ exports[`ExperimentDetails renders a page with no runs or recurring runs 1`] = `
             "style": Object {
               "minWidth": 130,
             },
-            "title": "Create run",
-            "tooltip": "Create a new run",
+            "title": "createRun",
+            "tooltip": "createNewRun",
           },
         }
       }
@@ -727,8 +727,8 @@ exports[`ExperimentDetails renders a page with no runs or recurring runs 1`] = `
                 "refresh": Object {
                   "action": [Function],
                   "id": "refreshBtn",
-                  "title": "Refresh",
-                  "tooltip": "Refresh the list",
+                  "title": "refresh",
+                  "tooltip": "refreshList",
                 },
               },
               "breadcrumbs": Array [
@@ -843,32 +843,32 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
           "archive": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select at least one resource to archive",
+            "disabledTitle": "selectResourceArchive",
             "id": "archiveBtn",
-            "title": "Archive",
+            "title": "archive",
             "tooltip": "Archive",
           },
           "cloneRun": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select a run to clone",
+            "disabledTitle": "selectRunClone",
             "id": "cloneBtn",
             "style": Object {
               "minWidth": 100,
             },
-            "title": "Clone run",
-            "tooltip": "Create a copy from this runs initial state",
+            "title": "cloneRun",
+            "tooltip": "copyRunInitialState",
           },
           "compare": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select multiple runs to compare",
+            "disabledTitle": "selectRunsCompare",
             "id": "compareBtn",
             "style": Object {
               "minWidth": 125,
             },
-            "title": "Compare runs",
-            "tooltip": "Compare up to 10 selected runs",
+            "title": "compareRuns",
+            "tooltip": "compareUpToTenRuns",
           },
           "newRecurringRun": Object {
             "action": [Function],
@@ -878,8 +878,8 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
             "style": Object {
               "minWidth": 195,
             },
-            "title": "Create recurring run",
-            "tooltip": "Create a new recurring run",
+            "title": "createRecurRun",
+            "tooltip": "createNewRecurRun",
           },
           "newRun": Object {
             "action": [Function],
@@ -890,8 +890,8 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
             "style": Object {
               "minWidth": 130,
             },
-            "title": "Create run",
-            "tooltip": "Create a new run",
+            "title": "createRun",
+            "tooltip": "createNewRun",
           },
         }
       }
@@ -925,8 +925,8 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
@@ -974,8 +974,8 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
                 "refresh": Object {
                   "action": [Function],
                   "id": "refreshBtn",
-                  "title": "Refresh",
-                  "tooltip": "Refresh the list",
+                  "title": "refresh",
+                  "tooltip": "refreshList",
                 },
               },
               "breadcrumbs": Array [

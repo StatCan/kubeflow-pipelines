@@ -39,14 +39,14 @@ exports[`UploadPipelineDialog renders alternate UI for uploading via URL 1`] = `
           />
         }
         id="uploadFromUrlBtn"
-        label="Import by URL"
+        label="importByUrl"
         onChange={[Function]}
       />
     </div>
     <div
       className=""
     >
-      URL must be publicly accessible.
+      urlPublic
     </div>
     <DocumentationCompilePipeline />
     <Input
@@ -58,7 +58,7 @@ exports[`UploadPipelineDialog renders alternate UI for uploading via URL 1`] = `
     />
     <Input
       id="uploadFileName"
-      label="Pipeline name"
+      label="pipelineNameCaps"
       onChange={[Function]}
       required={true}
       value=""
@@ -122,7 +122,7 @@ exports[`UploadPipelineDialog renders an active dropzone 1`] = `
           />
         }
         id="uploadFromUrlBtn"
-        label="Import by URL"
+        label="importByUrl"
         onChange={[Function]}
       />
     </div>
@@ -195,7 +195,7 @@ exports[`UploadPipelineDialog renders an active dropzone 1`] = `
     </n>
     <Input
       id="uploadFileName"
-      label="Pipeline name"
+      label="pipelineNameCaps"
       onChange={[Function]}
       required={true}
       value=""
@@ -259,7 +259,7 @@ exports[`UploadPipelineDialog renders closed 1`] = `
           />
         }
         id="uploadFromUrlBtn"
-        label="Import by URL"
+        label="importByUrl"
         onChange={[Function]}
       />
     </div>
@@ -327,7 +327,7 @@ exports[`UploadPipelineDialog renders closed 1`] = `
     </n>
     <Input
       id="uploadFileName"
-      label="Pipeline name"
+      label="pipelineNameCaps"
       onChange={[Function]}
       required={true}
       value=""
@@ -391,7 +391,7 @@ exports[`UploadPipelineDialog renders open 1`] = `
           />
         }
         id="uploadFromUrlBtn"
-        label="Import by URL"
+        label="importByUrl"
         onChange={[Function]}
       />
     </div>
@@ -459,7 +459,7 @@ exports[`UploadPipelineDialog renders open 1`] = `
     </n>
     <Input
       id="uploadFileName"
-      label="Pipeline name"
+      label="pipelineNameCaps"
       onChange={[Function]}
       required={true}
       value=""
@@ -523,7 +523,7 @@ exports[`UploadPipelineDialog renders with a selected file to upload 1`] = `
           />
         }
         id="uploadFromUrlBtn"
-        label="Import by URL"
+        label="importByUrl"
         onChange={[Function]}
       />
     </div>
@@ -591,7 +591,7 @@ exports[`UploadPipelineDialog renders with a selected file to upload 1`] = `
     </n>
     <Input
       id="uploadFileName"
-      label="Pipeline name"
+      label="pipelineNameCaps"
       onChange={[Function]}
       required={true}
       value=""

@@ -20,12 +20,12 @@ exports[`ArchivedExperiemnts renders archived experiments 1`] = `
           "refresh": Object {
             "action": [Function],
             "id": "refreshBtn",
-            "title": "Refresh",
-            "tooltip": "Refresh the list",
+            "title": "refresh",
+            "tooltip": "refreshList",
           },
         },
         "breadcrumbs": Array [],
-        "pageTitle": "Archive",
+        "pageTitle": "archive",
       }
     }
     updateBanner={[MockFunction]}

@@ -46,7 +46,7 @@ exports[`NewPipelineVersion creating new pipeline renders the new pipeline page 
           "current": null,
         }
       }
-      label="Pipeline Name"
+      label="pipelineName"
       onChange={[Function]}
       required={true}
       value=""
@@ -69,7 +69,7 @@ exports[`NewPipelineVersion creating new pipeline renders the new pipeline page 
     <div
       className=""
     >
-      URL must be publicly accessible.
+      urlPublic
     </div>
     <DocumentationCompilePipeline />
     <div
@@ -158,7 +158,7 @@ exports[`NewPipelineVersion creating new pipeline renders the new pipeline page 
           />
         }
         id="remotePackageBtn"
-        label="Import by url"
+        label="importByUrl"
         onChange={[Function]}
       />
       <Input
@@ -179,7 +179,7 @@ exports[`NewPipelineVersion creating new pipeline renders the new pipeline page 
     </div>
     <Input
       id="pipelineVersionCodeSource"
-      label="Code Source (optional)"
+      label="codeSource"
       multiline={true}
       onChange={[Function]}
       value=""

@@ -20,7 +20,7 @@ exports[`RecurringRunDetails renders a recurring run with cron schedule 1`] = `
           ],
         ]
       }
-      title="Recurring run details"
+      title="recurringRunDetails
     />
     <DetailsTable
       fields={
@@ -51,7 +51,7 @@ exports[`RecurringRunDetails renders a recurring run with cron schedule 1`] = `
           ],
         ]
       }
-      title="Run trigger"
+      title="runTrigger"
     />
     <DetailsTable
       fields={
@@ -62,7 +62,7 @@ exports[`RecurringRunDetails renders a recurring run with cron schedule 1`] = `
           ],
         ]
       }
-      title="Run parameters"
+      title="runParams"
     />
   </div>
 </div>
@@ -88,7 +88,7 @@ exports[`RecurringRunDetails renders a recurring run with periodic schedule 1`] 
           ],
         ]
       }
-      title="Recurring run details"
+      title="recurringRunDetails"
     />
     <DetailsTable
       fields={
@@ -119,7 +119,7 @@ exports[`RecurringRunDetails renders a recurring run with periodic schedule 1`] 
           ],
         ]
       }
-      title="Run trigger"
+      title="runTrigger"
     />
     <DetailsTable
       fields={
@@ -130,7 +130,7 @@ exports[`RecurringRunDetails renders a recurring run with periodic schedule 1`] 
           ],
         ]
       }
-      title="Run parameters"
+      title="runParams"
     />
   </div>
 </div>

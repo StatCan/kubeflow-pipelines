@@ -137,30 +137,30 @@ exports[`Compare creates a map of viewers 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
             Object {
-              "displayName": "Experiments",
+              "displayName": "experiments",
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -298,7 +298,7 @@ exports[`Compare creates an extra aggregation plot for compatible viewers 1`] = 
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -338,30 +338,30 @@ exports[`Compare creates an extra aggregation plot for compatible viewers 1`] = 
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
             Object {
-              "displayName": "Experiments",
+              "displayName": "experiments",
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -488,7 +488,7 @@ exports[`Compare creates an extra aggregation plot for compatible viewers 1`] = 
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
-      sectionName="ROC Curve"
+      sectionName="rocCurve"
     />
     <div
       className="flex outputsRow"
@@ -552,7 +552,7 @@ exports[`Compare displays a run's metrics if the run has any 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -590,21 +590,21 @@ exports[`Compare displays a run's metrics if the run has any 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
@@ -613,7 +613,7 @@ exports[`Compare displays a run's metrics if the run has any 1`] = `
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -696,7 +696,7 @@ exports[`Compare displays metrics from multiple runs 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -736,30 +736,30 @@ exports[`Compare displays metrics from multiple runs 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
               "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
             Object {
-              "displayName": "Experiments",
+              "displayName": "experiments",
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -846,7 +846,7 @@ exports[`Compare displays parameters from multiple runs 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -886,30 +886,30 @@ exports[`Compare displays parameters from multiple runs 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
             Object {
-              "displayName": "Experiments",
+              "displayName": "experiments",
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -1001,7 +1001,7 @@ exports[`Compare displays run's parameters if the run has any 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -1039,21 +1039,21 @@ exports[`Compare displays run's parameters if the run has any 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
@@ -1062,7 +1062,7 @@ exports[`Compare displays run's parameters if the run has any 1`] = `
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -1145,7 +1145,7 @@ exports[`Compare does not show viewers for deselected runs 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -1180,21 +1180,21 @@ exports[`Compare does not show viewers for deselected runs 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
@@ -1203,7 +1203,7 @@ exports[`Compare does not show viewers for deselected runs 1`] = `
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -1264,7 +1264,7 @@ exports[`Compare expands all sections if they were collapsed 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -1304,21 +1304,21 @@ exports[`Compare expands all sections if they were collapsed 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
@@ -1327,7 +1327,7 @@ exports[`Compare expands all sections if they were collapsed 1`] = `
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}
@@ -1512,7 +1512,7 @@ exports[`Compare renders a page with multiple runs 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -1554,21 +1554,21 @@ exports[`Compare renders a page with multiple runs 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
-              "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "title": "refresh",
+              "tooltip": "refreshList",
             },
           },
           "breadcrumbs": Array [
@@ -1650,7 +1650,7 @@ exports[`Compare renders a page with no runs 1`] = `
   <CollapseButton
     collapseSections={Object {}}
     compareSetState={[Function]}
-    sectionName="Run overview"
+    sectionName="runOverview"
   />
   <div
     className="noShrink"
@@ -1680,21 +1680,21 @@ exports[`Compare renders a page with no runs 1`] = `
               "action": [Function],
               "icon": [Function],
               "id": "collapseBtn",
-              "title": "Collapse all",
-              "tooltip": "Collapse all sections",
+              "title": "collapseAll",
+              "tooltip": "collapseAllSec",
             },
             "expand": Object {
               "action": [Function],
               "icon": [Function],
               "id": "expandBtn",
-              "title": "Expand all",
-              "tooltip": "Expand all sections",
+              "title": "expandAll",
+              "tooltip": "expandAllSections",
             },
             "refresh": Object {
               "action": [Function],
               "id": "refreshBtn",
               "title": "Refresh",
-              "tooltip": "Refresh the list",
+              "tooltip": "expandAllSections",
             },
           },
           "breadcrumbs": Array [
@@ -1703,7 +1703,7 @@ exports[`Compare renders a page with no runs 1`] = `
               "href": "/experiments",
             },
           ],
-          "pageTitle": "Compare runs",
+          "pageTitle": "compareRuns",
         }
       }
       updateBanner={[MockFunction]}

@@ -358,7 +358,7 @@ exports[`RunDetails keeps side pane open and on same tab when run status changes
     title={
       <div>
         <div>
-          Executed successfully
+          executionSuccess
         </div>
         <div>
           Start: 
@@ -1376,7 +1376,7 @@ exports[`RunDetails shows run config fields 1`] = `
                 ],
               ]
             }
-            title="Run parameters"
+            title="runParams"
           />
         </div>
       </div>
@@ -1393,7 +1393,7 @@ exports[`RunDetails shows success run status in page title 1`] = `
     title={
       <div>
         <div>
-          Executed successfully
+          executionSuccessully
         </div>
         <div>
           Start: 

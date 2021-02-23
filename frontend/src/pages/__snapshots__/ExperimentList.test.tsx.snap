@@ -10,7 +10,7 @@ exports[`ExperimentList renders a list of one experiment 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment name",
+          "label": "experimentName",
           "sortKey": "name",
         },
         Object {
@@ -59,7 +59,7 @@ exports[`ExperimentList renders a list of one experiment with error 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment name",
+          "label": "experimentName",
           "sortKey": "name",
         },
         Object {
@@ -95,7 +95,7 @@ exports[`ExperimentList renders a list of one experiment with no description 1`]
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment name",
+          "label": "experimentName",
           "sortKey": "name",
         },
         Object {
@@ -131,7 +131,7 @@ exports[`ExperimentList renders an empty list with empty state message 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment name",
+          "label": "experimentName",
           "sortKey": "name",
         },
         Object {
@@ -161,7 +161,7 @@ exports[`ExperimentList renders experiment names as links to their details pages
 <WithStyles(Tooltip)
   enterDelay={300}
   placement="top-start"
-  title="experiment name"
+  title="experimentName"
 >
   <Link
     className="link"
@@ -189,7 +189,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
       title={
         <div>
           <div>
-            Executed successfully
+            executionSuccess
           </div>
         </div>
       }
@@ -224,7 +224,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
       title={
         <div>
           <div>
-            Pending execution
+            executePending
           </div>
         </div>
       }
@@ -294,7 +294,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
       title={
         <div>
           <div>
-            Unknown status
+            unknownStatus
           </div>
         </div>
       }
@@ -329,7 +329,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
       title={
         <div>
           <div>
-            Executed successfully
+            executionSuccess
           </div>
         </div>
       }

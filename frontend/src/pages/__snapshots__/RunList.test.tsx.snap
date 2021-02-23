@@ -7653,7 +7653,7 @@ exports[`RunList renders status as icon 1`] = `
   title={
     <div>
       <div>
-        Executed successfully
+        executionSuccesslly
       </div>
     </div>
   }

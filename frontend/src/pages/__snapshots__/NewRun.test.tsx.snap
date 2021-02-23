@@ -14,7 +14,7 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
     </div>
     <div>
       <span>
-        Using pipeline from previous page
+        usePipelinePrevPage
       </span>
       <Link
         replace={false}
@@ -44,7 +44,7 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -98,11 +98,11 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "Experiments",
+                  "displayName": "experiments",
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -208,7 +208,7 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -260,7 +260,7 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -302,7 +302,7 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -565,7 +565,7 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -623,7 +623,7 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -729,7 +729,7 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -781,7 +781,7 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -823,7 +823,7 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -1086,7 +1086,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -1144,7 +1144,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -1250,7 +1250,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -1302,7 +1302,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -1344,7 +1344,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -1476,7 +1476,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
     <div
       className="header"
     >
-      Run trigger
+      runTrigger
     </div>
     <div>
       Choose a method by which new runs will be triggered
@@ -1625,7 +1625,7 @@ exports[`NewRun changes title and form to default state if the new run is a one-
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -1683,7 +1683,7 @@ exports[`NewRun changes title and form to default state if the new run is a one-
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -1789,7 +1789,7 @@ exports[`NewRun changes title and form to default state if the new run is a one-
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -1841,7 +1841,7 @@ exports[`NewRun changes title and form to default state if the new run is a one-
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -1883,7 +1883,7 @@ exports[`NewRun changes title and form to default state if the new run is a one-
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -2146,7 +2146,7 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -2204,7 +2204,7 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -2310,7 +2310,7 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -2362,7 +2362,7 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -2404,7 +2404,7 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -2665,7 +2665,7 @@ exports[`NewRun renders the new run page 1`] = `
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -2723,7 +2723,7 @@ exports[`NewRun renders the new run page 1`] = `
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -2829,7 +2829,7 @@ exports[`NewRun renders the new run page 1`] = `
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -2881,7 +2881,7 @@ exports[`NewRun renders the new run page 1`] = `
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName,
                 "sortKey": "name",
               },
               Object {
@@ -2923,7 +2923,7 @@ exports[`NewRun renders the new run page 1`] = `
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -3186,7 +3186,7 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -3244,7 +3244,7 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -3350,7 +3350,7 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -3402,7 +3402,7 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -3444,7 +3444,7 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -3576,7 +3576,7 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
     <div
       className="header"
     >
-      Run trigger
+      runTrigger
     </div>
     <div>
       Choose a method by which new runs will be triggered
@@ -3725,7 +3725,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -3783,7 +3783,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -3889,7 +3889,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -3941,7 +3941,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -3983,7 +3983,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -4246,7 +4246,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -4304,7 +4304,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -4410,7 +4410,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -4462,7 +4462,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -4504,7 +4504,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -4778,7 +4778,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -4836,7 +4836,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -4942,7 +4942,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -4994,7 +4994,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -5036,7 +5036,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -5299,7 +5299,7 @@ exports[`NewRun updates the run's state with the associated experiment if one is
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Pipeline name",
+                "label": "pipelineName",
                 "sortKey": "name",
               },
               Object {
@@ -5357,7 +5357,7 @@ exports[`NewRun updates the run's state with the associated experiment if one is
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -5463,7 +5463,7 @@ exports[`NewRun updates the run's state with the associated experiment if one is
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
@@ -5515,7 +5515,7 @@ exports[`NewRun updates the run's state with the associated experiment if one is
               Object {
                 "customRenderer": [Function],
                 "flex": 1,
-                "label": "Experiment name",
+                "label": "experimentName",
                 "sortKey": "name",
               },
               Object {
@@ -5557,7 +5557,7 @@ exports[`NewRun updates the run's state with the associated experiment if one is
                   "href": "/experiments",
                 },
               ],
-              "pageTitle": "Start a new run",
+              "pageTitle": "startNewRun",
             }
           }
           updateBanner={[MockFunction]}
