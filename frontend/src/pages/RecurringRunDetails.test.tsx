@@ -24,6 +24,13 @@ import { RouteParams, RoutePage, QUERY_PARAMS } from '../components/Router';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
+    return Component;
+  }
+}));
 describe('RecurringRunDetails', () => {
   let tree: ReactWrapper<any> | ShallowWrapper<any>;
 

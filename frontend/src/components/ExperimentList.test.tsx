@@ -27,6 +27,13 @@ import { Apis, ExperimentSortKeys, ListRequest } from '../lib/Apis';
 import { ReactWrapper, ShallowWrapper, shallow } from 'enzyme';
 import { range } from 'lodash';
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
+    return Component;
+  }
+}));
 class ExperimentListTest extends ExperimentList {
   public _loadExperiments(request: ListRequest): Promise<string> {
     return super._loadExperiments(request);
@@ -50,6 +57,7 @@ describe('ExperimentList', () => {
       location: { search: '' } as any,
       match: '' as any,
       onError: onErrorSpy,
+      t:{} as any
     };
   }
 

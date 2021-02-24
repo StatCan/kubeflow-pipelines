@@ -19,6 +19,24 @@ import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import UploadPipelineDialog, { ImportMethod } from './UploadPipelineDialog';
 import TestUtils from '../TestUtils';
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
+    return Component;
+  },
+}));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 describe('UploadPipelineDialog', () => {
   let tree: ReactWrapper | ShallowWrapper;
 
@@ -74,7 +92,7 @@ describe('UploadPipelineDialog', () => {
     const spy = jest.fn();
     tree = shallow(<UploadPipelineDialog open={false} onClose={spy} />);
     (tree.instance() as any)._dropzoneRef = { current: { open: () => null } };
-    (tree.instance() as UploadPipelineDialog).handleChange('uploadPipelineName')({
+    (tree.instance() as  UploadPipelineDialog).handleChange('uploadPipelineName')({
       target: { value: 'test name' },
     });
     tree.find('#confirmUploadBtn').simulate('click');

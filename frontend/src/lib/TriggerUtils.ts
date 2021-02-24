@@ -15,8 +15,6 @@
  */
 
 import { ApiTrigger, ApiPeriodicSchedule, ApiCronSchedule } from '../../src/apis/job';
-import { withTranslation,useTranslation } from 'react-i18next';
-import i18next, { TFunction } from 'i18next';
 import '../i18n';
 
 

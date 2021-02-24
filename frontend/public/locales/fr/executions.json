@@ -16,9 +16,9 @@
   "originalLocation": "emplacement d'origine ?",
   "outputs": "Sorties ",
   "restore": "Voulez-vous restaurer ",
-  "runArchiveText": "des détails. Veuillez noter que la course ne sera pas",
+  "runArchiveText": "des détails. Veuillez noter que la exécution ne sera pas",
   "runArchiveTextSuite": "être arrêté s'il est en cours d'exécution lorsqu'il est archivé. Utilisez l'action de restauration pour restaurer l'",
   "runWorkspacePipeline": "Exécuter Espace de travail de Pipeline ",
   "theseRunsToTheir": "cette exécution à ses",
-  "thisRunToIts": "cette course à son"
+  "thisRunToIts": "cette exécution à son"
 }

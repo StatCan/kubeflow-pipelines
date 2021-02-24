@@ -17,6 +17,7 @@ exports[`AllRunsList renders all runs 1`] = `
     onSelectionChange={[Function]}
     selectedIds={Array []}
     storageState="STORAGESTATE_AVAILABLE"
+    t={[Function]}
     toolbarProps={
       Object {
         "actions": Object {
@@ -47,7 +48,7 @@ exports[`AllRunsList renders all runs 1`] = `
             "style": Object {
               "minWidth": 125,
             },
-            "title": "Compare runs",
+            "title": "compareRuns",
             "tooltip": "compareUpToTenRuns",
           },
           "newExperiment": Object {
@@ -81,7 +82,7 @@ exports[`AllRunsList renders all runs 1`] = `
           },
         },
         "breadcrumbs": Array [],
-        "pageTitle": "Experiments",
+        "pageTitle": "common:experiments",
       }
     }
     updateBanner={[MockFunction]}

@@ -17,6 +17,13 @@
 import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 import NewRunParameters, { NewRunParametersProps } from './NewRunParameters';
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
+    return Component;
+  }
+}));
 
 describe('NewRunParameters', () => {
   it('shows parameters', () => {
@@ -24,8 +31,9 @@ describe('NewRunParameters', () => {
       handleParamChange: jest.fn(),
       initialParams: [{ name: 'testParam', value: 'testVal' }],
       titleMessage: 'Specify parameters required by the pipeline',
+      t:{} as any    
     } as NewRunParametersProps;
-    expect(shallow(<NewRunParameters {...props} />)).toMatchSnapshot();
+    expect(shallow(<NewRunParameters  {...props} />)).toMatchSnapshot();
   });
 
   it('does not display any text fields if there are no parameters', () => {
@@ -33,6 +41,7 @@ describe('NewRunParameters', () => {
       handleParamChange: jest.fn(),
       initialParams: [],
       titleMessage: 'This pipeline has no parameters',
+      t:{} as any
     } as NewRunParametersProps;
     expect(shallow(<NewRunParameters {...props} />)).toMatchSnapshot();
   });
@@ -43,6 +52,7 @@ describe('NewRunParameters', () => {
       handleParamChange,
       initialParams: [{ name: 'testParam', value: '{"test":"value"}' }],
       titleMessage: 'Specify json parameters required by the pipeline',
+      t:{} as any 
     } as NewRunParametersProps;
     const tree = mount(<NewRunParameters {...props} />);
     tree
@@ -64,6 +74,7 @@ describe('NewRunParameters', () => {
         { name: 'testParam2', value: 'testVal2' },
       ],
       titleMessage: 'Specify parameters required by the pipeline',
+      t:{} as any  
     } as NewRunParametersProps;
 
     const tree = mount(<NewRunParameters {...props} />);

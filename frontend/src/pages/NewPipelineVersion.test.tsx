@@ -23,6 +23,17 @@ import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType } from '../apis/pipeline';
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 class TestNewPipelineVersion extends NewPipelineVersion {
   public _pipelineSelectorClosed = super._pipelineSelectorClosed;
   public _onDropForTest = super._onDropForTest;
@@ -179,7 +190,7 @@ describe('NewPipelineVersion', () => {
       );
       await TestUtils.flushPromises();
 
-      (tree.instance() as TestNewPipelineVersion).handleChange('pipelineVersionName')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('pipelineVersionName')({
         target: { value: 'version name' },
       });
 
@@ -195,7 +206,7 @@ describe('NewPipelineVersion', () => {
       );
       await TestUtils.flushPromises();
 
-      (tree.instance() as TestNewPipelineVersion).handleChange('packageUrl')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('packageUrl')({
         target: { value: 'https://dummy' },
       });
 
@@ -211,7 +222,7 @@ describe('NewPipelineVersion', () => {
       );
       await TestUtils.flushPromises();
 
-      (tree.instance() as TestNewPipelineVersion).handleChange('codeSourceUrl')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('codeSourceUrl')({
         target: { value: 'https://dummy' },
       });
 
@@ -227,10 +238,10 @@ describe('NewPipelineVersion', () => {
       );
       await TestUtils.flushPromises();
 
-      (tree.instance() as TestNewPipelineVersion).handleChange('pipelineVersionName')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('pipelineVersionName')({
         target: { value: 'test version name' },
       });
-      (tree.instance() as TestNewPipelineVersion).handleChange('packageUrl')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('packageUrl')({
         target: { value: 'https://dummy_package_url' },
       });
       await TestUtils.flushPromises();
@@ -286,13 +297,13 @@ describe('NewPipelineVersion', () => {
     it('creates pipeline from url', async () => {
       tree = shallow(<TestNewPipelineVersion {...generateProps()} />);
 
-      (tree.instance() as TestNewPipelineVersion).handleChange('pipelineName')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('pipelineName')({
         target: { value: 'test pipeline name' },
       });
-      (tree.instance() as TestNewPipelineVersion).handleChange('pipelineDescription')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('pipelineDescription')({
         target: { value: 'test pipeline description' },
       });
-      (tree.instance() as TestNewPipelineVersion).handleChange('packageUrl')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('packageUrl')({
         target: { value: 'https://dummy_package_url' },
       });
       await TestUtils.flushPromises();
@@ -318,14 +329,14 @@ describe('NewPipelineVersion', () => {
 
       // Set local file, pipeline name, pipeline description and click create
       tree.find('#localPackageBtn').simulate('change');
-      (tree.instance() as TestNewPipelineVersion).handleChange('pipelineName')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('pipelineName')({
         target: { value: 'test pipeline name' },
       });
-      (tree.instance() as TestNewPipelineVersion).handleChange('pipelineDescription')({
+      (tree.instance() as unknown as TestNewPipelineVersion).handleChange('pipelineDescription')({
         target: { value: 'test pipeline description' },
       });
       const file = new File(['file contents'], 'file_name', { type: 'text/plain' });
-      (tree.instance() as TestNewPipelineVersion)._onDropForTest([file]);
+      (tree.instance() as unknown as TestNewPipelineVersion)._onDropForTest([file]);
       tree.find('#createNewPipelineOrVersionBtn').simulate('click');
 
       tree.update();

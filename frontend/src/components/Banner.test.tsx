@@ -92,9 +92,7 @@ describe('Banner', () => {
           <a
             className="troubleShootingLink"
             href="https://www.kubeflow.org/docs/pipelines/troubleshooting"
-          >
-            Troubleshooting guide
-          </a>
+          />
         </div>
       </div>
     `);

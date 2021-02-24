@@ -8,36 +8,36 @@ exports[`RunList adds metrics columns 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
         Object {
@@ -58,7 +58,7 @@ exports[`RunList adds metrics columns 1`] = `
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -153,42 +153,42 @@ exports[`RunList displays error in run row if experiment could not be fetched 1`
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -220,42 +220,42 @@ exports[`RunList displays error in run row if it failed to parse (run list mask)
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -300,42 +300,42 @@ exports[`RunList displays error in run row if pipeline could not be fetched 1`] 
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -384,37 +384,37 @@ exports[`RunList hides experiment name if instructed 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -445,42 +445,42 @@ exports[`RunList in archived state renders the empty experience 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No archived runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
@@ -496,42 +496,42 @@ exports[`RunList loads multiple runs 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -615,42 +615,42 @@ exports[`RunList loads one run 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -684,6 +684,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
   }
   match=""
   onError={[MockFunction]}
+  t={[Function]}
 >
   <div>
     <CustomTable
@@ -692,42 +693,42 @@ exports[`RunList reloads the run when refresh is called 1`] = `
           Object {
             "customRenderer": [Function],
             "flex": 1.5,
-            "label": "Run name",
+            "label": "",
             "sortKey": "name",
           },
           Object {
             "customRenderer": [Function],
             "flex": 0.5,
-            "label": "Status",
+            "label": "",
           },
           Object {
             "flex": 0.5,
-            "label": "Duration",
+            "label": "",
           },
           Object {
             "customRenderer": [Function],
             "flex": 1,
-            "label": "Experiment",
+            "label": "",
           },
           Object {
             "customRenderer": [Function],
             "flex": 1,
-            "label": "Pipeline Version",
+            "label": "",
           },
           Object {
             "customRenderer": [Function],
             "flex": 0.5,
-            "label": "Recurring Run",
+            "label": "",
           },
           Object {
             "flex": 1,
-            "label": "Start time",
+            "label": "",
             "sortKey": "created_at",
           },
         ]
       }
       emptyMessage="No available runs found."
-      filterLabel="Filter runs"
+      filterLabel=""
       initialSortColumn="created_at"
       reload={[Function]}
       rows={Array []}
@@ -767,7 +768,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
             className="filterBox"
             height={48}
             id="tableFilterBox"
-            label="Filter runs"
+            label="Filter"
             maxWidth="100%"
             onChange={[Function]}
             value=""
@@ -803,7 +804,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
               }
               className="filterBox"
               id="tableFilterBox"
-              label="Filter runs"
+              label="Filter"
               onChange={[Function]}
               required={false}
               select={false}
@@ -996,7 +997,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                                   data-shrink={true}
                                   htmlFor="tableFilterBox"
                                 >
-                                  Filter runs
+                                  Filter
                                 </label>
                               </FormLabel>
                             </WithFormControlContext(FormLabel)>
@@ -2011,7 +2012,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                 "width": "25%",
               }
             }
-            title="Run name"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -2506,7 +2507,6 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                             tabIndex="0"
                             title="Sort"
                           >
-                            Run name
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -2565,7 +2565,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                       tabindex="0"
                       title="Sort"
                     >
-                      Run name
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -2597,7 +2597,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                 "width": "8.333333333333332%",
               }
             }
-            title="Status"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -3091,7 +3091,6 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                             tabIndex="0"
                             title="Cannot sort by this column"
                           >
-                            Status
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -3150,7 +3149,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                       tabindex="0"
                       title="Cannot sort by this column"
                     >
-                      Status
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -3182,7 +3181,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                 "width": "8.333333333333332%",
               }
             }
-            title="Duration"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -3676,7 +3675,6 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                             tabIndex="0"
                             title="Cannot sort by this column"
                           >
-                            Duration
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -3735,7 +3733,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                       tabindex="0"
                       title="Cannot sort by this column"
                     >
-                      Duration
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -3767,7 +3765,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                 "width": "16.666666666666664%",
               }
             }
-            title="Experiment"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -4261,7 +4259,6 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                             tabIndex="0"
                             title="Cannot sort by this column"
                           >
-                            Experiment
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -4320,7 +4317,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                       tabindex="0"
                       title="Cannot sort by this column"
                     >
-                      Experiment
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -4352,7 +4349,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                 "width": "16.666666666666664%",
               }
             }
-            title="Pipeline Version"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -4846,7 +4843,6 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                             tabIndex="0"
                             title="Cannot sort by this column"
                           >
-                            Pipeline Version
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -4905,7 +4901,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                       tabindex="0"
                       title="Cannot sort by this column"
                     >
-                      Pipeline Version
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -4937,7 +4933,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                 "width": "8.333333333333332%",
               }
             }
-            title="Recurring Run"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -5431,7 +5427,6 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                             tabIndex="0"
                             title="Cannot sort by this column"
                           >
-                            Recurring Run
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -5490,7 +5485,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                       tabindex="0"
                       title="Cannot sort by this column"
                     >
-                      Recurring Run
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -5522,7 +5517,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                 "width": "16.666666666666664%",
               }
             }
-            title="Start time"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -6017,7 +6012,6 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                             tabIndex="0"
                             title="Sort"
                           >
-                            Start time
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -6076,7 +6070,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
                       tabindex="0"
                       title="Sort"
                     >
-                      Start time
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -6121,7 +6115,7 @@ exports[`RunList reloads the run when refresh is called 1`] = `
           <span
             className=""
           >
-            Rows per page:
+            rowsperpage
           </span>
           <TextField
             InputProps={
@@ -7653,7 +7647,7 @@ exports[`RunList renders status as icon 1`] = `
   title={
     <div>
       <div>
-        executionSuccesslly
+        executionSuccess
       </div>
     </div>
   }
@@ -7686,42 +7680,42 @@ exports[`RunList renders the empty experience 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
@@ -7737,42 +7731,42 @@ exports[`RunList retrieves pipeline from backend to display name if not in spec 
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -7820,42 +7814,42 @@ exports[`RunList shows experiment name 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -7890,42 +7884,42 @@ exports[`RunList shows link to recurring run config 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -7960,42 +7954,42 @@ exports[`RunList shows pipeline name 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -8032,42 +8026,42 @@ exports[`RunList shows run time for each run 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1.5,
-          "label": "Run name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Status",
+          "label": "",
         },
         Object {
           "flex": 0.5,
-          "label": "Duration",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Experiment",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Pipeline Version",
+          "label": "",
         },
         Object {
           "customRenderer": [Function],
           "flex": 0.5,
-          "label": "Recurring Run",
+          "label": "",
         },
         Object {
           "flex": 1,
-          "label": "Start time",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
     emptyMessage="No available runs found."
-    filterLabel="Filter runs"
+    filterLabel=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={

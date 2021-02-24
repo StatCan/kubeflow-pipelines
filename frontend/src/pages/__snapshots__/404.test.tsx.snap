@@ -27,7 +27,7 @@ exports[`404 renders a 404 page 1`] = `
       }
     }
   >
-    Page Not Found: 
+    : 
     some bad page
   </div>
 </div>

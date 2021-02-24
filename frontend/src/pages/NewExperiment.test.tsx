@@ -23,6 +23,17 @@ import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType, ApiRelationship } from 'src/apis/experiment';
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 describe('NewExperiment', () => {
   let tree: ReactWrapper | ShallowWrapper;
   const createExperimentSpy = jest.spyOn(Apis.experimentServiceApi, 'createExperiment');

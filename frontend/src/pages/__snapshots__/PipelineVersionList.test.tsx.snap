@@ -11,6 +11,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
   match=""
   onError={[MockFunction]}
   pipelineId="pipeline"
+  t={[Function]}
 >
   <div>
     <CustomTable
@@ -19,17 +20,17 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
           Object {
             "customRenderer": [Function],
             "flex": 2,
-            "label": "versionName",
+            "label": "",
             "sortKey": "name",
           },
           Object {
             "flex": 1,
-            "label": "Uploaded on",
+            "label": "",
             "sortKey": "created_at",
           },
         ]
       }
-      emptyMessage="No pipeline versions found."
+      emptyMessage=""
       initialSortColumn="created_at"
       reload={[Function]}
       rows={
@@ -1330,7 +1331,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                 "width": "66.66666666666666%",
               }
             }
-            title="Version name"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -1825,7 +1826,6 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                             tabIndex="0"
                             title="Sort"
                           >
-                            Version name
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -1884,7 +1884,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                       tabindex="0"
                       title="Sort"
                     >
-                      Version name
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -1916,7 +1916,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                 "width": "33.33333333333333%",
               }
             }
-            title="Uploaded on"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -2411,7 +2411,6 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                             tabIndex="0"
                             title="Sort"
                           >
-                            Uploaded on
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
                             >
@@ -2470,7 +2469,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                       tabindex="0"
                       title="Sort"
                     >
-                      Uploaded on
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-97 MuiTableSortLabel-iconDirectionDesc-98"
@@ -2770,12 +2769,12 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                     Object {
                       "customRenderer": [Function],
                       "flex": 2,
-                      "label": "Version name",
+                      "label": "",
                       "sortKey": "name",
                     },
                     Object {
                       "flex": 1,
-                      "label": "Uploaded on",
+                      "label": "",
                       "sortKey": "created_at",
                     },
                   ]
@@ -3095,12 +3094,12 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
                     Object {
                       "customRenderer": [Function],
                       "flex": 2,
-                      "label": "Version name",
+                      "label": "",
                       "sortKey": "name",
                     },
                     Object {
                       "flex": 1,
-                      "label": "Uploaded on",
+                      "label": "",
                       "sortKey": "created_at",
                     },
                   ]
@@ -3160,7 +3159,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
           <span
             className=""
           >
-            Rows per page:
+            rowsperpage
           </span>
           <TextField
             InputProps={
@@ -4567,6 +4566,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
   match=""
   onError={[MockFunction]}
   pipelineId="pipeline"
+  t={[Function]}
 >
   <div>
     <CustomTable
@@ -4575,17 +4575,17 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
           Object {
             "customRenderer": [Function],
             "flex": 2,
-            "label": "Version name",
+            "label": "",
             "sortKey": "name",
           },
           Object {
             "flex": 1,
-            "label": "Uploaded on",
+            "label": "",
             "sortKey": "created_at",
           },
         ]
       }
-      emptyMessage="No pipeline versions found."
+      emptyMessage=""
       initialSortColumn="created_at"
       reload={[Function]}
       rows={
@@ -5893,7 +5893,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                 "width": "66.66666666666666%",
               }
             }
-            title="Version name"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -6388,7 +6388,6 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                             tabIndex="0"
                             title="Sort"
                           >
-                            Version name
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-237 MuiTableSortLabel-iconDirectionDesc-238"
                             >
@@ -6447,7 +6446,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                       tabindex="0"
                       title="Sort"
                     >
-                      Version name
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-199 MuiTableSortLabel-icon-237 MuiTableSortLabel-iconDirectionDesc-238"
@@ -6479,7 +6478,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                 "width": "33.33333333333333%",
               }
             }
-            title="Uploaded on"
+            title=""
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -6974,7 +6973,6 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                             tabIndex="0"
                             title="Sort"
                           >
-                            Uploaded on
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-237 MuiTableSortLabel-iconDirectionDesc-238"
                             >
@@ -7033,7 +7031,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                       tabindex="0"
                       title="Sort"
                     >
-                      Uploaded on
+                      
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-199 MuiTableSortLabel-icon-237 MuiTableSortLabel-iconDirectionDesc-238"
@@ -7333,12 +7331,12 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                     Object {
                       "customRenderer": [Function],
                       "flex": 2,
-                      "label": "Version name",
+                      "label": "",
                       "sortKey": "name",
                     },
                     Object {
                       "flex": 1,
-                      "label": "Uploaded on",
+                      "label": "",
                       "sortKey": "created_at",
                     },
                   ]
@@ -7658,12 +7656,12 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                     Object {
                       "customRenderer": [Function],
                       "flex": 2,
-                      "label": "Version name",
+                      "label": "",
                       "sortKey": "name",
                     },
                     Object {
                       "flex": 1,
-                      "label": "Uploaded on",
+                      "label": "",
                       "sortKey": "created_at",
                     },
                   ]
@@ -7983,12 +7981,12 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
                     Object {
                       "customRenderer": [Function],
                       "flex": 2,
-                      "label": "Version name",
+                      "label": "",
                       "sortKey": "name",
                     },
                     Object {
                       "flex": 1,
-                      "label": "Uploaded on",
+                      "label": "",
                       "sortKey": "created_at",
                     },
                   ]
@@ -8048,7 +8046,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
           <span
             className=""
           >
-            Rows per page:
+            rowsperpage
           </span>
           <TextField
             InputProps={
@@ -9452,17 +9450,17 @@ exports[`PipelineVersionList renders a list of one pipeline version 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 2,
-          "label": "Version name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipeline versions found."
+    emptyMessage=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -9488,17 +9486,17 @@ exports[`PipelineVersionList renders a list of one pipeline version with error 1
         Object {
           "customRenderer": [Function],
           "flex": 2,
-          "label": "Version name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipeline versions found."
+    emptyMessage=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={
@@ -9524,17 +9522,17 @@ exports[`PipelineVersionList renders a list of one pipeline version without crea
         Object {
           "customRenderer": [Function],
           "flex": 2,
-          "label": "Version name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipeline versions found."
+    emptyMessage=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
@@ -9550,17 +9548,17 @@ exports[`PipelineVersionList renders an empty list with empty state message 1`] 
         Object {
           "customRenderer": [Function],
           "flex": 2,
-          "label": "Version name",
+          "label": "",
           "sortKey": "name",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipeline versions found."
+    emptyMessage=""
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}

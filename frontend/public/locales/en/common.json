@@ -138,6 +138,7 @@
   "retry": "Retry",
   "retryRun": "Retry this run?",
   "rocCurve": "ROC Curve",
+  "rowsperpage":"Rows per page",
   "runManuallyTerminated": "Run was manually terminated",
   "runSchedDisabled": "Run schedule already disabled",
   "runSchedEnabled": "Run schedule already enabled",

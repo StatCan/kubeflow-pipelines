@@ -33,6 +33,17 @@ import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ExperimentStorageState } from '../apis/experiment';
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 // Default arguments for Apis.experimentServiceApi.listExperiment.
 const LIST_EXPERIMENT_DEFAULTS = [
   '', // page token

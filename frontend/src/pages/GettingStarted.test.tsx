@@ -64,69 +64,7 @@ describe('GettingStarted page', () => {
     expect(pipelineListSpy.mock.calls).toMatchSnapshot();
     expect(diffHTML({ base, update: container.innerHTML })).toMatchInlineSnapshot(`
       Snapshot Diff:
-      - Expected
-      + Received
-
-      @@ --- --- @@
-            <h2 id="demonstrations-and-tutorials">Demonstrations and Tutorials</h2>
-            <p>This section contains demo and tutorial pipelines.</p>
-            <p><strong>Demos</strong> - Try an end-to-end demonstration pipeline.</p>
-            <ul>
-              <li>
-      -         <a href="#/pipelines" class="link">TFX pipeline demo with Keras</a>
-      +         <a href="#/pipelines/details/pipeline-id-3?" class="link"
-      +           >TFX pipeline demo with Keras</a
-      +         >
-                <ul>
-                  <li>
-                    Classification pipeline based on Keras.
-                    <a
-                      href="https://github.com/kubeflow/pipelines/tree/master/samples/core/iris"
-      @@ --- --- @@
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-      -         <a href="#/pipelines" class="link">TFX pipeline demo with Estimator</a>
-      +         <a href="#/pipelines/details/pipeline-id-2?" class="link"
-      +           >TFX pipeline demo with Estimator</a
-      +         >
-                <ul>
-                  <li>
-                    Classification pipeline with model analysis, based on a public
-                    BigQuery dataset of taxicab trips.
-                    <a
-      @@ --- --- @@
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-      -         <a href="#/pipelines" class="link">XGBoost Pipeline demo</a>
-      +         <a href="#/pipelines/details/pipeline-id-1?" class="link"
-      +           >XGBoost Pipeline demo</a
-      +         >
-                <ul>
-                  <li>
-                    An example of end-to-end distributed training for an XGBoost model.
-                    <a
-                      href="https://github.com/kubeflow/pipelines/tree/master/samples/core/xgboost_training_cm"
-      @@ --- --- @@
-              <strong>Tutorials</strong> - Learn pipeline concepts by following a
-              tutorial.
-            </p>
-            <ul>
-              <li>
-      -         <a href="#/pipelines" class="link">Data passing in python components</a>
-      +         <a href="#/pipelines/details/pipeline-id-4?" class="link"
-      +           >Data passing in python components</a
-      +         >
-                <ul>
-                  <li>
-                    Shows how to pass data between python components.
-                    <a
-                      href="https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/Data%20passing%20in%20python%20components"
+      Compared values have no visual difference.
     `);
   });
 
@@ -155,24 +93,7 @@ describe('GettingStarted page', () => {
     await TestUtils.flushPromises();
     expect(diffHTML({ base, update: container.innerHTML })).toMatchInlineSnapshot(`
       Snapshot Diff:
-      - Expected
-      + Received
-
-      @@ --- --- @@
-              <strong>Tutorials</strong> - Learn pipeline concepts by following a
-              tutorial.
-            </p>
-            <ul>
-              <li>
-      -         <a href="#/pipelines" class="link">Data passing in python components</a>
-      +         <a href="#/pipelines/details/pipeline-id-4?" class="link"
-      +           >Data passing in python components</a
-      +         >
-                <ul>
-                  <li>
-                    Shows how to pass data between python components.
-                    <a
-                      href="https://github.com/kubeflow/pipelines/tree/master/samples/tutorials/Data%20passing%20in%20python%20components"
+      Compared values have no visual difference.
     `);
   });
 });
