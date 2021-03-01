@@ -8,12 +8,12 @@ exports[`ExperimentList loads multiple experiments 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "",
+          "label": "experiments:experimentName",
           "sortKey": "name",
         },
         Object {
           "flex": 2,
-          "label": "",
+          "label": "experiments:description",
         },
       ]
     }
@@ -85,12 +85,12 @@ exports[`ExperimentList loads one experiment 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "",
+          "label": "experiments:experimentName",
           "sortKey": "name",
         },
         Object {
           "flex": 2,
-          "label": "",
+          "label": "experiments:description",
         },
       ]
     }
@@ -137,12 +137,12 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
           Object {
             "customRenderer": [Function],
             "flex": 1,
-            "label": "",
+            "label": "experiments:experimentName",
             "sortKey": "name",
           },
           Object {
             "flex": 2,
-            "label": "",
+            "label": "experiments:description",
           },
         ]
       }
@@ -1196,7 +1196,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
                 "width": "33.33333333333333%",
               }
             }
-            title=""
+            title="experiments:experimentName"
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -1691,6 +1691,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
                             tabIndex="0"
                             title="Sort"
                           >
+                            experiments:experimentName
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-78 MuiTableSortLabel-iconDirectionDesc-79"
                             >
@@ -1749,7 +1750,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
                       tabindex="0"
                       title="Sort"
                     >
-                      
+                      experiments:experimentName
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-78 MuiTableSortLabel-iconDirectionDesc-79"
@@ -1781,7 +1782,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
                 "width": "66.66666666666666%",
               }
             }
-            title=""
+            title="experiments:description"
           >
             <WithStyles(Tooltip)
               enterDelay={300}
@@ -2275,6 +2276,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
                             tabIndex="0"
                             title="Cannot sort by this column"
                           >
+                            experiments:description
                             <pure(ArrowDownward)
                               className="MuiTableSortLabel-icon-78 MuiTableSortLabel-iconDirectionDesc-79"
                             >
@@ -2333,7 +2335,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
                       tabindex="0"
                       title="Cannot sort by this column"
                     >
-                      
+                      experiments:description
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root-59 MuiTableSortLabel-icon-78 MuiTableSortLabel-iconDirectionDesc-79"
@@ -2377,9 +2379,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
         >
           <span
             className=""
-          >
-            rowsperpage
-          </span>
+          />
           <TextField
             InputProps={
               Object {
@@ -3782,12 +3782,12 @@ exports[`ExperimentList renders the empty experience 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "",
+          "label": "experiments:experimentName",
           "sortKey": "name",
         },
         Object {
           "flex": 2,
-          "label": "",
+          "label": "experiments:description",
         },
       ]
     }
@@ -3811,12 +3811,12 @@ exports[`ExperimentList renders the empty experience in ARCHIVED state 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "",
+          "label": "experiments:experimentName",
           "sortKey": "name",
         },
         Object {
           "flex": 2,
-          "label": "",
+          "label": "experiments:description",
         },
       ]
     }

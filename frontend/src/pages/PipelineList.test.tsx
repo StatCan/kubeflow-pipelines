@@ -24,6 +24,7 @@ import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { range } from 'lodash';
 import { ButtonKeys } from '../lib/Buttons';
 
+jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {

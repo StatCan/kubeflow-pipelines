@@ -3158,9 +3158,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
         >
           <span
             className=""
-          >
-            rowsperpage
-          </span>
+          />
           <TextField
             InputProps={
               Object {
@@ -8045,9 +8043,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
         >
           <span
             className=""
-          >
-            rowsperpage
-          </span>
+          />
           <TextField
             InputProps={
               Object {

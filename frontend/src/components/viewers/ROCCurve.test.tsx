@@ -19,6 +19,9 @@ import { shallow } from 'enzyme';
 import { PlotType } from './Viewer';
 import ROCCurve from './ROCCurve';
 
+
+jest.mock("i18next", () => ({ t: jest.fn(), }));
+
 describe('ROCCurve', () => {
   it('does not break on no config', () => {
     const tree = shallow(<ROCCurve configs={[]} />);
@@ -94,7 +97,7 @@ describe('ROCCurve', () => {
   });
 
   it('returns friendly display name', () => {
-    expect(ROCCurve.prototype.getDisplayName()).toBe('rocCurve');
+    expect(ROCCurve.prototype.getDisplayName()).toBe('common:rocCurve');
   });
 
   it('is aggregatable', () => {

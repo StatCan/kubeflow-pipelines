@@ -6,29 +6,29 @@ exports[`GettingStarted page initially renders documentation 1`] = `
     class="page kfp-start-page"
   >
     <p>
-      key1
+      undefined
       <br />
-       key3 
-  key5 
-  key7
+       undefined 
+  undefined 
+  undefined
       <br />
-        key9
+        undefined
       <br />
-        key11
+        undefined
       <br />
-        key13
+        undefined
       <br />
-        key15
+        undefined
       <br />
-        key17
+        undefined
       <br />
-        key19
+        undefined
       <br />
-        key21
+        undefined
       <br />
-        key23
+        undefined
       <br />
-        key25
+        undefined
     </p>
   </div>
 </div>

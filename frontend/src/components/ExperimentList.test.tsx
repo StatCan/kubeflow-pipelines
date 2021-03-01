@@ -27,12 +27,24 @@ import { Apis, ExperimentSortKeys, ListRequest } from '../lib/Apis';
 import { ReactWrapper, ShallowWrapper, shallow } from 'enzyme';
 import { range } from 'lodash';
 
+jest.mock("i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
     Component.defaultProps = { ...Component.defaultProps, t: () => "" };
     return Component;
   }
+}));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
 }));
 class ExperimentListTest extends ExperimentList {
   public _loadExperiments(request: ListRequest): Promise<string> {
@@ -57,7 +69,6 @@ describe('ExperimentList', () => {
       location: { search: '' } as any,
       match: '' as any,
       onError: onErrorSpy,
-      t:{} as any
     };
   }
 
@@ -99,7 +110,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders the empty experience', () => {
-    expect(shallow(<ExperimentList {...generateProps()} />)).toMatchSnapshot();
+    expect(shallow(<ExperimentList  {...generateProps()} />)).toMatchSnapshot();
   });
 
   it('renders the empty experience in ARCHIVED state', () => {

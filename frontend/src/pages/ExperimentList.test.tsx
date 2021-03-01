@@ -33,6 +33,15 @@ import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ExperimentStorageState } from '../apis/experiment';
 
+jest.mock("i18next", () => ({ t: jest.fn(), }));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
+    return Component;
+  },
+}));
+
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   useTranslation: () => {
@@ -113,7 +122,7 @@ describe('ExperimentList', () => {
     listRunsSpy.mockImplementation(() => ({
       runs: range(nRuns).map(i => ({ id: 'test-run-id' + i, name: 'test run name' + i })),
     }));
-    tree = TestUtils.mountWithRouter(<EnhancedExperimentList {...generateProps()} namespace={namespace} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} namespace={namespace} />);
     await listExperimentsSpy;
     await listRunsSpy;
     await TestUtils.flushPromises();
@@ -129,12 +138,12 @@ describe('ExperimentList', () => {
   });
 
   it('renders an empty list with empty state message', () => {
-    tree = shallow(<EnhancedExperimentList {...generateProps()} />);
+    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a list of one experiment', async () => {
-    tree = shallow(<EnhancedExperimentList {...generateProps()} />);
+    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     tree.setState({
       displayExperiments: [
         {
@@ -150,7 +159,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of one experiment with no description', async () => {
-    tree = shallow(<EnhancedExperimentList {...generateProps()} />);
+    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     tree.setState({
       experiments: [
         {
@@ -165,7 +174,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of one experiment with error', async () => {
-    tree = shallow(<EnhancedExperimentList {...generateProps()} />);
+    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     tree.setState({
       experiments: [
         {
@@ -235,7 +244,7 @@ describe('ExperimentList', () => {
 
   it('shows error banner when listing experiments fails', async () => {
     TestUtils.makeErrorResponseOnce(listExperimentsSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<EnhancedExperimentList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     await listExperimentsSpy;
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
@@ -254,7 +263,7 @@ describe('ExperimentList', () => {
 
     listExperimentsSpy.mockImplementationOnce(() => ({ experiments: [{ name: 'exp1' }] }));
     TestUtils.makeErrorResponseOnce(listRunsSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<EnhancedExperimentList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     await listExperimentsSpy;
     await TestUtils.flushPromises();
     expect(tree.state()).toHaveProperty('displayExperiments', [
@@ -267,7 +276,7 @@ describe('ExperimentList', () => {
   });
 
   it('shows error banner when listing experiments fails after refresh', async () => {
-    tree = TestUtils.mountWithRouter(<EnhancedExperimentList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     const instance = tree.instance() as ExperimentList;
     const refreshBtn = instance.getInitialToolbarState().actions[ButtonKeys.REFRESH];
     expect(refreshBtn).toBeDefined();
@@ -287,7 +296,7 @@ describe('ExperimentList', () => {
 
   it('hides error banner when listing experiments fails then succeeds', async () => {
     TestUtils.makeErrorResponseOnce(listExperimentsSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<EnhancedExperimentList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     const instance = tree.instance() as ExperimentList;
     await listExperimentsSpy;
     await TestUtils.flushPromises();
@@ -326,7 +335,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of runs for given experiment', async () => {
-    tree = shallow(<EnhancedExperimentList {...generateProps()} />);
+    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     tree.setState({
       displayExperiments: [{ id: 'experiment1', last5Runs: [{ id: 'run1id' }, { id: 'run2id' }] }],
     });
@@ -335,7 +344,7 @@ describe('ExperimentList', () => {
   });
 
   it('navigates to new experiment page when Create experiment button is clicked', async () => {
-    tree = TestUtils.mountWithRouter(<EnhancedExperimentList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     const createBtn = (tree.instance() as ExperimentList).getInitialToolbarState().actions[
       ButtonKeys.NEW_EXPERIMENT
     ];
@@ -433,7 +442,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders experiment names as links to their details pages', async () => {
-    tree = TestUtils.mountWithRouter(<ExperimentList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key}{...generateProps()} />);
     expect(
       (tree.instance() as ExperimentList)._nameCustomRenderer({
         id: 'experiment-id',
@@ -443,7 +452,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders last 5 runs statuses', async () => {
-    tree = TestUtils.mountWithRouter(<ExperimentList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
     expect(
       (tree.instance() as ExperimentList)._last5RunsCustomRenderer({
         id: 'experiment-id',

@@ -27,68 +27,72 @@ import UnknownIcon from '@material-ui/icons/Help';
 import { color } from '../Css';
 import { logger, formatDateString } from '../lib/Utils';
 import { NodePhase, checkIfTerminated } from '../lib/StatusUtils';
-import i18n from '../i18n';
 
+const i18next = {
+  use: () => {},
+  init: () => {},
+  t: (key: any) => key
+}
 export function statusToIcon(
   status?: NodePhase,
   startDate?: Date | string,
   endDate?: Date | string,
   nodeMessage?: string,
-): JSX.Element {
+  ): JSX.Element {
   status = checkIfTerminated(status, nodeMessage);
   // tslint:disable-next-line:variable-name
   let IconComponent: any = UnknownIcon;
   let iconColor = color.inactive;
-  let title = i18n.t('common:unknownStatus');
+  let title = i18next.t('common:unknownStatus');
   switch (status) {
     case NodePhase.ERROR:
       IconComponent = ErrorIcon;
       iconColor = color.errorText;
-      title = i18n.t('common:errorRunResource');
+      title = i18next.t('common:errorRunResource');
       break;
     case NodePhase.FAILED:
       IconComponent = ErrorIcon;
       iconColor = color.errorText;
-      title = i18n.t('common:executeResourceFailed');
+      title = i18next.t('common:executeResourceFailed');
       break;
     case NodePhase.PENDING:
       IconComponent = PendingIcon;
       iconColor = color.weak;
-      title = i18n.t('common:executePending');
+      title = i18next.t('common:executePending');
       break;
     case NodePhase.RUNNING:
       IconComponent = RunningIcon;
       iconColor = color.blue;
-      title = i18n.t('common:running');
+      title = i18next.t('common:running');
       break;
     case NodePhase.TERMINATING:
       IconComponent = RunningIcon;
       iconColor = color.blue;
-      title = i18n.t('common:runTerminating');
+      title = i18next.t('common:runTerminating');
       break;
     case NodePhase.SKIPPED:
       IconComponent = SkippedIcon;
-      title = i18n.t('common:executionSkipped');
+      title = i18next.t('common:executionSkipped');
       break;
     case NodePhase.SUCCEEDED:
       IconComponent = SuccessIcon;
       iconColor = color.success;
-      title = i18n.t('common:executionSuccess');
+      title = i18next.t('common:executionSuccess');
       break;
     case NodePhase.CACHED: // This is not argo native, only applies to node.
       IconComponent = CachedIcon;
       iconColor = color.success;
-      title = i18n.t('common:executionSkippedCache');
+      title = i18next.t('common:executionSkippedCache');
       break;
     case NodePhase.TERMINATED:
       IconComponent = TerminatedIcon;
       iconColor = color.terminated;
-      title = i18n.t('common:runManuallyTerminated');
+      title = i18next.t('common:runManuallyTerminated');
       break;
     case NodePhase.UNKNOWN:
       break;
     default:
-      logger.verbose(`${i18n.t('common:unknownNodePhase')}:`, status);
+      logger.verbose(`${i18next.t('common:unknownNodePhase')}:`, status);
   }
   return (
     <Tooltip
@@ -96,8 +100,8 @@ export function statusToIcon(
         <div>
           <div>{title}</div>
           {/* These dates may actually be strings, not a Dates due to a bug in swagger's handling of dates */}
-          {startDate && <div>{i18n.t('common:start')}: {formatDateString(startDate)}</div>}
-          {endDate && <div>{i18n.t('common:end')}: {formatDateString(endDate)}</div>}
+          {startDate && <div>{i18next.t('common:start')}: {formatDateString(startDate)}</div>}
+          {endDate && <div>{i18next.t('common:end')}: {formatDateString(endDate)}</div>}
         </div>
       }
     >

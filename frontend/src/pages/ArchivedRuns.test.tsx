@@ -23,6 +23,25 @@ import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 import { Apis } from '../lib/Apis';
 
+jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
+    return Component;
+  },
+}));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 describe('ArchivedRuns', () => {
   const updateBannerSpy = jest.fn();
   const updateToolbarSpy = jest.fn();

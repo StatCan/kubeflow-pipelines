@@ -42,6 +42,14 @@ import RunList from './RunList';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
+export const t = (key: string, params?: any) => {
+  if (key === 'key.with.params') {
+    return `key.with.params.${params.param}`
+  }
+
+  return key
+}
+
 const css = stylesheet({
   outputsRow: {
     marginLeft: 15,
@@ -336,7 +344,7 @@ class Compare extends Page<{t: TFunction}, CompareState> {
 
 const EnhancedCompare: React.FC<PageProps> = props => {
   const namespaceChanged = useNamespaceChangeEvent();
-  const { t, i18n } = useTranslation(['experiments', 'common']);
+  const { t, i18n } = useTranslation(['common','experiments']);
   if (namespaceChanged) {
     // Compare page compares two runs, when namespace changes, the runs don't
     // exist in the new namespace, so we should redirect to experiment list page.

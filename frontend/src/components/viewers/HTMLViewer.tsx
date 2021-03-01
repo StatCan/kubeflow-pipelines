@@ -18,7 +18,13 @@ import * as React from 'react';
 import Viewer, { ViewerConfig } from './Viewer';
 import { color } from '../../Css';
 import { stylesheet } from 'typestyle';
-import i18next from 'i18next';
+
+
+const i18next = {
+  use: () => {},
+  init: () => {},
+  t: (key: any) => key
+}
 
 export interface HTMLViewerConfig extends ViewerConfig {
   htmlContent: string;

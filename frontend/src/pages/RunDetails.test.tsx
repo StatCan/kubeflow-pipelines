@@ -36,6 +36,8 @@ import TestUtils from '../TestUtils';
 import { PageProps } from './Page';
 import EnhancedRunDetails, { RunDetailsInternalProps, TEST_ONLY } from './RunDetails';
 
+
+jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
@@ -275,7 +277,7 @@ describe('RunDetails', () => {
     expect(updateDialogSpy).toHaveBeenCalledTimes(1);
     expect(updateDialogSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        title: 'Retry this run?',
+        title: 'retryRun',
       }),
     );
   });
@@ -412,7 +414,7 @@ describe('RunDetails', () => {
     await TestUtils.flushPromises();
     expect(updateToolbarSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        breadcrumbs: [{ displayName: 'All runs', href: RoutePage.RUNS }],
+        breadcrumbs: [{ displayName: 'allRuns', href: RoutePage.RUNS }],
       }),
     );
   });
@@ -427,7 +429,7 @@ describe('RunDetails', () => {
     expect(updateToolbarSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         breadcrumbs: [
-          { displayName: 'Experiments', href: RoutePage.EXPERIMENTS },
+          { displayName: 'experiments', href: RoutePage.EXPERIMENTS },
           {
             displayName: 'some experiment',
             href: RoutePage.EXPERIMENT_DETAILS.replace(
@@ -456,7 +458,7 @@ describe('RunDetails', () => {
     await TestUtils.flushPromises();
     expect(updateToolbarSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        breadcrumbs: [{ displayName: 'Archive', href: RoutePage.ARCHIVED_RUNS }],
+        breadcrumbs: [{ displayName: 'archive', href: RoutePage.ARCHIVED_RUNS }],
       }),
     );
   });
@@ -485,9 +487,9 @@ describe('RunDetails', () => {
       expect.objectContaining({
         additionalInfo: 'woops',
         message:
-          'Error: failed to retrieve run: ' +
+          ': ' +
           testRun.run!.id +
-          '. Click Details for more information.',
+          'common:clickDetails',
         mode: 'error',
       }),
     );

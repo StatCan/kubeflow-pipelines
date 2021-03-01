@@ -15,7 +15,7 @@
  */
 
 import { ApiTrigger, ApiPeriodicSchedule, ApiCronSchedule } from '../../src/apis/job';
-import '../i18n';
+
 
 
 export enum TriggerType {

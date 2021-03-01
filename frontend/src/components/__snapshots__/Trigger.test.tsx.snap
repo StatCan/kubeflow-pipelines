@@ -3,7 +3,6 @@
 exports[`Trigger enables a single day on click 1`] = `
 <div>
   <Input
-    label="triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -13,19 +12,14 @@ exports[`Trigger enables a single day on click 1`] = `
     <WithStyles(MenuItem)
       key="0"
       value={0}
-    >
-      triggerTypeEnum.periodic
-    </WithStyles(MenuItem)>
+    />
     <WithStyles(MenuItem)
       key="1"
       value={1}
-    >
-      triggerTypeEnum.cron
-    </WithStyles(MenuItem)>
+    />
   </Input>
   <div>
     <Input
-      label="maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -42,7 +36,6 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -53,7 +46,6 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="startDate"
         onChange={[Function]}
         style={
           Object {
@@ -75,7 +67,6 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="startTime"
         onChange={[Function]}
         style={
           Object {
@@ -99,7 +90,6 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -110,7 +100,6 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="endDate"
         onChange={[Function]}
         style={
           Object {
@@ -132,7 +121,6 @@ exports[`Trigger enables a single day on click 1`] = `
             "shrink": true,
           }
         }
-        label="endTime"
         onChange={[Function]}
         style={
           Object {
@@ -156,20 +144,13 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="catchup"
       />
       <HelpButton
         helpText={
           <div>
-            <p>
-              catchupHelpText1
-            </p>
-            <p>
-              catchupHelpText2
-            </p>
-            <p>
-              catchupHelpText3
-            </p>
+            <p />
+            <p />
+            <p />
           </div>
         }
       />
@@ -177,7 +158,6 @@ exports[`Trigger enables a single day on click 1`] = `
     <span
       className="flex"
     >
-      runEvery
       <Separator />
       <Input
         height={30}
@@ -192,31 +172,31 @@ exports[`Trigger enables a single day on click 1`] = `
           key="0"
           value="experiments:periodicIntervalEnum.minute"
         >
-          periodicIntervalEnum.minute
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
           value="experiments:periodicIntervalEnum.hour"
         >
-          periodicIntervalEnum.hour
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
           value="experiments:periodicIntervalEnum.day"
         >
-          periodicIntervalEnum.day
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
           value="experiments:periodicIntervalEnum.week"
         >
-          periodicIntervalEnum.week
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
           value="experiments:periodicIntervalEnum.month"
         >
-          periodicIntervalEnum.month
+          undefined
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -224,7 +204,6 @@ exports[`Trigger enables a single day on click 1`] = `
   <div>
     <div>
       <span>
-        on
         :
       </span>
       <WithStyles(WithFormControlContext(FormControlLabel))
@@ -235,7 +214,6 @@ exports[`Trigger enables a single day on click 1`] = `
             onClick={[Function]}
           />
         }
-        label="all"
       />
       <Separator />
       <WithStyles(Button)
@@ -315,13 +293,10 @@ exports[`Trigger enables a single day on click 1`] = `
         }
         label={
           <span>
-            editingCronExpression
              
             <a
               href="https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format"
-            >
-              here
-            </a>
+            />
             )
           </span>
         }
@@ -329,15 +304,12 @@ exports[`Trigger enables a single day on click 1`] = `
     </div>
     <Input
       disabled={true}
-      label="cronExpression"
       onChange={[Function]}
       value="0 0 0 ? * 0,2,4,5,6"
       variant="outlined"
       width={300}
     />
-    <div>
-      noteStartEndDateCron
-    </div>
+    <div />
   </div>
 </div>
 `;
@@ -345,7 +317,6 @@ exports[`Trigger enables a single day on click 1`] = `
 exports[`Trigger renders all week days enabled 1`] = `
 <div>
   <Input
-    label="triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -355,19 +326,14 @@ exports[`Trigger renders all week days enabled 1`] = `
     <WithStyles(MenuItem)
       key="0"
       value={0}
-    >
-      triggerTypeEnum.periodic
-    </WithStyles(MenuItem)>
+    />
     <WithStyles(MenuItem)
       key="1"
       value={1}
-    >
-      triggerTypeEnum.cron
-    </WithStyles(MenuItem)>
+    />
   </Input>
   <div>
     <Input
-      label="maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -384,7 +350,6 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -395,7 +360,6 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="startDate"
         onChange={[Function]}
         style={
           Object {
@@ -417,7 +381,6 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="startTime"
         onChange={[Function]}
         style={
           Object {
@@ -441,7 +404,6 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -452,7 +414,6 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="endDate"
         onChange={[Function]}
         style={
           Object {
@@ -474,7 +435,6 @@ exports[`Trigger renders all week days enabled 1`] = `
             "shrink": true,
           }
         }
-        label="endTime"
         onChange={[Function]}
         style={
           Object {
@@ -498,20 +458,13 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="catchup"
       />
       <HelpButton
         helpText={
           <div>
-            <p>
-              catchupHelpText1
-            </p>
-            <p>
-              catchupHelpText2
-            </p>
-            <p>
-              catchupHelpText3
-            </p>
+            <p />
+            <p />
+            <p />
           </div>
         }
       />
@@ -519,7 +472,6 @@ exports[`Trigger renders all week days enabled 1`] = `
     <span
       className="flex"
     >
-      runEvery
       <Separator />
       <Input
         height={30}
@@ -534,31 +486,31 @@ exports[`Trigger renders all week days enabled 1`] = `
           key="0"
           value="experiments:periodicIntervalEnum.minute"
         >
-          periodicIntervalEnum.minute
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
           value="experiments:periodicIntervalEnum.hour"
         >
-          periodicIntervalEnum.hour
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
           value="experiments:periodicIntervalEnum.day"
         >
-          periodicIntervalEnum.day
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
           value="experiments:periodicIntervalEnum.week"
         >
-          periodicIntervalEnum.week
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
           value="experiments:periodicIntervalEnum.month"
         >
-          periodicIntervalEnum.month
+          undefined
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -566,7 +518,6 @@ exports[`Trigger renders all week days enabled 1`] = `
   <div>
     <div>
       <span>
-        on
         :
       </span>
       <WithStyles(WithFormControlContext(FormControlLabel))
@@ -577,7 +528,6 @@ exports[`Trigger renders all week days enabled 1`] = `
             onClick={[Function]}
           />
         }
-        label="all"
       />
       <Separator />
       <WithStyles(Button)
@@ -657,13 +607,10 @@ exports[`Trigger renders all week days enabled 1`] = `
         }
         label={
           <span>
-            editingCronExpression
              
             <a
               href="https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format"
-            >
-              here
-            </a>
+            />
             )
           </span>
         }
@@ -671,15 +618,12 @@ exports[`Trigger renders all week days enabled 1`] = `
     </div>
     <Input
       disabled={true}
-      label="cronExpression"
       onChange={[Function]}
       value="0 0 0 ? *"
       variant="outlined"
       width={300}
     />
-    <div>
-      noteStartEndDateCron
-    </div>
+    <div />
   </div>
 </div>
 `;
@@ -687,7 +631,6 @@ exports[`Trigger renders all week days enabled 1`] = `
 exports[`Trigger renders periodic schedule controls for initial render 1`] = `
 <div>
   <Input
-    label="triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -697,19 +640,14 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
     <WithStyles(MenuItem)
       key="0"
       value={0}
-    >
-      triggerTypeEnum.periodic
-    </WithStyles(MenuItem)>
+    />
     <WithStyles(MenuItem)
       key="1"
       value={1}
-    >
-      triggerTypeEnum.cron
-    </WithStyles(MenuItem)>
+    />
   </Input>
   <div>
     <Input
-      label="maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -726,7 +664,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             onClick={[Function]}
           />
         }
-        label="hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -737,7 +674,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="startDate"
         onChange={[Function]}
         style={
           Object {
@@ -759,7 +695,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="startTime"
         onChange={[Function]}
         style={
           Object {
@@ -783,7 +718,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             onClick={[Function]}
           />
         }
-        label="hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -794,7 +728,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="endDate"
         onChange={[Function]}
         style={
           Object {
@@ -816,7 +749,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             "shrink": true,
           }
         }
-        label="endTime"
         onChange={[Function]}
         style={
           Object {
@@ -840,20 +772,13 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
             onClick={[Function]}
           />
         }
-        label="catchup"
       />
       <HelpButton
         helpText={
           <div>
-            <p>
-              catchupHelpText1
-            </p>
-            <p>
-              catchupHelpText2
-            </p>
-            <p>
-              catchupHelpText3
-            </p>
+            <p />
+            <p />
+            <p />
           </div>
         }
       />
@@ -861,7 +786,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
     <span
       className="flex"
     >
-      runEvery
       <div
         className="flex"
       >
@@ -891,31 +815,31 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
           key="0"
           value="experiments:periodicIntervalEnum.minute"
         >
-          periodicIntervalEnum.minutes
+          undefineds
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
           value="experiments:periodicIntervalEnum.hour"
         >
-          periodicIntervalEnum.hours
+          undefineds
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
           value="experiments:periodicIntervalEnum.day"
         >
-          periodicIntervalEnum.days
+          undefineds
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
           value="experiments:periodicIntervalEnum.week"
         >
-          periodicIntervalEnum.weeks
+          undefineds
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
           value="experiments:periodicIntervalEnum.month"
         >
-          periodicIntervalEnum.months
+          undefineds
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -926,7 +850,6 @@ exports[`Trigger renders periodic schedule controls for initial render 1`] = `
 exports[`Trigger renders periodic schedule controls if the trigger type is CRON 1`] = `
 <div>
   <Input
-    label="triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -936,19 +859,14 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
     <WithStyles(MenuItem)
       key="0"
       value={0}
-    >
-      triggerTypeEnum.periodic
-    </WithStyles(MenuItem)>
+    />
     <WithStyles(MenuItem)
       key="1"
       value={1}
-    >
-      triggerTypeEnum.cron
-    </WithStyles(MenuItem)>
+    />
   </Input>
   <div>
     <Input
-      label="maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -965,7 +883,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             onClick={[Function]}
           />
         }
-        label="hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -976,7 +893,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="startDate"
         onChange={[Function]}
         style={
           Object {
@@ -998,7 +914,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="startTime"
         onChange={[Function]}
         style={
           Object {
@@ -1022,7 +937,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             onClick={[Function]}
           />
         }
-        label="hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -1033,7 +947,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="endDate"
         onChange={[Function]}
         style={
           Object {
@@ -1055,7 +968,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             "shrink": true,
           }
         }
-        label="endTime"
         onChange={[Function]}
         style={
           Object {
@@ -1079,20 +991,13 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
             onClick={[Function]}
           />
         }
-        label="catchup"
       />
       <HelpButton
         helpText={
           <div>
-            <p>
-              catchupHelpText1
-            </p>
-            <p>
-              catchupHelpText2
-            </p>
-            <p>
-              catchupHelpText3
-            </p>
+            <p />
+            <p />
+            <p />
           </div>
         }
       />
@@ -1100,7 +1005,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
     <span
       className="flex"
     >
-      runEvery
       <Separator />
       <Input
         height={30}
@@ -1115,31 +1019,31 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
           key="0"
           value="experiments:periodicIntervalEnum.minute"
         >
-          periodicIntervalEnum.minute
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
           value="experiments:periodicIntervalEnum.hour"
         >
-          periodicIntervalEnum.hour
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
           value="experiments:periodicIntervalEnum.day"
         >
-          periodicIntervalEnum.day
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
           value="experiments:periodicIntervalEnum.week"
         >
-          periodicIntervalEnum.week
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
           value="experiments:periodicIntervalEnum.month"
         >
-          periodicIntervalEnum.month
+          undefined
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -1158,13 +1062,10 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
         }
         label={
           <span>
-            editingCronExpression
              
             <a
               href="https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format"
-            >
-              here
-            </a>
+            />
             )
           </span>
         }
@@ -1172,15 +1073,12 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
     </div>
     <Input
       disabled={true}
-      label="cronExpression"
       onChange={[Function]}
       value="0 * * * * ?"
       variant="outlined"
       width={300}
     />
-    <div>
-      noteStartEndDateCron
-    </div>
+    <div />
   </div>
 </div>
 `;
@@ -1188,7 +1086,6 @@ exports[`Trigger renders periodic schedule controls if the trigger type is CRON 
 exports[`Trigger renders week days if the trigger type is CRON and interval is weekly 1`] = `
 <div>
   <Input
-    label="triggerType"
     onChange={[Function]}
     required={true}
     select={true}
@@ -1198,19 +1095,14 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
     <WithStyles(MenuItem)
       key="0"
       value={0}
-    >
-      triggerTypeEnum.periodic
-    </WithStyles(MenuItem)>
+    />
     <WithStyles(MenuItem)
       key="1"
       value={1}
-    >
-      triggerTypeEnum.cron
-    </WithStyles(MenuItem)>
+    />
   </Input>
   <div>
     <Input
-      label="maxConcurrentRuns"
       onChange={[Function]}
       required={true}
       value="10"
@@ -1227,7 +1119,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="hasStartDate"
       />
       <Input
         InputLabelProps={
@@ -1238,7 +1129,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="startDate"
         onChange={[Function]}
         style={
           Object {
@@ -1260,7 +1150,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="startTime"
         onChange={[Function]}
         style={
           Object {
@@ -1284,7 +1173,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="hasEndDate"
       />
       <Input
         InputLabelProps={
@@ -1295,7 +1183,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="endDate"
         onChange={[Function]}
         style={
           Object {
@@ -1317,7 +1204,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             "shrink": true,
           }
         }
-        label="endTime"
         onChange={[Function]}
         style={
           Object {
@@ -1341,20 +1227,13 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="catchup"
       />
       <HelpButton
         helpText={
           <div>
-            <p>
-              catchupHelpText1
-            </p>
-            <p>
-              catchupHelpText2
-            </p>
-            <p>
-              catchupHelpText3
-            </p>
+            <p />
+            <p />
+            <p />
           </div>
         }
       />
@@ -1362,7 +1241,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
     <span
       className="flex"
     >
-      runEvery
       <Separator />
       <Input
         height={30}
@@ -1377,31 +1255,31 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
           key="0"
           value="experiments:periodicIntervalEnum.minute"
         >
-          periodicIntervalEnum.minute
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="1"
           value="experiments:periodicIntervalEnum.hour"
         >
-          periodicIntervalEnum.hour
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="2"
           value="experiments:periodicIntervalEnum.day"
         >
-          periodicIntervalEnum.day
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="3"
           value="experiments:periodicIntervalEnum.week"
         >
-          periodicIntervalEnum.week
+          undefined
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
           key="4"
           value="experiments:periodicIntervalEnum.month"
         >
-          periodicIntervalEnum.month
+          undefined
         </WithStyles(MenuItem)>
       </Input>
     </span>
@@ -1409,7 +1287,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
   <div>
     <div>
       <span>
-        on
         :
       </span>
       <WithStyles(WithFormControlContext(FormControlLabel))
@@ -1420,7 +1297,6 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
             onClick={[Function]}
           />
         }
-        label="all"
       />
       <Separator />
       <WithStyles(Button)
@@ -1500,13 +1376,10 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
         }
         label={
           <span>
-            editingCronExpression
              
             <a
               href="https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format"
-            >
-              here
-            </a>
+            />
             )
           </span>
         }
@@ -1514,15 +1387,12 @@ exports[`Trigger renders week days if the trigger type is CRON and interval is w
     </div>
     <Input
       disabled={true}
-      label="cronExpression"
       onChange={[Function]}
       value="0 0 0 ? * *"
       variant="outlined"
       width={300}
     />
-    <div>
-      noteStartEndDateCron
-    </div>
+    <div />
   </div>
 </div>
 `;

@@ -28,6 +28,8 @@ import { graphlib } from 'dagre';
 import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 
+jest.mock("i18next", () => ({ t: jest.fn(), }));
+
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
@@ -142,7 +144,7 @@ describe('PipelineDetails', () => {
 
   it('shows empty pipeline details with no graph', async () => {
     TestUtils.makeErrorResponseOnce(createGraphSpy, 'bad graph');
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     expect(tree).toMatchSnapshot();

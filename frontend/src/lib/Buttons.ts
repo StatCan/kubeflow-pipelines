@@ -23,7 +23,7 @@ import { PageProps } from '../pages/Page';
 import { Apis } from './Apis';
 import { URLParser } from './URLParser';
 import { errorToMessage, s } from './Utils';
-import i18n from '../i18n';
+import i18next from 'i18next';
 
 export enum ButtonKeys {
   ARCHIVE = 'archive',
@@ -76,10 +76,10 @@ export default class Buttons {
           ? this._archiveRun(getSelectedIds(), useCurrentResource, callback)
           : this._archiveExperiments(getSelectedIds(), useCurrentResource, callback),
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : i18n.t('common:selectResourceArchive'),
+      disabledTitle: useCurrentResource ? undefined : i18next.t('common:selectResourceArchive'),
       id: 'archiveBtn',
-      title: i18n.t('common:archive'),
-      tooltip: i18n.t('common:archive'),
+      title: i18next.t('common:archive'),
+      tooltip: i18next.t('common:archive'),
     };
     return this;
   }
@@ -88,11 +88,11 @@ export default class Buttons {
     this._map[ButtonKeys.CLONE_RUN] = {
       action: () => this._cloneRun(getSelectedIds()),
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : i18n.t('common:selectRunClone'),
+      disabledTitle: useCurrentResource ? undefined : i18next.t('common:selectRunClone'),
       id: 'cloneBtn',
       style: { minWidth: 100 },
-      title: i18n.t('common:cloneRun'),
-      tooltip: i18n.t('common:copyRunInitialState'),
+      title: i18next.t('common:cloneRun'),
+      tooltip: i18next.t('common:copyRunInitialState'),
     };
     return this;
   }
@@ -101,10 +101,10 @@ export default class Buttons {
     this._map[ButtonKeys.CLONE_RECURRING_RUN] = {
       action: () => this._cloneRun(getSelectedIds(), true),
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : i18n.t('common:selectRecurRunClone'),
+      disabledTitle: useCurrentResource ? undefined : i18next.t('common:selectRecurRunClone'),
       id: 'cloneBtn',
-      title: i18n.t('common:cloneRecurRun'),
-      tooltip: i18n.t('common:copyRunInitialState'),
+      title: i18next.t('common:cloneRecurRun'),
+      tooltip: i18next.t('common:copyRunInitialState'),
     };
     return this;
   }
@@ -117,10 +117,10 @@ export default class Buttons {
     this._map[ButtonKeys.RETRY] = {
       action: () => this._retryRun(getSelectedIds(), useCurrentResource, callback),
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : i18n.t('common:selectResourceRetry'),
+      disabledTitle: useCurrentResource ? undefined : i18next.t('common:selectResourceRetry'),
       id: 'retryBtn',
-      title: i18n.t('common:retry'),
-      tooltip: i18n.t('common:retry'),
+      title: i18next.t('common:retry'),
+      tooltip: i18next.t('common:retry'),
     };
     return this;
   }
@@ -130,8 +130,8 @@ export default class Buttons {
       action,
       icon: CollapseIcon,
       id: 'collapseBtn',
-      title: i18n.t('common:collapseAll'),
-      tooltip: i18n.t('common:collapseAllSec'),
+      title: i18next.t('common:collapseAll'),
+      tooltip: i18next.t('common:collapseAllSec'),
     };
     return this;
   }
@@ -140,11 +140,11 @@ export default class Buttons {
     this._map[ButtonKeys.COMPARE] = {
       action: () => this._compareRuns(getSelectedIds()),
       disabled: true,
-      disabledTitle: i18n.t('common:selectRunsCompare'),
+      disabledTitle: i18next.t('common:selectRunsCompare'),
       id: 'compareBtn',
       style: { minWidth: 125 },
-      title: i18n.t('common:compareRuns'),
-      tooltip: i18n.t('common:compareUpToTenRuns'),
+      title: i18next.t('common:compareRuns'),
+      tooltip: i18next.t('common:compareUpToTenRuns'),
     };
     return this;
   }
@@ -169,10 +169,10 @@ export default class Buttons {
       disabled: !useCurrentResource,
       disabledTitle: useCurrentResource
         ? undefined
-        : `${i18n.t('common:selectOne')} ${resourceName} ${i18n.t('common:toDelete')}`,
+        : `${i18next.t('common:selectOne')} ${resourceName} ${i18next.t('common:toDelete')}`,
       id: 'deleteBtn',
-      title: i18n.t('common:delete'),
-      tooltip: i18n.t('common:delete'),
+      title: i18next.t('common:delete'),
+      tooltip: i18next.t('common:delete'),
     };
     return this;
   }
@@ -193,10 +193,10 @@ export default class Buttons {
         );
       },
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : `${i18n.t('common:selectPipelineDelete')}`,
+      disabledTitle: useCurrentResource ? undefined : `${i18next.t('common:selectPipelineDelete')}`,
       id: 'deletePipelinesAndPipelineVersionsBtn',
-      title: i18n.t('common:delete'),
-      tooltip: i18n.t('common:delete'),
+      title: i18next.t('common:delete'),
+      tooltip: i18next.t('common:delete'),
     };
     return this;
   }
@@ -205,10 +205,10 @@ export default class Buttons {
     this._map[ButtonKeys.DISABLE_RECURRING_RUN] = {
       action: () => this._setRecurringRunEnabledState(getId(), false),
       disabled: true,
-      disabledTitle: i18n.t('common:runSchedDisabled'),
+      disabledTitle: i18next.t('common:runSchedDisabled'),
       id: 'disableBtn',
-      title: i18n.t('common:disable'),
-      tooltip: i18n.t('common:disableRunsTrigger'),
+      title: i18next.t('common:disable'),
+      tooltip: i18next.t('common:disableRunsTrigger'),
     };
     return this;
   }
@@ -217,10 +217,10 @@ export default class Buttons {
     this._map[ButtonKeys.ENABLE_RECURRING_RUN] = {
       action: () => this._setRecurringRunEnabledState(getId(), true),
       disabled: true,
-      disabledTitle: i18n.t('common:runSchedEnabled'),
+      disabledTitle: i18next.t('common:runSchedEnabled'),
       id: 'enableBtn',
-      title: i18n.t('common:enable'),
-      tooltip: i18n.t('common:enableRunsTrigger'),
+      title: i18next.t('common:enable'),
+      tooltip: i18next.t('common:enableRunsTrigger'),
     };
     return this;
   }
@@ -230,8 +230,8 @@ export default class Buttons {
       action,
       icon: ExpandIcon,
       id: 'expandBtn',
-      title: i18n.t('common:expandAll'),
-      tooltip: i18n.t('common:expandAllSections'),
+      title: i18next.t('common:expandAll'),
+      tooltip: i18next.t('common:expandAllSections'),
     };
     return this;
   }
@@ -243,8 +243,8 @@ export default class Buttons {
       id: 'newExperimentBtn',
       outlined: true,
       style: { minWidth: 185 },
-      title: i18n.t('common:createExperiment'),
-      tooltip: i18n.t('common:createNewExperiment'),
+      title: i18next.t('common:createExperiment'),
+      tooltip: i18next.t('common:createNewExperiment'),
     };
     return this;
   }
@@ -257,8 +257,8 @@ export default class Buttons {
       outlined: true,
       primary: true,
       style: { minWidth: 130 },
-      title: i18n.t('common:createRun'),
-      tooltip: i18n.t('common:createNewRun'),
+      title: i18next.t('common:createRun'),
+      tooltip: i18next.t('common:createNewRun'),
     };
     return this;
   }
@@ -274,8 +274,8 @@ export default class Buttons {
       outlined: true,
       primary: true,
       style: { minWidth: 130 },
-      title: i18n.t('common:createRun'),
-      tooltip: i18n.t('common:createNewRun'),
+      title: i18next.t('common:createRun'),
+      tooltip: i18next.t('common:createNewRun'),
     };
     return this;
   }
@@ -287,8 +287,8 @@ export default class Buttons {
       id: 'createNewRecurringRunBtn',
       outlined: true,
       style: { minWidth: 195 },
-      title: i18n.t('common:createRecurRun'),
-      tooltip: i18n.t('common:createNewRecurRun'),
+      title: i18next.t('common:createRecurRun'),
+      tooltip: i18next.t('common:createNewRecurRun'),
     };
     return this;
   }
@@ -301,7 +301,7 @@ export default class Buttons {
       outlined: true,
       style: { minWidth: 160 },
       title: label,
-      tooltip: i18n.t('common:uploadPipelineVersion'),
+      tooltip: i18next.t('common:uploadPipelineVersion'),
     };
     return this;
   }
@@ -310,8 +310,8 @@ export default class Buttons {
     this._map[ButtonKeys.REFRESH] = {
       action,
       id: 'refreshBtn',
-      title: i18n.t('common:refresh'),
-      tooltip: i18n.t('common:refreshList'),
+      title: i18next.t('common:refresh'),
+      tooltip: i18next.t('common:refreshList'),
     };
     return this;
   }
@@ -328,10 +328,10 @@ export default class Buttons {
           ? this._restore(getSelectedIds(), useCurrentResource, callback)
           : this._restoreExperiments(getSelectedIds(), useCurrentResource, callback),
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : i18n.t('common:selectResourceRestore'),
+      disabledTitle: useCurrentResource ? undefined : i18next.t('common:selectResourceRestore'),
       id: 'restoreBtn',
-      title: i18n.t('common:restore'),
-      tooltip: i18n.t('common:restore'),
+      title: i18next.t('common:restore'),
+      tooltip: i18next.t('common:restore'),
     };
     return this;
   }
@@ -344,10 +344,10 @@ export default class Buttons {
     this._map[ButtonKeys.TERMINATE_RUN] = {
       action: () => this._terminateRun(getSelectedIds(), useCurrentResource, callback),
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : i18n.t('common:selectRunTerminate'),
+      disabledTitle: useCurrentResource ? undefined : i18next.t('common:selectRunTerminate'),
       id: 'terminateRunBtn',
-      title: i18n.t('common:terminate'),
-      tooltip: i18n.t('common:terminateRun'),
+      title: i18next.t('common:terminate'),
+      tooltip: i18next.t('common:terminateRun'),
     };
     return this;
   }
@@ -359,8 +359,8 @@ export default class Buttons {
       id: 'uploadBtn',
       outlined: true,
       style: { minWidth: 160 },
-      title: i18n.t('common:uploadPipeline'),
-      tooltip: i18n.t('common:uploadPipeline'),
+      title: i18next.t('common:uploadPipeline'),
+      tooltip: i18next.t('common:uploadPipeline'),
     };
     return this;
   }
@@ -389,11 +389,11 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      i18n.t('common:retryRun'),
+      i18next.t('common:retryRun'),
       useCurrent,
       id => Apis.runServiceApi.retryRun(id),
       callback,
-      i18n.t('common:retry'),
+      i18next.t('common:retry'),
       'run',
     );
   }
@@ -405,16 +405,16 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      ` ${i18n.t('experiments:runs')} ${s(selectedIds)} ${i18n.t('executions:archiveRun')} ` +
+      ` ${i18next.t('experiments:runs')} ${s(selectedIds)} ${i18next.t('executions:archiveRun')} ` +
         `${
-          selectedIds.length === 1 ? i18n.t('experiments:its'):i18n.t('experiments:their')
-        } ${i18n.t('executions:runArchiveText')}` +
-        `${i18n.t('executions:runArchiveTextSuite')} ` +
-        `${i18n.t('experiments:runs')}${s(selectedIds)} ${i18n.t('experiments:to')} ${selectedIds.length === 1 ? i18n.t('experiments:its'):i18n.t('experiments:their')} ${i18n.t('experiments:originalLocation')}`,
+          selectedIds.length === 1 ? i18next.t('experiments:its'):i18next.t('experiments:their')
+        } ${i18next.t('executions:runArchiveText')}` +
+        `${i18next.t('executions:runArchiveTextSuite')} ` +
+        `${i18next.t('experiments:runs')}${s(selectedIds)} ${i18next.t('experiments:to')} ${selectedIds.length === 1 ? i18next.t('experiments:its'):i18next.t('experiments:their')} ${i18next.t('experiments:originalLocation')}`,
       useCurrent,
       id => Apis.runServiceApi.archiveRun(id),
       callback,
-      i18n.t('common:archive'),
+      i18next.t('common:archive'),
       'run',
     );
   }
@@ -426,13 +426,13 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `${i18n.t('executions:restore')} ${
-        selectedIds.length === 1 ? i18n.t('executions:thisRunToIts'):i18n.t('executions:theseRunsToTheir')
-      } ${i18n.t('executions:originalLocation')}`,
+      `${i18next.t('executions:restore')} ${
+        selectedIds.length === 1 ? i18next.t('executions:thisRunToIts'):i18next.t('executions:theseRunsToTheir')
+      } ${i18next.t('executions:originalLocation')}`,
       useCurrent,
       id => Apis.runServiceApi.unarchiveRun(id),
       callback,
-      i18n.t('common:restore'),
+      i18next.t('common:restore'),
       'run',
     );
   }
@@ -445,19 +445,19 @@ export default class Buttons {
     this._dialogActionHandler(
       selectedIds,
       
-      `${i18n.t('executions:restore')}${
-        selectedIds.length === 1 ? i18n.t('experiments:thisExperimentToIts') : i18n.t('experiments:thisExperimentToTheir') 
-      } ${i18n.t('experiments:RestoreExperimentText')}${
-        selectedIds.length === 1 ? i18n.t('experiments:thisxperiment') : i18n.t('experiments:theseExperiments')
-      } ${i18n.t('experiments:ExperimentTextsuite')} ${
-        selectedIds.length === 1 ? i18n.t('experiments:thisxperiment'): i18n.t('experiments:theseExperiments')
-      } ${i18n.t('experiments:WillbeMovedTo')}${selectedIds.length === 1 ? i18n.t('experiments:its') : i18n.t('experiments:their')} ${i18n.t('experiments:originalLocation')}${s(
+      `${i18next.t('executions:restore')}${
+        selectedIds.length === 1 ? i18next.t('experiments:thisExperimentToIts') : i18next.t('experiments:thisExperimentToTheir') 
+      } ${i18next.t('experiments:RestoreExperimentText')}${
+        selectedIds.length === 1 ? i18next.t('experiments:thisxperiment') : i18next.t('experiments:theseExperiments')
+      } ${i18next.t('experiments:ExperimentTextsuite')} ${
+        selectedIds.length === 1 ? i18next.t('experiments:thisxperiment'): i18next.t('experiments:theseExperiments')
+      } ${i18next.t('experiments:WillbeMovedTo')}${selectedIds.length === 1 ? i18next.t('experiments:its') : i18next.t('experiments:their')} ${i18next.t('experiments:originalLocation')}${s(
         selectedIds,
       )}.`,
       useCurrent,
       id => Apis.experimentServiceApi.unarchiveExperiment(id),
       callback,
-      i18n.t('common:restore'),
+      i18next.t('common:restore'),
       'experiment',
     );
   }
@@ -469,13 +469,13 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `${i18n.t('pipelines:deletePipeline')} ${
-        selectedIds.length === 1 ? i18n.t('pipelines:thisPipeline') :i18n.t('pipelines:thesePipelines') 
-      }${i18n.t('pipelines:cannotBeDone')} `,
+      `${i18next.t('pipelines:deletePipeline')} ${
+        selectedIds.length === 1 ? i18next.t('pipelines:thisPipeline') :i18next.t('pipelines:thesePipelines') 
+      }${i18next.t('pipelines:cannotBeDone')} `,
       useCurrentResource,
       id => Apis.pipelineServiceApi.deletePipeline(id),
       callback,
-      i18n.t('common:delete'),
+      i18next.t('common:delete'),
       'pipeline',
     );
   }
@@ -487,13 +487,13 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `${i18n.t('pipelines:deletePipeline')} ${
-        selectedIds.length === 1 ? i18n.t('pipelines:thisPipelineVersion')  : i18n.t('pipelines:thesePipelinesVersion') 
-      }${i18n.t('pipelines:cannotBeDone')} `,
+      `${i18next.t('pipelines:deletePipeline')} ${
+        selectedIds.length === 1 ? i18next.t('pipelines:thisPipelineVersion')  : i18next.t('pipelines:thesePipelinesVersion') 
+      }${i18next.t('pipelines:cannotBeDone')} `,
       useCurrentResource,
       id => Apis.pipelineServiceApi.deletePipelineVersion(id),
       callback,
-      i18n.t('common:delete'),
+      i18next.t('common:delete'),
       'pipeline version',
     );
   }
@@ -505,11 +505,11 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       [id],
-      i18n.t('common:terminateRecurRunConfig'),
+      i18next.t('common:terminateRecurRunConfig'),
       useCurrentResource,
       jobId => Apis.jobServiceApi.deleteJob(jobId),
       callback,
-      i18n.t('common:delete'),
+      i18next.t('common:delete'),
       'recurring run config',
     );
   }
@@ -521,11 +521,11 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       ids,
-      i18n.t('pipelines:terminateRun') + i18n.t('pipelines:terminateRunSuite'),
+      i18next.t('pipelines:terminateRun') + i18next.t('pipelines:terminateRunSuite'),
       useCurrentResource,
       id => Apis.runServiceApi.terminateRun(id),
       callback,
-      i18n.t('common:terminate'),
+      i18next.t('common:terminate'),
       'run',
     );
   }
@@ -537,11 +537,11 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       ids,
-      i18n.t('common:deleteSelectedRuns'),
+      i18next.t('common:deleteSelectedRuns'),
       useCurrentResource,
       id => Apis.runServiceApi.deleteRun(id),
       callback,
-      i18n.t('common:delete'),
+      i18next.t('common:delete'),
       'run',
     );
   }
@@ -570,7 +570,7 @@ export default class Buttons {
       buttons: [
         {
           onClick: async () => await dialogClosedHandler(false),
-          text: i18n.t('common:cancel'),
+          text: i18next.t('common:cancel'),
         },
         {
           onClick: async () => await dialogClosedHandler(true),
@@ -605,9 +605,9 @@ export default class Buttons {
             unsuccessfulIds.push(id);
             const errorMessage = await errorToMessage(err);
             errorMessages.push(
-              `${i18n.t(
+              `${i18next.t(
                 'common:failedTo',
-              )} ${actionName.toLowerCase()} ${resourceName}: ${id} ${i18n.t(
+              )} ${actionName.toLowerCase()} ${resourceName}: ${id} ${i18next.t(
                 'common:withError',
               )}: "${errorMessage}"`,
             );
@@ -618,8 +618,8 @@ export default class Buttons {
       const successfulOps = selectedIds.length - unsuccessfulIds.length;
       if (successfulOps > 0) {
         this._props.updateSnackbar({
-          message: `${actionName} ${i18n.t('common:succeededFor')} ${
-            useCurrentResource ? i18n.t('common:this') : successfulOps
+          message: `${actionName} ${i18next.t('common:succeededFor')} ${
+            useCurrentResource ? i18next.t('common:this') : successfulOps
           } ${resourceName}${useCurrentResource ? '' : s(successfulOps)}`,
           open: true,
         });
@@ -630,9 +630,9 @@ export default class Buttons {
 
       if (unsuccessfulIds.length > 0) {
         this._props.updateDialog({
-          buttons: [{ text: i18n.t('common:dismiss') }],
+          buttons: [{ text: i18next.t('common:dismiss') }],
           content: errorMessages.join('\n\n'),
-          title: `${i18n.t('common:failedTo')} ${actionName.toLowerCase()} ${
+          title: `${i18next.t('common:failedTo')} ${actionName.toLowerCase()} ${
             useCurrentResource ? '' : unsuccessfulIds.length + ' '
           }${resourceName}${useCurrentResource ? '' : s(unsuccessfulIds)}`,
         });
@@ -702,11 +702,11 @@ export default class Buttons {
       } catch (err) {
         const errorMessage = await errorToMessage(err);
         this._props.updateDialog({
-          buttons: [{ text: i18n.t('common:dismiss') }],
+          buttons: [{ text: i18next.t('common:dismiss') }],
           content: errorMessage,
-          title: `${i18n.t('common:failedTo')} ${
-            enabled ? i18n.t('common:enable') : i18n.t('common:disable')
-          } ${i18n.t('common:recurringRun')}`,
+          title: `${i18next.t('common:failedTo')} ${
+            enabled ? i18next.t('common:enable') : i18next.t('common:disable')
+          } ${i18next.t('common:recurringRun')}`,
         });
       } finally {
         toolbarActions[buttonKey].busy = false;
@@ -732,13 +732,13 @@ export default class Buttons {
     const numVersionIds = this._deepCountDictionary(selectedVersionIds);
     const pipelineMessage = this._nouns(
       selectedIds.length,
-      `${i18n.t('common:pipeline')}`,
-      `${i18n.t('common:pipelines')}`,
+      `${i18next.t('common:pipeline')}`,
+      `${i18next.t('common:pipelines')}`,
     );
     const pipelineVersionMessage = this._nouns(
       numVersionIds,
-      `${i18n.t('common:pipelineVersion')}`,
-      `${i18n.t('common:pipelineVersions')}`,
+      `${i18next.t('common:pipelineVersion')}`,
+      `${i18next.t('common:pipelineVersions')}`,
     );
     const andMessage = pipelineMessage !== `` && pipelineVersionMessage !== `` ? ` and ` : ``;
     this._props.updateDialog({
@@ -751,7 +751,7 @@ export default class Buttons {
               selectedVersionIds,
               callback,
             ),
-          text: i18n.t('common:cancel'),
+          text: i18next.t('common:cancel'),
         },
         {
           onClick: async () =>
@@ -761,7 +761,7 @@ export default class Buttons {
               selectedVersionIds,
               callback,
             ),
-          text: i18n.t('common:delete'),
+          text: i18next.t('common:delete'),
         },
       ],
       onClose: async () =>
@@ -772,7 +772,7 @@ export default class Buttons {
           callback,
         ),
       title:
-        `${i18n.t('common:delete')} ` + pipelineMessage + andMessage + pipelineVersionMessage + `?`,
+        `${i18next.t('common:delete')} ` + pipelineMessage + andMessage + pipelineVersionMessage + `?`,
     });
   }
 
@@ -802,7 +802,7 @@ export default class Buttons {
           succeededfulIds.delete(id);
           const errorMessage = await errorToMessage(err);
           errorMessages.push(
-            `${i18n.t('common:deletePipelineFailed')}: ${id} ${i18n.t(
+            `${i18next.t('common:deletePipelineFailed')}: ${id} ${i18next.t(
               'common:withError',
             )}: "${errorMessage}"`,
           );
@@ -831,7 +831,7 @@ export default class Buttons {
             unsuccessfulVersionIds[pipelineId].push(versionId);
             const errorMessage = await errorToMessage(err);
             errorMessages.push(
-              `${i18n.t('common:deletePipelineVersionFailed')}: ${versionId} ${i18n.t(
+              `${i18next.t('common:deletePipelineVersionFailed')}: ${versionId} ${i18next.t(
                 'common:withError',
               )}: "${errorMessage}"`,
             );
@@ -845,20 +845,20 @@ export default class Buttons {
     // Display successful and/or unsuccessful messages.
     const pipelineMessage = this._nouns(
       succeededfulIds.size,
-      `${i18n.t('common:pipeline')}`,
-      `${i18n.t('common:pipelines')}`,
+      `${i18next.t('common:pipeline')}`,
+      `${i18next.t('common:pipelines')}`,
     );
     const pipelineVersionMessage = this._nouns(
       selectedVersionIdsCt - unsuccessfulVersionIdsCt,
-      `${i18n.t('common:pipelineVersion')}`,
-      `${i18n.t('common:pipelineVersions')}`,
+      `${i18next.t('common:pipelineVersion')}`,
+      `${i18next.t('common:pipelineVersions')}`,
     );
     const andMessage =
-      pipelineMessage !== `` && pipelineVersionMessage !== `` ? ` ${i18n.t('common:and')} ` : ``;
+      pipelineMessage !== `` && pipelineVersionMessage !== `` ? ` ${i18next.t('common:and')} ` : ``;
     if (pipelineMessage !== `` || pipelineVersionMessage !== ``) {
       this._props.updateSnackbar({
         message:
-          `${i18n.t('common:deletionSucceeded')} ` +
+          `${i18next.t('common:deletionSucceeded')} ` +
           pipelineMessage +
           andMessage +
           pipelineVersionMessage,
@@ -867,9 +867,9 @@ export default class Buttons {
     }
     if (unsuccessfulIds.length > 0 || unsuccessfulVersionIdsCt > 0) {
       this._props.updateDialog({
-        buttons: [{ text: i18n.t('common:dismiss') }],
+        buttons: [{ text: i18next.t('common:dismiss') }],
         content: errorMessages.join('\n\n'),
-        title: `${i18n.t('common:deleteSomePipelinesFailed')}`,
+        title: `${i18next.t('common:deleteSomePipelinesFailed')}`,
       });
     }
 
@@ -905,15 +905,15 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `${i18n.t('experiments:experiments')}${s(selectedIds)} ${i18n.t('experiments:moveExperiments')}${
-        selectedIds.length === 1 ? i18n.t('experiments:its'):i18n.t('experiments:their')} 
-        ${i18n.t('experiments:experimentTextArchive')}  ${s(
+      `${i18next.t('experiments:experiments')}${s(selectedIds)} ${i18next.t('experiments:moveExperiments')}${
+        selectedIds.length === 1 ? i18next.t('experiments:its'):i18next.t('experiments:their')} 
+        ${i18next.t('experiments:experimentTextArchive')}  ${s(
         selectedIds,
-      )} ${i18n.t('experiments:to')} ${selectedIds.length === 1 ? i18n.t('experiments:its') : i18n.t('experiments:their')} ${i18n.t('experiments:originalLocation')}`,
+      )} ${i18next.t('experiments:to')} ${selectedIds.length === 1 ? i18next.t('experiments:its') : i18next.t('experiments:their')} ${i18next.t('experiments:originalLocation')}`,
       useCurrent,
       id => Apis.experimentServiceApi.archiveExperiment(id),
       callback,
-      i18n.t('common:archive'),
+      i18next.t('common:archive'),
       'experiment',
     );
   }

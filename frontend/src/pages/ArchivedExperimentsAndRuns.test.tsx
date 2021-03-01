@@ -21,6 +21,8 @@ import ArchivedExperimentsAndRuns, {
 } from './ArchivedExperimentsAndRuns';
 import { shallow } from 'enzyme';
 
+jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
@@ -40,26 +42,26 @@ function generateProps(): ArchivedExperimentAndRunsProps {
     updateSnackbar: jest.fn(),
     updateToolbar: () => null,
     view: ArchivedExperimentsAndRunsTab.RUNS,
-    t:{} as any
+    //t:{} as any
   };
 }
 
 describe('ArchivedExperimentsAndRuns', () => {
   it('renders archived runs page', () => {
-    expect(shallow(<ArchivedExperimentsAndRuns {...(generateProps() as any)} />)).toMatchSnapshot();
+    expect(shallow(<ArchivedExperimentsAndRuns t={(key: any) => key} {...(generateProps() as any)} />)).toMatchSnapshot();
   });
 
   it('renders archived experiments page', () => {
     const props = generateProps();
     props.view = ArchivedExperimentsAndRunsTab.EXPERIMENTS;
-    expect(shallow(<ArchivedExperimentsAndRuns {...(props as any)} />)).toMatchSnapshot();
+    expect(shallow(<ArchivedExperimentsAndRuns t={(key: any) => key} {...(props as any)} />)).toMatchSnapshot();
   });
 
   it('switches to clicked page by pushing to history', () => {
     const spy = jest.fn();
     const props = generateProps();
     props.history.push = spy;
-    const tree = shallow(<ArchivedExperimentsAndRuns {...(props as any)} />);
+    const tree = shallow(<ArchivedExperimentsAndRuns t={(key: any) => key} {...(props as any)} />);
 
     tree.find('MD2Tabs').simulate('switch', ArchivedExperimentsAndRunsTab.RUNS);
     expect(spy).toHaveBeenCalledWith('/archive/runs');

@@ -29,9 +29,12 @@ import { commonCss, color } from '../Css';
 import { formatDateString, logger, errorToMessage, getRunDuration } from '../lib/Utils';
 import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
-import { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
-import i18next from 'i18next';
+
+const i18next = {
+  use: () => {},
+  init: () => {},
+  t: (key: any) => key
+}
 
 interface PipelineVersionInfo {
   displayName?: string;
@@ -78,7 +81,6 @@ export type RunListProps = MaskProps &
     runIdListMask?: string[];
     selectedIds?: string[];
     storageState?: RunStorageState;
-    t: TFunction;
   };
 
 interface RunListState {
@@ -98,27 +100,26 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
 
   public render(): JSX.Element {
     // Only show the two most prevalent metrics
-    const { t } = this.props;
     const metricMetadata: MetricMetadata[] = this.state.metrics.slice(0, 2);
     const columns: Column[] = [
       { 
         customRenderer: this._nameCustomRenderer,
         flex: 1.5,
-        label: t('runName'),
+        label: i18next.t('experimenyts:runName'),
         sortKey: RunSortKeys.NAME,
       },
-      { customRenderer: this._statusCustomRenderer, flex: 0.5, label: t('status') },
-      { label: t('duration'), flex: 0.5 },
-      { customRenderer: this._pipelineVersionCustomRenderer, label: t('pipelineVersion'), flex: 1 },
-      { customRenderer: this._recurringRunCustomRenderer, label: t('recurringrun'), flex: 0.5 },
-      { label: t('starttime'), flex: 1, sortKey: RunSortKeys.CREATED_AT },
+      { customRenderer: this._statusCustomRenderer, flex: 0.5, label: i18next.t('common:status') },
+      { label: i18next.t('common:duration'), flex: 0.5 },
+      { customRenderer: this._pipelineVersionCustomRenderer, label: i18next.t('common:pipelineVersion'), flex: 1 },
+      { customRenderer: this._recurringRunCustomRenderer, label: i18next.t('common:recurringrun'), flex: 0.5 },
+      { label: i18next.t('common:startTime'), flex: 1, sortKey: RunSortKeys.CREATED_AT },
     ];
 
     if (!this.props.hideExperimentColumn) {
       columns.splice(3, 0, {
         customRenderer: this._experimentCustomRenderer,
         flex: 1,
-        label: t('experiment'),
+        label: i18next.t('common:experiment'),
       });
     }
 
@@ -183,7 +184,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
           selectedIds={this.props.selectedIds}
           initialSortColumn={RunSortKeys.CREATED_AT}
           ref={this._tableRef}
-          filterLabel= {t('experiments:filterRuns')}
+          filterLabel= {i18next.t('experiments:filterRuns')}
           updateSelection={this.props.onSelectionChange}
           reload={this._loadRuns.bind(this)}
           disablePaging={this.props.disablePaging}
@@ -518,5 +519,4 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
     }
   }
 }
- withTranslation(['experiments', 'common'])(RunList);
  export default RunList;

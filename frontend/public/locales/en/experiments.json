@@ -121,7 +121,6 @@
     "week": "Week",
     "month": "Month"
   },
-  "pipelineVersion": "Pipeline Version",
   "pipelineVersionSelected": "A pipeline version must be selected",
   "pod": "Pod",
   "recurring": "Recurring",

@@ -31,8 +31,13 @@ import 'react-vis/dist/style.css';
 import Viewer, { ViewerConfig } from './Viewer';
 import { color, fontsize, commonCss } from '../../Css';
 import { stylesheet } from 'typestyle';
-import i18next from 'i18next';
 
+
+const i18next = {
+  use: () => {},
+  init: () => {},
+  t: (key: any) => key
+}
 const css = stylesheet({
   axis: {
     fontSize: fontsize.medium,

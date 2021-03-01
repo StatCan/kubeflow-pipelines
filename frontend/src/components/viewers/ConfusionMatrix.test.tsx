@@ -19,6 +19,8 @@ import { shallow } from 'enzyme';
 import ConfusionMatrix, { ConfusionMatrixConfig } from './ConfusionMatrix';
 import { PlotType } from './Viewer';
 
+jest.mock("i18next", () => ({ t: jest.fn(), }));
+
 describe('ConfusionMatrix', () => {
   it('does not break on empty data', () => {
     const tree = shallow(<ConfusionMatrix configs={[]} />);
@@ -68,6 +70,6 @@ describe('ConfusionMatrix', () => {
   });
 
   it('returns a user friendly display name', () => {
-    expect(ConfusionMatrix.prototype.getDisplayName()).toBe('Confusion matrix');
+    expect(ConfusionMatrix.prototype.getDisplayName()).toBe('common:confusionMatrix');
   });
 });

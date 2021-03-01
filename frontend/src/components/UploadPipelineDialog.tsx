@@ -32,6 +32,13 @@ import { ExternalLink } from '../atoms/ExternalLink';
 import { TFunction } from 'i18next';
 import { withTranslation, useTranslation } from 'react-i18next';
 
+export const t = (key: string, params?: any) => {
+  if (key === 'key.with.params') {
+    return `key.with.params.${params.param}`
+  }
+
+  return key
+}
 const css = stylesheet({
   dropOverlay: {
     backgroundColor: color.lightGrey,
@@ -284,7 +291,7 @@ class UploadPipelineDialog extends React.Component<
 
 export default withTranslation(['pipelines', 'common'])(UploadPipelineDialog);
 
-const DocumentationCompilePipeline: React.FC = () => {
+ const DocumentationCompilePipeline: React.FC = () => {
   const { t } = useTranslation('pipelines');
   return (
     <div className={padding(10, 'b')}>

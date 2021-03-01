@@ -24,6 +24,18 @@ import TestUtils, { diffHTML } from '../TestUtils';
 import { RoutePage } from './Router';
 import EnhancedSideNav, { css, SideNav } from './SideNav';
 
+
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 const wideWidth = 1000;
 const narrowWidth = 200;
 const isCollapsed = (tree: ShallowWrapper<any>) =>

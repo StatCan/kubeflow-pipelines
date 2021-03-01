@@ -31,6 +31,12 @@ import { formatDateString, enabledDisplayString, errorToMessage } from '../lib/U
 import { triggerDisplayString } from '../lib/TriggerUtils';
 import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
+import { WithT } from 'i18next';
+
+
+const mockWithT: WithT = {
+  t: ((key: string) => key) as any,
+};
 
 interface RecurringRunConfigState {
   run: ApiJob | null;

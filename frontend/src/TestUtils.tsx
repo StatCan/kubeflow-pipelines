@@ -27,7 +27,6 @@ import { mount, ReactWrapper } from 'enzyme';
 import { object } from 'prop-types';
 import { format } from 'prettier';
 import snapshotDiff from 'snapshot-diff';
-import './i18n';
 
 
 export default class TestUtils {

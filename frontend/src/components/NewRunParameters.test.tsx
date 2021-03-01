@@ -30,8 +30,8 @@ describe('NewRunParameters', () => {
     const props = {
       handleParamChange: jest.fn(),
       initialParams: [{ name: 'testParam', value: 'testVal' }],
-      titleMessage: 'Specify parameters required by the pipeline',
-      t:{} as any    
+      titleMessage: 'Specify parameters required by the pipeline', 
+     
     } as NewRunParametersProps;
     expect(shallow(<NewRunParameters  {...props} />)).toMatchSnapshot();
   });
@@ -41,7 +41,7 @@ describe('NewRunParameters', () => {
       handleParamChange: jest.fn(),
       initialParams: [],
       titleMessage: 'This pipeline has no parameters',
-      t:{} as any
+     
     } as NewRunParametersProps;
     expect(shallow(<NewRunParameters {...props} />)).toMatchSnapshot();
   });
@@ -52,8 +52,8 @@ describe('NewRunParameters', () => {
       handleParamChange,
       initialParams: [{ name: 'testParam', value: '{"test":"value"}' }],
       titleMessage: 'Specify json parameters required by the pipeline',
-      t:{} as any 
-    } as NewRunParametersProps;
+       
+    } as NewRunParametersProps ;
     const tree = mount(<NewRunParameters {...props} />);
     tree
       .findWhere(el => el.text() === 'Open Json Editor')
@@ -73,8 +73,7 @@ describe('NewRunParameters', () => {
         { name: 'testParam1', value: 'testVal1' },
         { name: 'testParam2', value: 'testVal2' },
       ],
-      titleMessage: 'Specify parameters required by the pipeline',
-      t:{} as any  
+      titleMessage: 'Specify parameters required by the pipeline', 
     } as NewRunParametersProps;
 
     const tree = mount(<NewRunParameters {...props} />);

@@ -21,6 +21,7 @@ import ExperimentsAndRuns, {
 } from './ExperimentsAndRuns';
 import { shallow } from 'enzyme';
 
+jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
@@ -39,7 +40,6 @@ function generateProps(): ExperimentAndRunsProps {
     updateSnackbar: jest.fn(),
     updateToolbar: () => null,
     view: ExperimentsAndRunsTab.EXPERIMENTS,
-    t:{} as any
   };
 }
 

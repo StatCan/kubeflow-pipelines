@@ -30,6 +30,7 @@ jest.mock('react-i18next', () => ({
     };
   },
 }));
+
 jest.mock('./Editor', () => {
   return ({ value }: { value: string }) => <pre data-testid='Editor'>{value}</pre>;
 });

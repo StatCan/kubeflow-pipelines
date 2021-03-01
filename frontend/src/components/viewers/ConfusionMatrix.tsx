@@ -18,8 +18,13 @@ import * as React from 'react';
 import Viewer, { ViewerConfig, PlotType } from './Viewer';
 import { color, commonCss, fontsize } from '../../Css';
 import { classes, stylesheet } from 'typestyle';
-import i18next from 'i18next';
 
+
+const i18next = {
+  use: () => {},
+  init: () => {},
+  t: (key: any) => key
+}
 const legendNotches = 5;
 
 export interface ConfusionMatrixConfig extends ViewerConfig {

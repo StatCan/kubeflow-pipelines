@@ -19,6 +19,9 @@ import { mount } from 'enzyme';
 import HTMLViewer, { HTMLViewerConfig } from './HTMLViewer';
 import { PlotType } from './Viewer';
 
+
+jest.mock("i18next", () => ({ t: jest.fn(), }));
+
 describe('HTMLViewer', () => {
   it('does not break on empty data', () => {
     const tree = mount(<HTMLViewer configs={[]} />);
@@ -54,6 +57,6 @@ describe('HTMLViewer', () => {
   });
 
   it('returns a user friendly display name', () => {
-    expect(HTMLViewer.prototype.getDisplayName()).toBe('Static HTML');
+    expect(HTMLViewer.prototype.getDisplayName()).toBe('common:staticHtml');
   });
 });

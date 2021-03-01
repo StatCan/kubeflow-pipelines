@@ -23,6 +23,7 @@ import { color, fontsize } from '../Css';
 import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
 
+
 const css = stylesheet({
   collapseBtn: {
     color: color.strong,
