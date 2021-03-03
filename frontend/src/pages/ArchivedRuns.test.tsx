@@ -23,25 +23,8 @@ import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 import { Apis } from '../lib/Apis';
 
-jest.mock("react-i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
-    return Component;
-  },
-}));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
+
+   
 describe('ArchivedRuns', () => {
   const updateBannerSpy = jest.fn();
   const updateToolbarSpy = jest.fn();
@@ -76,23 +59,23 @@ describe('ArchivedRuns', () => {
   afterEach(() => tree.unmount());
 
   it('renders archived runs', () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ArchivedRuns  {...generateProps()} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('lists archived runs in namespace', () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key}{...generateProps()} namespace='test-ns' />);
+    tree = shallow(<ArchivedRuns  {...generateProps()} namespace='test-ns' />);
     expect(tree.find('RunList').prop('namespaceMask')).toEqual('test-ns');
   });
 
   it('removes error banner on unmount', () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ArchivedRuns  {...generateProps()} />);
     tree.unmount();
     expect(updateBannerSpy).toHaveBeenCalledWith({});
   });
 
   it('enables restore and delete button when at least one run is selected', () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ArchivedRuns {...generateProps()} />);
     TestUtils.flushPromises();
     tree.update();
     expect(TestUtils.getToolbarButton(updateToolbarSpy, ButtonKeys.RESTORE).disabled).toBeTruthy();
@@ -117,7 +100,7 @@ describe('ArchivedRuns', () => {
   });
 
   it('refreshes the run list when refresh button is clicked', async () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ArchivedRuns  {...generateProps()} />);
     const spy = jest.fn();
     (tree.instance() as any)._runlistRef = { current: { refresh: spy } };
     await TestUtils.getToolbarButton(updateToolbarSpy, ButtonKeys.REFRESH).action();
@@ -125,12 +108,12 @@ describe('ArchivedRuns', () => {
   });
 
   it('shows a list of available runs', () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ArchivedRuns {...generateProps()} />);
     expect(tree.find('RunList').prop('storageState')).toBe(RunStorageState.ARCHIVED.toString());
   });
 
   it('cancells deletion when Cancel is clicked', async () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key}{...generateProps()} />);
+    tree = shallow(<ArchivedRuns  {...generateProps()} />);
 
     // Click delete button to delete selected ids.
     const deleteBtn = (tree.instance() as ArchivedRuns).getInitialToolbarState().actions[
@@ -154,7 +137,7 @@ describe('ArchivedRuns', () => {
   });
 
   it('deletes selected ids when Confirm is clicked', async () => {
-    tree = shallow(<ArchivedRuns t={(key: any) => key}  {...generateProps()} />);
+    tree = shallow(<ArchivedRuns  {...generateProps()} />);
     tree.setState({ selectedIds: ['id1', 'id2', 'id3'] });
 
     // Mock the behavior where the deletion of id1 fails, the deletion of id2 and id3 succeed.

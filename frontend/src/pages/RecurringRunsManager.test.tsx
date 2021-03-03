@@ -21,7 +21,7 @@ import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import RecurringRunsManager, { RecurringRunListProps } from './RecurringRunsManager';
 import { ApiJob, ApiResourceType } from '../apis/job';
 
-jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
@@ -30,6 +30,7 @@ jest.mock('react-i18next', () => ({
     return Component;
   }
 }));
+
 describe('RecurringRunsManager', () => {
   class TestRecurringRunsManager extends RecurringRunsManager {
     public async _loadRuns(request: ListRequest): Promise<string> {

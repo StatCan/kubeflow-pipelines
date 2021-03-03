@@ -20,15 +20,17 @@ import TestUtils from '../TestUtils';
 import { ListRequest } from '../lib/Apis';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { Row } from '../components/CustomTable';
-import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
+  withTranslation: () => Component => {
     Component.defaultProps = { ...Component.defaultProps, t: () => "" };
     return Component;
-  }
+  },
 }));
+
+
+
 class TestResourceSelector extends ResourceSelector {
   public async _load(request: ListRequest): Promise<string> {
     return super._load(request);
@@ -86,7 +88,7 @@ describe('ResourceSelector', () => {
       selectionChanged: selectionChangedCbSpy,
       title: testTitle,
       updateDialog: updateDialogSpy,
-      t:{} as TFunction
+     
     };
   }
 

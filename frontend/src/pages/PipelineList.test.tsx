@@ -23,11 +23,9 @@ import { RoutePage, RouteParams } from '../components/Router';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { range } from 'lodash';
 import { ButtonKeys } from '../lib/Buttons';
-
-jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
+  withTranslation: () => Component => {
     Component.defaultProps = { ...Component.defaultProps, t: () => "" };
     return Component;
   },
@@ -174,7 +172,7 @@ describe('PipelineList', () => {
 
   it('shows error banner when listing pipelines fails', async () => {
     TestUtils.makeErrorResponseOnce(listPipelinesSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<PipelineList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
     await listPipelinesSpy;
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
@@ -187,7 +185,7 @@ describe('PipelineList', () => {
   });
 
   it('shows error banner when listing pipelines fails after refresh', async () => {
-    tree = TestUtils.mountWithRouter(<PipelineList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
     const instance = tree.instance() as PipelineList;
     const refreshBtn = instance.getInitialToolbarState().actions[ButtonKeys.REFRESH];
     expect(refreshBtn).toBeDefined();
@@ -206,7 +204,7 @@ describe('PipelineList', () => {
 
   it('hides error banner when listing pipelines fails then succeeds', async () => {
     TestUtils.makeErrorResponseOnce(listPipelinesSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<PipelineList {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
     const instance = tree.instance() as PipelineList;
     await listPipelinesSpy;
     await TestUtils.flushPromises();
@@ -288,7 +286,7 @@ describe('PipelineList', () => {
       .find('.tableRow')
       .at(0)
       .simulate('click');
-    const deleteBtn = (tree.instance() as PipelineList).getInitialToolbarState().actions[
+    const deleteBtn = (tree.instance() as PipelineList ).getInitialToolbarState().actions[
       ButtonKeys.DELETE_RUN
     ];
     await deleteBtn!.action();

@@ -29,12 +29,9 @@ import { commonCss, color } from '../Css';
 import { formatDateString, logger, errorToMessage, getRunDuration } from '../lib/Utils';
 import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
+import i18next from 'i18next'
 
-const i18next = {
-  use: () => {},
-  init: () => {},
-  t: (key: any) => key
-}
+
 
 interface PipelineVersionInfo {
   displayName?: string;

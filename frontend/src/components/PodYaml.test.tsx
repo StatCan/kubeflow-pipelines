@@ -4,6 +4,7 @@ import { render, act, fireEvent } from '@testing-library/react';
 import { Apis } from 'src/lib/Apis';
 import TestUtils from 'src/TestUtils';
 
+jest.mock("i18next", () => ({ t: jest.fn(), }));
 // Original ./Editor uses a complex external editor inside, we use a simple mock
 // for testing instead.
 jest.mock('./Editor', () => {

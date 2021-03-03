@@ -18,13 +18,9 @@ import * as React from 'react';
 import Viewer, { ViewerConfig } from './Viewer';
 import { color } from '../../Css';
 import { stylesheet } from 'typestyle';
+import { useTranslation } from 'react-i18next';
 
 
-const i18next = {
-  use: () => {},
-  init: () => {},
-  t: (key: any) => key
-}
 
 export interface HTMLViewerConfig extends ViewerConfig {
   htmlContent: string;
@@ -51,7 +47,8 @@ class HTMLViewer extends Viewer<HTMLViewerProps, any> {
   });
 
   public getDisplayName(): string {
-    return i18next.t('common:staticHtml');
+    const {t,i18n}= useTranslation ('common');
+    return t('common:staticHtml');
   }
 
   public componentDidMount(): void {

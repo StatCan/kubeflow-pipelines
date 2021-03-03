@@ -21,19 +21,7 @@ import { PageProps } from './Page';
 import { ExperimentStorageState } from '../apis/experiment';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
-
-jest.mock("react-i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
+jest.mock("i18next", () => ({ t: jest.fn(), }));
 
 describe('ArchivedExperiemnts', () => {
   const updateBannerSpy = jest.fn();
@@ -68,14 +56,12 @@ describe('ArchivedExperiemnts', () => {
   });
 
   it('removes error banner on unmount', () => {
-    
-    tree = shallow(<ArchivedExperiments  {...generateProps()} />);
+    tree = shallow(<ArchivedExperiments {...generateProps()} />);
     tree.unmount();
     expect(updateBannerSpy).toHaveBeenCalledWith({});
   });
 
   it('refreshes the experiment list when refresh button is clicked', async () => {
-    
     tree = shallow(<ArchivedExperiments {...generateProps()} />);
     const spy = jest.fn();
     (tree.instance() as any)._experimentlistRef = { current: { refresh: spy } };

@@ -20,8 +20,18 @@ import { PlotType } from './Viewer';
 import ROCCurve from './ROCCurve';
 
 
-jest.mock("i18next", () => ({ t: jest.fn(), }));
-
+//jest.mock("i18next", () => ({ t: jest.fn(), }));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 describe('ROCCurve', () => {
   it('does not break on no config', () => {
     const tree = shallow(<ROCCurve configs={[]} />);

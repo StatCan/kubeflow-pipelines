@@ -31,13 +31,9 @@ import 'react-vis/dist/style.css';
 import Viewer, { ViewerConfig } from './Viewer';
 import { color, fontsize, commonCss } from '../../Css';
 import { stylesheet } from 'typestyle';
+import { useTranslation } from 'react-i18next';
 
 
-const i18next = {
-  use: () => {},
-  init: () => {},
-  t: (key: any) => key
-}
 const css = stylesheet({
   axis: {
     fontSize: fontsize.medium,
@@ -103,7 +99,8 @@ class ROCCurve extends Viewer<ROCCurveProps, ROCCurveState> {
   }
 
   public getDisplayName(): string {
-    return i18next.t('common:rocCurve');
+    const {t,i18n}= useTranslation ('common');
+    return t('common:rocCurve');
   }
 
   public isAggregatable(): boolean {

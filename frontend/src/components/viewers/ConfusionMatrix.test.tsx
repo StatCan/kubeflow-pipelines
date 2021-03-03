@@ -19,8 +19,19 @@ import { shallow } from 'enzyme';
 import ConfusionMatrix, { ConfusionMatrixConfig } from './ConfusionMatrix';
 import { PlotType } from './Viewer';
 
-jest.mock("i18next", () => ({ t: jest.fn(), }));
 
+//jest.mock("i18next", () => ({ t: jest.fn(), }));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: any) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 describe('ConfusionMatrix', () => {
   it('does not break on empty data', () => {
     const tree = shallow(<ConfusionMatrix configs={[]} />);

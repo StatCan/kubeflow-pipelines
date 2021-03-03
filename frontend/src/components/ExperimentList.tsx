@@ -194,5 +194,4 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
     );
   }
 }
-withTranslation(['experiments', 'common'])(ExperimentList);
-export default ExperimentList;
+export default withTranslation(['experiments', 'common'])(ExperimentList);

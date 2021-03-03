@@ -27,12 +27,8 @@ import UnknownIcon from '@material-ui/icons/Help';
 import { color } from '../Css';
 import { logger, formatDateString } from '../lib/Utils';
 import { NodePhase, checkIfTerminated } from '../lib/StatusUtils';
+import i18next from 'i18next'
 
-const i18next = {
-  use: () => {},
-  init: () => {},
-  t: (key: any) => key
-}
 export function statusToIcon(
   status?: NodePhase,
   startDate?: Date | string,
@@ -92,7 +88,7 @@ export function statusToIcon(
     case NodePhase.UNKNOWN:
       break;
     default:
-      logger.verbose(`${i18next.t('common:unknownNodePhase')}:`, status);
+      logger.verbose('Unknown node phase:', status);
   }
   return (
     <Tooltip

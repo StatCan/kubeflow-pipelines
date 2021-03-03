@@ -19,6 +19,8 @@ import { shallow } from 'enzyme';
 import PagedTable from './PagedTable';
 import { PlotType } from './Viewer';
 
+
+
 describe('PagedTable', () => {
   it('does not break on no config', () => {
     const tree = shallow(<PagedTable configs={[]} />);
@@ -71,6 +73,6 @@ describe('PagedTable', () => {
   });
 
   it('returns a user friendly display name', () => {
-    expect(PagedTable.prototype.getDisplayName()).toBe('Table');
+    expect(PagedTable.prototype.getDisplayName()).toBe('common:table');
   });
 });

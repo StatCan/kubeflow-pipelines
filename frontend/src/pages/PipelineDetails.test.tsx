@@ -28,15 +28,13 @@ import { graphlib } from 'dagre';
 import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 
-jest.mock("i18next", () => ({ t: jest.fn(), }));
-
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
+  withTranslation: () => Component => {
     Component.defaultProps = { ...Component.defaultProps, t: () => "" };
     return Component;
   },
-}));
+}));  
 describe('PipelineDetails', () => {
   const updateBannerSpy = jest.fn();
   const updateDialogSpy = jest.fn();
@@ -151,7 +149,7 @@ describe('PipelineDetails', () => {
   });
 
   it('shows pipeline name in page name, and breadcrumb to go back to pipelines', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     expect(updateToolbarSpy).toHaveBeenLastCalledWith(
@@ -166,7 +164,7 @@ describe('PipelineDetails', () => {
     'shows all runs breadcrumbs, and "Pipeline details" as page title when the pipeline ' +
       'comes from a run spec that does not have an experiment',
     async () => {
-      tree = shallow(<PipelineDetails {...generateProps(true)} />);
+      tree = shallow(<PipelineDetails  {...generateProps(true)} />);
       await getRunSpy;
       await getPipelineVersionTemplateSpy;
       await TestUtils.flushPromises();
@@ -192,7 +190,7 @@ describe('PipelineDetails', () => {
       testRun.run!.resource_references = [
         { key: { id: 'test-experiment-id', type: ApiResourceType.EXPERIMENT } },
       ];
-      tree = shallow(<PipelineDetails {...generateProps(true)} />);
+      tree = shallow(<PipelineDetails  {...generateProps(true)} />);
       await getRunSpy;
       await getExperimentSpy;
       await getPipelineVersionTemplateSpy;
@@ -225,7 +223,7 @@ describe('PipelineDetails', () => {
       workflow_manifest: '{"spec": {"arguments": {"parameters": [{"name": "output"}]}}}',
     };
 
-    tree = shallow(<PipelineDetails {...generateProps(true)} />);
+    tree = shallow(<PipelineDetails  {...generateProps(true)} />);
     await TestUtils.flushPromises();
 
     expect(tree.state('templateString')).toBe(
@@ -290,7 +288,7 @@ describe('PipelineDetails', () => {
   it('uses an empty string and does not show error when getTemplate response is empty', async () => {
     getPipelineVersionTemplateSpy.mockImplementationOnce(() => Promise.resolve({}));
 
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineSpy;
     await TestUtils.flushPromises();
 
@@ -333,7 +331,7 @@ describe('PipelineDetails', () => {
 
   it('shows no graph error banner when failing to parse graph', async () => {
     TestUtils.makeErrorResponseOnce(createGraphSpy, 'bad graph');
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenCalledTimes(2); // Once to clear banner, once to show error
@@ -365,7 +363,7 @@ describe('PipelineDetails', () => {
   });
 
   it('shows empty pipeline details with empty graph', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     expect(tree).toMatchSnapshot();
@@ -382,7 +380,7 @@ describe('PipelineDetails', () => {
   });
 
   it('collapses summary card when summary shown state is false', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     tree.setState({ summaryShown: false });
@@ -390,7 +388,7 @@ describe('PipelineDetails', () => {
   });
 
   it('shows the summary card when clicking Show button', async () => {
-    tree = mount(<PipelineDetails {...generateProps()} />);
+    tree = mount(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     tree.setState({ summaryShown: false });
@@ -435,7 +433,7 @@ describe('PipelineDetails', () => {
   });
 
   it("has 'create run' toolbar button if not viewing an embedded pipeline", async () => {
-    tree = shallow(<PipelineDetails {...generateProps(false)} />);
+    tree = shallow(<PipelineDetails  {...generateProps(false)} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     const instance = tree.instance() as PipelineDetails;
@@ -516,7 +514,7 @@ describe('PipelineDetails', () => {
   });
 
   it('shows delete confirmation dialog when delete button is clicked', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     const deleteBtn = (tree.instance() as PipelineDetails).getInitialToolbarState().actions[
       ButtonKeys.DELETE_RUN
     ];
@@ -530,7 +528,7 @@ describe('PipelineDetails', () => {
   });
 
   it('does not call delete API for selected pipeline when delete dialog is canceled', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     const deleteBtn = (tree.instance() as PipelineDetails).getInitialToolbarState().actions[
       ButtonKeys.DELETE_RUN
     ];
@@ -557,7 +555,7 @@ describe('PipelineDetails', () => {
   });
 
   it('calls delete API when delete dialog is confirmed and page is half-loaded', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     // Intentionally don't wait until all network requests finish.
     const deleteBtn = (tree.instance() as PipelineDetails).getInitialToolbarState().actions[
       ButtonKeys.DELETE_RUN
@@ -592,7 +590,7 @@ describe('PipelineDetails', () => {
   });
 
   it('shows success snackbar if deletion succeeds', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     const deleteBtn = (tree.instance() as PipelineDetails).getInitialToolbarState().actions[
@@ -612,7 +610,7 @@ describe('PipelineDetails', () => {
   });
 
   it('opens side panel on clicked node, shows message when node is not found in graph', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     clickGraphNode(tree, 'some-node-id');
@@ -656,7 +654,7 @@ describe('PipelineDetails', () => {
   });
 
   it('closes side panel when close button is clicked', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     tree.setState({ selectedNodeId: 'some-node-id' });
@@ -666,7 +664,7 @@ describe('PipelineDetails', () => {
   });
 
   it('shows correct versions in version selector', async () => {
-    tree = shallow(<PipelineDetails {...generateProps()} />);
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     expect(tree.state('versions')).toHaveLength(1);

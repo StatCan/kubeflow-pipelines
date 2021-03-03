@@ -2,6 +2,8 @@ import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
 
+
+
 export function commonSetup(
   options: { commitHash?: string; tagName?: string; showLog?: boolean } = {},
 ): { argv: string[]; buildDate: string; indexHtmlPath: string; indexHtmlContent: string } {

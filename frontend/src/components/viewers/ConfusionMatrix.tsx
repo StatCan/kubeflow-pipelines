@@ -18,13 +18,10 @@ import * as React from 'react';
 import Viewer, { ViewerConfig, PlotType } from './Viewer';
 import { color, commonCss, fontsize } from '../../Css';
 import { classes, stylesheet } from 'typestyle';
+//import { useTranslation } from 'react-i18next';
+import i18next from 'i18next'
 
 
-const i18next = {
-  use: () => {},
-  init: () => {},
-  t: (key: any) => key
-}
 const legendNotches = 5;
 
 export interface ConfusionMatrixConfig extends ViewerConfig {
@@ -200,6 +197,7 @@ class ConfusionMatrix extends Viewer<ConfusionMatrixProps, ConfusionMatrixState>
   }
 
   public getDisplayName(): string {
+    //const {t,i18n}= useTranslation ('common');
     return i18next.t('common:confusionMatrix');
   }
 

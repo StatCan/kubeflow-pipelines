@@ -22,7 +22,7 @@ import { Apis, ListRequest } from '../lib/Apis';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { range } from 'lodash';
 
-jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop

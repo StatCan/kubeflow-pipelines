@@ -25,6 +25,7 @@ jest.mock('react-i18next', () => ({
     return Component;
   },
 }));
+
 describe('CollapseButton', () => {
   const compareComponent = {
     setState: jest.fn(),
@@ -37,7 +38,7 @@ describe('CollapseButton', () => {
 
   it('initial render', () => {
     const tree = shallow(
-      <CollapseButton
+      <CollapseButton t={(key: any) => key}
         collapseSections={compareComponent.state.collapseSections}
         compareSetState={compareComponent.setState}
         sectionName='testSection'
@@ -49,7 +50,7 @@ describe('CollapseButton', () => {
   it('renders the button collapsed if in collapsedSections', () => {
     compareComponent.state.collapseSections.testSection = true;
     const tree = shallow(
-      <CollapseButton
+      <CollapseButton t={(key: any) => key}
         collapseSections={compareComponent.state.collapseSections}
         compareSetState={compareComponent.setState}
         sectionName='testSection'
@@ -60,7 +61,7 @@ describe('CollapseButton', () => {
 
   it('collapses given section when clicked', () => {
     const tree = shallow(
-      <CollapseButton
+      <CollapseButton 
         collapseSections={compareComponent.state.collapseSections}
         compareSetState={compareComponent.setState}
         sectionName='testSection'
@@ -75,7 +76,7 @@ describe('CollapseButton', () => {
   it('expands given section when clicked if it is collapsed', () => {
     compareComponent.state.collapseSections.testSection = true;
     const tree = shallow(
-      <CollapseButton
+      <CollapseButton 
         collapseSections={compareComponent.state.collapseSections}
         compareSetState={compareComponent.setState}
         sectionName='testSection'

@@ -31,7 +31,8 @@ import { ApiFilter, PredicateOp } from '../apis/filter';
 import { ExperimentStorageState } from '../apis/experiment';
 import { ApiJob } from 'src/apis/job';
 
-jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+//jest.mock("i18next", () => ({ t: jest.fn(), }));
+
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   useTranslation: () => {

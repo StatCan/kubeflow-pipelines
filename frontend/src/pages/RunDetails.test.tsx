@@ -37,7 +37,7 @@ import { PageProps } from './Page';
 import EnhancedRunDetails, { RunDetailsInternalProps, TEST_ONLY } from './RunDetails';
 
 
-jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {

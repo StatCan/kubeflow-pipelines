@@ -33,7 +33,7 @@ import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ExperimentStorageState } from '../apis/experiment';
 
-jest.mock("i18next", () => ({ t: jest.fn(), }));
+//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
@@ -42,17 +42,6 @@ jest.mock('react-i18next', () => ({
   },
 }));
 
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
 // Default arguments for Apis.experimentServiceApi.listExperiment.
 const LIST_EXPERIMENT_DEFAULTS = [
   '', // page token
@@ -122,7 +111,7 @@ describe('ExperimentList', () => {
     listRunsSpy.mockImplementation(() => ({
       runs: range(nRuns).map(i => ({ id: 'test-run-id' + i, name: 'test run name' + i })),
     }));
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} namespace={namespace} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList   {...generateProps()} namespace={namespace} />);
     await listExperimentsSpy;
     await listRunsSpy;
     await TestUtils.flushPromises();
@@ -138,12 +127,12 @@ describe('ExperimentList', () => {
   });
 
   it('renders an empty list with empty state message', () => {
-    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ExperimentList  {...generateProps()} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a list of one experiment', async () => {
-    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ExperimentList   {...generateProps()} />);
     tree.setState({
       displayExperiments: [
         {
@@ -159,7 +148,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of one experiment with no description', async () => {
-    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ExperimentList   {...generateProps()} />);
     tree.setState({
       experiments: [
         {
@@ -174,7 +163,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of one experiment with error', async () => {
-    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ExperimentList  {...generateProps()} />);
     tree.setState({
       experiments: [
         {
@@ -244,7 +233,7 @@ describe('ExperimentList', () => {
 
   it('shows error banner when listing experiments fails', async () => {
     TestUtils.makeErrorResponseOnce(listExperimentsSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList   {...generateProps()} />);
     await listExperimentsSpy;
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
@@ -263,7 +252,7 @@ describe('ExperimentList', () => {
 
     listExperimentsSpy.mockImplementationOnce(() => ({ experiments: [{ name: 'exp1' }] }));
     TestUtils.makeErrorResponseOnce(listRunsSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList  {...generateProps()} />);
     await listExperimentsSpy;
     await TestUtils.flushPromises();
     expect(tree.state()).toHaveProperty('displayExperiments', [
@@ -276,7 +265,7 @@ describe('ExperimentList', () => {
   });
 
   it('shows error banner when listing experiments fails after refresh', async () => {
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList   {...generateProps()} />);
     const instance = tree.instance() as ExperimentList;
     const refreshBtn = instance.getInitialToolbarState().actions[ButtonKeys.REFRESH];
     expect(refreshBtn).toBeDefined();
@@ -296,7 +285,7 @@ describe('ExperimentList', () => {
 
   it('hides error banner when listing experiments fails then succeeds', async () => {
     TestUtils.makeErrorResponseOnce(listExperimentsSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList  {...generateProps()} />);
     const instance = tree.instance() as ExperimentList;
     await listExperimentsSpy;
     await TestUtils.flushPromises();
@@ -335,7 +324,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of runs for given experiment', async () => {
-    tree = shallow(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = shallow(<ExperimentList   {...generateProps()} />);
     tree.setState({
       displayExperiments: [{ id: 'experiment1', last5Runs: [{ id: 'run1id' }, { id: 'run2id' }] }],
     });
@@ -344,7 +333,7 @@ describe('ExperimentList', () => {
   });
 
   it('navigates to new experiment page when Create experiment button is clicked', async () => {
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList   {...generateProps()} />);
     const createBtn = (tree.instance() as ExperimentList).getInitialToolbarState().actions[
       ButtonKeys.NEW_EXPERIMENT
     ];
@@ -442,7 +431,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders experiment names as links to their details pages', async () => {
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key}{...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList  {...generateProps()} />);
     expect(
       (tree.instance() as ExperimentList)._nameCustomRenderer({
         id: 'experiment-id',
@@ -452,7 +441,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders last 5 runs statuses', async () => {
-    tree = TestUtils.mountWithRouter(<ExperimentList t={(key: any) => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList   {...generateProps()} />);
     expect(
       (tree.instance() as ExperimentList)._last5RunsCustomRenderer({
         id: 'experiment-id',
@@ -469,14 +458,14 @@ describe('ExperimentList', () => {
 
   describe('EnhancedExperimentList', () => {
     it('defaults to no namespace', () => {
-      render(<EnhancedExperimentList {...generateProps()} />);
+      render(<EnhancedExperimentList t={key => key}  {...generateProps()} />);
       expect(listExperimentsSpy).toHaveBeenLastCalledWith(...LIST_EXPERIMENT_DEFAULTS);
     });
 
     it('gets namespace from context', () => {
       render(
         <NamespaceContext.Provider value='test-ns'>
-          <EnhancedExperimentList {...generateProps()} />
+          <EnhancedExperimentList  t={key => key} {...generateProps()} />
         </NamespaceContext.Provider>,
       );
       expect(listExperimentsSpy).toHaveBeenLastCalledWith(
@@ -489,7 +478,7 @@ describe('ExperimentList', () => {
     it('auto refreshes list when namespace changes', () => {
       const { rerender } = render(
         <NamespaceContext.Provider value='test-ns-1'>
-          <EnhancedExperimentList {...generateProps()} />
+          <EnhancedExperimentList t={key => key}   {...generateProps()} />
         </NamespaceContext.Provider>,
       );
       expect(listExperimentsSpy).toHaveBeenCalledTimes(1);
@@ -500,7 +489,7 @@ describe('ExperimentList', () => {
       );
       rerender(
         <NamespaceContext.Provider value='test-ns-2'>
-          <EnhancedExperimentList {...generateProps()} />
+          <EnhancedExperimentList t={key => key}  {...generateProps()} />
         </NamespaceContext.Provider>,
       );
       expect(listExperimentsSpy).toHaveBeenCalledTimes(2);
@@ -516,7 +505,7 @@ describe('ExperimentList', () => {
       const { rerender } = render(
         <MemoryRouter>
           <NamespaceContext.Provider value={undefined}>
-            <EnhancedExperimentList {...generateProps()} />
+            <EnhancedExperimentList t={key => key}  {...generateProps()} />
           </NamespaceContext.Provider>
         </MemoryRouter>,
       );
@@ -525,7 +514,7 @@ describe('ExperimentList', () => {
       rerender(
         <MemoryRouter>
           <NamespaceContext.Provider value={'test-ns'}>
-            <EnhancedExperimentList {...generateProps()} />
+            <EnhancedExperimentList t={key => key}   {...generateProps()} />
           </NamespaceContext.Provider>
         </MemoryRouter>,
       );

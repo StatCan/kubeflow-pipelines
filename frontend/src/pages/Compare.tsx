@@ -42,13 +42,7 @@ import RunList from './RunList';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-export const t = (key: string, params?: any) => {
-  if (key === 'key.with.params') {
-    return `key.with.params.${params.param}`
-  }
 
-  return key
-}
 
 const css = stylesheet({
   outputsRow: {

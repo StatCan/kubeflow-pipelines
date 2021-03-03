@@ -27,25 +27,6 @@ import { Apis, ExperimentSortKeys, ListRequest } from '../lib/Apis';
 import { ReactWrapper, ShallowWrapper, shallow } from 'enzyme';
 import { range } from 'lodash';
 
-jest.mock("i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
-    return Component;
-  }
-}));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
 class ExperimentListTest extends ExperimentList {
   public _loadExperiments(request: ListRequest): Promise<string> {
     return super._loadExperiments(request);
@@ -110,20 +91,20 @@ describe('ExperimentList', () => {
   });
 
   it('renders the empty experience', () => {
-    expect(shallow(<ExperimentList  {...generateProps()} />)).toMatchSnapshot();
+    expect(shallow(<ExperimentList t={key => key}  {...generateProps()} />)).toMatchSnapshot();
   });
 
   it('renders the empty experience in ARCHIVED state', () => {
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    expect(shallow(<ExperimentList {...props} />)).toMatchSnapshot();
+    expect(shallow(<ExperimentList t={key => key}  {...props} />)).toMatchSnapshot();
   });
 
   it('loads experiments whose storage state is not ARCHIVED when storage state equals AVAILABLE', async () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.AVAILABLE;
-    tree = shallow(<ExperimentList {...props} />);
+    tree = shallow(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenLastCalledWith(
       undefined,
@@ -149,7 +130,7 @@ describe('ExperimentList', () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    tree = shallow(<ExperimentList {...props} />);
+    tree = shallow(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenLastCalledWith(
       undefined,
@@ -175,7 +156,7 @@ describe('ExperimentList', () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    tree = shallow(<ExperimentList {...props} />);
+    tree = shallow(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({
       filter: encodeURIComponent(
         JSON.stringify({
@@ -211,7 +192,7 @@ describe('ExperimentList', () => {
   it('loads one experiment', async () => {
     mockNExperiments(1);
     const props = generateProps();
-    tree = shallow(<ExperimentList {...props} />);
+    tree = shallow(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenLastCalledWith(
       undefined,
@@ -228,7 +209,7 @@ describe('ExperimentList', () => {
   it('reloads the experiment when refresh is called', async () => {
     mockNExperiments(0);
     const props = generateProps();
-    tree = TestUtils.mountWithRouter(<ExperimentList {...props} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={key => key}   {...props} />);
     await (tree.instance() as ExperimentList).refresh();
     tree.update();
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenCalledTimes(2);
@@ -247,7 +228,7 @@ describe('ExperimentList', () => {
   it('loads multiple experiments', async () => {
     mockNExperiments(5);
     const props = generateProps();
-    tree = shallow(<ExperimentList {...props} />);
+    tree = shallow(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(props.onError).not.toHaveBeenCalled();
     expect(tree).toMatchSnapshot();
@@ -259,7 +240,7 @@ describe('ExperimentList', () => {
       'bad stuff happened',
     );
     const props = generateProps();
-    tree = shallow(<ExperimentList {...props} />);
+    tree = shallow(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(props.onError).toHaveBeenLastCalledWith(
       'Error: failed to list experiments: ',
@@ -271,7 +252,7 @@ describe('ExperimentList', () => {
     listRunsSpy.mockImplementation(() => {});
     mockNExperiments(1);
     const props = generateProps();
-    tree = TestUtils.mountWithRouter(<ExperimentList {...props} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     tree.update();
     expect(props.onError).not.toHaveBeenCalled();
@@ -322,7 +303,7 @@ describe('ExperimentList', () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    tree = TestUtils.mountWithRouter(<ExperimentList {...props} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={key => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     tree.update();
     expect(props.onError).not.toHaveBeenCalled();

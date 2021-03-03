@@ -4,7 +4,9 @@ import { Apis, JSONObject } from 'src/lib/Apis';
 import { serviceErrorToString } from 'src/lib/Utils';
 import Banner from './Banner';
 import Editor from './Editor';
-import i18next from 'i18next';
+import i18next from 'i18next'
+
+
 
 async function getPodYaml(name: string, namespace: string): Promise<string> {
   const response = await Apis.getPodInfo(name, namespace);

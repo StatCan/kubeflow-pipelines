@@ -36,16 +36,16 @@ describe('Status', () => {
   describe('statusToIcon', () => {
     it('handles an unknown phase', () => {
       const consoleSpy = jest.spyOn(console, 'log').mockImplementationOnce(() => null);
-      const tree = shallow(statusToIcon ('bad phase' as any));
+      const tree = shallow(statusToIcon('bad phase' as any));
       expect(tree).toMatchSnapshot();
-      expect(consoleSpy).toHaveBeenLastCalledWith('common:unknownNodePhase:', 'bad phase');
+      expect(consoleSpy).toHaveBeenLastCalledWith('Unknown node phase:', 'bad phase');
     });
 
     it('handles an undefined phase', () => {
       const consoleSpy = jest.spyOn(console, 'log').mockImplementationOnce(() => null);
       const tree = shallow(statusToIcon(/* no phase */));
       expect(tree).toMatchSnapshot();
-      expect(consoleSpy).toHaveBeenLastCalledWith('common:unknownNodePhase:', undefined);
+      expect(consoleSpy).toHaveBeenLastCalledWith('Unknown node phase:', undefined);
     });
 
     it('displays start and end dates if both are provided', () => {

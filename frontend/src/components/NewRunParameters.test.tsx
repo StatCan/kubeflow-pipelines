@@ -17,6 +17,8 @@
 import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 import NewRunParameters, { NewRunParametersProps } from './NewRunParameters';
+
+//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
@@ -51,12 +53,11 @@ describe('NewRunParameters', () => {
     const props = {
       handleParamChange,
       initialParams: [{ name: 'testParam', value: '{"test":"value"}' }],
-      titleMessage: 'Specify json parameters required by the pipeline',
-       
+      titleMessage: 'Specify json parameters required by the pipeline',  
     } as NewRunParametersProps ;
-    const tree = mount(<NewRunParameters {...props} />);
+    const tree = mount(<NewRunParameters t={(key: any) => key}{...props} />);
     tree
-      .findWhere(el => el.text() === 'Open Json Editor')
+      .findWhere(el => el.text() === 'openJsonEditor')
       .hostNodes()
       .find('Button')
       .simulate('click');

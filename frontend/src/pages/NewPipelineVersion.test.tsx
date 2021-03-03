@@ -23,17 +23,10 @@ import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType } from '../apis/pipeline';
 
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
+
+
+//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+
 class TestNewPipelineVersion extends NewPipelineVersion {
   public _pipelineSelectorClosed = super._pipelineSelectorClosed;
   public _onDropForTest = super._onDropForTest;
@@ -131,7 +124,7 @@ describe('NewPipelineVersion', () => {
 
   describe('switching between creating pipeline and creating pipeline version', () => {
     it('creates pipeline is default when landing from pipeline list page', () => {
-      tree = shallow(<TestNewPipelineVersion {...generateProps()} />);
+      tree = shallow(<TestNewPipelineVersion t={key => key} {...generateProps()} />);
 
       // When landing from pipeline list page, the default is to create pipeline
       expect(tree.state('newPipeline')).toBe(true);
@@ -147,7 +140,7 @@ describe('NewPipelineVersion', () => {
 
     it('creates pipeline version is default when landing from pipeline details page', () => {
       tree = shallow(
-        <TestNewPipelineVersion
+        <TestNewPipelineVersion t={key => key}
           {...generateProps(`?${QUERY_PARAMS.pipelineId}=${MOCK_PIPELINE.id}`)}
         />,
       );
@@ -168,7 +161,7 @@ describe('NewPipelineVersion', () => {
   describe('creating version under an existing pipeline', () => {
     it('does not include any action buttons in the toolbar', async () => {
       tree = shallow(
-        <TestNewPipelineVersion
+        <TestNewPipelineVersion t={key => key}
           {...generateProps(`?${QUERY_PARAMS.pipelineId}=${MOCK_PIPELINE.id}`)}
         />,
       );
@@ -200,7 +193,7 @@ describe('NewPipelineVersion', () => {
 
     it('allows updating package url', async () => {
       tree = shallow(
-        <TestNewPipelineVersion
+        <TestNewPipelineVersion t={key => key}
           {...generateProps(`?${QUERY_PARAMS.pipelineId}=${MOCK_PIPELINE.id}`)}
         />,
       );
@@ -216,7 +209,7 @@ describe('NewPipelineVersion', () => {
 
     it('allows updating code source', async () => {
       tree = shallow(
-        <TestNewPipelineVersion
+        <TestNewPipelineVersion t={key => key}
           {...generateProps(`?${QUERY_PARAMS.pipelineId}=${MOCK_PIPELINE.id}`)}
         />,
       );
@@ -232,7 +225,7 @@ describe('NewPipelineVersion', () => {
 
     it("sends a request to create a version when 'Create' is clicked", async () => {
       tree = shallow(
-        <TestNewPipelineVersion
+        <TestNewPipelineVersion t={key => key}
           {...generateProps(`?${QUERY_PARAMS.pipelineId}=${MOCK_PIPELINE.id}`)}
         />,
       );
@@ -274,13 +267,13 @@ describe('NewPipelineVersion', () => {
 
   describe('creating new pipeline', () => {
     it('renders the new pipeline page', async () => {
-      tree = shallow(<TestNewPipelineVersion {...generateProps()} />);
+      tree = shallow(<TestNewPipelineVersion t={key => key} {...generateProps()} />);
       await TestUtils.flushPromises();
       expect(tree).toMatchSnapshot();
     });
 
     it('switches between import methods', () => {
-      tree = shallow(<TestNewPipelineVersion {...generateProps()} />);
+      tree = shallow(<TestNewPipelineVersion t={key => key} {...generateProps()} />);
 
       // Import method is URL by default
       expect(tree.state('importMethod')).toBe(ImportMethod.URL);
@@ -295,7 +288,7 @@ describe('NewPipelineVersion', () => {
     });
 
     it('creates pipeline from url', async () => {
-      tree = shallow(<TestNewPipelineVersion {...generateProps()} />);
+      tree = shallow(<TestNewPipelineVersion t={key => key} {...generateProps()} />);
 
       (tree.instance() as unknown as TestNewPipelineVersion).handleChange('pipelineName')({
         target: { value: 'test pipeline name' },
@@ -325,7 +318,7 @@ describe('NewPipelineVersion', () => {
     });
 
     it('creates pipeline from local file', async () => {
-      tree = shallow(<NewPipelineVersion {...generateProps()} />);
+      tree = shallow(<NewPipelineVersion t={key => key} {...generateProps()} />);
 
       // Set local file, pipeline name, pipeline description and click create
       tree.find('#localPackageBtn').simulate('change');

@@ -18,8 +18,7 @@ import * as React from 'react';
 import Viewer, { ViewerConfig } from './Viewer';
 import { cssRaw } from 'typestyle';
 import Markdown from 'markdown-to-jsx';
-import i18next from 'i18next';
-
+import { useTranslation } from 'react-i18next';
 cssRaw(`
 .markdown-viewer h1,
 .markdown-viewer h2,
@@ -67,7 +66,8 @@ class MarkdownViewer extends Viewer<MarkdownViewerProps, any> {
   private _config = this.props.configs[0];
 
   public getDisplayName(): string {
-    return i18next.t('common:markdown');
+    const {t,i18n}= useTranslation ('common');
+    return t('common:markdown');
   }
 
   public render(): JSX.Element | null {
