@@ -20,7 +20,7 @@ import { classes, stylesheet } from 'typestyle';
 import { fontsize, color, fonts, zIndex } from '../Css';
 import { Constants } from '../lib/Constants';
 import Tooltip from '@material-ui/core/Tooltip';
-import { TFunction } from 'i18next';
+//import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 
@@ -107,7 +107,7 @@ interface GraphProps {
   graph: dagre.graphlib.Graph;
   onClick?: (id: string) => void;
   selectedNodeId?: string;
-  t: TFunction;
+ // t: TFunction;
 }
 
 interface GraphState {
@@ -116,7 +116,7 @@ interface GraphState {
 
 interface GraphErrorBoundaryProps {
   onError?: (message: string, additionalInfo: string) => void;
-  t: TFunction;
+  //t: TFunction;
 }
 class GraphErrorBoundary extends React.Component<GraphErrorBoundaryProps> {
   state = {
@@ -124,7 +124,7 @@ class GraphErrorBoundary extends React.Component<GraphErrorBoundaryProps> {
   };
 
   componentDidCatch(error: Error): void {
-    const { t } = this.props;
+    const { t,i18n } = useTranslation('common');
     const message = t('errorRenderGraph');
     const additionalInfo = `${message} ${t('bugKubeflowError')}: '${error.message}'.`;
     if (this.props.onError) {
@@ -166,7 +166,7 @@ export class Graph extends React.Component<GraphProps, GraphState> {
     graph.edges().forEach(edgeInfo => {
       const edge = graph.edge(edgeInfo);
       const segments: Segment[] = [];
-      const { t } = this.props;
+      const { t,i18n } = useTranslation('common');
 
       if (edge.points.length > 1) {
         for (let i = 1; i < edge.points.length; i++) {
@@ -186,7 +186,7 @@ export class Graph extends React.Component<GraphProps, GraphState> {
             const sourceNode = graph.node(edgeInfo.v);
 
             if (!sourceNode) {
-              throw new Error(`${t('graphDefInvalid')} '${edgeInfo.v}'.`);
+              throw new Error( `Graph definition is invalid. Cannot get node by '${edgeInfo.v}'.`);
             }
 
             // Set the edge's first segment to start at the bottom or top of the source node.
@@ -417,10 +417,10 @@ export class Graph extends React.Component<GraphProps, GraphState> {
 }
 
 const EnhancedGraph = (props: GraphProps & GraphErrorBoundaryProps) => {
-  const { t } = useTranslation('common');
+ // const { t,i18n } = useTranslation('common');
   return (
-  <GraphErrorBoundary onError={props.onError} t={t}>
-    <Graph {...props} t={t}/>
+  <GraphErrorBoundary onError={props.onError} >
+    <Graph {...props} />
   </GraphErrorBoundary>
   )};
 EnhancedGraph.displayName = 'EnhancedGraph';

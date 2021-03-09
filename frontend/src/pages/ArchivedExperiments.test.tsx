@@ -21,8 +21,20 @@ import { PageProps } from './Page';
 import { ExperimentStorageState } from '../apis/experiment';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
-jest.mock("i18next", () => ({ t: jest.fn(), }));
 
+/*jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key) => key }),
+}));*/
+
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: ((key: string) => key) as any ,
+  }),
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps,  t: ((key: string) => key) as any };
+    return Component;
+  },
+}));
 describe('ArchivedExperiemnts', () => {
   const updateBannerSpy = jest.fn();
   const updateToolbarSpy = jest.fn();
@@ -51,12 +63,12 @@ describe('ArchivedExperiemnts', () => {
   afterEach(() => tree.unmount());
 
   it('renders archived experiments', () => {
-    tree = shallow(<ArchivedExperiments {...generateProps()} />);
+    tree = shallow(<ArchivedExperiments  {...generateProps()} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('removes error banner on unmount', () => {
-    tree = shallow(<ArchivedExperiments {...generateProps()} />);
+    tree = shallow(<ArchivedExperiments  {...generateProps()} />);
     tree.unmount();
     expect(updateBannerSpy).toHaveBeenCalledWith({});
   });
@@ -70,7 +82,7 @@ describe('ArchivedExperiemnts', () => {
   });
 
   it('shows a list of archived experiments', () => {
-    tree = shallow(<ArchivedExperiments {...generateProps()} />);
+    tree = shallow(<ArchivedExperiments  {...generateProps()} />);
     expect(tree.find('ExperimentList').prop('storageState')).toBe(
       ExperimentStorageState.ARCHIVED.toString(),
     );

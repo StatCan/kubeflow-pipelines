@@ -24,7 +24,6 @@ import { ButtonKeys } from '../lib/Buttons';
 import { Apis } from '../lib/Apis';
 
 
-   
 describe('ArchivedRuns', () => {
   const updateBannerSpy = jest.fn();
   const updateToolbarSpy = jest.fn();

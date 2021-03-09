@@ -19,6 +19,7 @@ import { shallow } from 'enzyme';
 import PlotCard from './PlotCard';
 import { ViewerConfig, PlotType } from './viewers/Viewer';
 import { Component } from 'react';
+
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
@@ -26,6 +27,7 @@ jest.mock('react-i18next', () => ({
     return Component;
   }
 }));
+
 describe('PlotCard', () => {
   it('handles no configs', () => {
     expect(shallow(<PlotCard  title='' configs={[]} maxDimension={100} />)).toMatchSnapshot();

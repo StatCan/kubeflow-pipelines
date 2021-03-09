@@ -38,7 +38,7 @@ export class ArchivedExperiments extends Page<ArchivedExperimentsProp, ArchivedE
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
-    const { t } = this.props;
+    const { t,i18n} = useTranslation('common');
     return {
       actions: buttons.refresh(this.refresh.bind(this)).getToolbarActionMap(),
       breadcrumbs: [],
@@ -70,7 +70,7 @@ export class ArchivedExperiments extends Page<ArchivedExperimentsProp, ArchivedE
 
 const EnhancedArchivedExperiments = (props: PageProps) => {
   const namespace = React.useContext(NamespaceContext);
-  const { t } = useTranslation('common');
+  const { t,i18n } = useTranslation('common');
   return <ArchivedExperiments key={namespace} {...props} namespace={namespace} t={t}/>;
 };
 

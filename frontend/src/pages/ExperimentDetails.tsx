@@ -286,7 +286,7 @@ export class ExperimentDetails extends Page<{t: TFunction}, ExperimentDetailsSta
     this.clearBanner();
 
     const experimentId = this.props.match.params[RouteParams.experimentId];
-    const { t } = this.props;
+    const { t ,i18n} = useTranslation('commo');
 
     try {
       const experiment = await Apis.experimentServiceApi.getExperiment(experimentId);

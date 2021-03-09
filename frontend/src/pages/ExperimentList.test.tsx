@@ -32,13 +32,15 @@ import { NamespaceContext } from 'src/lib/KubeflowClient';
 import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ExperimentStorageState } from '../apis/experiment';
-
-//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
-    return Component;
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
   },
 }));
 
@@ -111,7 +113,7 @@ describe('ExperimentList', () => {
     listRunsSpy.mockImplementation(() => ({
       runs: range(nRuns).map(i => ({ id: 'test-run-id' + i, name: 'test run name' + i })),
     }));
-    tree = TestUtils.mountWithRouter(<ExperimentList   {...generateProps()} namespace={namespace} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList t={key => key}   {...generateProps()} namespace={namespace} />);
     await listExperimentsSpy;
     await listRunsSpy;
     await TestUtils.flushPromises();
@@ -127,12 +129,12 @@ describe('ExperimentList', () => {
   });
 
   it('renders an empty list with empty state message', () => {
-    tree = shallow(<ExperimentList  {...generateProps()} />);
+    tree = shallow(<ExperimentList  t={key => key}  {...generateProps()} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a list of one experiment', async () => {
-    tree = shallow(<ExperimentList   {...generateProps()} />);
+    tree = shallow(<ExperimentList  t={key => key}  {...generateProps()} />);
     tree.setState({
       displayExperiments: [
         {
@@ -148,7 +150,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of one experiment with no description', async () => {
-    tree = shallow(<ExperimentList   {...generateProps()} />);
+    tree = shallow(<ExperimentList  t={key => key}  {...generateProps()} />);
     tree.setState({
       experiments: [
         {
@@ -163,7 +165,7 @@ describe('ExperimentList', () => {
   });
 
   it('renders a list of one experiment with error', async () => {
-    tree = shallow(<ExperimentList  {...generateProps()} />);
+    tree = shallow(<ExperimentList t={key => key}  {...generateProps()} />);
     tree.setState({
       experiments: [
         {

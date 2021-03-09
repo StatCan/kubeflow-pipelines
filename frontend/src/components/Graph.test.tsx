@@ -97,7 +97,7 @@ describe('Graph', () => {
     graph.setNode('node1', newNode('node1'));
     graph.setNode('node2', newNode('node2'));
     graph.setEdge('node2', 'node1');
-    expect(shallow(<Graph t={(key: any) => key} graph={graph} />)).toMatchSnapshot();
+    expect(shallow(<Graph graph={graph} />)).toMatchSnapshot();
   });
 
   it('renders a complex graph with six nodes and seven edges', () => {
@@ -179,7 +179,7 @@ describe('Graph', () => {
     const graph = newGraph();
     graph.setEdge('node1', 'node2');
     const onError = jest.fn();
-    expect(mount(<Graph  t={key => key} graph={graph}  onError = {onError}  />).html()).toMatchSnapshot();
+    expect(mount(<Graph  graph={graph}  onError = {onError}  />).html()).toMatchSnapshot();
     expect(onError).toHaveBeenCalledTimes(1);
     const [message, additionalInfo] = onError.mock.calls[0];
     expect(message).toEqual('errorRenderGraph.');

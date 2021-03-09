@@ -103,7 +103,7 @@ interface SelectedNodeDetails {
 export interface RunDetailsInternalProps {
   runId?: string;
   gkeMetadata: GkeMetadata;
-  t: TFunction;
+  //t: TFunction;
 }
 
 export type RunDetailsProps = PageProps & Exclude<RunDetailsInternalProps, 'gkeMetadata'>;
@@ -196,7 +196,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
     const runIdFromParams = this.props.match.params[RouteParams.runId];
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     return {
       actions: buttons
         .retryRun(
@@ -249,7 +249,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
       workflow,
       mlmdExecutions,
     } = this.state;
-    const { t } = this.props;
+    const { t,i18n } = useTranslation(['experiments', 'common']);
     const { projectId, clusterName } = this.props.gkeMetadata;
     const selectedNodeId = selectedNodeDetails?.id || '';
     const namespace = workflow?.metadata?.namespace;
@@ -270,7 +270,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
     const selectedExecution = mlmdExecutions?.find(
       execution => ExecutionHelpers.getKfpPod(execution) === selectedNodeId,
     );
-    // const selectedExecution = mlmdExecutions && mlmdExecutions.find(execution => execution.getPropertiesMap())
+    //const selectedExecution = mlmdExecutions && mlmdExecutions.find(execution => execution.getPropertiesMap())
     const hasMetrics = runMetadata && runMetadata.metrics && runMetadata.metrics.length > 0;
     const visualizationCreatorConfig: VisualizationCreatorConfig = {
       allowCustomVisualizations,
@@ -304,7 +304,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                         onError={(message, additionalInfo) =>
                           this.props.updateBanner({ message, additionalInfo, mode: 'error' })
                         }
-                        t={t}
+                        //t={t}
                       />
 
                       <SidePanel
@@ -649,7 +649,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
   public async load(): Promise<void> {
     this.clearBanner();
     const runId = this.props.match.params[RouteParams.runId];
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     try {
       const allowCustomVisualizations = await Apis.areCustomVisualizationsAllowed();
       this.setState({ allowCustomVisualizations });
@@ -860,7 +860,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
   }
 
   private _getDetailsFields(workflow: Workflow, runMetadata?: ApiRun): Array<KeyValue<string>> {
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     return !workflow.status
       ? []
       : [
@@ -886,7 +886,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
   private async _loadSidePaneTab(tab: SidePaneTab): Promise<void> {
     const workflow = this.state.workflow;
     const selectedNodeDetails = this.state.selectedNodeDetails;
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
 
     let sidepanelBannerMode: Mode = 'warning';
 
@@ -932,7 +932,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
     if (!selectedNodeDetails || !runId || !namespace) {
       return;
     }
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     this.setStateSafe({ sidepanelBusy: true });
 
     let logsBannerMessage = '';
@@ -975,7 +975,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
     namespace: string,
   ): Promise<void> {
     const nodeId = this.state.selectedNodeDetails ? this.state.selectedNodeDetails.id : '';
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     if (nodeId.length === 0) {
       this.showPageError(t('genVisFailedComponent'));
       return;
@@ -1216,14 +1216,14 @@ const VisualizationsTabContent: React.FC<{
 const EnhancedRunDetails: React.FC<RunDetailsProps> = props => {
   const namespaceChanged = useNamespaceChangeEvent();
   const gkeMetadata = React.useContext(GkeMetadataContext);
-  const { t } = useTranslation(['experiments', 'common']);
+  //const { t } = useTranslation(['experiments', 'common']);
   if (namespaceChanged) {
     // Run details page shows info about a run, when namespace changes, the run
     // doesn't exist in the new namespace, so we should redirect to experiment
     // list page.
     return <Redirect to={RoutePage.EXPERIMENTS} />;
   }
-  return <RunDetails {...props} gkeMetadata={gkeMetadata} t={t}/>;
+  return <RunDetails {...props} gkeMetadata={gkeMetadata} />;
 };
 
 export default EnhancedRunDetails;

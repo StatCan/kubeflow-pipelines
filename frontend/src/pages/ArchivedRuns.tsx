@@ -23,15 +23,15 @@ import { ToolbarProps } from '../components/Toolbar';
 import { classes } from 'typestyle';
 import { commonCss, padding } from '../Css';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
-import { TFunction } from 'i18next';
-import { useTranslation } from 'react-i18next';
-
+//import { TFunction } from 'i18next';
+//import { useTranslation } from 'react-i18next';
+import i18next from 'i18next'
 
 interface ArchivedRunsState {
   selectedIds: string[];
 }
 
-export class ArchivedRuns extends Page<{ namespace?: string, t: TFunction }, ArchivedRunsState> {
+export class ArchivedRuns extends Page<{ namespace?: string }, ArchivedRunsState> {
   private _runlistRef = React.createRef<RunList>();
 
   constructor(props: any) {
@@ -44,7 +44,7 @@ export class ArchivedRuns extends Page<{ namespace?: string, t: TFunction }, Arc
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
-    const { t } = this.props;
+    //const { t,i18n } = useTranslation('common');
     return {
       actions: buttons
         .restore('run', () => this.state.selectedIds, false, this._selectionChanged.bind(this))
@@ -57,7 +57,7 @@ export class ArchivedRuns extends Page<{ namespace?: string, t: TFunction }, Arc
         )
         .getToolbarActionMap(),
       breadcrumbs: [],
-      pageTitle: t('archive'),
+      pageTitle: i18next.t('common:archive'),
     };
   }
 
@@ -99,8 +99,7 @@ export class ArchivedRuns extends Page<{ namespace?: string, t: TFunction }, Arc
 
 const EnhancedArchivedRuns = (props: PageProps) => {
   const namespace = React.useContext(NamespaceContext);
-  const { t } = useTranslation('common');
-  return <ArchivedRuns key={namespace} {...props} namespace={namespace} t={t}/>;
+  //const { t ,i18n} = useTranslation('common');
+  return <ArchivedRuns key={namespace} {...props} namespace={namespace} />;
 };
-
 export default EnhancedArchivedRuns;

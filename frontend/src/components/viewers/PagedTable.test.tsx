@@ -20,7 +20,8 @@ import PagedTable from './PagedTable';
 import { PlotType } from './Viewer';
 
 
-
+let mockValue;
+jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('PagedTable', () => {
   it('does not break on no config', () => {
     const tree = shallow(<PagedTable configs={[]} />);
@@ -73,6 +74,7 @@ describe('PagedTable', () => {
   });
 
   it('returns a user friendly display name', () => {
+    mockValue='common:table';
     expect(PagedTable.prototype.getDisplayName()).toBe('common:table');
   });
 });

@@ -24,7 +24,24 @@ import TestUtils, { diffHTML } from '../TestUtils';
 import { RoutePage } from './Router';
 import EnhancedSideNav, { css, SideNav } from './SideNav';
 
-
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: str => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => '' };
+    return Component;
+  },
+}));
 
 const wideWidth = 1000;
 const narrowWidth = 200;
@@ -304,9 +321,9 @@ describe('SideNav', () => {
           <div class="infoVisible">
       +     <div
       +       class="envMetadata"
-      +       title="clusterName: some-cluster-name, projectId: some-project-id"
+      +       title="undefined: some-cluster-name, undefined: some-project-id"
       +     >
-      +       <span>clusterName: </span
+      +       <span>: </span
       +       ><a
       +         href="https://console.cloud.google.com/kubernetes/list?project=some-project-id&amp;filter=name:some-cluster-name"
       +         class="link unstyled"
@@ -315,7 +332,7 @@ describe('SideNav', () => {
       +         >some-cluster-name</a
       +       >
       +     </div>
-            <div class="envMetadata" title="reportIssue">
+            <div class="envMetadata">
               <a
                 href="https://github.com/kubeflow/pipelines/issues/new/choose"
                 class="link unstyled"

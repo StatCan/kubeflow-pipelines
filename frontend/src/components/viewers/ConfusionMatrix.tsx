@@ -197,7 +197,7 @@ class ConfusionMatrix extends Viewer<ConfusionMatrixProps, ConfusionMatrixState>
   }
 
   public getDisplayName(): string {
-    //const {t,i18n}= useTranslation ('common');
+   // const {t,i18n}= useTranslation ('common');
     return i18next.t('common:confusionMatrix');
   }
 

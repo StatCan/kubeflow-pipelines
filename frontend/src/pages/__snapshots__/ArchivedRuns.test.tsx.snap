@@ -22,28 +22,28 @@ exports[`ArchivedRuns renders archived runs 1`] = `
           "deleteRun": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "Select at least one run to delete",
+            "disabledTitle": "undefined run undefined",
             "id": "deleteBtn",
-            "title": "delete",
-            "tooltip": "delete",
+            "title": undefined,
+            "tooltip": undefined,
           },
           "refresh": Object {
             "action": [Function],
             "id": "refreshBtn",
-            "title": "refresh",
-            "tooltip": "refreshList",
+            "title": undefined,
+            "tooltip": undefined,
           },
           "restore": Object {
             "action": [Function],
             "disabled": true,
-            "disabledTitle": "selectResourceRestore",
+            "disabledTitle": undefined,
             "id": "restoreBtn",
-            "title": "restore",
-            "tooltip": "restore",
+            "title": undefined,
+            "tooltip": undefined,
           },
         },
         "breadcrumbs": Array [],
-        "pageTitle": "archive",
+        "pageTitle": undefined,
       }
     }
     updateBanner={[MockFunction]}

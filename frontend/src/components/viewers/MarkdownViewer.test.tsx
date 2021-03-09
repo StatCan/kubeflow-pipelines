@@ -21,17 +21,8 @@ import { PlotType } from './Viewer';
 
 
 //jest.mock("i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
+let mockValue;
+jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('MarkdownViewer', () => {
   it('does not break on empty data', () => {
     const tree = mount(<MarkdownViewer configs={[]} />).getDOMNode();
@@ -64,6 +55,7 @@ describe('MarkdownViewer', () => {
   });
 
   it('returns a user friendly display name', () => {
+    mockValue='common:markdown';
     expect(MarkdownViewer.prototype.getDisplayName()).toBe('common:markdown');
   });
 });

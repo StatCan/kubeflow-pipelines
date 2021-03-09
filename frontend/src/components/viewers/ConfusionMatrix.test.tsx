@@ -18,20 +18,20 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import ConfusionMatrix, { ConfusionMatrixConfig } from './ConfusionMatrix';
 import { PlotType } from './Viewer';
-
-
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
+/*jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   useTranslation: () => {
     return {
-      t: (str: any) => str,
+      t: (str) => str,
       i18n: {
         changeLanguage: () => new Promise(() => {}),
       },
     };
   },
-}));
+}));*/
+let mockValue;
+jest.mock("i18next", () => ({ t: () => mockValue }));
+
 describe('ConfusionMatrix', () => {
   it('does not break on empty data', () => {
     const tree = shallow(<ConfusionMatrix configs={[]} />);
@@ -81,6 +81,7 @@ describe('ConfusionMatrix', () => {
   });
 
   it('returns a user friendly display name', () => {
+    mockValue='common:confusionMatrix';
     expect(ConfusionMatrix.prototype.getDisplayName()).toBe('common:confusionMatrix');
   });
 });

@@ -32,7 +32,15 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 //jest.mock("i18next", () => ({ t: jest.fn(), }));
 
-
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: ((key: string) => key) as any ,
+  }),
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps,  t: ((key: string) => key) as any };
+    return Component;
+  },
+}));
 describe('ExperimentDetails', () => {
   let tree: ReactWrapper | ShallowWrapper;
 

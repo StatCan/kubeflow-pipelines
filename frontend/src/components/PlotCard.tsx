@@ -29,25 +29,6 @@ import { stylesheet, classes } from 'typestyle';
 import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
 
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => Component => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
-    return Component;
-  },
-}));
-
 const css = stylesheet({
   dialogTitle: {
     color: color.strong,

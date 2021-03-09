@@ -18,7 +18,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
 
-
 export interface ExperimentListProps extends RouteComponentProps {
   t: TFunction;
   namespace?: string;
@@ -194,4 +193,5 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
     );
   }
 }
-export default withTranslation(['experiments', 'common'])(ExperimentList);
+withTranslation(['experiments', 'common'])(ExperimentList);
+export default ExperimentList;

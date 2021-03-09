@@ -14,18 +14,19 @@ exports[`ArchivedExperiemnts renders archived experiments 1`] = `
     match={Object {}}
     onError={[Function]}
     storageState="STORAGESTATE_ARCHIVED"
+    t={[Function]}
     toolbarProps={
       Object {
         "actions": Object {
           "refresh": Object {
             "action": [Function],
             "id": "refreshBtn",
-            "title": "refresh",
-            "tooltip": "refreshList",
+            "title": undefined,
+            "tooltip": undefined,
           },
         },
         "breadcrumbs": Array [],
-        "pageTitle": "archive",
+        "pageTitle": "common:archive",
       }
     }
     updateBanner={[MockFunction]}

@@ -31,6 +31,15 @@ import { render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: ((key: string) => key) as any ,
+  }),
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps,  t: ((key: string) => key) as any };
+    return Component;
+  },
+}));
 
    
 const Compare = TEST_ONLY.Compare;

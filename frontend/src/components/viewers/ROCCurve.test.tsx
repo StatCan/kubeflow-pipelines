@@ -21,17 +21,9 @@ import ROCCurve from './ROCCurve';
 
 
 //jest.mock("i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
+
+let mockValue;
+jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('ROCCurve', () => {
   it('does not break on no config', () => {
     const tree = shallow(<ROCCurve configs={[]} />);
@@ -107,6 +99,7 @@ describe('ROCCurve', () => {
   });
 
   it('returns friendly display name', () => {
+    mockValue='common:rocCurve';
     expect(ROCCurve.prototype.getDisplayName()).toBe('common:rocCurve');
   });
 

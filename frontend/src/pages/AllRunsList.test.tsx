@@ -21,7 +21,14 @@ import { RoutePage } from '../components/Router';
 import { RunStorageState } from '../apis/run';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
-
+let mockValue;
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => mockValue };
+    return Component;
+  }
+}));
 describe('AllRunsList', () => {
   const updateBannerSpy = jest.fn();
   let _toolbarProps: any = {};

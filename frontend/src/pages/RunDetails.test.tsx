@@ -37,25 +37,7 @@ import { PageProps } from './Page';
 import EnhancedRunDetails, { RunDetailsInternalProps, TEST_ONLY } from './RunDetails';
 
 
-//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
-    return Component;
-  },
-}));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
+
 const RunDetails = TEST_ONLY.RunDetails;
 
 jest.mock('../components/Graph', () => {

@@ -298,7 +298,7 @@ class PipelineDetails extends Page<{t: TFunction}, PipelineDetailsState> {
                       onError={(message, additionalInfo) =>
                         this.props.updateBanner({ message, additionalInfo, mode: 'error' })
                       }
-                      t={t}
+                      //t={t}
                     />
 
                     <SidePanel

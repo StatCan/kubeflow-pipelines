@@ -174,7 +174,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   ];
 
   public getInitialToolbarState(): ToolbarProps {
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     return {
       actions: {},
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
@@ -183,7 +183,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   }
 
   public render(): JSX.Element {
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     const {
       workflowFromRun,
       description,
@@ -651,7 +651,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     //    (Now you will be viewing a pipeline details page for a pipeline version that hasn't been uploaded)
     // 3. Click Create run
     const embeddedRunId = urlParser.get(QUERY_PARAMS.fromRunId);
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     if (originalRunId) {
       // If we are cloning a run, fetch the original
       try {
@@ -874,7 +874,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       this.setStateSafe({ pipelineSelectorOpen: true, uploadDialogOpen: false });
       return false;
     }
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     try {
       const uploadedPipeline =
         method === ImportMethod.LOCAL
@@ -900,7 +900,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   private async _prepareFormFromEmbeddedPipeline(embeddedRunId: string): Promise<void> {
     let embeddedPipelineSpec: string | null;
     let runWithEmbeddedPipeline: ApiRunDetail;
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     try {
       runWithEmbeddedPipeline = await Apis.runServiceApi.getRun(embeddedRunId);
       embeddedPipelineSpec = RunUtils.getWorkflowManifest(runWithEmbeddedPipeline.run);
@@ -945,7 +945,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     originalRun?: ApiRun | ApiJob,
     runtime?: ApiPipelineRuntime,
   ): Promise<void> {
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     if (!originalRun) {
       logger.error(t('clonedRunDetails'));
       return;
@@ -1052,7 +1052,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   }
 
   private _start(): void {
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     if (!this.state.pipelineVersion && !this.state.workflowFromRun) {
       this.showErrorDialog(t('runCreationFailed'), t('cannotStartRun'));
       logger.error('Cannot start run without pipeline version');
@@ -1139,7 +1139,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   private _getCloneName(oldName: string): string {
     const numberRegex = /Clone(?: \(([0-9]*)\))? of (.*)/;
     const match = oldName.match(numberRegex);
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     if (!match) {
       // No match, add Clone prefix
       return `${t('common:cloneOf')} ` + oldName;
@@ -1170,7 +1170,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   }
 
   private _validate(): void {
-    const { t } = this.props;
+    const { t } = useTranslation(['experiments', 'common']);
     // Validate state
     const { pipelineVersion, workflowFromRun, maxConcurrentRuns, runName, trigger } = this.state;
     try {

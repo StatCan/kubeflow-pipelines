@@ -34,14 +34,12 @@ import { ApiJob } from 'src/apis/job';
 //jest.mock("i18next", () => ({ t: jest.fn(), }));
 
 jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
+  useTranslation: () => ({
+    t: ((key: string) => key) as any ,
+  }),
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps,  t: ((key: string) => key) as any };
+    return Component;
   },
 }));
 

@@ -65,7 +65,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
   }
 
   public getInitialToolbarState(): ToolbarProps {
-    const { t } = this.props;
+    const { t,i18n } = useTranslation(['experiments', 'common']);
     return {
       actions: {},
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
@@ -75,7 +75,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
 
   public render(): JSX.Element {
     const { description, experimentName, isbeingCreated, validationError } = this.state;
-    const { t } = this.props;
+    const { t,i18n } = useTranslation(['experiments', 'common']);
 
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'))}>
@@ -164,7 +164,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
     };
 
     this.setState({ isbeingCreated: true }, async () => {
-      const { t } = this.props;
+      const { t,i18n } = useTranslation(['experiments', 'common']);
       try {
         const response = await Apis.experimentServiceApi.createExperiment(newExperiment);
         let searchString = '';
@@ -198,7 +198,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
   private _validate(): void {
     // Validate state
     const { experimentName } = this.state;
-    const { t } = this.props;
+    const { t ,i18n} = useTranslation(['experiments', 'common']);
     try {
       if (!experimentName) {
         throw new Error(t('experimentNameRequired'));

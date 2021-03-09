@@ -20,17 +20,8 @@ import HTMLViewer, { HTMLViewerConfig } from './HTMLViewer';
 import { PlotType } from './Viewer';
 
 //jest.mock("i18next", () => ({ t: jest.fn(), }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (str: any) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
+let mockValue;
+jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('HTMLViewer', () => {
   it('does not break on empty data', () => {
     const tree = mount(<HTMLViewer configs={[]} />);
@@ -66,6 +57,7 @@ describe('HTMLViewer', () => {
   });
 
   it('returns a user friendly display name', () => {
+    mockValue='common:staticHtml';
     expect(HTMLViewer.prototype.getDisplayName()).toBe('common:staticHtml');
   });
 });
