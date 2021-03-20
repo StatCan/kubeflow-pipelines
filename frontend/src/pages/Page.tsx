@@ -23,7 +23,7 @@ import { DialogProps } from '../components/Router';
 import { errorToMessage } from '../lib/Utils';
 //import { useTranslation } from 'react-i18next';
 //import { TFunction } from 'i18next';
-import i18next from 'i18next'
+import i18next, { TFunction } from 'i18next'
 
 export interface PageProps extends RouteComponentProps {
   toolbarProps: ToolbarProps;
@@ -31,6 +31,7 @@ export interface PageProps extends RouteComponentProps {
   updateDialog: (dialogProps: DialogProps) => void;
   updateSnackbar: (snackbarProps: SnackbarProps) => void;
   updateToolbar: (toolbarProps: Partial<ToolbarProps>) => void;
+  t: TFunction;
 }
 
 export type PageErrorHandler = (

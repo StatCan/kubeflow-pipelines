@@ -164,7 +164,9 @@ exports[`RecurringRunsManager reloads the list of runs after enable/disabling 1`
         <span
           className="MuiButton-label-816"
         >
-          <span />
+          <span>
+            example1
+          </span>
         </span>
         <NoSsr
           defer={false}
@@ -302,7 +304,9 @@ exports[`RecurringRunsManager renders a disable button if the run is enabled, cl
         <span
           className="MuiButton-label-288"
         >
-          <span />
+          <span>
+            example1
+          </span>
         </span>
         <NoSsr
           defer={false}
@@ -440,7 +444,9 @@ exports[`RecurringRunsManager renders an enable button if the run is disabled, c
         <span
           className="MuiButton-label-464"
         >
-          <span />
+          <span>
+            example1
+          </span>
         </span>
         <NoSsr
           defer={false}
@@ -578,7 +584,9 @@ exports[`RecurringRunsManager renders an enable button if the run's enabled fiel
         <span
           className="MuiButton-label-640"
         >
-          <span />
+          <span>
+            example1
+          </span>
         </span>
         <NoSsr
           defer={false}

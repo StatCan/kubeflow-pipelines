@@ -21,10 +21,8 @@ import { PageProps } from './Page';
 import { ExperimentStorageState } from '../apis/experiment';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
+import { TFunction } from 'i18next';
 
-/*jest.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key) => key }),
-}));*/
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -42,7 +40,7 @@ describe('ArchivedExperiemnts', () => {
   const updateDialogSpy = jest.fn();
   const updateSnackbarSpy = jest.fn();
   let tree: ShallowWrapper;
-
+  let identiT: TFunction = (key: string) => key;
   function generateProps(): PageProps {
     return TestUtils.generatePageProps(
       ArchivedExperiments,
@@ -53,7 +51,8 @@ describe('ArchivedExperiemnts', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-    );
+      identiT
+      );
   }
 
   beforeEach(() => {

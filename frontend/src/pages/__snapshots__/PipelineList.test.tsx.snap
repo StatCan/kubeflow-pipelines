@@ -16,17 +16,17 @@ exports[`PipelineList renders a list of one pipeline 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 3,
-          "label": "Description",
+          "label": "description",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "uploadedOn",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipelines found. Click \\"Upload pipeline\\" to start."
-    filterLabel="Filter pipelines"
+    emptyMessage="noPipelinesFound"
+    filterLabel="filterPipelines"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -50,6 +50,7 @@ exports[`PipelineList renders a list of one pipeline 1`] = `
   <UploadPipelineDialog
     onClose={[Function]}
     open={false}
+    t={[Function]}
   />
 </div>
 `;
@@ -70,17 +71,17 @@ exports[`PipelineList renders a list of one pipeline with error 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 3,
-          "label": "Description",
+          "label": "description",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "uploadedOn",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipelines found. Click \\"Upload pipeline\\" to start."
-    filterLabel="Filter pipelines"
+    emptyMessage="noPipelinesFound"
+    filterLabel="filterPipelines"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -104,6 +105,7 @@ exports[`PipelineList renders a list of one pipeline with error 1`] = `
   <UploadPipelineDialog
     onClose={[Function]}
     open={false}
+    t={[Function]}
   />
 </div>
 `;
@@ -124,17 +126,17 @@ exports[`PipelineList renders a list of one pipeline with no description or crea
         Object {
           "customRenderer": [Function],
           "flex": 3,
-          "label": "Description",
+          "label": "description",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "uploadedOn",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipelines found. Click \\"Upload pipeline\\" to start."
-    filterLabel="Filter pipelines"
+    emptyMessage="noPipelinesFound"
+    filterLabel="filterPipelines"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -158,6 +160,7 @@ exports[`PipelineList renders a list of one pipeline with no description or crea
   <UploadPipelineDialog
     onClose={[Function]}
     open={false}
+    t={[Function]}
   />
 </div>
 `;
@@ -178,17 +181,17 @@ exports[`PipelineList renders an empty list with empty state message 1`] = `
         Object {
           "customRenderer": [Function],
           "flex": 3,
-          "label": "Description",
+          "label": "description",
         },
         Object {
           "flex": 1,
-          "label": "Uploaded on",
+          "label": "uploadedOn",
           "sortKey": "created_at",
         },
       ]
     }
-    emptyMessage="No pipelines found. Click \\"Upload pipeline\\" to start."
-    filterLabel="Filter pipelines"
+    emptyMessage="noPipelinesFound"
+    filterLabel="filterPipelines"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -200,6 +203,7 @@ exports[`PipelineList renders an empty list with empty state message 1`] = `
   <UploadPipelineDialog
     onClose={[Function]}
     open={false}
+    t={[Function]}
   />
 </div>
 `;

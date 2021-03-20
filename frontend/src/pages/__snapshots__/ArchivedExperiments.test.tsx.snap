@@ -21,8 +21,8 @@ exports[`ArchivedExperiemnts renders archived experiments 1`] = `
           "refresh": Object {
             "action": [Function],
             "id": "refreshBtn",
-            "title": undefined,
-            "tooltip": undefined,
+            "title": "common:refresh",
+            "tooltip": "common:refreshList",
           },
         },
         "breadcrumbs": Array [],

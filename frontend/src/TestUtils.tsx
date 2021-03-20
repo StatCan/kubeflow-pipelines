@@ -27,6 +27,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { object } from 'prop-types';
 import { format } from 'prettier';
 import snapshotDiff from 'snapshot-diff';
+import { TFunction } from 'i18next';
 
 
 export default class TestUtils {
@@ -79,6 +80,7 @@ export default class TestUtils {
     updateDialogSpy: jest.SpyInstance<unknown> | null,
     updateToolbarSpy: jest.SpyInstance<unknown> | null,
     updateSnackbarSpy: jest.SpyInstance<unknown> | null,
+    tFn: TFunction | null
   ): PageProps {
     const pageProps = {
       history: { push: historyPushSpy } as any,
@@ -89,6 +91,7 @@ export default class TestUtils {
       updateDialog: updateDialogSpy as any,
       updateSnackbar: updateSnackbarSpy as any,
       updateToolbar: updateToolbarSpy as any,
+      t: tFn
     } as PageProps;
     pageProps.toolbarProps = new PageElement(pageProps).getInitialToolbarState();
     // The toolbar spy gets called in the getInitialToolbarState method, reset it

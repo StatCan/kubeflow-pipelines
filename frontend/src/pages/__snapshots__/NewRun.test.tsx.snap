@@ -610,8 +610,8 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -717,8 +717,8 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -1675,8 +1675,8 @@ exports[`NewRun changes title and form to default state if the new run is a one-
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -1782,8 +1782,8 @@ exports[`NewRun changes title and form to default state if the new run is a one-
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -2201,8 +2201,8 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -2308,8 +2308,8 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -2725,8 +2725,8 @@ exports[`NewRun renders the new run page 1`] = `
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -2832,8 +2832,8 @@ exports[`NewRun renders the new run page 1`] = `
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -3251,8 +3251,8 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -3358,8 +3358,8 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -3795,8 +3795,8 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -3902,8 +3902,8 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -4321,8 +4321,8 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -4428,8 +4428,8 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -4858,8 +4858,8 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -4965,8 +4965,8 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -5384,8 +5384,8 @@ exports[`NewRun updates the run's state with the associated experiment if one is
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }
@@ -5491,8 +5491,8 @@ exports[`NewRun updates the run's state with the associated experiment if one is
                 "style": Object {
                   "minWidth": 160,
                 },
-                "title": undefined,
-                "tooltip": undefined,
+                "title": "common:uploadPipeline",
+                "tooltip": "common:uploadPipeline",
               },
             }
           }

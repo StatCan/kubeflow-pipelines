@@ -35,8 +35,7 @@ import WorkflowParser from '../lib/WorkflowParser';
 import TestUtils from '../TestUtils';
 import { PageProps } from './Page';
 import EnhancedRunDetails, { RunDetailsInternalProps, TEST_ONLY } from './RunDetails';
-
-
+import { TFunction } from 'i18next';
 
 const RunDetails = TEST_ONLY.RunDetails;
 
@@ -100,7 +99,7 @@ describe('RunDetails', () => {
 
   let testRun: ApiRunDetail = {};
   let tree: ShallowWrapper | ReactWrapper;
-
+  let identiT: TFunction = (key: string) => key;
   function generateProps(): RunDetailsInternalProps & PageProps {
     const pageProps: PageProps = {
       history: { push: historyPushSpy } as any,

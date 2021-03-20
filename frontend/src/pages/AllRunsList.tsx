@@ -98,5 +98,5 @@ export class AllRunsList extends Page<{ namespace?: string; t: TFunction }, AllR
     this.setState({ selectedIds });
   }
 }
-withTranslation(['common'])(AllRunsList);
-export default AllRunsList;
+export default withTranslation(['common'])(AllRunsList);
+ 

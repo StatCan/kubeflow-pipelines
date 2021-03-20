@@ -30,7 +30,7 @@ import { render } from '@testing-library/react';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
+import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -42,6 +42,7 @@ jest.mock('react-i18next', () => ({
   },
 }));
 describe('ExperimentDetails', () => {
+  let identiT: TFunction = (key: string) => key;
   let tree: ReactWrapper | ShallowWrapper;
 
   const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => null);
@@ -77,6 +78,7 @@ describe('ExperimentDetails', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
+      identiT
     );
   }
 
@@ -205,7 +207,7 @@ describe('ExperimentDetails', () => {
     await TestUtils.flushPromises();
     expect(updateDialogSpy).toHaveBeenCalledWith({
       content: MOCK_EXPERIMENT.description,
-      title: 'Experiment description',
+      title: 'experimentDescription',
     });
   });
 
@@ -228,9 +230,7 @@ describe('ExperimentDetails', () => {
       expect.objectContaining({
         additionalInfo: 'test error',
         message:
-          'Error: failed to retrieve experiment: ' +
-          MOCK_EXPERIMENT.id +
-          '. Click Details for more information.',
+          'errorRetrieveExperiment: some-mock-experiment-id.undefined',
         mode: 'error',
       }),
     );
@@ -275,9 +275,7 @@ describe('ExperimentDetails', () => {
       expect.objectContaining({
         additionalInfo: 'test error',
         message:
-          'Error: failed to retrieve recurring runs for experiment: ' +
-          MOCK_EXPERIMENT.id +
-          '. Click Details for more information.',
+          'errorRetrieveRecurrRunsExperiment: some-mock-experiment-id.undefined',
         mode: 'error',
       }),
     );
