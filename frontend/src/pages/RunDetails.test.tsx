@@ -110,7 +110,7 @@ describe('RunDetails', () => {
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
       updateToolbar: updateToolbarSpy,
-      t: identiT
+      t: identiT,
     };
     return Object.assign(pageProps, {
       toolbarProps: new RunDetails(pageProps).getInitialToolbarState(),
@@ -259,7 +259,7 @@ describe('RunDetails', () => {
     expect(updateDialogSpy).toHaveBeenCalledTimes(1);
     expect(updateDialogSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        title: 'retryRun',
+        title: 'common:retry this run?',
       }),
     );
   });
@@ -270,7 +270,7 @@ describe('RunDetails', () => {
     const retryBtn = instance.getInitialToolbarState().actions[ButtonKeys.RETRY];
     await retryBtn!.action();
     const call = updateDialogSpy.mock.calls[0][0];
-    const cancelBtn = call.buttons.find((b: any) => b.text === 'Cancel');
+    const cancelBtn = call.buttons.find((b: any) => b.text === 'common:cancel');
     await cancelBtn.onClick();
     expect(retryRunSpy).not.toHaveBeenCalled();
   });
@@ -283,7 +283,7 @@ describe('RunDetails', () => {
     const retryBtn = instance.getInitialToolbarState().actions[ButtonKeys.RETRY];
     await retryBtn!.action();
     const call = updateDialogSpy.mock.calls[0][0];
-    const confirmBtn = call.buttons.find((b: any) => b.text === 'Retry');
+    const confirmBtn = call.buttons.find((b: any) => b.text === 'common:retry');
     await confirmBtn.onClick();
     expect(retryRunSpy).toHaveBeenCalledTimes(1);
     expect(retryRunSpy).toHaveBeenLastCalledWith(testRun.run!.id);
@@ -296,7 +296,7 @@ describe('RunDetails', () => {
     const retryBtn = instance.getInitialToolbarState().actions[ButtonKeys.RETRY];
     await retryBtn!.action();
     const call = updateDialogSpy.mock.calls[0][0];
-    const confirmBtn = call.buttons.find((b: any) => b.text === 'Retry');
+    const confirmBtn = call.buttons.find((b: any) => b.text === 'common:retry');
     await confirmBtn.onClick();
     expect(retryRunSpy).toHaveBeenCalledTimes(1);
     expect(retryRunSpy).toHaveBeenLastCalledWith(testRun.run!.id);
@@ -311,11 +311,11 @@ describe('RunDetails', () => {
     const retryBtn = instance.getInitialToolbarState().actions[ButtonKeys.RETRY];
     await retryBtn!.action();
     const call = updateDialogSpy.mock.calls[0][0];
-    const confirmBtn = call.buttons.find((b: any) => b.text === 'Retry');
+    const confirmBtn = call.buttons.find((b: any) => b.text === 'common:retry');
     await confirmBtn.onClick();
     expect(updateDialogSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        content: 'Failed to retry run: test-run-id with error: ""mocked error""',
+        content: 'common:failedTo common:retry run: test-run-id common:withError: ""mocked error""',
       }),
     );
     // There shouldn't be a snackbar on error.
@@ -350,7 +350,7 @@ describe('RunDetails', () => {
     const terminateBtn = instance.getInitialToolbarState().actions[ButtonKeys.TERMINATE_RUN];
     await terminateBtn!.action();
     const call = updateDialogSpy.mock.calls[0][0];
-    const cancelBtn = call.buttons.find((b: any) => b.text === 'Cancel');
+    const cancelBtn = call.buttons.find((b: any) => b.text === 'common:cancel');
     await cancelBtn.onClick();
     expect(terminateRunSpy).not.toHaveBeenCalled();
   });
@@ -411,7 +411,7 @@ describe('RunDetails', () => {
     expect(updateToolbarSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         breadcrumbs: [
-          { displayName: 'experiments', href: RoutePage.EXPERIMENTS },
+          { displayName: 'common:experiments', href: '/experiments' },
           {
             displayName: 'some experiment',
             href: RoutePage.EXPERIMENT_DETAILS.replace(
@@ -440,7 +440,7 @@ describe('RunDetails', () => {
     await TestUtils.flushPromises();
     expect(updateToolbarSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        breadcrumbs: [{ displayName: 'archive', href: RoutePage.ARCHIVED_RUNS }],
+        breadcrumbs: [{ displayName: 'common:archive', href: RoutePage.ARCHIVED_RUNS }],
       }),
     );
   });
@@ -468,10 +468,7 @@ describe('RunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message:
-          ': ' +
-          testRun.run!.id +
-          'common:clickDetails',
+        message: 'errorRetrieveRun: test-run-id.undefined',
         mode: 'error',
       }),
     );
@@ -489,10 +486,7 @@ describe('RunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message:
-          'Error: failed to retrieve run: ' +
-          testRun.run!.id +
-          '. Click Details for more information.',
+        message: 'errorRetrieveRun: test-run-id.undefined',
         mode: 'error',
       }),
     );
@@ -522,10 +516,7 @@ describe('RunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'some error message',
-        message:
-          'Error: found errors when executing run: ' +
-          testRun.run!.id +
-          '. Click Details for more information.',
+        message: 'errorErrorsFoundRun: test-run-id.undefined',
         mode: 'error',
       }),
     );
@@ -729,11 +720,11 @@ describe('RunDetails', () => {
     clickGraphNode(tree, 'node1');
     expect(tree.state('selectedNodeDetails')).toHaveProperty(
       'phaseMessage',
-      'This step is in ' + testRun.run!.status + ' state with this message: some test message',
+      'stepStateMessage1 Succeeded stepStateMessage2: some test message',
     );
     expect(tree.find('Banner')).toMatchInlineSnapshot(`
       <Banner
-        message="This step is in Succeeded state with this message: some test message"
+        message="stepStateMessage1 Succeeded stepStateMessage2: some test message"
         mode="info"
       />
     `);
@@ -950,7 +941,7 @@ describe('RunDetails', () => {
     await (tree.instance() as RunDetails).refresh();
     expect(tree.state('selectedNodeDetails')).toHaveProperty(
       'phaseMessage',
-      'This step is in Succeeded state with this message: some node message',
+      'stepStateMessage1 Succeeded stepStateMessage2: some node message',
     );
   });
 
@@ -970,7 +961,7 @@ describe('RunDetails', () => {
       .simulate('switch', STEP_TABS.LOGS);
     expect(tree.state('selectedNodeDetails')).toHaveProperty(
       'phaseMessage',
-      'This step is in Succeeded state with this message: some node message',
+      'stepStateMessage1 Succeeded stepStateMessage2: some node message',
     );
 
     testRun.pipeline_runtime!.workflow_manifest = JSON.stringify({
@@ -1038,7 +1029,7 @@ describe('RunDetails', () => {
       expect.objectContaining({
         additionalInfo: 'woops',
         message:
-          'Error: Unable to enable custom visualizations. Click Details for more information.',
+          'errorEnableCustomVisundefined',
         mode: 'error',
       }),
     );
@@ -1120,7 +1111,7 @@ describe('RunDetails', () => {
             <div
               className=""
             >
-              Logs can also be viewed in
+              logsCanBeViewed
                
               <a
                 className="link unstyled"
@@ -1128,7 +1119,7 @@ describe('RunDetails', () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Stackdriver Kubernetes Monitoring
+                stackdriverKubernetesMonitoring
               </a>
               .
             </div>
@@ -1196,8 +1187,8 @@ describe('RunDetails', () => {
             className="page"
           >
             <Banner
-              additionalInfo="Possible reasons include pod garbage collection, cluster autoscaling and pod preemption. Error response: pod not found"
-              message="Failed to retrieve pod logs. Use Stackdriver Kubernetes Monitoring to view them."
+              additionalInfo="errorPodLogsReasons common:errorResponse: pod not found"
+              message="errorPodLogs stackdriverKubernetesMonitoringView"
               mode="info"
               refresh={[Function]}
               showTroubleshootingGuideLink={false}
@@ -1205,7 +1196,7 @@ describe('RunDetails', () => {
             <div
               className=""
             >
-              Logs can also be viewed in
+              logsCanBeViewed
                
               <a
                 className="link unstyled"
@@ -1213,7 +1204,7 @@ describe('RunDetails', () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Stackdriver Kubernetes Monitoring
+                stackdriverKubernetesMonitoring
               </a>
               .
             </div>
@@ -1247,8 +1238,8 @@ describe('RunDetails', () => {
             className="page"
           >
             <Banner
-              additionalInfo="Possible reasons include pod garbage collection, cluster autoscaling and pod preemption. Error response: pod not found"
-              message="Failed to retrieve pod logs."
+              additionalInfo="errorPodLogsReasons common:errorResponse: pod not found"
+              message="errorPodLogs"
               mode="info"
               refresh={[Function]}
               showTroubleshootingGuideLink={false}
@@ -1325,8 +1316,8 @@ describe('RunDetails', () => {
       await getPodLogsSpy;
       await TestUtils.flushPromises();
       expect(tree.state()).toMatchObject({
-        logsBannerAdditionalInfo: 'Error response: getting logs failed',
-        logsBannerMessage: 'Failed to retrieve pod logs.',
+        logsBannerAdditionalInfo: 'common:errorResponse: getting logs failed',
+        logsBannerMessage: 'errorPodLogs',
         logsBannerMode: 'error',
       });
     });
@@ -1348,8 +1339,8 @@ describe('RunDetails', () => {
       await getPodLogsSpy;
       await TestUtils.flushPromises();
       expect(tree.state()).toMatchObject({
-        logsBannerAdditionalInfo: 'Error response: getting logs failed',
-        logsBannerMessage: 'Failed to retrieve pod logs.',
+        logsBannerAdditionalInfo: 'common:errorResponse: getting logs failed',
+        logsBannerMessage: 'errorPodLogs',
         logsBannerMode: 'error',
       });
 
