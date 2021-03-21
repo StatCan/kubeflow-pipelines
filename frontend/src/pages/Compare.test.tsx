@@ -44,7 +44,7 @@ jest.mock('react-i18next', () => ({
 
 // NOTE THAT somewhere down the line in the compare i18next is used
 // as the 'undefined' comes from there. 
-//jest.mock('i18next', () => ({t:() => "Table"})) 
+jest.mock('i18next', () => ({t:() => "Table"})) 
    
 const Compare = TEST_ONLY.Compare;
 class TestCompare extends Compare {
@@ -221,7 +221,7 @@ describe('Compare', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message: `errorLoadRuns1 1errorLoadRuns2undefined-READ-ME`,
+        message: `errorLoadRuns1 1errorLoadRuns2Table`,
         // note that since it uses 'err' it is undefined err uses a different way to translate
         mode: 'error',
       }),
@@ -241,7 +241,7 @@ describe('Compare', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message: `errorLoadRuns1 ${runs.length}errorLoadRuns2undefined-READ-ME`,
+        message: `errorLoadRuns1 3errorLoadRuns2Table`,
         // note that since it uses 'err' it is undefined err uses a different way to translate
         mode: 'error',
       }),
@@ -451,7 +451,7 @@ describe('Compare', () => {
       'experiments:parameters': true,
       'experiments:runOverview': true,
       Table: true,
-      Tensorboard: true,
+     Tensorboard: true,
     });
 
     expect(tree).toMatchSnapshot();

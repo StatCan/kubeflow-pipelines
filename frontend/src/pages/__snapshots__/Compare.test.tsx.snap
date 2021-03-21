@@ -267,6 +267,7 @@ exports[`Compare creates a map of viewers 1`] = `
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
+      sectionName="Table"
       t={[Function]}
     />
     <div
@@ -508,6 +509,7 @@ exports[`Compare creates an extra aggregation plot for compatible viewers 1`] = 
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
+      sectionName="Table"
       t={[Function]}
     />
     <div
