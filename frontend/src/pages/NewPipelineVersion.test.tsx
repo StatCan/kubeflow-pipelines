@@ -22,10 +22,23 @@ import { PageProps } from './Page';
 import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType } from '../apis/pipeline';
+import { TFunction } from 'i18next'
 
-
-
-//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  withTranslation: () => Component => {
+    Component.defaultProps = { ...Component.defaultProps, t: (key: string) => key };
+    return Component;
+  },
+  useTranslation: () => {
+    return {
+      t: (key:string) => key,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 
 class TestNewPipelineVersion extends NewPipelineVersion {
   public _pipelineSelectorClosed = super._pipelineSelectorClosed;
@@ -34,7 +47,7 @@ class TestNewPipelineVersion extends NewPipelineVersion {
 
 describe('NewPipelineVersion', () => {
   let tree: ReactWrapper | ShallowWrapper;
-
+  let identiT: TFunction = (key: string) => key;
   const historyPushSpy = jest.fn();
   const historyReplaceSpy = jest.fn();
   const updateBannerSpy = jest.fn();
@@ -92,6 +105,7 @@ describe('NewPipelineVersion', () => {
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
       updateToolbar: updateToolbarSpy,
+      t: identiT
     };
   }
 

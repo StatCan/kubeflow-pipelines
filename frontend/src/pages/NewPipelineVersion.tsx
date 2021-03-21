@@ -111,7 +111,8 @@ const descriptionCustomRenderer: React.FC<CustomRendererProps<string>> = props =
   return <Description description={props.value || ''} forceInline={true} />;
 };
 
-class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState> {
+//class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState> {
+class NewPipelineVersion extends Page<{}, NewPipelineVersionState> {
   private _dropzoneRef = React.createRef<Dropzone & HTMLDivElement>();
   private _pipelineVersionNameRef = React.createRef<HTMLInputElement>();
   private _pipelineNameRef = React.createRef<HTMLInputElement>();
@@ -671,6 +672,7 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
 
 export default withTranslation(['pipelines', 'common'])(NewPipelineVersion);
 
+//why do we have this? 
 const DocumentationCompilePipeline: React.FC = () => {
   const { t } = useTranslation('pipelines');
   return (

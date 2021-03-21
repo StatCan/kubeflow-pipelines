@@ -110,6 +110,7 @@ describe('RunDetails', () => {
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
       updateToolbar: updateToolbarSpy,
+      t: identiT
     };
     return Object.assign(pageProps, {
       toolbarProps: new RunDetails(pageProps).getInitialToolbarState(),
