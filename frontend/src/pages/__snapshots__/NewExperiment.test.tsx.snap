@@ -15,7 +15,7 @@ exports[`NewExperiment enables the 'Next' button when an experiment name is ente
     <div
       className="explanation"
     >
-      experimentDefinitionsociated runs
+      experimentDefinition
     </div>
     <Input
       autoFocus={true}
@@ -28,12 +28,12 @@ exports[`NewExperiment enables the 'Next' button when an experiment name is ente
       label="experimentName"
       onChange={[Function]}
       required={true}
-      value="experimentName"
+      value="experiment name"
       variant="outlined"
     />
     <Input
       id="experimentDescription"
-      label="Description (optional)"
+      label="common:descriptionOptional"
       multiline={true}
       onChange={[Function]}
       value=""
@@ -48,13 +48,13 @@ exports[`NewExperiment enables the 'Next' button when an experiment name is ente
         disabled={false}
         id="createExperimentBtn"
         onClick={[Function]}
-        title="Next"
+        title="common:next"
       />
       <WithStyles(Button)
         id="cancelNewExperimentBtn"
         onClick={[Function]}
       >
-        Cancel
+        common:cancel
       </WithStyles(Button)>
       <div
         className="errorMessage"
@@ -97,7 +97,7 @@ exports[`NewExperiment re-disables the 'Next' button when an experiment name is 
     />
     <Input
       id="experimentDescription"
-      label="Description (optional)"
+      label="common:descriptionOptional"
       multiline={true}
       onChange={[Function]}
       value=""
@@ -112,13 +112,13 @@ exports[`NewExperiment re-disables the 'Next' button when an experiment name is 
         disabled={true}
         id="createExperimentBtn"
         onClick={[Function]}
-        title="Next"
+        title="common:next"
       />
       <WithStyles(Button)
         id="cancelNewExperimentBtn"
         onClick={[Function]}
       >
-        Cancel
+        common:cancel
       </WithStyles(Button)>
       <div
         className="errorMessage"
@@ -163,7 +163,7 @@ exports[`NewExperiment renders the new experiment page 1`] = `
     />
     <Input
       id="experimentDescription"
-      label="Description (optional)"
+      label="common:descriptionOptional"
       multiline={true}
       onChange={[Function]}
       value=""
@@ -178,13 +178,13 @@ exports[`NewExperiment renders the new experiment page 1`] = `
         disabled={true}
         id="createExperimentBtn"
         onClick={[Function]}
-        title="Next"
+        title="common:next"
       />
       <WithStyles(Button)
         id="cancelNewExperimentBtn"
         onClick={[Function]}
       >
-        Cancel
+        common:cancel
       </WithStyles(Button)>
       <div
         className="errorMessage"

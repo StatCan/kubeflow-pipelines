@@ -22,10 +22,27 @@ import { PageProps } from './Page';
 import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType, ApiRelationship } from 'src/apis/experiment';
+import { TFunction } from 'i18next'
 
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  withTranslation: () => Component => {
+    Component.defaultProps = { ...Component.defaultProps, t: (key: string) => key };
+    return Component;
+  },
+  useTranslation: () => {
+    return {
+      t: (key:string) => key,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 
 describe('NewExperiment', () => {
   let tree: ReactWrapper | ShallowWrapper;
+  let identiT: TFunction = (key: string) => key;
   const createExperimentSpy = jest.spyOn(Apis.experimentServiceApi, 'createExperiment');
   const historyPushSpy = jest.fn();
   const updateDialogSpy = jest.fn();
@@ -42,6 +59,7 @@ describe('NewExperiment', () => {
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
       updateToolbar: updateToolbarSpy,
+      t: identiT
     };
   }
 
@@ -75,8 +93,8 @@ describe('NewExperiment', () => {
 
     expect(updateToolbarSpy).toHaveBeenCalledWith({
       actions: {},
-      breadcrumbs: [{ displayName: 'Experiments', href: RoutePage.EXPERIMENTS }],
-      pageTitle: 'New experiment',
+      breadcrumbs: [{ displayName: 'common:experiments', href: RoutePage.EXPERIMENTS }],
+      pageTitle: 'newExperiment',
     });
   });
 
@@ -128,7 +146,7 @@ describe('NewExperiment', () => {
       description: 'a description!',
       experimentName: '',
       isbeingCreated: false,
-      validationError: 'Experiment name is required',
+      validationError: 'experimentNameRequired',
     });
   });
 
@@ -242,7 +260,7 @@ describe('NewExperiment', () => {
 
     expect(updateSnackbarSpy).toHaveBeenLastCalledWith({
       autoHideDuration: 10000,
-      message: 'Successfully created new Experiment: experiment-name',
+      message: 'newExperimentSuccess: experiment-name',
       open: true,
     });
   });
@@ -283,7 +301,7 @@ describe('NewExperiment', () => {
     await TestUtils.flushPromises();
 
     const call = updateDialogSpy.mock.calls[0][0];
-    expect(call).toHaveProperty('title', 'Experiment creation failed');
+    expect(call).toHaveProperty('title', 'experimentCreationFailed');
     expect(call).toHaveProperty('content', 'test error!');
   });
 
