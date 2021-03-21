@@ -30,6 +30,7 @@ import { ButtonKeys } from '../lib/Buttons';
 import { render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
+import { TFunction } from 'i18next'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -41,6 +42,9 @@ jest.mock('react-i18next', () => ({
   },
 }));
 
+// NOTE THAT somewhere down the line in the compare i18next is used
+// as the 'undefined' comes from there. 
+//jest.mock('i18next', () => ({t:() => "Table"})) 
    
 const Compare = TEST_ONLY.Compare;
 class TestCompare extends Compare {
@@ -51,7 +55,7 @@ class TestCompare extends Compare {
 
 describe('Compare', () => {
   let tree: ReactWrapper | ShallowWrapper;
-
+  let identiT: TFunction = (key: string) => key;
   const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => null);
   const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => null);
 
@@ -77,6 +81,7 @@ describe('Compare', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
+      identiT
     );
   }
 
@@ -216,7 +221,8 @@ describe('Compare', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message: 'Error: failed loading 1 runs. Click Details for more information.',
+        message: `errorLoadRuns1 1errorLoadRuns2undefined-READ-ME`,
+        // note that since it uses 'err' it is undefined err uses a different way to translate
         mode: 'error',
       }),
     );
@@ -235,7 +241,8 @@ describe('Compare', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message: `Error: failed loading ${runs.length} runs. Click Details for more information.`,
+        message: `errorLoadRuns1 ${runs.length}errorLoadRuns2undefined-READ-ME`,
+        // note that since it uses 'err' it is undefined err uses a different way to translate
         mode: 'error',
       }),
     );
@@ -440,9 +447,9 @@ describe('Compare', () => {
     collapseBtn!.action();
 
     expect(tree.state('collapseSections')).toEqual({
-      Metrics: true,
-      Parameters: true,
-      'Run overview': true,
+      'experiments:metrics': true,
+      'experiments:parameters': true,
+      'experiments:runOverview': true,
       Table: true,
       Tensorboard: true,
     });
@@ -461,9 +468,9 @@ describe('Compare', () => {
     collapseBtn!.action();
 
     expect(tree.state('collapseSections')).toEqual({
-      Metrics: true,
-      Parameters: true,
-      'Run overview': true,
+      'experiments:metrics': true,
+      'experiments:parameters': true,
+      'experiments:runOverview': true,
       Table: true,
       Tensorboard: true,
     });
@@ -488,7 +495,7 @@ describe('Compare', () => {
       .find('button')
       .simulate('click');
 
-    expect(tree.state('collapseSections')).toEqual({ 'Run overview': true });
+    expect(tree.state('collapseSections')).toEqual({ 'experiments:runOverview': true });
 
     // Collapse run parameters
     tree
@@ -498,8 +505,8 @@ describe('Compare', () => {
       .simulate('click');
 
     expect(tree.state('collapseSections')).toEqual({
-      Parameters: true,
-      'Run overview': true,
+      'experiments:parameters': true,
+      'experiments:runOverview': true,
     });
 
     // Re-expand run overview and parameters
@@ -515,8 +522,8 @@ describe('Compare', () => {
       .simulate('click');
 
     expect(tree.state('collapseSections')).toEqual({
-      Parameters: false,
-      'Run overview': false,
+      'experiments:parameters': false,
+      'experiments:runOverview': false,
     });
   });
 
