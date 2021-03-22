@@ -230,7 +230,7 @@ describe('ExperimentDetails', () => {
       expect.objectContaining({
         additionalInfo: 'test error',
         message:
-          'errorRetrieveExperiment: some-mock-experiment-id.undefined',
+          'errorRetrieveExperiment: some-mock-experiment-id.common:clickDetails',
         mode: 'error',
       }),
     );
@@ -275,7 +275,7 @@ describe('ExperimentDetails', () => {
       expect.objectContaining({
         additionalInfo: 'test error',
         message:
-          'errorRetrieveRecurrRunsExperiment: some-mock-experiment-id.undefined',
+          'errorRetrieveRecurrRunsExperiment: some-mock-experiment-id.common:clickDetails',
         mode: 'error',
       }),
     );
