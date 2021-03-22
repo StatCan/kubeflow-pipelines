@@ -30,8 +30,7 @@ import { NamespaceContext } from '../lib/KubeflowClient';
 import { ApiFilter, PredicateOp } from '../apis/filter';
 import { ExperimentStorageState } from '../apis/experiment';
 import { ApiJob } from 'src/apis/job';
-
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
+import { TFunction } from 'i18next'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -59,7 +58,7 @@ function fillRequiredFields(instance: TestNewRun) {
 
 describe('NewRun', () => {
   let tree: ReactWrapper | ShallowWrapper;
-
+  let identiT: TFunction = (key: string) => key;
   const consoleErrorSpy = jest.spyOn(console, 'error');
   const startJobSpy = jest.spyOn(Apis.jobServiceApi, 'createJob');
   const startRunSpy = jest.spyOn(Apis.runServiceApi, 'createRun');
@@ -192,6 +191,7 @@ describe('NewRun', () => {
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
       updateToolbar: updateToolbarSpy,
+      t: identiT
     };
   }
 
@@ -249,8 +249,8 @@ describe('NewRun', () => {
 
     expect(updateToolbarSpy).toHaveBeenLastCalledWith({
       actions: {},
-      breadcrumbs: [{ displayName: 'Experiments', href: RoutePage.EXPERIMENTS }],
-      pageTitle: 'Start a run',
+      breadcrumbs: [{ displayName: 'common:experiments', href: RoutePage.EXPERIMENTS }],
+      pageTitle: 'common:start aRun',
     });
   });
 
@@ -292,7 +292,7 @@ describe('NewRun', () => {
 
     (tree.instance() as TestNewRun).handleChange('runName')({ target: { value: null } });
 
-    expect(tree.state()).toHaveProperty('errorMessage', 'Run name is required');
+    expect(tree.state()).toHaveProperty('errorMessage', 'runNameRequired');
   });
 
   it('allows updating the run description', async () => {
@@ -373,7 +373,7 @@ describe('NewRun', () => {
     expect(updateToolbarSpy).toHaveBeenLastCalledWith({
       actions: {},
       breadcrumbs: [
-        { displayName: 'Experiments', href: RoutePage.EXPERIMENTS },
+        { displayName: 'common:experiments', href: RoutePage.EXPERIMENTS },
         {
           displayName: MOCK_EXPERIMENT.name,
           href: RoutePage.EXPERIMENT_DETAILS.replace(
@@ -382,7 +382,7 @@ describe('NewRun', () => {
           ),
         },
       ],
-      pageTitle: 'Start a run',
+      pageTitle: 'common:start aRun',
     });
   });
 
@@ -425,7 +425,8 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `Error: failed to retrieve associated experiment: ${MOCK_EXPERIMENT.id}. Click Details for more information.`,
+        message: `errorRetrieveAssocExperiment: ${MOCK_EXPERIMENT.id}. CHECK ME`,
+        // check err implementation (undefined)
         mode: 'error',
       }),
     );
@@ -466,7 +467,8 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `Error: failed to retrieve pipeline: ${MOCK_PIPELINE.id}. Click Details for more information.`,
+        message: `errorRetrievePipeline: ${MOCK_PIPELINE.id}. CHECK ME`,
+        // err undefined check implementation
         mode: 'error',
       }),
     );
@@ -486,7 +488,8 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `Error: failed to retrieve pipeline version: ${MOCK_PIPELINE_VERSION.id}. Click Details for more information.`,
+        message: `errorRetrievePipelineVersion: ${MOCK_PIPELINE_VERSION.id}. CHECK ME`,
+        // err is undefined check implementation
         mode: 'error',
       }),
     );
@@ -800,7 +803,7 @@ describe('NewRun', () => {
       tree = shallow(<TestNewRun t={(key: any) => key} {...props} />);
       await TestUtils.flushPromises();
 
-      expect(tree.state('runName')).toBe('Clone of -original run-');
+      expect(tree.state('runName')).toBe('common:cloneOf -original run-');
     });
 
     it('automatically generates the new clone name if the original run was a clone', async () => {
@@ -814,7 +817,7 @@ describe('NewRun', () => {
       tree = shallow(<TestNewRun t={(key: any) => key} {...props} />);
       await TestUtils.flushPromises();
 
-      expect(tree.state('runName')).toBe('Clone (2) of some run');
+      expect(tree.state('runName')).toBe('common:clone (2) common:of some run');
     });
 
     it('uses service account in the original run', async () => {
@@ -917,8 +920,9 @@ describe('NewRun', () => {
         expect.objectContaining({
           additionalInfo: 'test error message',
           message:
-            'Error: failed to find a pipeline corresponding to that of the original run:' +
-            ` ${MOCK_RUN_DETAIL.run!.id}. Click Details for more information.`,
+            'errorFindPipeline' +
+            ` ${MOCK_RUN_DETAIL.run!.id}. CHECK ME.`,
+            // again check err here 
           mode: 'error',
         }),
       );
@@ -940,7 +944,8 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "Error: failed to read the clone run's pipeline definition. Click Details for more information.",
+            "errorReadPipelineDefundefined CHECK ME",
+            // again err is undefined check if implementation is ok
           mode: 'error',
         }),
       );
@@ -981,7 +986,8 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "Error: failed to read the clone run's pipeline definition. Click Details for more information.",
+            "errorReadPipelineDefundefined CHECK ME",
+            // again err is undefined check if implementation is ok
           mode: 'error',
         }),
       );
@@ -1021,7 +1027,7 @@ describe('NewRun', () => {
 
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
-          message: `Error: run ${runDetail.run!.id} had no workflow manifest`,
+          message: `errorRun ${runDetail.run!.id} noWorkflowManifest`,
           mode: 'error',
         }),
       );
@@ -1043,7 +1049,8 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "Error: failed to read the clone run's pipeline definition. Click Details for more information.",
+            "errorReadPipelineDefundefined CHECK ME",
+            // err check this implementation
           mode: 'error',
         }),
       );
@@ -1086,9 +1093,10 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           additionalInfo: 'test error message',
-          message: `Error: failed to retrieve original run: ${
+          message: `errorRetrieveOrigRun:  CHECK ME${
             MOCK_RUN_DETAIL.run!.id
           }. Click Details for more information.`,
+          // again err is undefined 
           mode: 'error',
         }),
       );
@@ -1115,7 +1123,7 @@ describe('NewRun', () => {
       tree = shallow(<TestNewRun t={(key: any) => key} {...props} />);
       await TestUtils.flushPromises();
 
-      expect(tree.state('runName')).toBe('Clone of job1');
+      expect(tree.state('runName')).toBe('common:cloneOf job1');
       expect(tree.state('trigger')).toEqual({
         periodic_schedule: {
           interval_second: '360',
@@ -1140,7 +1148,7 @@ describe('NewRun', () => {
       await TestUtils.flushPromises();
 
       expect(tree.state('useWorkflowFromRun')).toBe(true);
-      expect(tree.state('usePipelineFromRunLabel')).toBe('Using pipeline from previous page');
+      expect(tree.state('usePipelineFromRunLabel')).toBe('usePipelinePrevPage');
       expect(tree).toMatchSnapshot();
     });
 
@@ -1176,7 +1184,8 @@ describe('NewRun', () => {
         expect.objectContaining({
           additionalInfo: 'Unexpected token o in JSON at position 1',
           message:
-            "Error: failed to parse the embedded pipeline's spec: not JSON. Click Details for more information.",
+            "errorParsePipeline: not JSON.undefined CHECK ME",
+            // err is undefined need to mock maybe 
           mode: 'error',
         }),
       );
@@ -1193,9 +1202,9 @@ describe('NewRun', () => {
 
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
-          message: `Error: somehow the run provided in the query params: ${
+          message: `errorRunProvided: ${
             MOCK_RUN_WITH_EMBEDDED_PIPELINE.run!.id
-          } had no embedded pipeline.`,
+          } noEmbeddedPipeline.`,
           mode: 'error',
         }),
       );
@@ -1213,9 +1222,10 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           additionalInfo: 'test - error!',
-          message: `Error: failed to retrieve the specified run: ${
+          message: `errorRetrieveSpecRun: CHECK-ME ${
             MOCK_RUN_WITH_EMBEDDED_PIPELINE.run!.id
           }. Click Details for more information.`,
+          // again 'err' is undefined
           mode: 'error',
         }),
       );
@@ -1431,7 +1441,7 @@ describe('NewRun', () => {
       expect(startRunSpy).toHaveBeenCalledTimes(1);
       expect(startRunSpy).toHaveBeenLastCalledWith({
         description: '',
-        name: 'Clone of ' + MOCK_RUN_WITH_EMBEDDED_PIPELINE.run!.name,
+        name: 'common:cloneOf ' + MOCK_RUN_WITH_EMBEDDED_PIPELINE.run!.name,
         pipeline_spec: {
           parameters: [],
           pipeline_id: undefined,
@@ -1622,7 +1632,7 @@ describe('NewRun', () => {
       expect(updateDialogSpy).toHaveBeenCalledTimes(1);
       expect(updateDialogSpy.mock.calls[0][0]).toMatchObject({
         content: 'test error message',
-        title: 'Run creation failed',
+        title: 'runCreationFailed',
       });
     });
 
@@ -1644,8 +1654,8 @@ describe('NewRun', () => {
 
       expect(updateDialogSpy).toHaveBeenCalledTimes(1);
       expect(updateDialogSpy.mock.calls[0][0]).toMatchObject({
-        content: 'Cannot start run without pipeline version',
-        title: 'Run creation failed',
+        content: 'cannotStartRun',
+        title: 'runCreationFailed',
       });
     });
 
@@ -1699,7 +1709,7 @@ describe('NewRun', () => {
       await TestUtils.flushPromises();
 
       expect(updateSnackbarSpy).toHaveBeenLastCalledWith({
-        message: 'Successfully started new Run: test run name',
+        message: 'startNewRunSuccess: test run name',
         open: true,
       });
     });
@@ -1714,8 +1724,8 @@ describe('NewRun', () => {
 
       expect(updateToolbarSpy).toHaveBeenLastCalledWith({
         actions: {},
-        breadcrumbs: [{ displayName: 'Experiments', href: RoutePage.EXPERIMENTS }],
-        pageTitle: 'Start a recurring run',
+        breadcrumbs: [{ displayName: 'common:experiments', href: RoutePage.EXPERIMENTS }],
+        pageTitle: 'common:start aRecurringRun',
       });
     });
 
@@ -1814,7 +1824,7 @@ describe('NewRun', () => {
       await TestUtils.flushPromises();
 
       expect(tree.state('errorMessage')).toBe(
-        'End date/time cannot be earlier than start date/time',
+        'endDateBeforeStartDate',
       );
     });
 
@@ -1841,7 +1851,7 @@ describe('NewRun', () => {
       await TestUtils.flushPromises();
 
       expect(tree.state('errorMessage')).toBe(
-        'End date/time cannot be earlier than start date/time',
+        'endDateBeforeStartDate',
       );
     });
 
@@ -1868,7 +1878,7 @@ describe('NewRun', () => {
       await TestUtils.flushPromises();
 
       expect(tree.state('errorMessage')).toBe(
-        'For triggered runs, maximum concurrent runs must be a positive number',
+        'maxConcurrentRunsPositive',
       );
     });
 
@@ -1895,7 +1905,7 @@ describe('NewRun', () => {
       await TestUtils.flushPromises();
 
       expect(tree.state('errorMessage')).toBe(
-        'For triggered runs, maximum concurrent runs must be a positive number',
+        'maxConcurrentRunsPositive',
       );
     });
   });
