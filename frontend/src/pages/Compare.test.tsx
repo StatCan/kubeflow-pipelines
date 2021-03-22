@@ -221,8 +221,7 @@ describe('Compare', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message: `errorLoadRuns1 1errorLoadRuns2Table`,
-        // note that since it uses 'err' it is undefined err uses a different way to translate
+        message: `errorLoadRuns1 1errorLoadRuns2common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -241,8 +240,7 @@ describe('Compare', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message: `errorLoadRuns1 3errorLoadRuns2Table`,
-        // note that since it uses 'err' it is undefined err uses a different way to translate
+        message: `errorLoadRuns1 3errorLoadRuns2common:clickDetails`,
         mode: 'error',
       }),
     );
