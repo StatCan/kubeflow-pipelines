@@ -22,7 +22,7 @@ import { RunStorageState } from '../apis/run';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 import { Apis } from '../lib/Apis';
-
+import { TFunction } from 'i18next'
 
 describe('ArchivedRuns', () => {
   const updateBannerSpy = jest.fn();
@@ -32,6 +32,7 @@ describe('ArchivedRuns', () => {
   const updateDialogSpy = jest.fn();
   const updateSnackbarSpy = jest.fn();
   let tree: ShallowWrapper;
+  let identiT: TFunction = (key: string) => key;
 
   function generateProps(): PageProps {
     return TestUtils.generatePageProps(
@@ -43,6 +44,7 @@ describe('ArchivedRuns', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
+      identiT
     );
   }
 
@@ -124,13 +126,13 @@ describe('ArchivedRuns', () => {
     expect(updateDialogSpy).toHaveBeenCalledTimes(1);
     expect(updateDialogSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        content: 'Do you want to delete the selected runs? This action cannot be undone.',
+        content: 'common:deleteSelectedRuns',
       }),
     );
 
     // Cancel deletion.
     const call = updateDialogSpy.mock.calls[0][0];
-    const cancelBtn = call.buttons.find((b: any) => b.text === 'Cancel');
+    const cancelBtn = call.buttons.find((b: any) => b.text === 'common:cancel');
     await cancelBtn.onClick();
     expect(deleteRunSpy).not.toHaveBeenCalled();
   });
@@ -153,7 +155,7 @@ describe('ArchivedRuns', () => {
     expect(updateDialogSpy).toHaveBeenCalledTimes(1);
     expect(updateDialogSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        content: 'Do you want to delete the selected runs? This action cannot be undone.',
+        content: 'common:deleteSelectedRuns',
       }),
     );
 
