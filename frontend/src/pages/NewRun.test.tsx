@@ -425,8 +425,7 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `errorRetrieveAssocExperiment: ${MOCK_EXPERIMENT.id}. CHECK ME`,
-        // check err implementation (undefined)
+        message: `errorRetrieveAssocExperiment: ${MOCK_EXPERIMENT.id}.common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -467,8 +466,7 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `errorRetrievePipeline: ${MOCK_PIPELINE.id}. CHECK ME`,
-        // err undefined check implementation
+        message: `errorRetrievePipeline: ${MOCK_PIPELINE.id}.common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -488,8 +486,7 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `errorRetrievePipelineVersion: ${MOCK_PIPELINE_VERSION.id}. CHECK ME`,
-        // err is undefined check implementation
+        message: `errorRetrievePipelineVersion: ${MOCK_PIPELINE_VERSION.id}.common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -921,8 +918,7 @@ describe('NewRun', () => {
           additionalInfo: 'test error message',
           message:
             'errorFindPipeline' +
-            ` ${MOCK_RUN_DETAIL.run!.id}. CHECK ME.`,
-            // again check err here 
+            ` ${MOCK_RUN_DETAIL.run!.id}.common:clickDetails`,
           mode: 'error',
         }),
       );
@@ -944,8 +940,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "errorReadPipelineDefundefined CHECK ME",
-            // again err is undefined check if implementation is ok
+            "errorReadPipelineDefcommon:clickDetails",
           mode: 'error',
         }),
       );
@@ -986,8 +981,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "errorReadPipelineDefundefined CHECK ME",
-            // again err is undefined check if implementation is ok
+            "errorReadPipelineDefcommon:clickDetails",
           mode: 'error',
         }),
       );
@@ -1049,8 +1043,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "errorReadPipelineDefundefined CHECK ME",
-            // err check this implementation
+            "errorReadPipelineDefcommon:clickDetails",
           mode: 'error',
         }),
       );
@@ -1093,9 +1086,9 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           additionalInfo: 'test error message',
-          message: `errorRetrieveOrigRun:  CHECK ME${
+          message: `errorRetrieveOrigRun: ${
             MOCK_RUN_DETAIL.run!.id
-          }. Click Details for more information.`,
+          }.common:clickDetails`,
           // again err is undefined 
           mode: 'error',
         }),
@@ -1184,7 +1177,7 @@ describe('NewRun', () => {
         expect.objectContaining({
           additionalInfo: 'Unexpected token o in JSON at position 1',
           message:
-            "errorParsePipeline: not JSON.undefined CHECK ME",
+            "errorParsePipeline: not JSON.common:clickDetails",
             // err is undefined need to mock maybe 
           mode: 'error',
         }),
@@ -1222,9 +1215,9 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           additionalInfo: 'test - error!',
-          message: `errorRetrieveSpecRun: CHECK-ME ${
+          message: `errorRetrieveSpecRun: ${
             MOCK_RUN_WITH_EMBEDDED_PIPELINE.run!.id
-          }. Click Details for more information.`,
+          }.common:clickDetails`,
           // again 'err' is undefined
           mode: 'error',
         }),

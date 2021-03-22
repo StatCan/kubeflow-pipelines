@@ -26,11 +26,19 @@ import { ButtonKeys } from '../lib/Buttons';
 import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  withTranslation: () => Component => {
     Component.defaultProps = { ...Component.defaultProps, t: (key: string) => key };
     return Component;
-  }
+  },
+  useTranslation: () => {
+    return {
+      t: (key:string) => key,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
 }));
 
 
@@ -184,9 +192,7 @@ describe('PipelineList', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'pipelineListErrorundefined-FIXME-READ-COMMENT', 
-        //undefined because 'err' uses t function in PAGE.tsx under , will need to fix I believe, should instead be 
-        // moved from i18next? if ok with i18next then we just mock that module and then boom ok
+        message: 'pipelineListErrorcommon:clickDetails', 
         mode: 'error',
       }),
     );
@@ -204,7 +210,7 @@ describe('PipelineList', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'FIXME-READ-COMMENT-for-error banner when listing pipelines fails', 
+        message: 'pipelineListErrorcommon:clickDetails', 
         mode: 'error',
       }),
     );
@@ -219,7 +225,7 @@ describe('PipelineList', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'FIXME-READ-COMMENT-for-error banner when listing pipelines fails', 
+        message: 'pipelineListErrorcommon:clickDetails', 
         mode: 'error',
       }),
     );

@@ -249,8 +249,7 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'experimentListErrorundefined-CHECK-ME',
-          // 'err' uses some t function that currently isnt mocked. 
+          'experimentListErrorcommon:clickDetails',
         mode: 'error',
       }),
     );
@@ -287,8 +286,7 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'experimentListErrorundefined-CHECK-ME',
-          // again err is undefined
+          'experimentListErrorcommon:clickDetails',
         mode: 'error',
       }),
     );
@@ -304,8 +302,7 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'experimentListErrorundedfined-CHECK-ME',
-          // again check err
+          'experimentListErrorcommon:clickDetails',
         mode: 'error',
       }),
     );
