@@ -23,8 +23,7 @@ import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType } from '../apis/pipeline';
 import { TFunction } from 'i18next'
-let mockedValue;
-jest.mock("i18next", () => ({ t: () => mockedValue }));
+
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   withTranslation: () => Component => {
@@ -175,7 +174,6 @@ describe('NewPipelineVersion', () => {
 
   describe('creating version under an existing pipeline', () => {
     it('does not include any action buttons in the toolbar', async () => {
-      mockedValue = "example1"
       tree = shallow(
         <TestNewPipelineVersion t={key => key}
           {...generateProps(`?${QUERY_PARAMS.pipelineId}=${MOCK_PIPELINE.id}`)}
@@ -185,10 +183,8 @@ describe('NewPipelineVersion', () => {
 
       expect(updateToolbarSpy).toHaveBeenLastCalledWith({
         actions: {},
-        //breadcrumbs: [{ displayName: 'Pipeline Versions', href: '/pipeline_versions/new' }],
-        //pageTitle: 'Upload Pipeline or Pipeline Version',
-        breadcrumbs: [{ displayName: 'example1', href: '/pipeline_versions/new' }],
-        pageTitle: 'example1',
+        breadcrumbs: [{ displayName: 'pipelines:pipelineVersions', href: '/pipeline_versions/new' }],
+        pageTitle: 'pipelines:uploadPipelineTitle',
       });
       expect(getPipelineSpy).toHaveBeenCalledTimes(1);
     });

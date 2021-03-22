@@ -151,11 +151,11 @@ class NewPipelineVersion extends Page<{}, NewPipelineVersionState> {
   }
 
   public getInitialToolbarState(): ToolbarProps {
-   // const { t } = this.props;
+   const { t } = this.props;
     return {
       actions: {},
-      breadcrumbs: [{ displayName: i18next.t('pipelines:pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION }],
-      pageTitle: i18next.t('pipelines:uploadPipelineTitle'),
+      breadcrumbs: [{ displayName: t('pipelines:pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION }],
+      pageTitle: t('pipelines:uploadPipelineTitle'),
     };
   }
 
