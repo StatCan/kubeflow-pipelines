@@ -43,6 +43,7 @@ import Radio from '@material-ui/core/Radio';
 import { ExternalLink } from '../atoms/ExternalLink';
 import { TFunction } from 'i18next';
 import { withTranslation, useTranslation } from 'react-i18next';
+import i18next from 'i18next'
 
 interface NewPipelineVersionState {
   validationError: string;
@@ -150,11 +151,11 @@ class NewPipelineVersion extends Page<{}, NewPipelineVersionState> {
   }
 
   public getInitialToolbarState(): ToolbarProps {
-    const { t } = this.props;
+   // const { t } = this.props;
     return {
       actions: {},
-      breadcrumbs: [{ displayName: t('pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION }],
-      pageTitle: t('uploadPipelineTitle'),
+      breadcrumbs: [{ displayName: i18next.t('pipelines:pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION }],
+      pageTitle: i18next.t('pipelines:uploadPipelineTitle'),
     };
   }
 
