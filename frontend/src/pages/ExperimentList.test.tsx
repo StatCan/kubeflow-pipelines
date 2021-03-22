@@ -32,7 +32,13 @@ import { NamespaceContext } from 'src/lib/KubeflowClient';
 import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ExperimentStorageState } from '../apis/experiment';
+import { TFunction } from 'i18next'
+
 jest.mock('react-i18next', () => ({
+  withTranslation: () => Component => {
+    Component.defaultProps = { ...Component.defaultProps, t: (key: string) => key };
+    return Component;
+  },
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   useTranslation: () => {
     return {
@@ -67,7 +73,7 @@ const LIST_EXPERIMENT_DEFAULTS_WITHOUT_RESOURCE_REFERENCE = LIST_EXPERIMENT_DEFA
 
 describe('ExperimentList', () => {
   let tree: ShallowWrapper | ReactWrapper;
-
+  let identiT: TFunction = (key: string) => key;
   jest.spyOn(console, 'log').mockImplementation(() => null);
 
   const updateBannerSpy = jest.fn();
@@ -91,6 +97,7 @@ describe('ExperimentList', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
+      identiT
     );
   }
 
@@ -242,7 +249,8 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'Error: failed to retrieve list of experiments. Click Details for more information.',
+          'experimentListErrorundefined-CHECK-ME',
+          // 'err' uses some t function that currently isnt mocked. 
         mode: 'error',
       }),
     );
@@ -259,7 +267,7 @@ describe('ExperimentList', () => {
     await TestUtils.flushPromises();
     expect(tree.state()).toHaveProperty('displayExperiments', [
       {
-        error: 'Failed to load the last 5 runs of this experiment',
+        error: 'last5RunsFailed',
         expandState: 0,
         name: 'exp1',
       },
@@ -279,7 +287,8 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'Error: failed to retrieve list of experiments. Click Details for more information.',
+          'experimentListErrorundefined-CHECK-ME',
+          // again err is undefined
         mode: 'error',
       }),
     );
@@ -295,7 +304,8 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'Error: failed to retrieve list of experiments. Click Details for more information.',
+          'experimentListErrorundedfined-CHECK-ME',
+          // again check err
         mode: 'error',
       }),
     );

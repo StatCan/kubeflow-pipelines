@@ -15,18 +15,18 @@ exports[`ExperimentList renders a list of one experiment 1`] = `
         },
         Object {
           "flex": 2,
-          "label": "Description",
+          "label": "common:description",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Last 5 runs",
+          "label": "last5Runs",
         },
       ]
     }
     disableSelection={true}
-    emptyMessage="No experiments found. Click \\"Create experiment\\" to start."
-    filterLabel="Filter experiments"
+    emptyMessage="noExperimentsFound"
+    filterLabel="filterExperiments"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -64,18 +64,18 @@ exports[`ExperimentList renders a list of one experiment with error 1`] = `
         },
         Object {
           "flex": 2,
-          "label": "Description",
+          "label": "common:description",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Last 5 runs",
+          "label": "last5Runs",
         },
       ]
     }
     disableSelection={true}
-    emptyMessage="No experiments found. Click \\"Create experiment\\" to start."
-    filterLabel="Filter experiments"
+    emptyMessage="noExperimentsFound"
+    filterLabel="filterExperiments"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -100,18 +100,18 @@ exports[`ExperimentList renders a list of one experiment with no description 1`]
         },
         Object {
           "flex": 2,
-          "label": "Description",
+          "label": "common:description",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Last 5 runs",
+          "label": "last5Runs",
         },
       ]
     }
     disableSelection={true}
-    emptyMessage="No experiments found. Click \\"Create experiment\\" to start."
-    filterLabel="Filter experiments"
+    emptyMessage="noExperimentsFound"
+    filterLabel="filterExperiments"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -136,18 +136,18 @@ exports[`ExperimentList renders an empty list with empty state message 1`] = `
         },
         Object {
           "flex": 2,
-          "label": "Description",
+          "label": "common:description",
         },
         Object {
           "customRenderer": [Function],
           "flex": 1,
-          "label": "Last 5 runs",
+          "label": "last5Runs",
         },
       ]
     }
     disableSelection={true}
-    emptyMessage="No experiments found. Click \\"Create experiment\\" to start."
-    filterLabel="Filter experiments"
+    emptyMessage="noExperimentsFound"
+    filterLabel="filterExperiments"
     getExpandComponent={[Function]}
     initialSortColumn="created_at"
     reload={[Function]}
@@ -161,7 +161,7 @@ exports[`ExperimentList renders experiment names as links to their details pages
 <WithStyles(Tooltip)
   enterDelay={300}
   placement="top-start"
-  title="experimentName"
+  title="experiment name"
 >
   <Link
     className="link"
@@ -188,9 +188,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div>
-            executionSuccess
-          </div>
+          <div />
         </div>
       }
     >
@@ -223,9 +221,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div>
-            executePending
-          </div>
+          <div />
         </div>
       }
     >
@@ -258,9 +254,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div>
-            Resource failed to execute
-          </div>
+          <div />
         </div>
       }
     >
@@ -293,9 +287,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div>
-            unknownStatus
-          </div>
+          <div />
         </div>
       }
     >
@@ -328,9 +320,7 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div>
-            executionSuccess
-          </div>
+          <div />
         </div>
       }
     >
