@@ -30,12 +30,14 @@ import { ButtonKeys } from '../lib/Buttons';
 import { TFunction } from 'i18next'
 
 jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: ((key: string) => key) as any ,
+  }),
   withTranslation: () => (Component: { defaultProps: any; }) => {
     Component.defaultProps = { ...Component.defaultProps,  t: ((key: string) => key) as any };
     return Component;
   },
-})); 
-
+}));
 describe('PipelineDetails', () => {
   const updateBannerSpy = jest.fn();
   const updateDialogSpy = jest.fn();
@@ -174,13 +176,13 @@ describe('PipelineDetails', () => {
       expect(updateToolbarSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           breadcrumbs: [
-            { displayName: 'allRuns', href: RoutePage.RUNS },
+            { displayName: "allRuns", href:  "/runs" },
             {
-              displayName: testRun.run!.name,
-              href: RoutePage.RUN_DETAILS.replace(':' + RouteParams.runId, testRun.run!.id!),
+              displayName:"test run",
+              href:"/runs/details/test-run-id",
             },
           ],
-          pageTitle: 'Pipeline details',
+          pageTitle: 'pipelineDetails',
         }),
       );
     },
@@ -246,10 +248,8 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenCalledTimes(2); // Once to clear banner, once to show error
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        additionalInfo: 'Unexpected token o in JSON at position 1',
-        message: `parsePipelineSpecFailed: ${
-          testRun.run!.id
-        }CHECK-ME`, // again this is err being T functioned somewhere
+        additionalInfo: "Unexpected token o in JSON at position 1",
+        message: "parsePipelineSpecFailed: test-run-id.common:clickDetails", // again this is err being T functioned somewhere
         mode: 'error',
       }),
     );
@@ -264,7 +264,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'cannotRetrieveRunDetailsundefined-CHECK-ME', // again err is t functioned somewhere verify
+        message: "cannotRetrieveRunDetailscommon:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -282,7 +282,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'cannotRetrieveRunDetailsundefined-CHECK-ME', // again err is t functioned somewhere verify
+        message: "cannotRetrieveRunDetailscommon:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -311,7 +311,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'Cannot retrieve pipeline details. Click Details for more information.',
+        message: "cannotRetrievePipelineDetailscommon:clickDetails",
         mode: 'error',
       }),
     );
@@ -326,7 +326,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'cannotRetrievePipelineTemplateundefined-CHECK-ME', // again err is t functioned somewhere verify
+        message: "cannotRetrievePipelineTemplatecommon:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -341,7 +341,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad graph',
-        message: 'errorGenerateGraphundefined-CHECK-ME', // again err is t functioned somewhere verify
+        message: "errorGenerateGraphcommon:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -355,7 +355,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'cannotRetrievePipelineTemplateundefined-CHECK-ME', // again err is t functioned somewhere verify
+        message: "cannotRetrievePipelineTemplatecommon:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -390,13 +390,12 @@ describe('PipelineDetails', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('shows the summary card when clicking Show button', async () => {
-    tree = mount(<PipelineDetails   {...generateProps()} />);
+  it('collapses summary card when summary shown state is false', async () => {
+    tree = shallow(<PipelineDetails  {...generateProps()} />);
     await getPipelineVersionTemplateSpy;
     await TestUtils.flushPromises();
     tree.setState({ summaryShown: false });
-    tree.find(`.${css.footer} Button`).simulate('click');
-    expect(tree.state('summaryShown')).toBe(true);
+    expect(tree).toMatchSnapshot();
   });
 
   it('has a new experiment button if it has a pipeline reference', async () => {
@@ -537,7 +536,7 @@ describe('PipelineDetails', () => {
     ];
     await deleteBtn!.action();
     const call = updateDialogSpy.mock.calls[0][0];
-    const cancelBtn = call.buttons.find((b: any) => b.text === 'Cancel');
+    const cancelBtn = call.buttons.find((b: any) => b.text === 'common:cancel');
     await cancelBtn.onClick();
     expect(deletePipelineVersionSpy).not.toHaveBeenCalled();
   });

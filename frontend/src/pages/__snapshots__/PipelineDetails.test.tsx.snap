@@ -277,6 +277,105 @@ exports[`PipelineDetails collapses summary card when summary shown state is fals
 </div>
 `;
 
+exports[`PipelineDetails collapses summary card when summary shown state is false 2`] = `
+<div
+  className="page"
+>
+  <div
+    className="page"
+  >
+    <MD2Tabs
+      onSwitch={[Function]}
+      selectedTab={0}
+      tabs={
+        Array [
+          "common:graph",
+          "common:yaml",
+        ]
+      }
+    />
+    <div
+      className="page"
+    >
+      <div
+        className="page"
+      >
+        <div
+          className="page"
+          style={
+            Object {
+              "overflow": "hidden",
+              "position": "relative",
+            }
+          }
+        >
+          <EnhancedGraph
+            graph={
+              Graph {
+                "_defaultEdgeLabelFn": [Function],
+                "_defaultNodeLabelFn": [Function],
+                "_edgeLabels": Object {},
+                "_edgeObjs": Object {},
+                "_in": Object {},
+                "_isCompound": false,
+                "_isDirected": true,
+                "_isMultigraph": false,
+                "_label": undefined,
+                "_nodes": Object {},
+                "_out": Object {},
+                "_preds": Object {},
+                "_sucs": Object {},
+              }
+            }
+            onClick={[Function]}
+            onError={[Function]}
+            selectedNodeId=""
+            t={[Function]}
+          />
+          <SidePanel
+            isOpen={false}
+            onClose={[Function]}
+            title=""
+          >
+            <div
+              className="page"
+            >
+              <div
+                className="absoluteCenter"
+              >
+                retrieveNodeInfoFailed
+              </div>
+            </div>
+          </SidePanel>
+          <div
+            className="footer"
+          >
+            <WithStyles(Button)
+              color="secondary"
+              onClick={[Function]}
+            >
+              common:showSummary
+            </WithStyles(Button)>
+            <div
+              className="flex"
+            >
+              <pure(InfoOutlinedIcon)
+                className="infoIcon"
+              />
+              <span
+                className="infoSpan"
+              >
+                staticPipelineGraph
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`PipelineDetails opens side panel on clicked node, shows message when node is not found in graph 1`] = `
 <div
   className="page"
@@ -289,8 +388,8 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
       selectedTab={0}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
@@ -324,19 +423,19 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
               <div
                 className="header"
               >
-                Summary
+                common:summary
               </div>
               <WithStyles(Button)
                 color="secondary"
                 onClick={[Function]}
               >
-                Hide
+                common:hide
               </WithStyles(Button)>
             </div>
             <div
               className="summaryKey"
             >
-              ID
+              common:id
             </div>
             <div>
               test-pipeline-id
@@ -346,7 +445,7 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
             >
               <WithStyles(FormControl)>
                 <WithStyles(WithFormControlContext(InputLabel))>
-                  Version
+                  common:version
                 </WithStyles(WithFormControlContext(InputLabel))>
                 <WithStyles(WithFormControlContext(Select))
                   inputProps={
@@ -380,7 +479,7 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
             <div
               className="summaryKey"
             >
-              Uploaded on
+              common:uploadedOn
             </div>
             <div>
               9/5/2018, 4:03:02 AM
@@ -388,7 +487,7 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
             <div
               className="summaryKey"
             >
-              Description
+              common:description
             </div>
             <Description
               description="test pipeline description"
@@ -415,6 +514,7 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
             onClick={[Function]}
             onError={[Function]}
             selectedNodeId="some-node-id"
+            t={[Function]}
           />
           <SidePanel
             isOpen={true}
@@ -427,7 +527,7 @@ exports[`PipelineDetails opens side panel on clicked node, shows message when no
               <div
                 className="absoluteCenter"
               >
-                Unable to retrieve node info
+                retrieveNodeInfoFailed
               </div>
             </div>
           </SidePanel>
@@ -466,8 +566,8 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
       selectedTab={0}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
@@ -501,19 +601,19 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
               <div
                 className="header"
               >
-                Summary
+                common:summary
               </div>
               <WithStyles(Button)
                 color="secondary"
                 onClick={[Function]}
               >
-                Hide
+                common:hide
               </WithStyles(Button)>
             </div>
             <div
               className="summaryKey"
             >
-              ID
+              common:id
             </div>
             <div>
               test-pipeline-id
@@ -523,7 +623,7 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
             >
               <WithStyles(FormControl)>
                 <WithStyles(WithFormControlContext(InputLabel))>
-                  Version
+                  common:version
                 </WithStyles(WithFormControlContext(InputLabel))>
                 <WithStyles(WithFormControlContext(Select))
                   inputProps={
@@ -557,7 +657,7 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
             <div
               className="summaryKey"
             >
-              Uploaded on
+              common:uploadedOn
             </div>
             <div>
               9/5/2018, 4:03:02 AM
@@ -565,7 +665,7 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
             <div
               className="summaryKey"
             >
-              Description
+              common:description
             </div>
             <Description
               description="test pipeline description"
@@ -644,6 +744,7 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
             onClick={[Function]}
             onError={[Function]}
             selectedNodeId="node1"
+            t={[Function]}
           />
           <SidePanel
             isOpen={true}
@@ -698,6 +799,7 @@ exports[`PipelineDetails shows clicked node info in the side panel if it is in t
                       ],
                     }
                   }
+                  t={[Function]}
                 />
               </div>
             </div>
@@ -1113,184 +1215,6 @@ exports[`PipelineDetails shows empty pipeline details with no graph 1`] = `
         >
           noGraph
         </span>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`PipelineDetails shows pipeline name in page name, and breadcrumb to go back to pipelines 1`] = `
-<div
-  className="page"
->
-  <div
-    className="page"
-  >
-    <MD2Tabs
-      onSwitch={[Function]}
-      selectedTab={0}
-      tabs={
-        Array [
-          "common:graph",
-          "common:yaml",
-        ]
-      }
-    />
-    <div
-      className="page"
-    >
-      <div
-        className="page"
-      >
-        <div
-          className="page"
-          style={
-            Object {
-              "overflow": "hidden",
-              "position": "relative",
-            }
-          }
-        >
-          <WithStyles(Paper)
-            className="summaryCard"
-          >
-            <div
-              style={
-                Object {
-                  "alignItems": "baseline",
-                  "display": "flex",
-                  "justifyContent": "space-between",
-                }
-              }
-            >
-              <div
-                className="header"
-              >
-                common:summary
-              </div>
-              <WithStyles(Button)
-                color="secondary"
-                onClick={[Function]}
-              >
-                common:hide
-              </WithStyles(Button)>
-            </div>
-            <div
-              className="summaryKey"
-            >
-              common:id
-            </div>
-            <div>
-              test-pipeline-id
-            </div>
-            <form
-              autoComplete="off"
-            >
-              <WithStyles(FormControl)>
-                <WithStyles(WithFormControlContext(InputLabel))>
-                  common:version
-                </WithStyles(WithFormControlContext(InputLabel))>
-                <WithStyles(WithFormControlContext(Select))
-                  inputProps={
-                    Object {
-                      "id": "version-selector",
-                      "name": "selectedVersion",
-                    }
-                  }
-                  onChange={[Function]}
-                  value="test-pipeline-version-id"
-                >
-                  <WithStyles(MenuItem)
-                    key="test-pipeline-version-id"
-                    value="test-pipeline-version-id"
-                  >
-                    test-pipeline-version
-                  </WithStyles(MenuItem)>
-                </WithStyles(WithFormControlContext(Select))>
-              </WithStyles(FormControl)>
-            </form>
-            <div
-              className="summaryKey"
-            >
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                versionSource
-              </a>
-            </div>
-            <div
-              className="summaryKey"
-            >
-              common:uploadedOn
-            </div>
-            <div>
-              9/5/2018, 4:03:02 AM
-            </div>
-            <div
-              className="summaryKey"
-            >
-              common:description
-            </div>
-            <Description
-              description="test pipeline description"
-            />
-          </WithStyles(Paper)>
-          <EnhancedGraph
-            graph={
-              Graph {
-                "_defaultEdgeLabelFn": [Function],
-                "_defaultNodeLabelFn": [Function],
-                "_edgeLabels": Object {},
-                "_edgeObjs": Object {},
-                "_in": Object {},
-                "_isCompound": false,
-                "_isDirected": true,
-                "_isMultigraph": false,
-                "_label": undefined,
-                "_nodes": Object {},
-                "_out": Object {},
-                "_preds": Object {},
-                "_sucs": Object {},
-              }
-            }
-            onClick={[Function]}
-            onError={[Function]}
-            selectedNodeId=""
-            t={[Function]}
-          />
-          <SidePanel
-            isOpen={false}
-            onClose={[Function]}
-            title=""
-          >
-            <div
-              className="page"
-            >
-              <div
-                className="absoluteCenter"
-              >
-                retrieveNodeInfoFailed
-              </div>
-            </div>
-          </SidePanel>
-          <div
-            className="footer"
-          >
-            <div
-              className="flex footerInfoOffset"
-            >
-              <pure(InfoOutlinedIcon)
-                className="infoIcon"
-              />
-              <span
-                className="infoSpan"
-              >
-                staticPipelineGraph
-              </span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
