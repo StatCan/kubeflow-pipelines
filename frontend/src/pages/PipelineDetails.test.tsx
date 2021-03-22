@@ -27,14 +27,15 @@ import { RouteParams, RoutePage, QUERY_PARAMS } from '../components/Router';
 import { graphlib } from 'dagre';
 import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
+import { TFunction } from 'i18next'
 
 jest.mock('react-i18next', () => ({
- 
   withTranslation: () => (Component: { defaultProps: any; }) => {
     Component.defaultProps = { ...Component.defaultProps,  t: ((key: string) => key) as any };
     return Component;
   },
 })); 
+
 describe('PipelineDetails', () => {
   const updateBannerSpy = jest.fn();
   const updateDialogSpy = jest.fn();
@@ -57,6 +58,7 @@ describe('PipelineDetails', () => {
   let testPipeline: ApiPipeline = {};
   let testPipelineVersion: ApiPipelineVersion = {};
   let testRun: ApiRunDetail = {};
+  let identiT: TFunction = (key: string) => key;
 
   function generateProps(fromRunSpec = false): PageProps {
     const match = {
@@ -81,6 +83,7 @@ describe('PipelineDetails', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
+      identiT
     );
     return pageProps;
   }
@@ -154,7 +157,7 @@ describe('PipelineDetails', () => {
     await TestUtils.flushPromises();
     expect(updateToolbarSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        breadcrumbs: [{ displayName: 'Pipelines', href: RoutePage.PIPELINES }],
+        breadcrumbs: [{ displayName: 'common:pipelines', href: RoutePage.PIPELINES }],
         pageTitle: testPipeline.name + ' (' + testPipelineVersion.name + ')',
       }),
     );
@@ -171,7 +174,7 @@ describe('PipelineDetails', () => {
       expect(updateToolbarSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           breadcrumbs: [
-            { displayName: 'All runs', href: RoutePage.RUNS },
+            { displayName: 'allRuns', href: RoutePage.RUNS },
             {
               displayName: testRun.run!.name,
               href: RoutePage.RUN_DETAILS.replace(':' + RouteParams.runId, testRun.run!.id!),
@@ -198,7 +201,7 @@ describe('PipelineDetails', () => {
       expect(updateToolbarSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           breadcrumbs: [
-            { displayName: 'Experiments', href: RoutePage.EXPERIMENTS },
+            { displayName: 'common:experiments', href: RoutePage.EXPERIMENTS },
             {
               displayName: 'test experiment',
               href: RoutePage.EXPERIMENT_DETAILS.replace(
@@ -211,7 +214,7 @@ describe('PipelineDetails', () => {
               href: RoutePage.RUN_DETAILS.replace(':' + RouteParams.runId, testRun.run!.id!),
             },
           ],
-          pageTitle: 'Pipeline details',
+          pageTitle: 'pipelineDetails',
         }),
       );
     },
@@ -244,9 +247,9 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'Unexpected token o in JSON at position 1',
-        message: `Failed to parse pipeline spec from run with ID: ${
+        message: `parsePipelineSpecFailed: ${
           testRun.run!.id
-        }. Click Details for more information.`,
+        }CHECK-ME`, // again this is err being T functioned somewhere
         mode: 'error',
       }),
     );
@@ -261,7 +264,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'Cannot retrieve run details. Click Details for more information.',
+        message: 'cannotRetrieveRunDetailsundefined-CHECK-ME', // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -279,7 +282,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'Cannot retrieve run details. Click Details for more information.',
+        message: 'cannotRetrieveRunDetailsundefined-CHECK-ME', // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -323,7 +326,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'Cannot retrieve pipeline template. Click Details for more information.',
+        message: 'cannotRetrievePipelineTemplateundefined-CHECK-ME', // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -338,7 +341,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad graph',
-        message: 'Error: failed to generate Pipeline graph. Click Details for more information.',
+        message: 'errorGenerateGraphundefined-CHECK-ME', // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -352,7 +355,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'Cannot retrieve pipeline template. Click Details for more information.',
+        message: 'cannotRetrievePipelineTemplateundefined-CHECK-ME', // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -375,7 +378,7 @@ describe('PipelineDetails', () => {
     await TestUtils.flushPromises();
     tree.update();
     expect(tree.state('summaryShown')).toBe(true);
-    tree.find('Paper Button').simulate('click');
+    tree.find('Paper Button').simulate('click'); 
     expect(tree.state('summaryShown')).toBe(false);
   });
 
@@ -583,8 +586,8 @@ describe('PipelineDetails', () => {
     expect(updateDialogSpy).toHaveBeenCalledTimes(2); // Delete dialog + error dialog
     expect(updateDialogSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        content: 'Failed to delete pipeline version: test-pipeline-version-id with error: "woops"',
-        title: 'Failed to delete pipeline version',
+        content: 'common:failedTo delete pipeline version: test-pipeline-version-id common:withError: \"woops\"',
+        title: 'common:failedTo delete pipeline version',
       }),
     );
   });
@@ -603,7 +606,7 @@ describe('PipelineDetails', () => {
     expect(updateSnackbarSpy).toHaveBeenCalledTimes(1);
     expect(updateSnackbarSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        message: 'Delete succeeded for this pipeline version',
+        message: 'Delete common:succeededFor common:this pipeline version',
         open: true,
       }),
     );

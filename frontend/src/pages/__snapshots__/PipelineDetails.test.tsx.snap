@@ -12,8 +12,8 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
       selectedTab={0}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
@@ -47,19 +47,19 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
               <div
                 className="header"
               >
-                Summary
+                common:summary
               </div>
               <WithStyles(Button)
                 color="secondary"
                 onClick={[Function]}
               >
-                Hide
+                common:hide
               </WithStyles(Button)>
             </div>
             <div
               className="summaryKey"
             >
-              ID
+              common:id
             </div>
             <div>
               test-pipeline-id
@@ -69,7 +69,7 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
             >
               <WithStyles(FormControl)>
                 <WithStyles(WithFormControlContext(InputLabel))>
-                  Version
+                  common:version
                 </WithStyles(WithFormControlContext(InputLabel))>
                 <WithStyles(WithFormControlContext(Select))
                   inputProps={
@@ -103,7 +103,7 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
             <div
               className="summaryKey"
             >
-              Uploaded on
+              common:uploadedOn
             </div>
             <div>
               9/5/2018, 4:03:02 AM
@@ -111,7 +111,7 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
             <div
               className="summaryKey"
             >
-              Description
+              common:description
             </div>
             <Description
               description="test pipeline description"
@@ -138,6 +138,7 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
             onClick={[Function]}
             onError={[Function]}
             selectedNodeId=""
+            t={[Function]}
           />
           <SidePanel
             isOpen={false}
@@ -150,7 +151,7 @@ exports[`PipelineDetails closes side panel when close button is clicked 1`] = `
               <div
                 className="absoluteCenter"
               >
-                Unable to retrieve node info
+                retrieveNodeInfoFailed
               </div>
             </div>
           </SidePanel>
@@ -189,8 +190,8 @@ exports[`PipelineDetails collapses summary card when summary shown state is fals
       selectedTab={0}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
@@ -230,6 +231,7 @@ exports[`PipelineDetails collapses summary card when summary shown state is fals
             onClick={[Function]}
             onError={[Function]}
             selectedNodeId=""
+            t={[Function]}
           />
           <SidePanel
             isOpen={false}
@@ -242,7 +244,7 @@ exports[`PipelineDetails collapses summary card when summary shown state is fals
               <div
                 className="absoluteCenter"
               >
-                Unable to retrieve node info
+                retrieveNodeInfoFailed
               </div>
             </div>
           </SidePanel>
@@ -253,7 +255,7 @@ exports[`PipelineDetails collapses summary card when summary shown state is fals
               color="secondary"
               onClick={[Function]}
             >
-              Show summary
+              common:showSummary
             </WithStyles(Button)>
             <div
               className="flex"
@@ -735,8 +737,8 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
       selectedTab={0}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
@@ -770,19 +772,19 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
               <div
                 className="header"
               >
-                Summary
+                common:summary
               </div>
               <WithStyles(Button)
                 color="secondary"
                 onClick={[Function]}
               >
-                Hide
+                common:hide
               </WithStyles(Button)>
             </div>
             <div
               className="summaryKey"
             >
-              ID
+              common:id
             </div>
             <div>
               test-pipeline-id
@@ -792,7 +794,7 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
             >
               <WithStyles(FormControl)>
                 <WithStyles(WithFormControlContext(InputLabel))>
-                  Version
+                  common:version
                 </WithStyles(WithFormControlContext(InputLabel))>
                 <WithStyles(WithFormControlContext(Select))
                   inputProps={
@@ -826,7 +828,7 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
             <div
               className="summaryKey"
             >
-              Uploaded on
+              common:uploadedOn
             </div>
             <div>
               9/5/2018, 4:03:02 AM
@@ -834,7 +836,7 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
             <div
               className="summaryKey"
             >
-              Description
+              common:description
             </div>
             <Description
               description="test pipeline description"
@@ -861,6 +863,7 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
             onClick={[Function]}
             onError={[Function]}
             selectedNodeId=""
+            t={[Function]}
           />
           <SidePanel
             isOpen={false}
@@ -873,7 +876,7 @@ exports[`PipelineDetails shows correct versions in version selector 1`] = `
               <div
                 className="absoluteCenter"
               >
-                Unable to retrieve node info
+                retrieveNodeInfoFailed
               </div>
             </div>
           </SidePanel>
@@ -912,8 +915,8 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
       selectedTab={0}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
@@ -947,19 +950,19 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
               <div
                 className="header"
               >
-                Summary
+                common:summary
               </div>
               <WithStyles(Button)
                 color="secondary"
                 onClick={[Function]}
               >
-                Hide
+                common:hide
               </WithStyles(Button)>
             </div>
             <div
               className="summaryKey"
             >
-              ID
+              common:id
             </div>
             <div>
               test-pipeline-id
@@ -969,7 +972,7 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
             >
               <WithStyles(FormControl)>
                 <WithStyles(WithFormControlContext(InputLabel))>
-                  Version
+                  common:version
                 </WithStyles(WithFormControlContext(InputLabel))>
                 <WithStyles(WithFormControlContext(Select))
                   inputProps={
@@ -1003,7 +1006,7 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
             <div
               className="summaryKey"
             >
-              Uploaded on
+              common:uploadedOn
             </div>
             <div>
               9/5/2018, 4:03:02 AM
@@ -1011,7 +1014,7 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
             <div
               className="summaryKey"
             >
-              Description
+              common:description
             </div>
             <Description
               description="test pipeline description"
@@ -1038,6 +1041,7 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
             onClick={[Function]}
             onError={[Function]}
             selectedNodeId=""
+            t={[Function]}
           />
           <SidePanel
             isOpen={false}
@@ -1050,7 +1054,7 @@ exports[`PipelineDetails shows empty pipeline details with empty graph 1`] = `
               <div
                 className="absoluteCenter"
               >
-                Unable to retrieve node info
+                retrieveNodeInfoFailed
               </div>
             </div>
           </SidePanel>
@@ -1089,8 +1093,8 @@ exports[`PipelineDetails shows empty pipeline details with no graph 1`] = `
       selectedTab={0}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
@@ -1107,7 +1111,7 @@ exports[`PipelineDetails shows empty pipeline details with no graph 1`] = `
             }
           }
         >
-          No graph to show
+          noGraph
         </span>
       </div>
     </div>
@@ -1127,8 +1131,8 @@ exports[`PipelineDetails shows pipeline source code when config tab is clicked 1
       selectedTab={1}
       tabs={
         Array [
-          "Graph",
-          "YAML",
+          "common:graph",
+          "common:yaml",
         ]
       }
     />
