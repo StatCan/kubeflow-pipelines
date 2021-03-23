@@ -179,12 +179,12 @@ describe('Graph', () => {
     const graph = newGraph();
     graph.setEdge('node1', 'node2');
     const onError = jest.fn();
-    expect(mount(<Graph  graph={graph}  onError = {onError}  />).html()).toMatchSnapshot();
+    expect(mount(<EnhancedGraph  graph={graph}  onError = {onError}  />).html()).toMatchSnapshot();
     expect(onError).toHaveBeenCalledTimes(1);
     const [message, additionalInfo] = onError.mock.calls[0];
-    expect(message).toEqual('errorRenderGraph.');
+    expect(message).toEqual('errorRenderGraph');
     expect(additionalInfo).toEqual(
-      "There was an error rendering the graph. This is likely a bug in Kubeflow Pipelines. Error message: 'Graph definition is invalid. Cannot get node by 'node1'.'.",
+      "errorRenderGraph bugKubeflowError: 'Graph definition is invalid. Cannot get node by 'node1'.'.",
     );
   });
 });
