@@ -31,7 +31,6 @@ export interface PageProps extends RouteComponentProps {
   updateDialog: (dialogProps: DialogProps) => void;
   updateSnackbar: (snackbarProps: SnackbarProps) => void;
   updateToolbar: (toolbarProps: Partial<ToolbarProps>) => void;
-  t: TFunction;
 }
 
 export type PageErrorHandler = (

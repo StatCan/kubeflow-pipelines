@@ -113,7 +113,7 @@ const descriptionCustomRenderer: React.FC<CustomRendererProps<string>> = props =
 };
 
 //class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState> {
-class NewPipelineVersion extends Page<{}, NewPipelineVersionState> {
+class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState> {
   private _dropzoneRef = React.createRef<Dropzone & HTMLDivElement>();
   private _pipelineVersionNameRef = React.createRef<HTMLInputElement>();
   private _pipelineNameRef = React.createRef<HTMLInputElement>();
@@ -178,6 +178,16 @@ class NewPipelineVersion extends Page<{}, NewPipelineVersionState> {
     } = this.state;
 
     const buttons = new Buttons(this.props, this.refresh.bind(this));
+
+    const compilePipelineDocs = (
+      <div className={padding(10, 'b')}>
+        {t('expectedFileFormat')}{' '}
+        <ExternalLink href='https://www.kubeflow.org/docs/pipelines/sdk/build-component/#compile-the-pipeline'>
+          {t('compilePipelineDoc')}
+        </ExternalLink>
+        .
+      </div>
+    );
 
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'))}>
@@ -349,13 +359,13 @@ class NewPipelineVersion extends Page<{}, NewPipelineVersionState> {
                 <br />
                 {t('dragAndDropFile')}
               </div>
-              <DocumentationCompilePipeline />
+              {compilePipelineDocs}
             </>
           )}
           {this.state.importMethod === ImportMethod.URL && (
             <>
               <div className={padding(10, 'b')}>{t('urlPublic')}</div>
-              <DocumentationCompilePipeline />
+              {compilePipelineDocs}
             </>
           )}
 
@@ -672,17 +682,3 @@ class NewPipelineVersion extends Page<{}, NewPipelineVersionState> {
 }
 
 export default withTranslation(['pipelines', 'common'])(NewPipelineVersion);
-
-//why do we have this? 
-const DocumentationCompilePipeline: React.FC = () => {
-  const { t } = useTranslation('pipelines');
-  return (
-    <div className={padding(10, 'b')}>
-      {t('expectedFileFormat')}{' '}
-      <ExternalLink href='https://www.kubeflow.org/docs/pipelines/sdk/build-component/#compile-the-pipeline'>
-        {t('compilePipelineDoc')}
-      </ExternalLink>
-      .
-    </div>
-  )
-};

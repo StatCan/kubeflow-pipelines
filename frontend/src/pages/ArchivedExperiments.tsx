@@ -38,7 +38,7 @@ export class ArchivedExperiments extends Page<ArchivedExperimentsProp, ArchivedE
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
-    const { t,i18n} = useTranslation('common');
+    const { t } = this.props;
     return {
       actions: buttons.refresh(this.refresh.bind(this)).getToolbarActionMap(),
       breadcrumbs: [],

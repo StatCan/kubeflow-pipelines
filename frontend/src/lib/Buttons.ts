@@ -23,7 +23,7 @@ import { PageProps } from '../pages/Page';
 import { Apis } from './Apis';
 import { URLParser } from './URLParser';
 import { errorToMessage, s } from './Utils';
-import i18n from 'i18next'
+import i18n, { TFunction } from 'i18next'
 
 export enum ButtonKeys {
   ARCHIVE = 'archive',
@@ -49,12 +49,12 @@ export enum ButtonKeys {
 
 export default class Buttons {
   private _map: ToolbarActionMap;
-  private _props: PageProps;
+  private _props: PageProps & {t: TFunction};
   private _refresh: () => void;
   private _urlParser: URLParser;
   onClick: any;
 
-  constructor(pageProps: PageProps, refresh: () => void, map?: ToolbarActionMap) {
+  constructor(pageProps: PageProps & {t: TFunction}, refresh: () => void, map?: ToolbarActionMap) {
     this._props = pageProps;
     this._refresh = refresh;
     this._urlParser = new URLParser(pageProps);
