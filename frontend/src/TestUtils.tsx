@@ -27,6 +27,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { object } from 'prop-types';
 import { format } from 'prettier';
 import snapshotDiff from 'snapshot-diff';
+import { TFunction } from 'i18next';
 
 
 export default class TestUtils {
@@ -89,8 +90,8 @@ export default class TestUtils {
       updateBanner: updateBannerSpy as any,
       updateDialog: updateDialogSpy as any,
       updateSnackbar: updateSnackbarSpy as any,
-      updateToolbar: updateToolbarSpy as any
-      
+      updateToolbar: updateToolbarSpy as any,
+      t:{} as TFunction
     } as PageProps;
     const props = {
       ...pageProps,

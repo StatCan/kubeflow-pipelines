@@ -21,8 +21,8 @@ import { BannerProps } from '../components/Banner';
 import { SnackbarProps } from '@material-ui/core/Snackbar';
 import { DialogProps } from '../components/Router';
 import { errorToMessage } from '../lib/Utils';
-import { withTranslation } from 'react-i18next';
-import { TFunction } from 'i18next';
+
+import i18next, { TFunction } from 'i18next';
 
 export interface PageProps extends RouteComponentProps {
   toolbarProps: ToolbarProps;
@@ -30,6 +30,7 @@ export interface PageProps extends RouteComponentProps {
   updateDialog: (dialogProps: DialogProps) => void;
   updateSnackbar: (snackbarProps: SnackbarProps) => void;
   updateToolbar: (toolbarProps: Partial<ToolbarProps>) => void;
+  t:TFunction
 }
 
 export type PageErrorHandler = (
@@ -37,16 +38,19 @@ export type PageErrorHandler = (
   error?: Error,
   mode?: 'error' | 'warning',
   refresh?: () => Promise<void>,
+
 ) => Promise<void>;
 
 export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
+  [x: string]: any;
   protected _isMounted = true;
 
   constructor(props: any) {
     super(props);
-    this.props.updateToolbar(this.getInitialToolbarState());
+    this.props.updateToolbar(this.getInitialToolbarState ());
+  
   }
-
+ 
   public abstract render(): JSX.Element;
 
   public abstract getInitialToolbarState(): ToolbarProps;
@@ -70,8 +74,7 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
   }
 
   public showPageError: PageErrorHandler = async (message, error, mode, refresh): Promise<void> => {
-    //const {t,i18n}=useTranslation('common');
-    const { t } = this.props
+    const{t}=this.props;
     const errorMessage = await errorToMessage(error);
     if (!this._isMounted) {
       return;
