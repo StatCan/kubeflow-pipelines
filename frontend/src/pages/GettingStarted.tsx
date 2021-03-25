@@ -97,7 +97,9 @@ export class GettingStarted extends Page<{}, { links: string[] }> {
   };
   
   public getInitialToolbarState(): ToolbarProps {
+
     const buttons = new Buttons(this.props, this.refresh.bind(this));
+    
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],

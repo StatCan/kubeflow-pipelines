@@ -90,6 +90,7 @@ export default class TestUtils {
       updateDialog: updateDialogSpy as any,
       updateSnackbar: updateSnackbarSpy as any,
       updateToolbar: updateToolbarSpy as any
+      
     } as PageProps;
     const props = {
       ...pageProps,
