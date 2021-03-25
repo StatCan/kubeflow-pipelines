@@ -55,7 +55,7 @@ class TestCompare extends Compare {
 
 describe('Compare', () => {
   let tree: ReactWrapper | ShallowWrapper;
-  let identiT: TFunction = (key: string) => key;
+  let t: TFunction = (key: string) => key;
   const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => null);
   const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => null);
 
@@ -81,7 +81,7 @@ describe('Compare', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      identiT
+      {t}
     );
   }
 
@@ -596,7 +596,7 @@ describe('Compare', () => {
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.runlist}=run1-id,run2-id`;
 
-    tree = shallow(<TestCompare t={key => key} {...props} />);
+    tree = shallow(<TestCompare t={(key: any) => key} {...props} />);
     await TestUtils.flushPromises();
 
     // 6 plot cards because there are (2 runs * 2 plots per run) + 2 aggregated plots, one for

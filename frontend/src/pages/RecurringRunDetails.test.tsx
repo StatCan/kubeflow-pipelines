@@ -48,7 +48,7 @@ describe('RecurringRunDetails', () => {
   const enableJobSpy = jest.spyOn(Apis.jobServiceApi, 'enableJob');
   const disableJobSpy = jest.spyOn(Apis.jobServiceApi, 'disableJob');
   const getExperimentSpy = jest.spyOn(Apis.experimentServiceApi, 'getExperiment');
-  let identiT: TFunction = (key: string) => key;
+  let t: TFunction = (key: string) => key;
   let fullTestJob: ApiJob = {};
 
   function generateProps(): PageProps {
@@ -67,7 +67,7 @@ describe('RecurringRunDetails', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      identiT
+      {t}
     );
   }
 

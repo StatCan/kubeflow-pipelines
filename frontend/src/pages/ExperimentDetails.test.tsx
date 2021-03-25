@@ -42,7 +42,7 @@ jest.mock('react-i18next', () => ({
   },
 }));
 describe('ExperimentDetails', () => {
-  let identiT: TFunction = (key: string) => key;
+  let t: TFunction = (key: string) => key;
   let tree: ReactWrapper | ShallowWrapper;
 
   const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => null);
@@ -78,7 +78,7 @@ describe('ExperimentDetails', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      identiT
+     {t}
     );
   }
 

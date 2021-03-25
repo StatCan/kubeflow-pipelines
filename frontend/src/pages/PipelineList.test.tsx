@@ -53,7 +53,7 @@ describe('PipelineList', () => {
   let listPipelineVersionsSpy: jest.SpyInstance<{}>;
   let deletePipelineSpy: jest.SpyInstance<{}>;
   let deletePipelineVersionSpy: jest.SpyInstance<{}>;
-  let identiT: TFunction = (key: string) => key;  
+  let t: TFunction = (key: string) => key;  
 
   function spyInit() {
     updateBannerSpy = jest.fn();
@@ -76,7 +76,7 @@ describe('PipelineList', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      identiT
+      {t}
     );
   }
 
@@ -164,7 +164,7 @@ describe('PipelineList', () => {
 
   it('calls Apis to list pipelines, sorted by creation time in descending order', async () => {
     listPipelinesSpy.mockImplementationOnce(() => ({ pipelines: [{ name: 'pipeline1' }] }));
-    tree = TestUtils.mountWithRouter(<PipelineList t={key => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
     await listPipelinesSpy;
     expect(listPipelinesSpy).toHaveBeenLastCalledWith('', 10, 'created_at desc', '');
     expect(tree.state()).toHaveProperty('displayPipelines', [
@@ -199,7 +199,7 @@ describe('PipelineList', () => {
   });
 
   it('shows error banner when listing pipelines fails after refresh', async () => {
-    tree = TestUtils.mountWithRouter(<PipelineList  t={(key: any) => key} {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
     const instance = tree.instance() as PipelineList;
     const refreshBtn = instance.getInitialToolbarState().actions[ButtonKeys.REFRESH];
     expect(refreshBtn).toBeDefined();

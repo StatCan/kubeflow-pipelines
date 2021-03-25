@@ -32,7 +32,7 @@ describe('ArchivedRuns', () => {
   const updateDialogSpy = jest.fn();
   const updateSnackbarSpy = jest.fn();
   let tree: ShallowWrapper;
-  let identiT: TFunction = (key: string) => key;
+  let t: TFunction = (key: string) => key;
 
   function generateProps(): PageProps {
     return TestUtils.generatePageProps(
@@ -44,7 +44,7 @@ describe('ArchivedRuns', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      identiT
+     {t}
     );
   }
 

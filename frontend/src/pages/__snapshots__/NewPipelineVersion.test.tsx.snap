@@ -71,7 +71,18 @@ exports[`NewPipelineVersion creating new pipeline renders the new pipeline page 
     >
       urlPublic
     </div>
-    <DocumentationCompilePipeline />
+    <div
+      className=""
+    >
+      expectedFileFormat
+       
+      <ExternalLink
+        href="https://www.kubeflow.org/docs/pipelines/sdk/build-component/#compile-the-pipeline"
+      >
+        compilePipelineDoc
+      </ExternalLink>
+      .
+    </div>
     <div
       className="flex"
     >

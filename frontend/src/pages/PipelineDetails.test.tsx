@@ -60,7 +60,7 @@ describe('PipelineDetails', () => {
   let testPipeline: ApiPipeline = {};
   let testPipelineVersion: ApiPipelineVersion = {};
   let testRun: ApiRunDetail = {};
-  let identiT: TFunction = (key: string) => key;
+  let t: TFunction = (key: string) => key;
 
   function generateProps(fromRunSpec = false): PageProps {
     const match = {
@@ -85,7 +85,7 @@ describe('PipelineDetails', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      identiT
+      {t}
     );
     return pageProps;
   }
