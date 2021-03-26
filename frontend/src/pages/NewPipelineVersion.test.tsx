@@ -21,7 +21,6 @@ import { shallow, ShallowWrapper, ReactWrapper } from 'enzyme';
 import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType } from '../apis/pipeline';
-import { TFunction } from 'i18next'
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown

@@ -23,8 +23,6 @@ import { ToolbarProps } from '../components/Toolbar';
 import { classes } from 'typestyle';
 import { commonCss, padding } from '../Css';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
-//import { TFunction } from 'i18next';
-//import { useTranslation } from 'react-i18next';
 import  { TFunction } from 'i18next'
 import { useTranslation } from 'react-i18next';
 

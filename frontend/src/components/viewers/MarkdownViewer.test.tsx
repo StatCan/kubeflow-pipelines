@@ -19,8 +19,6 @@ import { mount } from 'enzyme';
 import MarkdownViewer, { MarkdownViewerConfig } from './MarkdownViewer';
 import { PlotType } from './Viewer';
 
-
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
 let mockValue;
 jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('MarkdownViewer', () => {

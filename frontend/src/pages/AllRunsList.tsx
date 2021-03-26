@@ -16,8 +16,8 @@
 
 import * as React from 'react';
 import Buttons, { ButtonKeys } from '../lib/Buttons';
-import RunList, { RunListProps } from './RunList';
-import { Page, PageProps } from './Page';
+import RunList from './RunList';
+import { Page } from './Page';
 import { RunStorageState } from '../apis/run';
 import { ToolbarProps } from '../components/Toolbar';
 import { classes } from 'typestyle';

@@ -6,7 +6,6 @@ import TestUtils from 'src/TestUtils';
 
 let mockedValue = '';
 jest.mock('i18next', () => ({ t: () => mockedValue }));
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
 // Original ./Editor uses a complex external editor inside, we use a simple mock
 // for testing instead.
 jest.mock('./Editor', () => {

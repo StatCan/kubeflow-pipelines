@@ -22,7 +22,7 @@ import { SnackbarProps } from '@material-ui/core/Snackbar';
 import { DialogProps } from '../components/Router';
 import { errorToMessage } from '../lib/Utils';
 
-import i18next, { TFunction } from 'i18next';
+import { TFunction } from 'i18next';
 
 export interface PageProps extends RouteComponentProps {
   toolbarProps: ToolbarProps;

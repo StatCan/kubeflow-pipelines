@@ -19,9 +19,6 @@ import { shallow } from 'enzyme';
 import { PlotType } from './Viewer';
 import ROCCurve from './ROCCurve';
 
-
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
-
 let mockValue;
 jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('ROCCurve', () => {

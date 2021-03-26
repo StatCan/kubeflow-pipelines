@@ -18,7 +18,7 @@ import * as React from 'react';
 import Viewer, { ViewerConfig, PlotType } from './Viewer';
 import { color, commonCss, fontsize } from '../../Css';
 import { classes, stylesheet } from 'typestyle';
-//import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import i18next from 'i18next'
 
 
@@ -197,7 +197,7 @@ class ConfusionMatrix extends Viewer<ConfusionMatrixProps, ConfusionMatrixState>
   }
 
   public getDisplayName(): string {
-   // const {t,i18n}= useTranslation ('common');
+    //const { t }= useTranslation('common');
     return i18next.t('common:confusionMatrix');
   }
 

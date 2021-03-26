@@ -19,7 +19,6 @@ import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import UploadPipelineDialog, { ImportMethod } from './UploadPipelineDialog';
 import TestUtils from '../TestUtils';
 
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {

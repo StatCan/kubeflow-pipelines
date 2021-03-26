@@ -21,7 +21,6 @@ import EnhancedGraph, { Graph } from './Graph';
 import SuccessIcon from '@material-ui/icons/CheckCircle';
 import Tooltip from '@material-ui/core/Tooltip';
 
-//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {

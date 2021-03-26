@@ -23,7 +23,7 @@ import { PageProps } from '../pages/Page';
 import { Apis } from './Apis';
 import { URLParser } from './URLParser';
 import { errorToMessage, s } from './Utils';
-import i18n, { TFunction } from 'i18next'
+import { TFunction } from 'i18next'
 
 export enum ButtonKeys {
   ARCHIVE = 'archive',

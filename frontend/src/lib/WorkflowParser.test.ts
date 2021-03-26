@@ -18,7 +18,6 @@ import { color } from '../Css';
 import { NodePhase } from '../lib/StatusUtils';
 import { Constants } from './Constants';
 import WorkflowParser, { StorageService } from './WorkflowParser';
-import { Workflow } from 'third_party/argo-ui/argo_template';
 
 describe('WorkflowParser', () => {
   describe('createRuntimeGraph', () => {

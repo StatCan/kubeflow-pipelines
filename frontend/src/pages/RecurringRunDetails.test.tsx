@@ -23,9 +23,8 @@ import { PageProps } from './Page';
 import { RouteParams, RoutePage, QUERY_PARAMS } from '../components/Router';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
-import {TFunction} from 'i18next'
+import { TFunction } from 'i18next'
 
-//jest.mock("react-i18next", () => ({ t: jest.fn(), }));
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   withTranslation: () => (component: React.ComponentClass) => {

@@ -19,7 +19,6 @@ import { mount } from 'enzyme';
 import HTMLViewer, { HTMLViewerConfig } from './HTMLViewer';
 import { PlotType } from './Viewer';
 
-//jest.mock("i18next", () => ({ t: jest.fn(), }));
 let mockValue;
 jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('HTMLViewer', () => {
