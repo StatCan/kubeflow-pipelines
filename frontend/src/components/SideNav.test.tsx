@@ -22,26 +22,40 @@ import { Apis } from '../lib/Apis';
 import { LocalStorage } from '../lib/LocalStorage';
 import TestUtils, { diffHTML } from '../TestUtils';
 import { RoutePage } from './Router';
-import EnhancedSideNav, { css, SideNav } from './SideNav';
+import { css, SideNav } from './SideNav';
+import EnhancedSideNav from './SideNav';
 
+/*
+jest.mock('react-i18next', () => {
+  return {
+    useTranslation: () => ({
+      t: ((key: string) => key ) as any
+    })
+  };
+});
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: str => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
+  withTranslation: () => (component: React.ComponentClass) => {
+    component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
+    return component;
+  }
 }));
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => '' };
-    return Component;
-  },
-}));
+*/
+// Mock t function
+
+jest.mock('react-i18next', () => {
+  return {
+    useTranslation: () => {
+      return {
+        t: ((key: string) => key) as any,
+      };
+    },
+    withTranslation: () => (Component: any) => {
+      Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
+      return Component;
+    },
+  };
+});
 
 const wideWidth = 1000;
 const narrowWidth = 200;
@@ -321,9 +335,9 @@ describe('SideNav', () => {
           <div class="infoVisible">
       +     <div
       +       class="envMetadata"
-      +       title="undefined: some-cluster-name, undefined: some-project-id"
+      +       title="common:clusterName: some-cluster-name, common:projectId: some-project-id"
       +     >
-      +       <span>: </span
+      +       <span>common:clusterName: </span
       +       ><a
       +         href="https://console.cloud.google.com/kubernetes/list?project=some-project-id&amp;filter=name:some-cluster-name"
       +         class="link unstyled"
@@ -332,14 +346,13 @@ describe('SideNav', () => {
       +         >some-cluster-name</a
       +       >
       +     </div>
-            <div class="envMetadata">
+            <div class="envMetadata" title="common:reportIssue">
               <a
                 href="https://github.com/kubeflow/pipelines/issues/new/choose"
                 class="link unstyled"
                 rel="noopener"
     `);
   });
-
   it('displays the frontend tag name if the api server hash is not returned', async () => {
     const buildInfo = {
       apiServerReady: true,

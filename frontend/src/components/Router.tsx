@@ -365,7 +365,7 @@ export default Router;
 const SideNavLayout: React.FC<{}> = ({ children }) => (
   <div className={commonCss.page}>
     <div className={commonCss.flexGrow}>
-      <Route render={({ ...props }) => <SideNav page={props.location.pathname} {...props} />} />
+      <Route render={({ ...props }) => <SideNav  page={props.location.pathname} {...props} />} />
       {children}
     </div>
   </div>

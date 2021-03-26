@@ -129,6 +129,18 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
   match=""
   onError={[MockFunction]}
   t={[Function]}
+  toolbarProps={
+    Object {
+      "actions": Object {},
+      "breadcrumbs": Array [
+        Object {
+          "displayName": "",
+          "href": "",
+        },
+      ],
+      "pageTitle": "",
+    }
+  }
 >
   <div>
     <CustomTable

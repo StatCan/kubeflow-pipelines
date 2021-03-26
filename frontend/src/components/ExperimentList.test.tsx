@@ -17,7 +17,7 @@
 import * as React from 'react';
 import * as Utils from '../lib/Utils';
 import { ExperimentList, ExperimentListProps } from './ExperimentList';
-import TestUtils from '../TestUtils';
+import TestUtils, { defaultToolbarProps } from '../TestUtils';
 import { ApiFilter, PredicateOp } from '../apis/filter';
 import { RunStorageState } from '../apis/run';
 import { ExperimentStorageState } from '../apis/experiment';
@@ -43,16 +43,16 @@ describe('ExperimentList', () => {
   // test enviroments
   const formatDateStringSpy = jest.spyOn(Utils, 'formatDateString');
   const listRunsSpy = jest.spyOn(Apis.runServiceApi, 'listRuns');
-
-  function generateProps(): ExperimentListProps {
+  function generateProps(search?: string): any {
     return {
-      history: {} as any,
+      history: { } as any,
       location: { search: '' } as any,
       match: '' as any,
       onError: onErrorSpy,
+      toolbarProps: defaultToolbarProps(),
     };
+ 
   }
-
   function mockNExperiments(n: number): void {
     getExperimentSpy.mockImplementation(id =>
       Promise.resolve({
@@ -91,20 +91,20 @@ describe('ExperimentList', () => {
   });
 
   it('renders the empty experience', () => {
-    expect(shallow(<ExperimentList t={key => key}  {...generateProps()} />)).toMatchSnapshot();
+    expect(shallow(<ExperimentList  t={(key: any) => key}  {...generateProps()} />)).toMatchSnapshot();
   });
 
   it('renders the empty experience in ARCHIVED state', () => {
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    expect(shallow(<ExperimentList t={key => key}  {...props} />)).toMatchSnapshot();
+    expect(shallow(<ExperimentList t={(key: any) => key}   {...props} />)).toMatchSnapshot();
   });
 
   it('loads experiments whose storage state is not ARCHIVED when storage state equals AVAILABLE', async () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.AVAILABLE;
-    tree = shallow(<ExperimentList t={key => key}  {...props} />);
+    tree = shallow(<ExperimentList t={(key: any) => key}   {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenLastCalledWith(
       undefined,
@@ -130,7 +130,7 @@ describe('ExperimentList', () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    tree = shallow(<ExperimentList t={key => key}  {...props} />);
+    tree = shallow(<ExperimentList t={(key: any) => key}   {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenLastCalledWith(
       undefined,
@@ -156,7 +156,7 @@ describe('ExperimentList', () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    tree = shallow(<ExperimentList t={key => key}  {...props} />);
+    tree = shallow(<ExperimentList  t={(key: any) => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({
       filter: encodeURIComponent(
         JSON.stringify({
@@ -192,7 +192,7 @@ describe('ExperimentList', () => {
   it('loads one experiment', async () => {
     mockNExperiments(1);
     const props = generateProps();
-    tree = shallow(<ExperimentList t={key => key}  {...props} />);
+    tree = shallow(<ExperimentList  t={(key: any) => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenLastCalledWith(
       undefined,
@@ -209,7 +209,7 @@ describe('ExperimentList', () => {
   it('reloads the experiment when refresh is called', async () => {
     mockNExperiments(0);
     const props = generateProps();
-    tree = TestUtils.mountWithRouter(<ExperimentList t={key => key}   {...props} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList  t={(key: any) => key}   {...props} />);
     await (tree.instance() as ExperimentList).refresh();
     tree.update();
     expect(Apis.experimentServiceApi.listExperiment).toHaveBeenCalledTimes(2);
@@ -228,7 +228,7 @@ describe('ExperimentList', () => {
   it('loads multiple experiments', async () => {
     mockNExperiments(5);
     const props = generateProps();
-    tree = shallow(<ExperimentList t={key => key}  {...props} />);
+    tree = shallow(<ExperimentList t={(key: any) => key}   {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(props.onError).not.toHaveBeenCalled();
     expect(tree).toMatchSnapshot();
@@ -240,7 +240,7 @@ describe('ExperimentList', () => {
       'bad stuff happened',
     );
     const props = generateProps();
-    tree = shallow(<ExperimentList t={key => key}  {...props} />);
+    tree = shallow(<ExperimentList t={(key: any) => key}   {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     expect(props.onError).toHaveBeenLastCalledWith(
       'Error: failed to list experiments: ',
@@ -252,7 +252,7 @@ describe('ExperimentList', () => {
     listRunsSpy.mockImplementation(() => {});
     mockNExperiments(1);
     const props = generateProps();
-    tree = TestUtils.mountWithRouter(<ExperimentList t={key => key}  {...props} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList  t={(key: any) => key}  {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     tree.update();
     expect(props.onError).not.toHaveBeenCalled();
@@ -303,7 +303,7 @@ describe('ExperimentList', () => {
     mockNExperiments(1);
     const props = generateProps();
     props.storageState = ExperimentStorageState.ARCHIVED;
-    tree = TestUtils.mountWithRouter(<ExperimentList t={key => key}  {...props} />);
+    tree = TestUtils.mountWithRouter(<ExperimentList   t={(key: any) => key} {...props} />);
     await (tree.instance() as ExperimentListTest)._loadExperiments({});
     tree.update();
     expect(props.onError).not.toHaveBeenCalled();

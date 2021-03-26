@@ -101,11 +101,11 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -208,11 +208,11 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -304,11 +304,11 @@ exports[`NewRun arriving from pipeline details page indicates that a pipeline is
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -627,11 +627,11 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -734,11 +734,11 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -830,11 +830,11 @@ exports[`NewRun changes the exit button's text if query params indicate this is 
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -1126,7 +1126,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -1153,11 +1153,11 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -1233,7 +1233,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -1260,11 +1260,11 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -1344,7 +1344,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -1356,11 +1356,11 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -1434,7 +1434,7 @@ exports[`NewRun changes title and form if the new run will recur, based on the r
       disabled={true}
       label="common:experiment"
       required={true}
-      value="some mock experiment name"
+      value=""
       variant="outlined"
     />
     <div>
@@ -1697,11 +1697,11 @@ exports[`NewRun changes title and form to default state if the new run is a one-
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -1804,11 +1804,11 @@ exports[`NewRun changes title and form to default state if the new run is a one-
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -1900,11 +1900,11 @@ exports[`NewRun changes title and form to default state if the new run is a one-
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -2223,11 +2223,11 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -2330,11 +2330,11 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -2426,11 +2426,11 @@ exports[`NewRun fetches the associated pipeline if one is present in the query p
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -2720,7 +2720,7 @@ exports[`NewRun renders the new run page 1`] = `
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -2747,11 +2747,11 @@ exports[`NewRun renders the new run page 1`] = `
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -2827,7 +2827,7 @@ exports[`NewRun renders the new run page 1`] = `
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -2854,11 +2854,11 @@ exports[`NewRun renders the new run page 1`] = `
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -2938,7 +2938,7 @@ exports[`NewRun renders the new run page 1`] = `
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -2950,11 +2950,11 @@ exports[`NewRun renders the new run page 1`] = `
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -3028,7 +3028,7 @@ exports[`NewRun renders the new run page 1`] = `
       disabled={true}
       label="common:experiment"
       required={true}
-      value="some mock experiment name"
+      value=""
       variant="outlined"
     />
     <div>
@@ -3273,11 +3273,11 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -3380,11 +3380,11 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -3476,11 +3476,11 @@ exports[`NewRun starting a new recurring run includes additional trigger input f
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -3790,7 +3790,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -3817,11 +3817,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -3897,7 +3897,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -3924,11 +3924,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -4008,7 +4008,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -4020,11 +4020,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -4098,7 +4098,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
       disabled={true}
       label="common:experiment"
       required={true}
-      value="some mock experiment name"
+      value=""
       variant="outlined"
     />
     <div>
@@ -4316,7 +4316,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -4343,11 +4343,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -4423,7 +4423,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -4450,11 +4450,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -4534,7 +4534,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -4546,11 +4546,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -4624,7 +4624,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
       disabled={true}
       label="common:experiment"
       required={true}
-      value="some mock experiment name"
+      value=""
       variant="outlined"
     />
     <div>
@@ -4853,7 +4853,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -4880,11 +4880,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -4960,7 +4960,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -4987,11 +4987,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -5071,7 +5071,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
           location={
             Object {
               "pathname": "/runs/new",
-              "search": "?experimentId=some-mock-experiment-id",
+              "search": "",
             }
           }
           match=""
@@ -5083,11 +5083,11 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -5161,7 +5161,7 @@ exports[`NewRun starting a new run updates the pipeline params as user selects d
       disabled={true}
       label="common:experiment"
       required={true}
-      value="some mock experiment name"
+      value=""
       variant="outlined"
     />
     <div>
@@ -5406,11 +5406,11 @@ exports[`NewRun updates the run's state with the associated experiment if one is
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -5513,11 +5513,11 @@ exports[`NewRun updates the run's state with the associated experiment if one is
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}
@@ -5609,11 +5609,11 @@ exports[`NewRun updates the run's state with the associated experiment if one is
               "actions": Object {},
               "breadcrumbs": Array [
                 Object {
-                  "displayName": "common:experiments",
-                  "href": "/experiments",
+                  "displayName": "",
+                  "href": "",
                 },
               ],
-              "pageTitle": "startNewRun",
+              "pageTitle": "",
             }
           }
           updateBanner={[MockFunction]}

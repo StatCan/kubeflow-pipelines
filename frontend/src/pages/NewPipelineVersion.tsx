@@ -42,8 +42,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { ExternalLink } from '../atoms/ExternalLink';
 import { TFunction } from 'i18next';
-import { withTranslation, useTranslation } from 'react-i18next';
-import i18next from 'i18next'
+import { withTranslation} from 'react-i18next';
+
 
 interface NewPipelineVersionState {
   validationError: string;

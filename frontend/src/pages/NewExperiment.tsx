@@ -65,7 +65,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
   }
 
   public getInitialToolbarState(): ToolbarProps {
-    const { t,i18n } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     return {
       actions: {},
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
@@ -75,7 +75,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
 
   public render(): JSX.Element {
     const { description, experimentName, isbeingCreated, validationError } = this.state;
-    const { t,i18n } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
 
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'))}>
@@ -164,7 +164,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
     };
 
     this.setState({ isbeingCreated: true }, async () => {
-      const { t,i18n } = useTranslation(['experiments', 'common']);
+      //const { t,i18n } = useTranslation(['experiments', 'common']);
       try {
         const response = await Apis.experimentServiceApi.createExperiment(newExperiment);
         let searchString = '';
@@ -183,12 +183,12 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
         this.props.history.push(RoutePage.NEW_RUN + searchString);
         this.props.updateSnackbar({
           autoHideDuration: 10000,
-          message: `${t('newExperimentSuccess')}: ${newExperiment.name}`,
+          message: `${this.props.t('newExperimentSuccess')}: ${newExperiment.name}`,
           open: true,
         });
       } catch (err) {
         const errorMessage = await errorToMessage(err);
-        await this.showErrorDialog(t('experimentCreationFailed'), errorMessage);
+        await this.showErrorDialog(this.props.t('experimentCreationFailed'), errorMessage);
         logger.error('Error creating experiment:', err);
         this.setState({ isbeingCreated: false });
       }
@@ -198,7 +198,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
   private _validate(): void {
     // Validate state
     const { experimentName } = this.state;
-    const { t ,i18n} = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     try {
       if (!experimentName) {
         throw new Error(t('experimentNameRequired'));

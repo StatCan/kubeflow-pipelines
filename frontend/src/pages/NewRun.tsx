@@ -174,16 +174,16 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   ];
 
   public getInitialToolbarState(): ToolbarProps {
-    const { t } = useTranslation(['experiments', 'common']);
+  
     return {
       actions: {},
-      breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
-      pageTitle: t('startNewRun'),
+      breadcrumbs: [{ displayName: this.props.t('common:experiments'), href: RoutePage.EXPERIMENTS }],
+      pageTitle: this.props.t('startNewRun'),
     };
   }
 
   public render(): JSX.Element {
-    const { t } = useTranslation(['experiments', 'common']);
+   
     const {
       workflowFromRun,
       description,
@@ -222,20 +222,20 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     return (
       <div className={classes(commonCss.page, padding(20, 'lr'))}>
         <div className={commonCss.scrollContainer}>
-          <div className={commonCss.header}>{t('runDetails')}</div>
+          <div className={commonCss.header}>{this.props.t('runDetails')}</div>
 
           {/* Pipeline selection */}
           {!!workflowFromRun && (
             <div>
               <span>{usePipelineFromRunLabel}</span>
-              {!!originalRunId && <Link to={pipelineDetailsUrl}>[{t('viewPipeline')}]</Link>}
+              {!!originalRunId && <Link to={pipelineDetailsUrl}>[{this.props.t('viewPipeline')}]</Link>}
             </div>
           )}
           {!useWorkflowFromRun && (
             <Input
               value={pipelineName}
               required={true}
-              label={t('common:pipeline')}
+              label={this.props.t('common:pipeline')}
               disabled={true}
               variant='outlined'
               InputProps={{
@@ -248,7 +248,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                       onClick={() => this.setStateSafe({ pipelineSelectorOpen: true })}
                       style={{ padding: '3px 5px', margin: 0 }}
                     >
-                      {t('common:choose')}
+                      {this.props.t('common:choose')}
                     </Button>
                   </InputAdornment>
                 ),
@@ -260,7 +260,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
             <Input
               value={pipelineVersionName}
               required={true}
-              label={t('pipelineVersion')}
+              label={this.props.t('pipelineVersion')}
               disabled={true}
               variant='outlined'
               InputProps={{
@@ -273,7 +273,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                       onClick={() => this.setStateSafe({ pipelineVersionSelectorOpen: true })}
                       style={{ padding: '3px 5px', margin: 0 }}
                     >
-                      {t('common:choose')}
+                      {this.props.t('common:choose')}
                     </Button>
                   </InputAdornment>
                 ),
@@ -292,8 +292,8 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
             <DialogContent>
               <ResourceSelector
                 {...this.props}
-                title={t('common:choosePipeline')}
-                filterLabel={t('common:filterPipelines')}
+                title={this.props.t('common:choosePipeline')}
+                filterLabel={this.props.t('common:filterPipelines')}
                 listApi={async (...args) => {
                   const response = await Apis.pipelineServiceApi.listPipelines(...args);
                   return {
@@ -302,7 +302,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                   };
                 }}
                 columns={this.pipelineSelectorColumns}
-                emptyMessage={t('common:noPipelinesFoundTryAgain')}
+                emptyMessage={this.props.t('common:noPipelinesFoundTryAgain')}
                 initialSortColumn={PipelineSortKeys.CREATED_AT}
                 selectionChanged={(selectedPipeline: ApiPipeline) =>
                   this.setStateSafe({ unconfirmedSelectedPipeline: selectedPipeline })
@@ -320,7 +320,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 onClick={() => this._pipelineSelectorClosed(false)}
                 color='secondary'
               >
-                {t('common:cancel')}
+                {this.props.t('common:cancel')}
               </Button>
               <Button
                 id='usePipelineBtn'
@@ -328,7 +328,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 color='secondary'
                 disabled={!unconfirmedSelectedPipeline}
               >
-                {t('common:usePipeline')}
+                {this.props.t('common:usePipeline')}
               </Button>
             </DialogActions>
           </Dialog>
@@ -343,8 +343,8 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
             <DialogContent>
               <ResourceSelector
                 {...this.props}
-                title={t('choosePipelineVersion')}
-                filterLabel={t('filterPipelineVersions')}
+                title={this.props.t('choosePipelineVersion')}
+                filterLabel={this.props.t('filterPipelineVersions')}
                 listApi={async (...args) => {
                   const response = await Apis.pipelineServiceApi.listPipelineVersions(
                     'PIPELINE',
@@ -360,7 +360,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                   };
                 }}
                 columns={this.pipelineVersionSelectorColumns}
-                emptyMessage={t('noPipelineVersionsFoundTryAgain')}
+                emptyMessage={this.props.t('noPipelineVersionsFoundTryAgain')}
                 initialSortColumn={PipelineVersionSortKeys.CREATED_AT}
                 selectionChanged={(selectedPipelineVersion: ApiPipelineVersion) =>
                   this.setStateSafe({ unconfirmedSelectedPipelineVersion: selectedPipelineVersion })
@@ -381,7 +381,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 onClick={() => this._pipelineVersionSelectorClosed(false)}
                 color='secondary'
               >
-                {t('common:cancel')}
+                {this.props.t('common:cancel')}
               </Button>
               <Button
                 id='usePipelineVersionBtn'
@@ -389,7 +389,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 color='secondary'
                 disabled={!unconfirmedSelectedPipelineVersion}
               >
-                {t('usePipelineVersion')}
+                {this.props.t('usePipelineVersion')}
               </Button>
             </DialogActions>
           </Dialog>
@@ -409,8 +409,8 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
             <DialogContent>
               <ResourceSelector
                 {...this.props}
-                title={t('chooseExperiment')}
-                filterLabel={t('filterExperiments')}
+                title={this.props.t('chooseExperiment')}
+                filterLabel={this.props.t('filterExperiments')}
                 listApi={async (
                   page_token?: string,
                   page_size?: number,
@@ -444,7 +444,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                   };
                 }}
                 columns={this.experimentSelectorColumns}
-                emptyMessage={t('noExperimentsFoundTryAgain')}
+                emptyMessage={this.props.t('noExperimentsFoundTryAgain')}
                 initialSortColumn={ExperimentSortKeys.CREATED_AT}
                 selectionChanged={(selectedExperiment: ApiExperiment) =>
                   this.setStateSafe({ unconfirmedSelectedExperiment: selectedExperiment })
@@ -457,7 +457,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 onClick={() => this._experimentSelectorClosed(false)}
                 color='secondary'
               >
-                {t('common:cancel')}
+                {this.props.t('common:cancel')}
               </Button>
               <Button
                 id='useExperimentBtn'
@@ -465,14 +465,14 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 color='secondary'
                 disabled={!unconfirmedSelectedExperiment}
               >
-                {t('useExperiment')}
+                {this.props.t('useExperiment')}
               </Button>
             </DialogActions>
           </Dialog>
 
           {/* Run metadata inputs */}
           <Input
-            label={isRecurringRun ? t('recurringRunName') : t('runName')}
+            label={isRecurringRun ? this.props.t('recurringRunName') : this.props.t('runName')}
             required={true}
             onChange={this.handleChange('runName')}
             autoFocus={true}
@@ -480,7 +480,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
             variant='outlined'
           />
           <Input
-            label={t('common:descriptionOptional')}
+            label={this.props.t('common:descriptionOptional')}
             multiline={true}
             onChange={this.handleChange('description')}
             value={description}
@@ -488,11 +488,11 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           />
 
           {/* Experiment selection */}
-          <div>{t('runAssociatedWithExperiment')}</div>
+          <div>{this.props.t('runAssociatedWithExperiment')}</div>
           <Input
             value={experimentName}
             required={true}
-            label={t('common:experiment')}
+            label={this.props.t('common:experiment')}
             disabled={true}
             variant='outlined'
             InputProps={{
@@ -505,7 +505,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                     onClick={() => this.setStateSafe({ experimentSelectorOpen: true })}
                     style={{ padding: '3px 5px', margin: 0 }}
                   >
-                    {t('common:choose')}
+                    {this.props.t('common:choose')}
                   </Button>
                 </InputAdornment>
               ),
@@ -514,15 +514,15 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           />
 
           <div>
-            {t('runUsesKubernetesAccount')}{' '}
+            {this.props.t('runUsesKubernetesAccount')}{' '}
             <HelpButton
               helpText={
                 <div>
-                  {t('noteAccountNeeds')}{' '}
+                  {this.props.t('noteAccountNeeds')}{' '}
                   <ExternalLink href='https://github.com/argoproj/argo/blob/v2.3.0/docs/workflow-rbac.md'>
-                    {t('minPermissionsArgoWorkflow')}
+                    {this.props.t('minPermissionsArgoWorkflow')}
                   </ExternalLink>{' '}
-                  {t('extraPermissionsRequired')}
+                  {this.props.t('extraPermissionsRequired')}
                 </div>
               }
             />
@@ -530,25 +530,25 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           <Input
             value={serviceAccount}
             onChange={this.handleChange('serviceAccount')}
-            label={t('serviceAccountOptional')}
+            label={this.props.t('serviceAccountOptional')}
             variant='outlined'
           />
 
           {/* One-off/Recurring Run Type */}
-          <div className={commonCss.header}>{t('runType')}</div>
-          {isClone && <span>{isRecurringRun ? t('recurring') : t('oneOff')}</span>}
+          <div className={commonCss.header}>{this.props.t('runType')}</div>
+          {isClone && <span>{isRecurringRun ? this.props.t('recurring') : this.props.t('oneOff')}</span>}
           {!isClone && (
             <React.Fragment>
               <FormControlLabel
                 id='oneOffToggle'
-                label={t('oneOff')}
+                label={this.props.t('oneOff')}
                 control={<Radio color='primary' />}
                 onChange={() => this._updateRecurringRunState(false)}
                 checked={!isRecurringRun}
               />
               <FormControlLabel
                 id='recurringToggle'
-                label={t('recurring')}
+                label={this.props.t('recurring')}
                 control={<Radio color='primary' />}
                 onChange={() => this._updateRecurringRunState(true)}
                 checked={isRecurringRun}
@@ -559,8 +559,8 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           {/* Recurring run controls */}
           {isRecurringRun && (
             <React.Fragment>
-              <div className={commonCss.header}>{t('runTrigger')}</div>
-              <div>{t('chooseTriggerMethod')}</div>
+              <div className={commonCss.header}>{this.props.t('runTrigger')}</div>
+              <div>{this.props.t('chooseTriggerMethod')}</div>
 
               <Trigger
                 initialProps={{
@@ -596,7 +596,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
               disabled={!!errorMessage}
               busy={this.state.isBeingStarted}
               className={commonCss.buttonAction}
-              title={t('common:start')}
+              title={this.props.t('common:start')}
               onClick={this._start.bind(this)}
             />
             <Button
@@ -612,14 +612,14 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
                 );
               }}
             >
-              {isFirstRunInExperiment ? t('skipStep') : t('common:cancel')}
+              {isFirstRunInExperiment ? this.props.t('skipStep') : this.props.t('common:cancel')}
             </Button>
             <div className={classes(padding(20, 'r'))} style={{ color: 'red' }}>
               {errorMessage}
             </div>
             {this._areParametersMissing() && (
               <div id='missing-parameters-message' style={{ color: 'orange' }}>
-                {t('parametersMissingValues')}
+                {this.props.t('parametersMissingValues')}
               </div>
             )}
           </div>
@@ -651,7 +651,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     //    (Now you will be viewing a pipeline details page for a pipeline version that hasn't been uploaded)
     // 3. Click Create run
     const embeddedRunId = urlParser.get(QUERY_PARAMS.fromRunId);
-    const { t } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     if (originalRunId) {
       // If we are cloning a run, fetch the original
       try {
@@ -874,7 +874,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       this.setStateSafe({ pipelineSelectorOpen: true, uploadDialogOpen: false });
       return false;
     }
-    const { t } = useTranslation(['experiments', 'common']);
+    const { t } =this.props;
     try {
       const uploadedPipeline =
         method === ImportMethod.LOCAL
@@ -900,7 +900,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   private async _prepareFormFromEmbeddedPipeline(embeddedRunId: string): Promise<void> {
     let embeddedPipelineSpec: string | null;
     let runWithEmbeddedPipeline: ApiRunDetail;
-    const { t } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     try {
       runWithEmbeddedPipeline = await Apis.runServiceApi.getRun(embeddedRunId);
       embeddedPipelineSpec = RunUtils.getWorkflowManifest(runWithEmbeddedPipeline.run);
@@ -945,7 +945,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     originalRun?: ApiRun | ApiJob,
     runtime?: ApiPipelineRuntime,
   ): Promise<void> {
-    const { t } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     if (!originalRun) {
       logger.error(t('clonedRunDetails'));
       return;
@@ -1052,7 +1052,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   }
 
   private _start(): void {
-    const { t } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     if (!this.state.pipelineVersion && !this.state.workflowFromRun) {
       this.showErrorDialog(t('runCreationFailed'), t('cannotStartRun'));
       logger.error('Cannot start run without pipeline version');
@@ -1139,7 +1139,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   private _getCloneName(oldName: string): string {
     const numberRegex = /Clone(?: \(([0-9]*)\))? of (.*)/;
     const match = oldName.match(numberRegex);
-    const { t } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     if (!match) {
       // No match, add Clone prefix
       return `${t('common:cloneOf')} ` + oldName;
@@ -1170,7 +1170,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   }
 
   private _validate(): void {
-    const { t } = useTranslation(['experiments', 'common']);
+    const { t } = this.props;
     // Validate state
     const { pipelineVersion, workflowFromRun, maxConcurrentRuns, runName, trigger } = this.state;
     try {
