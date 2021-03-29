@@ -47,7 +47,6 @@ describe('ExperimentDetails', () => {
 
   const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => null);
   const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => null);
-
   const updateToolbarSpy = jest.fn();
   const updateBannerSpy = jest.fn();
   const updateDialogSpy = jest.fn();

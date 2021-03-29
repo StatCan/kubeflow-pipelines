@@ -25,7 +25,7 @@ import { createMemoryHistory } from 'history';
 import { TFunction } from 'i18next'
 
 describe('Router', () => {
-  let identiT: TFunction = (key: string) => key;
+  //let identiT: TFunction = (key: string) => key;
   it('initial render', () => {
     const tree = shallow(<Router />);
     expect(tree).toMatchSnapshot();
@@ -38,7 +38,7 @@ describe('Router', () => {
           pageTitle: 'Apple',
           actions: {},
           breadcrumbs: [],
-          t: identiT
+          
         };
       }
       async refresh() {}

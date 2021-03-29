@@ -21,15 +21,17 @@ import { RoutePage } from '../components/Router';
 import { RunStorageState } from '../apis/run';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
-let mockValue;
+import { TFunction } from 'i18next';
+
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => mockValue };
+    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
     return Component;
   }
 }));
 describe('AllRunsList', () => {
+  let t: TFunction = (key: string) => key;
   const updateBannerSpy = jest.fn();
   let _toolbarProps: any = {};
   const updateToolbarSpy = jest.fn(toolbarProps => (_toolbarProps = toolbarProps));
@@ -43,13 +45,14 @@ describe('AllRunsList', () => {
     updateDialog: jest.fn(),
     updateSnackbar: jest.fn(),
     updateToolbar: updateToolbarSpy,
+    t
   };
   let tree: ShallowWrapper;
 
   function shallowMountComponent(
     propsPatch: Partial<PageProps & { namespace?: string }> = {},
   ): void {
-    tree = shallow(<AllRunsList t={key => key} {...props} {...propsPatch} />);
+    tree = shallow(<AllRunsList  {...props} {...propsPatch} />);
     // Necessary since the component calls updateToolbar with the toolbar props,
     // then expects to get them back in props
     tree.setProps({ toolbarProps: _toolbarProps });

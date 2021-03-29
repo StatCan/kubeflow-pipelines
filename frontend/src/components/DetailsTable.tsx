@@ -71,7 +71,7 @@ function isString(x: any): x is string {
 
 const DetailsTable = <T extends {}>(props: DetailsTableProps<T>) => {
   const { fields, title, valueComponent: ValueComponent, valueComponentProps } = props;
-  const { t ,i18n} = useTranslation('common');
+  const { t } = useTranslation('common');
   return (
     <React.Fragment>
       {!!title && <div className={commonCss.header}>{title}</div>}

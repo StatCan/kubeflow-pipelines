@@ -21,7 +21,6 @@ import { BannerProps } from '../components/Banner';
 import { SnackbarProps } from '@material-ui/core/Snackbar';
 import { DialogProps } from '../components/Router';
 import { errorToMessage } from '../lib/Utils';
-
 import { TFunction } from 'i18next';
 
 export interface PageProps extends RouteComponentProps {

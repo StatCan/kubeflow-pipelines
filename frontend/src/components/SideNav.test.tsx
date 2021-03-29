@@ -25,24 +25,6 @@ import { RoutePage } from './Router';
 import { css, SideNav } from './SideNav';
 import EnhancedSideNav from './SideNav';
 
-/*
-jest.mock('react-i18next', () => {
-  return {
-    useTranslation: () => ({
-      t: ((key: string) => key ) as any
-    })
-  };
-});
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  withTranslation: () => (component: React.ComponentClass) => {
-    component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
-    return component;
-  }
-}));
-*/
-// Mock t function
-
 jest.mock('react-i18next', () => {
   return {
     useTranslation: () => {
@@ -66,7 +48,6 @@ const defaultProps = { ...routerProps, gkeMetadata: {} };
 
 describe('SideNav', () => {
   let tree: ReactWrapper | ShallowWrapper;
-
   const consoleErrorSpy = jest.spyOn(console, 'error');
   const buildInfoSpy = jest.spyOn(Apis, 'getBuildInfo');
   const checkHubSpy = jest.spyOn(Apis, 'isJupyterHubAvailable');

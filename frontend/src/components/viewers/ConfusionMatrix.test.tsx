@@ -18,21 +18,8 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import ConfusionMatrix, { ConfusionMatrixConfig } from './ConfusionMatrix';
 import { PlotType } from './Viewer';
-/*
-// IF we move to useTranslation use this
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without a warning being shown
-  useTranslation: () => {
-    return {
-      t: (key: any) => key ,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
-*/
-let mockValue;
+
+let mockValue='';
 jest.mock("i18next", () => ({ t: () => mockValue }));
 
 describe('ConfusionMatrix', () => {

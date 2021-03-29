@@ -25,7 +25,7 @@ exports[`PlotCard clicking outside full screen dialog closes it 1`] = `
           }
         >
           <WithStyles(Tooltip)
-            title=""
+            title="popOut"
           >
             <pure(LaunchIcon)
               classes={
@@ -121,7 +121,7 @@ exports[`PlotCard close button closes full screen dialog 1`] = `
           }
         >
           <WithStyles(Tooltip)
-            title=""
+            title="popOut"
           >
             <pure(LaunchIcon)
               classes={
@@ -219,7 +219,7 @@ exports[`PlotCard pops out a full screen view of the viewer 1`] = `
           }
         >
           <WithStyles(Tooltip)
-            title=""
+            title="popOut"
           >
             <pure(LaunchIcon)
               classes={
@@ -317,7 +317,7 @@ exports[`PlotCard renders on confusion matrix viewer card 1`] = `
           }
         >
           <WithStyles(Tooltip)
-            title=""
+            title="popOut"
           >
             <pure(LaunchIcon)
               classes={

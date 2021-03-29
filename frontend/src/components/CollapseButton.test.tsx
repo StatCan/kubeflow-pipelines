@@ -19,11 +19,11 @@ import CollapseButton from './CollapseButton';
 import { shallow } from 'enzyme';
 
 jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
-    return Component;
-  },
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  withTranslation: () => (component: React.ComponentClass) => {
+    component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
+    return component;
+  }
 }));
 
 describe('CollapseButton', () => {
@@ -38,7 +38,7 @@ describe('CollapseButton', () => {
 
   it('initial render', () => {
     const tree = shallow(
-      <CollapseButton t={(key: any) => key}
+      <CollapseButton 
         collapseSections={compareComponent.state.collapseSections}
         compareSetState={compareComponent.setState}
         sectionName='testSection'
@@ -50,7 +50,7 @@ describe('CollapseButton', () => {
   it('renders the button collapsed if in collapsedSections', () => {
     compareComponent.state.collapseSections.testSection = true;
     const tree = shallow(
-      <CollapseButton t={(key: any) => key}
+      <CollapseButton 
         collapseSections={compareComponent.state.collapseSections}
         compareSetState={compareComponent.setState}
         sectionName='testSection'

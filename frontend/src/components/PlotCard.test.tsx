@@ -20,22 +20,22 @@ import PlotCard from './PlotCard';
 import { ViewerConfig, PlotType } from './viewers/Viewer';
 
 jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
-    return Component;
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  withTranslation: () => (component: React.ComponentClass) => {
+    component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
+    return component;
   }
 }));
 
 describe('PlotCard', () => {
   it('handles no configs', () => {
-    expect(shallow(<PlotCard  title='' configs={[]} maxDimension={100} />)).toMatchSnapshot();
+    expect(shallow(<PlotCard title='' configs={[]} maxDimension={100} />)).toMatchSnapshot();
   });
 
   const config: ViewerConfig = { type: PlotType.CONFUSION_MATRIX };
 
   it('renders on confusion matrix viewer card', () => {
-    const tree = shallow(<PlotCard title='test title' configs={[config]} maxDimension={100} />);
+    const tree = shallow(<PlotCard  title='test title' configs={[config]} maxDimension={100} />);
     expect(tree).toMatchSnapshot();
   });
 

@@ -18,7 +18,6 @@ import * as React from 'react';
 import { NewExperiment } from './NewExperiment';
 import TestUtils, { defaultToolbarProps } from '../TestUtils';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
-import { PageProps } from './Page';
 import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType, ApiRelationship } from 'src/apis/experiment';
@@ -34,7 +33,6 @@ jest.mock('react-i18next', () => ({
 
 describe('NewExperiment', () => {
   let tree: ReactWrapper | ShallowWrapper;
-
   const createExperimentSpy = jest.spyOn(Apis.experimentServiceApi, 'createExperiment');
   const historyPushSpy = jest.fn();
   const updateDialogSpy = jest.fn();
