@@ -297,7 +297,7 @@ export default class CustomTable extends React.Component<CustomTableProps, Custo
           <div>
             <Input
               id='tableFilterBox'
-              label={this.props.filterLabel || 'Filter'}
+              label={this.props.filterLabel || i18next.t('common:filter')}
               height={48}
               maxWidth={'100%'}
               className={css.filterBox}

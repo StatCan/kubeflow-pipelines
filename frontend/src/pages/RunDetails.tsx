@@ -249,7 +249,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
       workflow,
       mlmdExecutions,
     } = this.state;
-    const { t} = this.props;
+    const {t} = this.props;
     const { projectId, clusterName } = this.props.gkeMetadata;
     const selectedNodeId = selectedNodeDetails?.id || '';
     const namespace = workflow?.metadata?.namespace;

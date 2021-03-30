@@ -189,14 +189,14 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
           disableSelection={this.props.disableSelection}
           noFilterBox={this.props.noFilterBox}
           emptyMessage={
-            `No` +
-            `${this.props.storageState === RunStorageState.ARCHIVED ? ' archived' : ' available'}` +
-            ` runs found` +
+            `${i18next.t('common:no')}` +
+            `${this.props.storageState === RunStorageState.ARCHIVED ? i18next.t('common:archived') : i18next.t('common:available')}` +
+            ` ${i18next.t('common:runFound')}` +
             `${
               this.props.experimentIdMask
-                ? ' for this experiment'
+                ? i18next.t('common:forThisExperiment')
                 : this.props.namespaceMask
-                ? ' for this namespace'
+                ? i18next.t('common:forThisNamespace')
                 : ''
             }.`
           }
