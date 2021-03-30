@@ -60,17 +60,17 @@ describe('ArchivedRuns', () => {
   afterEach(() => tree.unmount());
 
   it('renders archived runs', () => {
-    tree = shallow(<ArchivedRuns  {...generateProps()} />);
+    tree = shallow(<ArchivedRuns {...generateProps()} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('lists archived runs in namespace', () => {
-    tree = shallow(<ArchivedRuns  {...generateProps()} namespace='test-ns' />);
+    tree = shallow(<ArchivedRuns {...generateProps()} namespace='test-ns' />);
     expect(tree.find('RunList').prop('namespaceMask')).toEqual('test-ns');
   });
 
   it('removes error banner on unmount', () => {
-    tree = shallow(<ArchivedRuns  {...generateProps()} />);
+    tree = shallow(<ArchivedRuns {...generateProps()} />);
     tree.unmount();
     expect(updateBannerSpy).toHaveBeenCalledWith({});
   });
@@ -101,7 +101,7 @@ describe('ArchivedRuns', () => {
   });
 
   it('refreshes the run list when refresh button is clicked', async () => {
-    tree = shallow(<ArchivedRuns  {...generateProps()} />);
+    tree = shallow(<ArchivedRuns {...generateProps()} />);
     const spy = jest.fn();
     (tree.instance() as any)._runlistRef = { current: { refresh: spy } };
     await TestUtils.getToolbarButton(updateToolbarSpy, ButtonKeys.REFRESH).action();
@@ -114,7 +114,7 @@ describe('ArchivedRuns', () => {
   });
 
   it('cancells deletion when Cancel is clicked', async () => {
-    tree = shallow(<ArchivedRuns  {...generateProps()} />);
+    tree = shallow(<ArchivedRuns {...generateProps()} />);
 
     // Click delete button to delete selected ids.
     const deleteBtn = (tree.instance() as ArchivedRuns).getInitialToolbarState().actions[
@@ -138,7 +138,7 @@ describe('ArchivedRuns', () => {
   });
 
   it('deletes selected ids when Confirm is clicked', async () => {
-    tree = shallow(<ArchivedRuns  {...generateProps()} />);
+    tree = shallow(<ArchivedRuns {...generateProps()} />);
     tree.setState({ selectedIds: ['id1', 'id2', 'id3'] });
 
     // Mock the behavior where the deletion of id1 fails, the deletion of id2 and id3 succeed.

@@ -6,8 +6,6 @@ import Banner from './Banner';
 import Editor from './Editor';
 import i18next from 'i18next'
 
-
-
 async function getPodYaml(name: string, namespace: string): Promise<string> {
   const response = await Apis.getPodInfo(name, namespace);
   return JsYaml.safeDump(reorderPodJson(response), { skipInvalid: true });

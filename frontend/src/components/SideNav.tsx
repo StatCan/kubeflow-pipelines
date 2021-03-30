@@ -44,7 +44,6 @@ import { GkeMetadataContext, GkeMetadata } from 'src/lib/GkeMetadata';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-
 export const sideNavColors = {
   bg: '#f8fafb',
   fgActive: '#0d6de7',
@@ -57,7 +56,6 @@ export const sideNavColors = {
 
 const COLLAPSED_SIDE_NAV_SIZE = 72;
 const EXPANDED_SIDE_NAV_SIZE = 220;
-
 
 export const css = stylesheet({
   active: {
@@ -284,8 +282,7 @@ export class SideNav extends React.Component<SideNavInternalProps, SideNavState>
                   !page.startsWith(RoutePage.START) && css.indicatorHidden,
                 )}
               />
-              <Tooltip
-              
+              <Tooltip              
                 title={  t('common:gettingStarted')}
                 enterDelay={300}
                 placement={'right-start'}

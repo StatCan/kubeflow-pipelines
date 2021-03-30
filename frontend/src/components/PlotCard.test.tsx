@@ -35,7 +35,7 @@ describe('PlotCard', () => {
   const config: ViewerConfig = { type: PlotType.CONFUSION_MATRIX };
 
   it('renders on confusion matrix viewer card', () => {
-    const tree = shallow(<PlotCard  title='test title' configs={[config]} maxDimension={100} />);
+    const tree = shallow(<PlotCard title='test title' configs={[config]} maxDimension={100} />);
     expect(tree).toMatchSnapshot();
   });
 

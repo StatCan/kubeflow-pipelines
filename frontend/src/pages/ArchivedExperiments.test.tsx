@@ -82,7 +82,7 @@ describe('ArchivedExperiemnts', () => {
   });
 
   it('shows a list of archived experiments', () => {
-    tree = shallow(<ArchivedExperiments  {...generateProps()} />);
+    tree = shallow(<ArchivedExperiments {...generateProps()} />);
     expect(tree.find('ExperimentList').prop('storageState')).toBe(
       ExperimentStorageState.ARCHIVED.toString(),
     );

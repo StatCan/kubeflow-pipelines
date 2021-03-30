@@ -36,7 +36,7 @@ describe('NewRunParameters', () => {
       titleMessage: 'Specify parameters required by the pipeline', 
       t
     } as NewRunParametersProps;
-    expect(shallow(<NewRunParameters  {...props} />)).toMatchSnapshot();
+    expect(shallow(<NewRunParameters {...props} />)).toMatchSnapshot();
   });
 
   it('does not display any text fields if there are no parameters', () => {

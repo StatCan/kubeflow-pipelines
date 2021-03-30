@@ -25,7 +25,6 @@ import 'brace/mode/json';
 import 'brace/theme/github';
 import { useTranslation } from 'react-i18next';
 
-
 export const css = stylesheet({
   key: {
     color: color.strong,

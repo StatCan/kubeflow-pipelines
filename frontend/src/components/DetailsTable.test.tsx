@@ -19,7 +19,6 @@ import * as React from 'react';
 import DetailsTable from './DetailsTable';
 import { render } from '@testing-library/react';
 
-
 jest.mock('./Editor', () => {
   return ({ value }: { value: string }) => <pre data-testid='Editor'>{value}</pre>;
 });

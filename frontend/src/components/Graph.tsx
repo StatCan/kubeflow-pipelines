@@ -23,8 +23,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-
-
 interface Segment {
   angle: number;
   length: number;
@@ -186,7 +184,7 @@ export class Graph extends React.Component<GraphProps, GraphState> {
             const sourceNode = graph.node(edgeInfo.v);
 
             if (!sourceNode) {
-              throw new Error( `Graph definition is invalid. Cannot get node by '${edgeInfo.v}'.`);
+              throw new Error(`Graph definition is invalid. Cannot get node by '${edgeInfo.v}'.`);
             }
 
             // Set the edge's first segment to start at the bottom or top of the source node.

@@ -81,7 +81,7 @@ describe('UploadPipelineDialog', () => {
     const spy = jest.fn();
     tree = shallow(<UploadPipelineDialog open={false} onClose={spy} />);
     (tree.instance() as any)._dropzoneRef = { current: { open: () => null } };
-    (tree.instance() as  UploadPipelineDialog).handleChange('uploadPipelineName')({
+    (tree.instance() as UploadPipelineDialog).handleChange('uploadPipelineName')({
       target: { value: 'test name' },
     });
     tree.find('#confirmUploadBtn').simulate('click');

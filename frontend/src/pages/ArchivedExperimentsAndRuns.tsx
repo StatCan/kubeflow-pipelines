@@ -45,7 +45,7 @@ class ArchivedExperimentsAndRuns extends Page<
   ArchivedExperimentAndRunsState
 > {
   public getInitialToolbarState(): ToolbarProps {
-    return { actions: {}, breadcrumbs: [], pageTitle: ''};
+    return { actions: {}, breadcrumbs: [], pageTitle: '' };
   }
 
   public render(): JSX.Element {

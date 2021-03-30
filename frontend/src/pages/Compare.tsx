@@ -42,8 +42,6 @@ import RunList from './RunList';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-
-
 const css = stylesheet({
   outputsRow: {
     marginLeft: 15,

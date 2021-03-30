@@ -30,8 +30,6 @@ jest.mock('react-i18next', () => ({
   },
 }));
 
-
-
 class TestResourceSelector extends ResourceSelector {
   public async _load(request: ListRequest): Promise<string> {
     return super._load(request);

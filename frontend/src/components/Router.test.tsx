@@ -37,8 +37,7 @@ describe('Router', () => {
         return {
           pageTitle: 'Apple',
           actions: {},
-          breadcrumbs: [],
-          
+          breadcrumbs: [],  
         };
       }
       async refresh() {}

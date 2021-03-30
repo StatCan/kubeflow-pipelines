@@ -31,8 +31,6 @@ import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
 import i18next from 'i18next'
 
-
-
 interface PipelineVersionInfo {
   displayName?: string;
   versionId?: string;

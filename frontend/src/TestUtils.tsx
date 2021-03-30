@@ -29,7 +29,6 @@ import { format } from 'prettier';
 import snapshotDiff from 'snapshot-diff';
 import { TFunction } from 'i18next';
 
-
 export default class TestUtils {
   /**
    * Mounts the given component with a fake router and returns the mounted tree
@@ -86,7 +85,7 @@ export default class TestUtils {
       history: { push: historyPushSpy } as any,
       location: location as any,
       match: matchValue,
-      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: ''},
+      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: '' },
       updateBanner: updateBannerSpy as any,
       updateDialog: updateDialogSpy as any,
       updateSnackbar: updateSnackbarSpy as any,

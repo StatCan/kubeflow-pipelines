@@ -21,7 +21,6 @@ import { stylesheet } from 'typestyle';
 //import { useTranslation } from 'react-i18next';
 import i18next from 'i18next'
 
-
 export interface HTMLViewerConfig extends ViewerConfig {
   htmlContent: string;
 }

@@ -32,7 +32,6 @@ import { ExternalLink } from '../atoms/ExternalLink';
 import { TFunction } from 'i18next';
 import { withTranslation, useTranslation } from 'react-i18next';
 
-
 const css = stylesheet({
   dropOverlay: {
     backgroundColor: color.lightGrey,

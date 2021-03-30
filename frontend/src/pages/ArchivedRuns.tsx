@@ -44,7 +44,6 @@ export class ArchivedRuns extends Page<{ namespace?: string,t:TFunction }, Archi
   public getInitialToolbarState(): ToolbarProps {
     const { t } = this.props
     const buttons = new Buttons(this.props, this.refresh.bind(this));
-  ;
     return {
       actions: buttons
         .restore('run', () => this.state.selectedIds, false, this._selectionChanged.bind(this))

@@ -39,7 +39,6 @@ import { InputAdornment } from '@material-ui/core';
 import { CustomTableRow } from './CustomTableRow';
 import i18next from 'i18next'
 
-
 export enum ExpandState {
   COLLAPSED,
   EXPANDED,
@@ -63,7 +62,6 @@ export interface Row {
   error?: string;
   id: string;
   otherFields: any[];
-  
 }
 
 const rowHeight = 40;

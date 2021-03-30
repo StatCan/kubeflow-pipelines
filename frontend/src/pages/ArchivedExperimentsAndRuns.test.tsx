@@ -54,14 +54,14 @@ describe('ArchivedExperimentsAndRuns', () => {
   it('renders archived experiments page', () => {
     const props = generateProps();
     props.view = ArchivedExperimentsAndRunsTab.EXPERIMENTS;
-    expect(shallow(<ArchivedExperimentsAndRuns  {...(props as any)} />)).toMatchSnapshot();
+    expect(shallow(<ArchivedExperimentsAndRuns {...(props as any)} />)).toMatchSnapshot();
   });
 
   it('switches to clicked page by pushing to history', () => {
     const spy = jest.fn();
     const props = generateProps();
     props.history.push = spy;
-    const tree = shallow(<ArchivedExperimentsAndRuns  {...(props as any)} />);
+    const tree = shallow(<ArchivedExperimentsAndRuns {...(props as any)} />);
 
     tree.find('MD2Tabs').simulate('switch', ArchivedExperimentsAndRunsTab.RUNS);
     expect(spy).toHaveBeenCalledWith('/archive/runs');
