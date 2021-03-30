@@ -249,7 +249,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: "Unexpected token o in JSON at position 1",
-        message: "parsePipelineSpecFailed: test-run-id.common:clickDetails", // again this is err being T functioned somewhere
+        message: "parsePipelineSpecFailed: test-run-id. common:clickDetails", // again this is err being T functioned somewhere
         mode: 'error',
       }),
     );
@@ -264,7 +264,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: "cannotRetrieveRunDetailscommon:clickDetails", // again err is t functioned somewhere verify
+        message: "cannotRetrieveRunDetails common:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -282,7 +282,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: "cannotRetrieveRunDetailscommon:clickDetails", // again err is t functioned somewhere verify
+        message: "cannotRetrieveRunDetails common:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -311,7 +311,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: "cannotRetrievePipelineDetailscommon:clickDetails",
+        message: "cannotRetrievePipelineDetails common:clickDetails",
         mode: 'error',
       }),
     );
@@ -326,7 +326,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: "cannotRetrievePipelineTemplatecommon:clickDetails", // again err is t functioned somewhere verify
+        message: "cannotRetrievePipelineTemplate common:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -341,7 +341,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad graph',
-        message: "errorGenerateGraphcommon:clickDetails", // again err is t functioned somewhere verify
+        message: "errorGenerateGraph common:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );
@@ -355,7 +355,7 @@ describe('PipelineDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: "cannotRetrievePipelineTemplatecommon:clickDetails", // again err is t functioned somewhere verify
+        message: "cannotRetrievePipelineTemplate common:clickDetails", // again err is t functioned somewhere verify
         mode: 'error',
       }),
     );

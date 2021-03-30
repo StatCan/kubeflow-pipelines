@@ -192,7 +192,7 @@ describe('PipelineList', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'pipelineListErrorcommon:clickDetails', 
+        message: 'pipelineListError common:clickDetails', 
         mode: 'error',
       }),
     );
@@ -210,7 +210,7 @@ describe('PipelineList', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'pipelineListErrorcommon:clickDetails', 
+        message: 'pipelineListError common:clickDetails', 
         mode: 'error',
       }),
     );
@@ -225,7 +225,7 @@ describe('PipelineList', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'pipelineListErrorcommon:clickDetails', 
+        message: 'pipelineListError common:clickDetails', 
         mode: 'error',
       }),
     );

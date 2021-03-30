@@ -468,7 +468,7 @@ describe('RunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'errorRetrieveRun: test-run-id.common:clickDetails',
+        message: 'errorRetrieveRun: test-run-id. common:clickDetails',
         mode: 'error',
       }),
     );
@@ -486,7 +486,7 @@ describe('RunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message: 'errorRetrieveRun: test-run-id.common:clickDetails',
+        message: 'errorRetrieveRun: test-run-id. common:clickDetails',
         mode: 'error',
       }),
     );
@@ -516,7 +516,7 @@ describe('RunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'some error message',
-        message: 'errorErrorsFoundRun: test-run-id.common:clickDetails',
+        message: 'errorErrorsFoundRun: test-run-id. common:clickDetails',
         mode: 'error',
       }),
     );
@@ -1029,7 +1029,7 @@ describe('RunDetails', () => {
       expect.objectContaining({
         additionalInfo: 'woops',
         message:
-          'errorEnableCustomViscommon:clickDetails',
+          'errorEnableCustomVis common:clickDetails',
         mode: 'error',
       }),
     );

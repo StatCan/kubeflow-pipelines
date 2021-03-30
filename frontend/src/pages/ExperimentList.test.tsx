@@ -234,7 +234,7 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'experimentListErrorcommon:clickDetails',
+          'experimentListError common:clickDetails',
         mode: 'error',
       }),
     );
@@ -271,7 +271,7 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'experimentListErrorcommon:clickDetails',
+          'experimentListError common:clickDetails',
         mode: 'error',
       }),
     );
@@ -287,7 +287,7 @@ describe('ExperimentList', () => {
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
         message:
-          'experimentListErrorcommon:clickDetails',
+          'experimentListError common:clickDetails',
         mode: 'error',
       }),
     );

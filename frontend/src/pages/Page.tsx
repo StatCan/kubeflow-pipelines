@@ -80,7 +80,7 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
     }
     this.props.updateBanner({
       additionalInfo: errorMessage ? errorMessage : undefined,
-      message: message + (errorMessage ? t('common:clickDetails'):''),
+      message: message + ' ' +(errorMessage ? t('common:clickDetails'):''),
       mode: mode || 'error',
       refresh: refresh || this.refresh.bind(this),
     });

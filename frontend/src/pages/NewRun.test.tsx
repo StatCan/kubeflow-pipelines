@@ -421,7 +421,7 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `errorRetrieveAssocExperiment: ${MOCK_EXPERIMENT.id}.common:clickDetails`,
+        message: `errorRetrieveAssocExperiment: some-mock-experiment-id. common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -462,7 +462,7 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `errorRetrievePipeline: ${MOCK_PIPELINE.id}.common:clickDetails`,
+        message: `errorRetrievePipeline: original-run-pipeline-id. common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -482,7 +482,7 @@ describe('NewRun', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error message',
-        message: `errorRetrievePipelineVersion: ${MOCK_PIPELINE_VERSION.id}.common:clickDetails`,
+        message: `errorRetrievePipelineVersion: original-run-pipeline-version-id. common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -912,9 +912,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           additionalInfo: 'test error message',
-          message:
-            'errorFindPipeline' +
-            ` ${MOCK_RUN_DETAIL.run!.id}.common:clickDetails`,
+          message:'errorFindPipeline some-mock-run-id. common:clickDetails',
           mode: 'error',
         }),
       );
@@ -936,7 +934,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "errorReadPipelineDefcommon:clickDetails",
+            "errorReadPipelineDef common:clickDetails",
           mode: 'error',
         }),
       );
@@ -977,7 +975,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "errorReadPipelineDefcommon:clickDetails",
+            "errorReadPipelineDef common:clickDetails",
           mode: 'error',
         }),
       );
@@ -1017,7 +1015,7 @@ describe('NewRun', () => {
 
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
-          message: `errorRun ${runDetail.run!.id} noWorkflowManifest`,
+          message: "errorRun some-mock-run-id noWorkflowManifest ",
           mode: 'error',
         }),
       );
@@ -1039,7 +1037,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           message:
-            "errorReadPipelineDefcommon:clickDetails",
+            "errorReadPipelineDef common:clickDetails",
           mode: 'error',
         }),
       );
@@ -1082,9 +1080,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           additionalInfo: 'test error message',
-          message: `errorRetrieveOrigRun: ${
-            MOCK_RUN_DETAIL.run!.id
-          }.common:clickDetails`,
+          message: `errorRetrieveOrigRun: some-mock-run-id. common:clickDetails`,
           // again err is undefined 
           mode: 'error',
         }),
@@ -1173,7 +1169,7 @@ describe('NewRun', () => {
         expect.objectContaining({
           additionalInfo: 'Unexpected token o in JSON at position 1',
           message:
-            "errorParsePipeline: not JSON.common:clickDetails",
+            "errorParsePipeline: not JSON. common:clickDetails",
             // err is undefined need to mock maybe 
           mode: 'error',
         }),
@@ -1191,9 +1187,7 @@ describe('NewRun', () => {
 
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
-          message: `errorRunProvided: ${
-            MOCK_RUN_WITH_EMBEDDED_PIPELINE.run!.id
-          } noEmbeddedPipeline.`,
+          message: `errorRunProvided: some-mock-run-id noEmbeddedPipeline. `,
           mode: 'error',
         }),
       );
@@ -1211,9 +1205,7 @@ describe('NewRun', () => {
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
         expect.objectContaining({
           additionalInfo: 'test - error!',
-          message: `errorRetrieveSpecRun: ${
-            MOCK_RUN_WITH_EMBEDDED_PIPELINE.run!.id
-          }.common:clickDetails`,
+          message: `errorRetrieveSpecRun: some-mock-run-id. common:clickDetails`,
           // again 'err' is undefined
           mode: 'error',
         }),

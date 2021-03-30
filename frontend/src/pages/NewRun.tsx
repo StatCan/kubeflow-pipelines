@@ -260,7 +260,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
             <Input
               value={pipelineVersionName}
               required={true}
-              label={this.props.t('pipelineVersion')}
+              label={this.props.t('common:pipelineVersion')}
               disabled={true}
               variant='outlined'
               InputProps={{

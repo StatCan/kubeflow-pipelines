@@ -188,7 +188,7 @@ describe('RecurringRunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops!',
-        message: `errorRetrieveRecurrRun: test-job-id.common:clickDetails`,
+        message: `errorRetrieveRecurrRun: test-job-id. common:clickDetails`,
         mode: 'error',
       }),
     );
@@ -205,7 +205,7 @@ describe('RecurringRunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops!',
-        message: `errorRetrieveExperimentRecurrRun'common:clickDetails`,
+        message: `errorRetrieveExperimentRecurrRun' common:clickDetails`,
         mode: 'common:warning',
       }),
     );

@@ -65,7 +65,7 @@ class RecurringRunsManager extends React.Component<RecurringRunListProps, Recurr
       {
         customRenderer: this._nameCustomRenderer,
         flex: 2,
-        label: t('runName'),
+        label: t('experiments:runName'),
         sortKey: JobSortKeys.NAME,
       },
       { label: t('common:createdAt'), flex: 2, sortKey: JobSortKeys.CREATED_AT },

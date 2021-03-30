@@ -689,7 +689,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
           );
           delete jsonWorkflow.status.compressedNodes;
         } catch (err) {
-          console.error(`Failed to decode compressedNodes: ${err}`);
+          console.error(`Failed to decode compressed Nodes: ${err}`);
         }
       }
       const workflow = jsonWorkflow as Workflow;

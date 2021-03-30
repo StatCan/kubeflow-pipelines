@@ -102,13 +102,13 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
       { 
         customRenderer: this._nameCustomRenderer,
         flex: 1.5,
-        label: i18next.t('experimenyts:runName'),
+        label: i18next.t('experiments:runName'),
         sortKey: RunSortKeys.NAME,
       },
       { customRenderer: this._statusCustomRenderer, flex: 0.5, label: i18next.t('common:status') },
       { label: i18next.t('common:duration'), flex: 0.5 },
       { customRenderer: this._pipelineVersionCustomRenderer, label: i18next.t('common:pipelineVersion'), flex: 1 },
-      { customRenderer: this._recurringRunCustomRenderer, label: i18next.t('common:recurringrun'), flex: 0.5 },
+      { customRenderer: this._recurringRunCustomRenderer, label: i18next.t('common:recurringRun'), flex: 0.5 },
       { label: i18next.t('common:startTime'), flex: 1, sortKey: RunSortKeys.CREATED_AT },
     ];
 
