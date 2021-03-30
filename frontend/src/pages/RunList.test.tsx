@@ -36,14 +36,13 @@ import { range } from 'lodash';
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => "" };
+  withTranslation: () => (Component: { defaultProps: any }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => '' };
     return Component;
-  }
+  },
 }));
 
-
-class RunListTest extends RunList  {
+class RunListTest extends RunList {
   public _loadRuns(request: ListRequest): Promise<string> {
     return super._loadRuns(request);
   }
@@ -103,7 +102,7 @@ describe('RunList', () => {
   }
 
   function getMountedInstance(): RunList {
-    tree = TestUtils.mountWithRouter(<RunList  {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<RunList {...generateProps()} />);
     return tree.instance() as RunList;
   }
 
@@ -173,7 +172,7 @@ describe('RunList', () => {
       mockNRuns(1, {});
       const props = generateProps();
       props.storageState = RunStorageState.ARCHIVED;
-      tree = shallow(<RunList   {...props} />);
+      tree = shallow(<RunList {...props} />);
       await (tree.instance() as RunListTest)._loadRuns({});
       expect(Apis.runServiceApi.listRuns).toHaveBeenLastCalledWith(
         undefined,

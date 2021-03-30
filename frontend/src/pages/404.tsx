@@ -20,9 +20,9 @@ import { ToolbarProps } from '../components/Toolbar';
 import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
 
-class Page404 extends Page<{t: TFunction}, {}> {
+class Page404 extends Page<{ t: TFunction }, {}> {
   public getInitialToolbarState(): ToolbarProps {
-    return { actions: {}, breadcrumbs: [], pageTitle: ''};
+    return { actions: {}, breadcrumbs: [], pageTitle: '' };
   }
 
   public async refresh(): Promise<void> {
@@ -34,7 +34,9 @@ class Page404 extends Page<{t: TFunction}, {}> {
     return (
       <div style={{ margin: '100px auto', textAlign: 'center' }}>
         <div style={{ color: '#aaa', fontSize: 50, fontWeight: 'bold' }}>404</div>
-        <div style={{ fontSize: 16 }}>{t('pageNotFound')}: {this.props.location.pathname}</div>
+        <div style={{ fontSize: 16 }}>
+          {t('pageNotFound')}: {this.props.location.pathname}
+        </div>
       </div>
     );
   }

@@ -27,14 +27,14 @@ import UnknownIcon from '@material-ui/icons/Help';
 import { color } from '../Css';
 import { logger, formatDateString } from '../lib/Utils';
 import { NodePhase, checkIfTerminated } from '../lib/StatusUtils';
-import i18next from 'i18next'
+import i18next from 'i18next';
 
 export function statusToIcon(
   status?: NodePhase,
   startDate?: Date | string,
   endDate?: Date | string,
   nodeMessage?: string,
-  ): JSX.Element {
+): JSX.Element {
   status = checkIfTerminated(status, nodeMessage);
   // tslint:disable-next-line:variable-name
   let IconComponent: any = UnknownIcon;
@@ -96,8 +96,16 @@ export function statusToIcon(
         <div>
           <div>{title}</div>
           {/* These dates may actually be strings, not a Dates due to a bug in swagger's handling of dates */}
-          {startDate && <div>{i18next.t('common:start')}: {formatDateString(startDate)}</div>}
-          {endDate && <div>{i18next.t('common:end')}: {formatDateString(endDate)}</div>}
+          {startDate && (
+            <div>
+              {i18next.t('common:start')}: {formatDateString(startDate)}
+            </div>
+          )}
+          {endDate && (
+            <div>
+              {i18next.t('common:end')}: {formatDateString(endDate)}
+            </div>
+          )}
         </div>
       }
     >

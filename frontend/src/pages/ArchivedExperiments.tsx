@@ -70,8 +70,8 @@ export class ArchivedExperiments extends Page<ArchivedExperimentsProp, ArchivedE
 
 const EnhancedArchivedExperiments = (props: PageProps) => {
   const namespace = React.useContext(NamespaceContext);
-  const { t,i18n } = useTranslation('common');
-  return <ArchivedExperiments key={namespace} {...props} namespace={namespace} t={t}/>;
+  const { t, i18n } = useTranslation('common');
+  return <ArchivedExperiments key={namespace} {...props} namespace={namespace} t={t} />;
 };
 
 export default EnhancedArchivedExperiments;

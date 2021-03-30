@@ -23,7 +23,7 @@ import { PageProps } from '../pages/Page';
 import { Apis } from './Apis';
 import { URLParser } from './URLParser';
 import { errorToMessage, s } from './Utils';
-import { TFunction } from 'i18next'
+import { TFunction } from 'i18next';
 
 export enum ButtonKeys {
   ARCHIVE = 'archive',
@@ -49,12 +49,16 @@ export enum ButtonKeys {
 
 export default class Buttons {
   private _map: ToolbarActionMap;
-  private _props: PageProps & {t: TFunction};
+  private _props: PageProps & { t: TFunction };
   private _refresh: () => void;
   private _urlParser: URLParser;
   onClick: any;
 
-  constructor(pageProps: PageProps & {t: TFunction}, refresh: () => void, map?: ToolbarActionMap) {
+  constructor(
+    pageProps: PageProps & { t: TFunction },
+    refresh: () => void,
+    map?: ToolbarActionMap,
+  ) {
     this._props = pageProps;
     this._refresh = refresh;
     this._urlParser = new URLParser(pageProps);
@@ -170,7 +174,9 @@ export default class Buttons {
       disabled: !useCurrentResource,
       disabledTitle: useCurrentResource
         ? undefined
-        : `${this._props.t('common:selectOne')} ${resourceName} ${this._props.t('common:toDelete')}`,
+        : `${this._props.t('common:selectOne')} ${resourceName} ${this._props.t(
+            'common:toDelete',
+          )}`,
       id: 'deleteBtn',
       title: this._props.t('common:delete'),
       tooltip: this._props.t('common:delete'),
@@ -194,7 +200,9 @@ export default class Buttons {
         );
       },
       disabled: !useCurrentResource,
-      disabledTitle: useCurrentResource ? undefined : `${this._props.t('common:selectPipelineDelete')}`,
+      disabledTitle: useCurrentResource
+        ? undefined
+        : `${this._props.t('common:selectPipelineDelete')}`,
       id: 'deletePipelinesAndPipelineVersionsBtn',
       title: this._props.t('common:delete'),
       tooltip: this._props.t('common:delete'),
@@ -406,12 +414,20 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      ` ${this._props.t('experiments:runs')} ${s(selectedIds)} ${this._props.t('executions:archiveRun')} ` +
+      ` ${this._props.t('experiments:runs')} ${s(selectedIds)} ${this._props.t(
+        'executions:archiveRun',
+      )} ` +
         `${
-          selectedIds.length === 1 ? this._props.t('experiments:its'):this._props.t('experiments:their')
+          selectedIds.length === 1
+            ? this._props.t('experiments:its')
+            : this._props.t('experiments:their')
         } ${this._props.t('executions:runArchiveText')}` +
         `${this._props.t('executions:runArchiveTextSuite')} ` +
-        `${this._props.t('experiments:runs')}${s(selectedIds)} ${this._props.t('experiments:to')} ${selectedIds.length === 1 ? this._props.t('experiments:its'):this._props.t('experiments:their')} ${this._props.t('experiments:originalLocation')}`,
+        `${this._props.t('experiments:runs')}${s(selectedIds)} ${this._props.t('experiments:to')} ${
+          selectedIds.length === 1
+            ? this._props.t('experiments:its')
+            : this._props.t('experiments:their')
+        } ${this._props.t('experiments:originalLocation')}`,
       useCurrent,
       id => Apis.runServiceApi.archiveRun(id),
       callback,
@@ -428,7 +444,9 @@ export default class Buttons {
     this._dialogActionHandler(
       selectedIds,
       `${this._props.t('executions:restore')} ${
-        selectedIds.length === 1 ? this._props.t('executions:thisRunToIts'):this._props.t('executions:theseRunsToTheir')
+        selectedIds.length === 1
+          ? this._props.t('executions:thisRunToIts')
+          : this._props.t('executions:theseRunsToTheir')
       } ${this._props.t('executions:originalLocation')}`,
       useCurrent,
       id => Apis.runServiceApi.unarchiveRun(id),
@@ -445,16 +463,24 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      
+
       `${this._props.t('executions:restore')}${
-        selectedIds.length === 1 ? this._props.t('experiments:thisExperimentToIts') : this._props.t('experiments:thisExperimentToTheir') 
+        selectedIds.length === 1
+          ? this._props.t('experiments:thisExperimentToIts')
+          : this._props.t('experiments:thisExperimentToTheir')
       } ${this._props.t('experiments:RestoreExperimentText')}${
-        selectedIds.length === 1 ? this._props.t('experiments:thisxperiment') : this._props.t('experiments:theseExperiments')
+        selectedIds.length === 1
+          ? this._props.t('experiments:thisxperiment')
+          : this._props.t('experiments:theseExperiments')
       } ${this._props.t('experiments:ExperimentTextsuite')} ${
-        selectedIds.length === 1 ? this._props.t('experiments:thisxperiment'): this._props.t('experiments:theseExperiments')
-      } ${this._props.t('experiments:WillbeMovedTo')}${selectedIds.length === 1 ? this._props.t('experiments:its') : this._props.t('experiments:their')} ${this._props.t('experiments:originalLocation')}${s(
-        selectedIds,
-      )}.`,
+        selectedIds.length === 1
+          ? this._props.t('experiments:thisxperiment')
+          : this._props.t('experiments:theseExperiments')
+      } ${this._props.t('experiments:WillbeMovedTo')}${
+        selectedIds.length === 1
+          ? this._props.t('experiments:its')
+          : this._props.t('experiments:their')
+      } ${this._props.t('experiments:originalLocation')}${s(selectedIds)}.`,
       useCurrent,
       id => Apis.experimentServiceApi.unarchiveExperiment(id),
       callback,
@@ -471,7 +497,9 @@ export default class Buttons {
     this._dialogActionHandler(
       selectedIds,
       `${this._props.t('pipelines:deletePipeline')} ${
-        selectedIds.length === 1 ? this._props.t('pipelines:thisPipeline') :this._props.t('pipelines:thesePipelines') 
+        selectedIds.length === 1
+          ? this._props.t('pipelines:thisPipeline')
+          : this._props.t('pipelines:thesePipelines')
       }${this._props.t('pipelines:cannotBeDone')} `,
       useCurrentResource,
       id => Apis.pipelineServiceApi.deletePipeline(id),
@@ -489,7 +517,9 @@ export default class Buttons {
     this._dialogActionHandler(
       selectedIds,
       `${this._props.t('pipelines:deletePipeline')} ${
-        selectedIds.length === 1 ? this._props.t('pipelines:thisPipelineVersion')  : this._props.t('pipelines:thesePipelinesVersion') 
+        selectedIds.length === 1
+          ? this._props.t('pipelines:thisPipelineVersion')
+          : this._props.t('pipelines:thesePipelinesVersion')
       }${this._props.t('pipelines:cannotBeDone')} `,
       useCurrentResource,
       id => Apis.pipelineServiceApi.deletePipelineVersion(id),
@@ -606,7 +636,8 @@ export default class Buttons {
             unsuccessfulIds.push(id);
             const errorMessage = await errorToMessage(err);
             errorMessages.push(
-              `${this._props.t('common:failedTo',
+              `${this._props.t(
+                'common:failedTo',
               )} ${actionName.toLowerCase()} ${resourceName}: ${id} ${this._props.t(
                 'common:withError',
               )}: "${errorMessage}"`,
@@ -771,7 +802,11 @@ export default class Buttons {
           callback,
         ),
       title:
-        `${this._props.t('common:delete')} ` + pipelineMessage + andMessage + pipelineVersionMessage + `?`,
+        `${this._props.t('common:delete')} ` +
+        pipelineMessage +
+        andMessage +
+        pipelineVersionMessage +
+        `?`,
     });
   }
 
@@ -853,7 +888,9 @@ export default class Buttons {
       `${this._props.t('common:pipelineVersions')}`,
     );
     const andMessage =
-      pipelineMessage !== `` && pipelineVersionMessage !== `` ? ` ${this._props.t('common:and')} ` : ``;
+      pipelineMessage !== `` && pipelineVersionMessage !== ``
+        ? ` ${this._props.t('common:and')} `
+        : ``;
     if (pipelineMessage !== `` || pipelineVersionMessage !== ``) {
       this._props.updateSnackbar({
         message:
@@ -904,11 +941,20 @@ export default class Buttons {
   ): void {
     this._dialogActionHandler(
       selectedIds,
-      `${this._props.t('experiments:experiments')}${s(selectedIds)} ${this._props.t('experiments:moveExperiments')}${
-        selectedIds.length === 1 ? this._props.t('experiments:its'):this._props.t('experiments:their')} 
-        ${this._props.t('experiments:experimentTextArchive')}  ${s(
-        selectedIds,
-      )} ${this._props.t('experiments:to')} ${selectedIds.length === 1 ? this._props.t('experiments:its') : this._props.t('experiments:their')} ${this._props.t('experiments:originalLocation')}`,
+      `${this._props.t('experiments:experiments')}${s(selectedIds)} ${this._props.t(
+        'experiments:moveExperiments',
+      )}${
+        selectedIds.length === 1
+          ? this._props.t('experiments:its')
+          : this._props.t('experiments:their')
+      } 
+        ${this._props.t('experiments:experimentTextArchive')}  ${s(selectedIds)} ${this._props.t(
+        'experiments:to',
+      )} ${
+        selectedIds.length === 1
+          ? this._props.t('experiments:its')
+          : this._props.t('experiments:their')
+      } ${this._props.t('experiments:originalLocation')}`,
       useCurrent,
       id => Apis.experimentServiceApi.archiveExperiment(id),
       callback,

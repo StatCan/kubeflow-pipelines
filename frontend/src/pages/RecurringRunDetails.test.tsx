@@ -23,17 +23,16 @@ import { PageProps } from './Page';
 import { RouteParams, RoutePage, QUERY_PARAMS } from '../components/Router';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
-import { TFunction } from 'i18next'
+import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   withTranslation: () => (component: React.ComponentClass) => {
     component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
     return component;
-  }
+  },
 }));
 
- 
 describe('RecurringRunDetails', () => {
   let tree: ReactWrapper<any> | ShallowWrapper<any>;
 
@@ -66,7 +65,7 @@ describe('RecurringRunDetails', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      {t}
+      { t },
     );
   }
 
@@ -441,7 +440,7 @@ describe('RecurringRunDetails', () => {
     expect(updateDialogSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         content:
-          'common:failedTo delete recurring run config: test-job-id common:withError: \"could not delete\"',
+          'common:failedTo delete recurring run config: test-job-id common:withError: "could not delete"',
         title: 'common:failedTo delete recurring run config',
       }),
     );

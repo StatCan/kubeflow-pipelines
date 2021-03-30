@@ -30,22 +30,22 @@ import { ButtonKeys } from '../lib/Buttons';
 import { render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
-import { TFunction } from 'i18next'
+import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: ((key: string) => key) as any ,
+    t: ((key: string) => key) as any,
   }),
-  withTranslation: () => (Component: { defaultProps: any; }) => {
-    Component.defaultProps = { ...Component.defaultProps,  t: ((key: string) => key) as any };
+  withTranslation: () => (Component: { defaultProps: any }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
     return Component;
   },
 }));
 
 // NOTE THAT somewhere down the line in the compare i18next is used
-// as the 'undefined' comes from there. 
-jest.mock('i18next', () => ({t:() => "Table"})) 
-   
+// as the 'undefined' comes from there.
+jest.mock('i18next', () => ({ t: () => 'Table' }));
+
 const Compare = TEST_ONLY.Compare;
 class TestCompare extends Compare {
   public _selectionChanged(selectedIds: string[]): void {
@@ -81,7 +81,7 @@ describe('Compare', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      {t}
+      { t },
     );
   }
 
@@ -449,7 +449,7 @@ describe('Compare', () => {
       'experiments:parameters': true,
       'experiments:runOverview': true,
       Table: true,
-     Tensorboard: true,
+      Tensorboard: true,
     });
 
     expect(tree).toMatchSnapshot();

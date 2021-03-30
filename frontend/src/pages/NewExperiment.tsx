@@ -50,7 +50,7 @@ const css = stylesheet({
   },
 });
 
-export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, NewExperimentState> {
+export class NewExperiment extends Page<{ namespace?: string; t: TFunction }, NewExperimentState> {
   private _experimentNameRef = React.createRef<HTMLInputElement>();
 
   constructor(props: any) {
@@ -82,9 +82,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
         <div className={classes(commonCss.scrollContainer, padding(20, 'lr'))}>
           <div className={commonCss.header}>{t('experimentDetails')}</div>
           {/* TODO: this description needs work. */}
-          <div className={css.explanation}>
-            {t('experimentDefinition')}
-          </div>
+          <div className={css.explanation}>{t('experimentDefinition')}</div>
 
           <Input
             id='experimentName'
@@ -213,7 +211,7 @@ export class NewExperiment extends Page<{ namespace?: string, t: TFunction }, Ne
 const EnhancedNewExperiment: React.FC<PageProps> = props => {
   const namespace = React.useContext(NamespaceContext);
   const { t } = useTranslation(['experiments', 'common']);
-  return <NewExperiment {...props} namespace={namespace} t={t}/>;
+  return <NewExperiment {...props} namespace={namespace} t={t} />;
 };
 
 export default EnhancedNewExperiment;

@@ -36,7 +36,7 @@ interface RecurringRunConfigState {
   run: ApiJob | null;
 }
 
-class RecurringRunDetails extends Page<{t: TFunction}, RecurringRunConfigState> {
+class RecurringRunDetails extends Page<{ t: TFunction }, RecurringRunConfigState> {
   constructor(props: any) {
     super(props);
 
@@ -101,7 +101,10 @@ class RecurringRunDetails extends Page<{t: TFunction}, RecurringRunConfigState> 
           ]);
         }
         if (run.trigger.cron_schedule && run.trigger.cron_schedule.end_time) {
-          triggerDetails.push([t('common:endTime'), formatDateString(run.trigger.cron_schedule.end_time)]);
+          triggerDetails.push([
+            t('common:endTime'),
+            formatDateString(run.trigger.cron_schedule.end_time),
+          ]);
         } else if (run.trigger.periodic_schedule && run.trigger.periodic_schedule.end_time) {
           triggerDetails.push([
             t('common:endTime'),
@@ -147,10 +150,7 @@ class RecurringRunDetails extends Page<{t: TFunction}, RecurringRunConfigState> 
       run = await Apis.jobServiceApi.getJob(runId);
     } catch (err) {
       const errorMessage = await errorToMessage(err);
-      await this.showPageError(
-        `${('errorRetrieveRecurrRun')}: ${runId}.`,
-        new Error(errorMessage),
-      );
+      await this.showPageError(`${'errorRetrieveRecurrRun'}: ${runId}.`, new Error(errorMessage));
       return;
     }
 

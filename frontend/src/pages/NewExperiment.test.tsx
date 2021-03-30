@@ -22,13 +22,12 @@ import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType, ApiRelationship } from 'src/apis/experiment';
 
-
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   withTranslation: () => (component: React.ComponentClass) => {
     component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
     return component;
-  }
+  },
 }));
 
 describe('NewExperiment', () => {
@@ -48,7 +47,7 @@ describe('NewExperiment', () => {
       updateBanner: updateBannerSpy,
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
-      updateToolbar: updateToolbarSpy
+      updateToolbar: updateToolbarSpy,
     };
   }
 
@@ -73,12 +72,12 @@ describe('NewExperiment', () => {
   afterEach(() => tree.unmount());
 
   it('renders the new experiment page', () => {
-    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any )} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('does not include any action buttons in the toolbar', () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
 
     expect(updateToolbarSpy).toHaveBeenCalledWith({
       actions: {},
@@ -100,7 +99,7 @@ describe('NewExperiment', () => {
   });
 
   it("re-disables the 'Next' button when an experiment name is cleared after having been entered", () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
     expect(tree.find('#createExperimentBtn').props()).toHaveProperty('disabled', true);
 
     (tree.instance() as any).handleChange('experimentName')({
@@ -114,7 +113,7 @@ describe('NewExperiment', () => {
   });
 
   it('updates the experiment name', () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
     (tree.instance() as any).handleChange('experimentName')({
       target: { value: 'experiment name' },
     });
@@ -128,7 +127,7 @@ describe('NewExperiment', () => {
   });
 
   it('updates the experiment description', () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
     (tree.instance() as any).handleChange('description')({ target: { value: 'a description!' } });
 
     expect(tree.state()).toEqual({
@@ -140,7 +139,7 @@ describe('NewExperiment', () => {
   });
 
   it("sets the page to a busy state upon clicking 'Next'", async () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
 
     (tree.instance() as any).handleChange('experimentName')({
       target: { value: 'experiment-name' },
@@ -154,7 +153,7 @@ describe('NewExperiment', () => {
   });
 
   it("calls the createExperiment API with the new experiment upon clicking 'Next'", async () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
 
     (tree.instance() as any).handleChange('experimentName')({
       target: { value: 'experiment name' },
@@ -173,7 +172,9 @@ describe('NewExperiment', () => {
   });
 
   it('calls the createExperimentAPI with namespace when it is provided', async () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} namespace='test-ns' />);
+    tree = shallow(
+      <NewExperiment t={(key: any) => key} {...(generateProps() as any)} namespace='test-ns' />,
+    );
 
     fillAnyExperimentName();
     tree.find('#createExperimentBtn').simulate('click');
@@ -197,7 +198,7 @@ describe('NewExperiment', () => {
   it('navigates to NewRun page upon successful creation', async () => {
     const experimentId = 'test-exp-id-1';
     createExperimentSpy.mockImplementation(() => ({ id: experimentId }));
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
 
     (tree.instance() as any).handleChange('experimentName')({
       target: { value: 'experiment-name' },
@@ -219,7 +220,7 @@ describe('NewExperiment', () => {
     const pipelineId = 'some-pipeline-id';
     const props = generateProps();
     props.location.search = `?${QUERY_PARAMS.pipelineId}=${pipelineId}`;
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(props as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(props as any)} />);
 
     (tree.instance() as any).handleChange('experimentName')({
       target: { value: 'experiment-name' },
@@ -238,7 +239,7 @@ describe('NewExperiment', () => {
   });
 
   it('shows snackbar confirmation after experiment is created', async () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
 
     (tree.instance() as any).handleChange('experimentName')({
       target: { value: 'experiment-name' },
@@ -259,7 +260,7 @@ describe('NewExperiment', () => {
     // tslint:disable-next-line:no-console
     console.error = jest.spyOn(console, 'error').mockImplementation();
 
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
 
     (tree.instance() as any).handleChange('experimentName')({
       target: { value: 'experiment-name' },
@@ -295,7 +296,7 @@ describe('NewExperiment', () => {
   });
 
   it('navigates to experiment list page upon cancellation', async () => {
-    tree = shallow(<NewExperiment t={(key: any) => key}  {...(generateProps() as any)} />);
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
     tree.find('#cancelNewExperimentBtn').simulate('click');
     await TestUtils.flushPromises();
 

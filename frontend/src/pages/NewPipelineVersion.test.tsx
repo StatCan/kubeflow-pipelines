@@ -27,7 +27,7 @@ jest.mock('react-i18next', () => ({
   withTranslation: () => (component: React.ComponentClass) => {
     component.defaultProps = { ...component.defaultProps, t: (key: string) => key };
     return component;
-  }
+  },
 }));
 
 describe('NewPipelineVersion', () => {
@@ -87,7 +87,7 @@ describe('NewPipelineVersion', () => {
       updateBanner: updateBannerSpy,
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
-      updateToolbar: updateToolbarSpy
+      updateToolbar: updateToolbarSpy,
     };
   }
 
@@ -165,7 +165,9 @@ describe('NewPipelineVersion', () => {
 
       expect(updateToolbarSpy).toHaveBeenLastCalledWith({
         actions: {},
-        breadcrumbs: [{ displayName: 'pipelines:pipelineVersions', href: '/pipeline_versions/new' }],
+        breadcrumbs: [
+          { displayName: 'pipelines:pipelineVersions', href: '/pipeline_versions/new' },
+        ],
         pageTitle: 'pipelines:uploadPipelineTitle',
       });
       expect(getPipelineSpy).toHaveBeenCalledTimes(1);

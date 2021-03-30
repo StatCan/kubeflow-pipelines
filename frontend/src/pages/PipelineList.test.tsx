@@ -33,14 +33,13 @@ jest.mock('react-i18next', () => ({
   },
   useTranslation: () => {
     return {
-      t: (key:string) => key,
+      t: (key: string) => key,
       i18n: {
         changeLanguage: () => new Promise(() => {}),
       },
     };
   },
 }));
-
 
 describe('PipelineList', () => {
   let tree: ReactWrapper | ShallowWrapper;
@@ -53,7 +52,7 @@ describe('PipelineList', () => {
   let listPipelineVersionsSpy: jest.SpyInstance<{}>;
   let deletePipelineSpy: jest.SpyInstance<{}>;
   let deletePipelineVersionSpy: jest.SpyInstance<{}>;
-  let t: TFunction = (key: string) => key;  
+  let t: TFunction = (key: string) => key;
 
   function spyInit() {
     updateBannerSpy = jest.fn();
@@ -76,7 +75,7 @@ describe('PipelineList', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      {t}
+      { t },
     );
   }
 
@@ -116,7 +115,7 @@ describe('PipelineList', () => {
   });
 
   it('renders a list of one pipeline', async () => {
-    tree = shallow(<PipelineList   {...generateProps()} />);
+    tree = shallow(<PipelineList {...generateProps()} />);
     tree.setState({
       displayPipelines: [
         {
@@ -146,7 +145,7 @@ describe('PipelineList', () => {
   });
 
   it('renders a list of one pipeline with error', async () => {
-    tree = shallow(<PipelineList  {...generateProps()} />);
+    tree = shallow(<PipelineList {...generateProps()} />);
     tree.setState({
       displayPipelines: [
         {
@@ -164,7 +163,7 @@ describe('PipelineList', () => {
 
   it('calls Apis to list pipelines, sorted by creation time in descending order', async () => {
     listPipelinesSpy.mockImplementationOnce(() => ({ pipelines: [{ name: 'pipeline1' }] }));
-    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList {...generateProps()} />);
     await listPipelinesSpy;
     expect(listPipelinesSpy).toHaveBeenLastCalledWith('', 10, 'created_at desc', '');
     expect(tree.state()).toHaveProperty('displayPipelines', [
@@ -186,20 +185,20 @@ describe('PipelineList', () => {
 
   it('shows error banner when listing pipelines fails', async () => {
     TestUtils.makeErrorResponseOnce(listPipelinesSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList {...generateProps()} />);
     await listPipelinesSpy;
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'pipelineListError common:clickDetails', 
+        message: 'pipelineListError common:clickDetails',
         mode: 'error',
       }),
     );
   });
 
   it('shows error banner when listing pipelines fails after refresh', async () => {
-    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList {...generateProps()} />);
     const instance = tree.instance() as PipelineList;
     const refreshBtn = instance.getInitialToolbarState().actions[ButtonKeys.REFRESH];
     expect(refreshBtn).toBeDefined();
@@ -210,7 +209,7 @@ describe('PipelineList', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'pipelineListError common:clickDetails', 
+        message: 'pipelineListError common:clickDetails',
         mode: 'error',
       }),
     );
@@ -218,14 +217,14 @@ describe('PipelineList', () => {
 
   it('hides error banner when listing pipelines fails then succeeds', async () => {
     TestUtils.makeErrorResponseOnce(listPipelinesSpy, 'bad stuff happened');
-    tree = TestUtils.mountWithRouter(<PipelineList  {...generateProps()} />);
+    tree = TestUtils.mountWithRouter(<PipelineList {...generateProps()} />);
     const instance = tree.instance() as PipelineList;
     await listPipelinesSpy;
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'bad stuff happened',
-        message: 'pipelineListError common:clickDetails', 
+        message: 'pipelineListError common:clickDetails',
         mode: 'error',
       }),
     );
@@ -300,7 +299,7 @@ describe('PipelineList', () => {
       .find('.tableRow')
       .at(0)
       .simulate('click');
-    const deleteBtn = (tree.instance() as PipelineList ).getInitialToolbarState().actions[
+    const deleteBtn = (tree.instance() as PipelineList).getInitialToolbarState().actions[
       ButtonKeys.DELETE_RUN
     ];
     await deleteBtn!.action();

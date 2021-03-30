@@ -44,7 +44,7 @@ import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
 import { TFunction } from 'i18next';
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
 
 interface DisplayExperiment extends ApiExperiment {
   last5Runs?: ApiRun[];
@@ -58,7 +58,10 @@ interface ExperimentListState {
   selectedTab: number;
 }
 
-export class ExperimentList extends Page<{ namespace?: string, t: TFunction }, ExperimentListState> {
+export class ExperimentList extends Page<
+  { namespace?: string; t: TFunction },
+  ExperimentListState
+> {
   private _tableRef = React.createRef<CustomTable>();
 
   constructor(props: any) {
@@ -244,10 +247,7 @@ export class ExperimentList extends Page<{ namespace?: string, t: TFunction }, E
           experiment.last5Runs = listRunsResponse.runs || [];
         } catch (err) {
           experiment.error = t('last5RunsFailed');
-          logger.error(
-            `${t('runStatusError')}: ${experiment.name}.`,
-            err,
-          );
+          logger.error(`${t('runStatusError')}: ${experiment.name}.`, err);
         }
       }),
     );
@@ -298,7 +298,7 @@ export class ExperimentList extends Page<{ namespace?: string, t: TFunction }, E
 const EnhancedExperimentList: React.FC<PageProps> = props => {
   const { t } = useTranslation(['experiments', 'common']);
   const namespace = React.useContext(NamespaceContext);
-  return <ExperimentList key={namespace} {...props} namespace={namespace} t={t}/>;
+  return <ExperimentList key={namespace} {...props} namespace={namespace} t={t} />;
 };
 
 export default EnhancedExperimentList;

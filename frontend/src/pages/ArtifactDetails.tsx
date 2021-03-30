@@ -62,7 +62,7 @@ interface ArtifactDetailsState {
   artifactType?: ArtifactType;
 }
 
-class ArtifactDetails extends Page<{t: TFunction}, ArtifactDetailsState> {
+class ArtifactDetails extends Page<{ t: TFunction }, ArtifactDetailsState> {
   private get fullTypeName(): string {
     return this.state.artifactType?.getName() || '';
   }
@@ -155,7 +155,7 @@ class ArtifactDetails extends Page<{t: TFunction}, ArtifactDetailsState> {
   }
 
   public getInitialToolbarState(): ToolbarProps {
-    const { t ,i18n} = useTranslation('common');
+    const { t, i18n } = useTranslation('common');
     return {
       actions: {},
       breadcrumbs: [{ displayName: t('common:artifacts'), href: RoutePage.ARTIFACTS }],
@@ -219,8 +219,8 @@ class ArtifactDetails extends Page<{t: TFunction}, ArtifactDetailsState> {
 
 // This guarantees that each artifact renders a different <ArtifactDetails /> instance.
 const EnhancedArtifactDetails = (props: PageProps) => {
-  const { t,i18n } = useTranslation('common');
-  return <ArtifactDetails {...props} key={props.match.params[RouteParams.ID]} t={t}/>;
+  const { t, i18n } = useTranslation('common');
+  return <ArtifactDetails {...props} key={props.match.params[RouteParams.ID]} t={t} />;
 };
 
 export default EnhancedArtifactDetails;

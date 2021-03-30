@@ -249,7 +249,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
       workflow,
       mlmdExecutions,
     } = this.state;
-    const {t} = this.props;
+    const { t } = this.props;
     const { projectId, clusterName } = this.props.gkeMetadata;
     const selectedNodeId = selectedNodeDetails?.id || '';
     const namespace = workflow?.metadata?.namespace;
@@ -434,9 +434,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                                         />
                                       </>
                                     )}
-                                    {!selectedExecution && (
-                                      <div>{t('mlMetadataNotFound')}</div>
-                                    )}
+                                    {!selectedExecution && <div>{t('mlMetadataNotFound')}</div>}
                                   </div>
                                 )}
 
@@ -533,9 +531,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                       <div className={css.footer}>
                         <div className={commonCss.flex}>
                           <InfoIcon className={commonCss.infoIcon} />
-                          <span className={css.infoSpan}>
-                            {t('runtimeExecGraph')}
-                          </span>
+                          <span className={css.infoSpan}>{t('runtimeExecGraph')}</span>
                         </div>
                       </div>
                     </div>
@@ -581,9 +577,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                       <Hr />
                     </div>
                   ))}
-                  {!allArtifactConfigs.length && (
-                    <span>{t('noOutputArtifactsFound')}</span>
-                  )}
+                  {!allArtifactConfigs.length && <span>{t('noOutputArtifactsFound')}</span>}
                 </div>
               )}
 
@@ -705,10 +699,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
             refresh: undefined,
           });
         } else {
-          this.showPageError(
-            `${t('errorErrorsFoundRun')}: ${runId}.`,
-            new Error(workflowError),
-          );
+          this.showPageError(`${t('errorErrorsFoundRun')}: ${runId}.`, new Error(workflowError));
         }
       }
 
@@ -860,7 +851,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
   }
 
   private _getDetailsFields(workflow: Workflow, runMetadata?: ApiRun): Array<KeyValue<string>> {
-    const { t } =this.props; 
+    const { t } = this.props;
     return !workflow.status
       ? []
       : [
@@ -950,8 +941,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
           ? ` ${t('stackdriverKubernetesMonitoringView')}`
           : '';
         logsBannerMode = 'info';
-        logsBannerAdditionalInfo =
-          `${t('errorPodLogsReasons')} `;
+        logsBannerAdditionalInfo = `${t('errorPodLogsReasons')} `;
       } else {
         logsBannerMode = 'error';
       }
@@ -1006,10 +996,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
       generatedVisualizations.push(generatedVisualization);
       this.setState({ generatedVisualizations });
     } catch (err) {
-      this.showPageError(
-        t('genVisFailedError'),
-        err,
-      );
+      this.showPageError(t('genVisFailedError'), err);
     } finally {
       this.setState({ isGeneratingVisualization: false });
     }
@@ -1102,7 +1089,7 @@ const VisualizationsTabContent: React.FC<{
   const [progress, setProgress] = React.useState(0);
   const [viewerConfigs, setViewerConfigs] = React.useState<ViewerConfig[]>([]);
   const nodeCompleted: boolean = !!nodeStatus && COMPLETED_NODE_PHASES.includes(nodeStatus.phase);
-  const { t } = useTranslation(['experiments','common']);
+  const { t } = useTranslation(['experiments', 'common']);
 
   React.useEffect(() => {
     let aborted = false;
@@ -1223,7 +1210,7 @@ const EnhancedRunDetails: React.FC<RunDetailsProps> = props => {
     // list page.
     return <Redirect to={RoutePage.EXPERIMENTS} />;
   }
-  return <RunDetails {...props} gkeMetadata={gkeMetadata} t={t}/>;
+  return <RunDetails {...props} gkeMetadata={gkeMetadata} t={t} />;
 };
 
 export default EnhancedRunDetails;

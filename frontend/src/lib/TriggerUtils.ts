@@ -16,8 +16,6 @@
 
 import { ApiTrigger, ApiPeriodicSchedule, ApiCronSchedule } from '../../src/apis/job';
 
-
-
 export enum TriggerType {
   INTERVALED,
   CRON,
@@ -47,10 +45,9 @@ const PERIODIC_INTERVAL_DESCENDING = [
 ];
 
 export const triggers = new Map<TriggerType, { displayName: string }>([
-  [TriggerType.INTERVALED, { displayName: 'experiments:triggerTypeEnum.periodic'}],
-  [TriggerType.CRON, { displayName: 'experiments:triggerTypeEnum.cron'}],
+  [TriggerType.INTERVALED, { displayName: 'experiments:triggerTypeEnum.periodic' }],
+  [TriggerType.CRON, { displayName: 'experiments:triggerTypeEnum.cron' }],
 ]);
-
 
 export function getPeriodInSeconds(interval: PeriodicInterval, count: number): number {
   const intervalSeconds = INTERVAL_SECONDS[interval];
@@ -75,7 +72,6 @@ export function parsePeriodFromSeconds(
 }
 
 export function buildCron(
-  
   startDateTime: Date | undefined,
   intervalCategory: PeriodicInterval,
   selectedDays: boolean[],
@@ -210,7 +206,6 @@ export type ParsedTrigger =
     };
 
 export function parseTrigger(trigger: ApiTrigger): ParsedTrigger {
-
   if (trigger.periodic_schedule) {
     const periodicSchedule = trigger.periodic_schedule;
     const intervalSeconds = parseInt(periodicSchedule.interval_second || '', 10);

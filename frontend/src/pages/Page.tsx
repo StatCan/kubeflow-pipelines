@@ -29,7 +29,7 @@ export interface PageProps extends RouteComponentProps {
   updateDialog: (dialogProps: DialogProps) => void;
   updateSnackbar: (snackbarProps: SnackbarProps) => void;
   updateToolbar: (toolbarProps: Partial<ToolbarProps>) => void;
-  t:TFunction
+  t: TFunction;
 }
 
 export type PageErrorHandler = (
@@ -37,7 +37,6 @@ export type PageErrorHandler = (
   error?: Error,
   mode?: 'error' | 'warning',
   refresh?: () => Promise<void>,
-
 ) => Promise<void>;
 
 export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
@@ -46,10 +45,9 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
 
   constructor(props: any) {
     super(props);
-    this.props.updateToolbar(this.getInitialToolbarState ());
-  
+    this.props.updateToolbar(this.getInitialToolbarState());
   }
- 
+
   public abstract render(): JSX.Element;
 
   public abstract getInitialToolbarState(): ToolbarProps;
@@ -73,14 +71,14 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
   }
 
   public showPageError: PageErrorHandler = async (message, error, mode, refresh): Promise<void> => {
-    const{t}=this.props;
+    const { t } = this.props;
     const errorMessage = await errorToMessage(error);
     if (!this._isMounted) {
       return;
     }
     this.props.updateBanner({
       additionalInfo: errorMessage ? errorMessage : undefined,
-      message: message + ' ' +(errorMessage ? t('common:clickDetails'):''),
+      message: message + ' ' + (errorMessage ? t('common:clickDetails') : ''),
       mode: mode || 'error',
       refresh: refresh || this.refresh.bind(this),
     });

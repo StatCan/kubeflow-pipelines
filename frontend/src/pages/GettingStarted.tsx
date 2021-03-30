@@ -27,7 +27,7 @@ import { commonCss, padding } from '../Css';
 import { Apis } from '../lib/Apis';
 import Buttons from '../lib/Buttons';
 import { Page } from './Page';
-import  { TFunction } from 'i18next'
+import { TFunction } from 'i18next';
 
 const DEMO_PIPELINES: string[] = SAMPLE_CONFIG.slice(0, 4);
 const DEMO_PIPELINES_ID_MAP = {
@@ -50,20 +50,32 @@ const PAGE_CONTENT_MD = ({
   tfxKeras: string;
   tfx: string;
   xgboost: string;
-}) => 
-i18next.t('home:key1')+ '  \n ' +
-i18next.t('home:key3')+   ' \n  '  +  
-i18next.t('home:key5')+  ' \n  '  + 
-i18next.t('home:key7')+  '   \n  '  +
-i18next.t('home:key9')+ '   \n  '  +
-i18next.t('home:key11')+ '   \n  '  +
-i18next.t('home:key13')+ '   \n  '  +
-i18next.t('home:key15')+ '   \n  '  +
-i18next.t('home:key17')+ '   \n  '  +
-i18next.t('home:key19')+ '   \n  '  +
-i18next.t('home:key21')+ '   \n  '  +
-i18next.t('home:key23')+ '   \n  '  +
-i18next.t('home:key25')
+}) =>
+  i18next.t('home:key1') +
+  '  \n ' +
+  i18next.t('home:key3') +
+  ' \n  ' +
+  i18next.t('home:key5') +
+  ' \n  ' +
+  i18next.t('home:key7') +
+  '   \n  ' +
+  i18next.t('home:key9') +
+  '   \n  ' +
+  i18next.t('home:key11') +
+  '   \n  ' +
+  i18next.t('home:key13') +
+  '   \n  ' +
+  i18next.t('home:key15') +
+  '   \n  ' +
+  i18next.t('home:key17') +
+  '   \n  ' +
+  i18next.t('home:key19') +
+  '   \n  ' +
+  i18next.t('home:key21') +
+  '   \n  ' +
+  i18next.t('home:key23') +
+  '   \n  ' +
+  i18next.t('home:key25');
 cssRaw(`
 .kfp-start-page li {
   font-size: 14px;
@@ -96,14 +108,14 @@ export class GettingStarted extends Page<{ t: TFunction }, { links: string[] }> 
   public state = {
     links: ['', '', '', ''].map(getPipelineLink),
   };
-  
+
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
-    
+
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
-      pageTitle:i18next.t('home:gettingStarted'),
+      pageTitle: i18next.t('home:gettingStarted'),
     };
   }
 
@@ -145,7 +157,7 @@ export class GettingStarted extends Page<{ t: TFunction }, { links: string[] }> 
       </div>
     );
   }
-} 
+}
 
 function getPipelineLink(id: string) {
   if (!id) {

@@ -70,7 +70,7 @@ const overviewSectionName = 'experiments:runOverview';
 const paramsSectionName = 'experiments:parameters';
 const metricsSectionName = 'experiments:metrics';
 
-class Compare extends Page<{t: TFunction}, CompareState> {
+class Compare extends Page<{ t: TFunction }, CompareState> {
   constructor(props: any) {
     super(props);
 
@@ -243,7 +243,10 @@ class Compare extends Page<{t: TFunction}, CompareState> {
     );
 
     if (lastError) {
-      await this.showPageError(`${t('errorLoadRuns1')} ${failingRuns.length}${t('errorLoadRuns2')}`, lastError);
+      await this.showPageError(
+        `${t('errorLoadRuns1')} ${failingRuns.length}${t('errorLoadRuns2')}`,
+        lastError,
+      );
       logger.error(
         `Failed loading ${failingRuns.length} runs, last failed with the error: ${lastError}`,
       );
@@ -336,13 +339,13 @@ class Compare extends Page<{t: TFunction}, CompareState> {
 
 const EnhancedCompare: React.FC<PageProps> = props => {
   const namespaceChanged = useNamespaceChangeEvent();
-  const { t, i18n } = useTranslation(['common','experiments']);
+  const { t, i18n } = useTranslation(['common', 'experiments']);
   if (namespaceChanged) {
     // Compare page compares two runs, when namespace changes, the runs don't
     // exist in the new namespace, so we should redirect to experiment list page.
     return <Redirect to={RoutePage.EXPERIMENTS} />;
   }
-  return <Compare {...props} t={t}/>;
+  return <Compare {...props} t={t} />;
 };
 
 export default EnhancedCompare;

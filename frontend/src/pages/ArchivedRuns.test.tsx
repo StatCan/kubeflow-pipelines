@@ -22,7 +22,7 @@ import { RunStorageState } from '../apis/run';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 import { Apis } from '../lib/Apis';
-import { TFunction } from 'i18next'
+import { TFunction } from 'i18next';
 
 describe('ArchivedRuns', () => {
   const updateBannerSpy = jest.fn();
@@ -44,7 +44,7 @@ describe('ArchivedRuns', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-     {t}
+      { t },
     );
   }
 

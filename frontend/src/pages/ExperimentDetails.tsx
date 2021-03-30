@@ -110,7 +110,7 @@ interface ExperimentDetailsState {
   runListToolbarProps: ToolbarProps;
 }
 
-export class ExperimentDetails extends Page<{t: TFunction}, ExperimentDetailsState> {
+export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsState> {
   private _runlistRef = React.createRef<RunList>();
 
   constructor(props: any) {
@@ -286,7 +286,7 @@ export class ExperimentDetails extends Page<{t: TFunction}, ExperimentDetailsSta
     this.clearBanner();
 
     const experimentId = this.props.match.params[RouteParams.experimentId];
-    const { t ,i18n} = useTranslation('commo');
+    const { t, i18n } = useTranslation('commo');
 
     try {
       const experiment = await Apis.experimentServiceApi.getExperiment(experimentId);
@@ -372,7 +372,7 @@ const EnhancedExperimentDetails: React.FC<PageProps> = props => {
     return <Redirect to={RoutePage.EXPERIMENTS} />;
   }
 
-  return <ExperimentDetails {...props} t={t}/>;
+  return <ExperimentDetails {...props} t={t} />;
 };
 
 export default EnhancedExperimentDetails;

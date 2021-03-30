@@ -22,12 +22,11 @@ import { ShallowWrapper, shallow } from 'enzyme';
 import { ButtonKeys } from '../lib/Buttons';
 import { TFunction } from 'i18next';
 
-
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: ((key: string) => key) as any,
   }),
-  withTranslation: () => (Component: { defaultProps: any; }) => {
+  withTranslation: () => (Component: { defaultProps: any }) => {
     Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
     return Component;
   },
@@ -52,7 +51,7 @@ describe('ArchivedExperiemnts', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      { t: identiT }
+      { t: identiT },
     );
   }
 

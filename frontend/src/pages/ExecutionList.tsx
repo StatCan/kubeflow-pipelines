@@ -54,7 +54,7 @@ interface ExecutionListState {
   columns: Column[];
 }
 
-class ExecutionList extends Page<{t: TFunction}, ExecutionListState> {
+class ExecutionList extends Page<{ t: TFunction }, ExecutionListState> {
   private tableRef = React.createRef<CustomTable>();
   private api = Api.getInstance();
   private executionTypesMap: Map<number, ExecutionType>;

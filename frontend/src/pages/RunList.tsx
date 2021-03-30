@@ -29,7 +29,7 @@ import { commonCss, color } from '../Css';
 import { formatDateString, logger, errorToMessage, getRunDuration } from '../lib/Utils';
 import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
-import i18next from 'i18next'
+import i18next from 'i18next';
 
 interface PipelineVersionInfo {
   displayName?: string;
@@ -97,7 +97,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
     // Only show the two most prevalent metrics
     const metricMetadata: MetricMetadata[] = this.state.metrics.slice(0, 2);
     const columns: Column[] = [
-      { 
+      {
         customRenderer: this._nameCustomRenderer,
         flex: 1.5,
         label: i18next.t('experiments:runName'),
@@ -105,8 +105,16 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
       },
       { customRenderer: this._statusCustomRenderer, flex: 0.5, label: i18next.t('common:status') },
       { label: i18next.t('common:duration'), flex: 0.5 },
-      { customRenderer: this._pipelineVersionCustomRenderer, label: i18next.t('common:pipelineVersion'), flex: 1 },
-      { customRenderer: this._recurringRunCustomRenderer, label: i18next.t('common:recurringRun'), flex: 0.5 },
+      {
+        customRenderer: this._pipelineVersionCustomRenderer,
+        label: i18next.t('common:pipelineVersion'),
+        flex: 1,
+      },
+      {
+        customRenderer: this._recurringRunCustomRenderer,
+        label: i18next.t('common:recurringRun'),
+        flex: 0.5,
+      },
       { label: i18next.t('common:startTime'), flex: 1, sortKey: RunSortKeys.CREATED_AT },
     ];
 
@@ -179,7 +187,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
           selectedIds={this.props.selectedIds}
           initialSortColumn={RunSortKeys.CREATED_AT}
           ref={this._tableRef}
-          filterLabel= {i18next.t('experiments:filterRuns')}
+          filterLabel={i18next.t('experiments:filterRuns')}
           updateSelection={this.props.onSelectionChange}
           reload={this._loadRuns.bind(this)}
           disablePaging={this.props.disablePaging}
@@ -188,7 +196,11 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
           noFilterBox={this.props.noFilterBox}
           emptyMessage={
             `${i18next.t('common:no')}` +
-            `${this.props.storageState === RunStorageState.ARCHIVED ? i18next.t('common:archived') : i18next.t('common:available')}` +
+            `${
+              this.props.storageState === RunStorageState.ARCHIVED
+                ? i18next.t('common:archived')
+                : i18next.t('common:available')
+            }` +
             ` ${i18next.t('common:runFound')}` +
             `${
               this.props.experimentIdMask
@@ -514,4 +526,4 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
     }
   }
 }
- export default RunList;
+export default RunList;

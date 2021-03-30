@@ -42,7 +42,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { ExternalLink } from '../atoms/ExternalLink';
 import { TFunction } from 'i18next';
-import { withTranslation} from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 interface NewPipelineVersionState {
   validationError: string;
@@ -120,7 +120,11 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
 
   private pipelineSelectorColumns = [
     { label: this.props.t('common:pipelineName'), flex: 1, sortKey: PipelineSortKeys.NAME },
-    { label: this.props.t('common:description'), flex: 2, customRenderer: descriptionCustomRenderer },
+    {
+      label: this.props.t('common:description'),
+      flex: 2,
+      customRenderer: descriptionCustomRenderer,
+    },
     { label: this.props.t('common:uploadedOn'), flex: 1, sortKey: PipelineSortKeys.CREATED_AT },
   ];
 
@@ -150,10 +154,12 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
   }
 
   public getInitialToolbarState(): ToolbarProps {
-   const { t } = this.props;
+    const { t } = this.props;
     return {
       actions: {},
-      breadcrumbs: [{ displayName: t('pipelines:pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION }],
+      breadcrumbs: [
+        { displayName: t('pipelines:pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION },
+      ],
       pageTitle: t('pipelines:uploadPipelineTitle'),
     };
   }
@@ -258,9 +264,7 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
           {/* Pipeline selector and help text for uploading new pipeline version */}
           {newPipeline === false && (
             <>
-              <div className={css.explanation}>
-                {t('uploadPipelineVersion')}
-              </div>
+              <div className={css.explanation}>{t('uploadPipelineVersion')}</div>
               {/* Select pipeline */}
               <Input
                 value={pipelineName}

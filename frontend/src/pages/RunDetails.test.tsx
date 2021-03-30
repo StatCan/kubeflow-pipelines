@@ -1028,8 +1028,7 @@ describe('RunDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'woops',
-        message:
-          'errorEnableCustomVis common:clickDetails',
+        message: 'errorEnableCustomVis common:clickDetails',
         mode: 'error',
       }),
     );

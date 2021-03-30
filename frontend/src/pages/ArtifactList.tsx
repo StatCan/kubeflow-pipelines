@@ -62,7 +62,7 @@ const ARTIFACT_PROPERTY_REPOS = [ArtifactProperties, ArtifactCustomProperties];
 const PIPELINE_WORKSPACE_FIELDS = ['RUN_ID', 'PIPELINE_NAME', 'WORKSPACE'];
 const NAME_FIELDS = ['NAME'];
 
-class ArtifactList extends Page<{t: TFunction}, ArtifactListState> {
+class ArtifactList extends Page<{ t: TFunction }, ArtifactListState> {
   private tableRef = React.createRef<CustomTable>();
   private api = Api.getInstance();
   private artifactTypesMap: Map<number, ArtifactType>;

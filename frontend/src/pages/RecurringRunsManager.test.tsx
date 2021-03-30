@@ -21,14 +21,13 @@ import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import RecurringRunsManager, { RecurringRunListProps } from './RecurringRunsManager';
 import { ApiJob, ApiResourceType } from '../apis/job';
 
-
-let mockedValue = ""
+let mockedValue = '';
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
-  withTranslation: () => (Component: { defaultProps: any; }) => {
+  withTranslation: () => (Component: { defaultProps: any }) => {
     Component.defaultProps = { ...Component.defaultProps, t: () => mockedValue };
     return Component;
-  }
+  },
 }));
 
 describe('RecurringRunsManager', () => {
@@ -109,7 +108,7 @@ describe('RecurringRunsManager', () => {
   });
 
   it('shows error dialog if listing fails', async () => {
-    mockedValue = "example1"
+    mockedValue = 'example1';
     TestUtils.makeErrorResponseOnce(listJobsSpy, 'woops!');
     jest.spyOn(console, 'error').mockImplementation();
     tree = shallow(<TestRecurringRunsManager {...generateProps()} />);
@@ -141,7 +140,7 @@ describe('RecurringRunsManager', () => {
   });
 
   it('shows error if enable API call fails', async () => {
-    mockedValue = "example1"
+    mockedValue = 'example1';
     tree = shallow(<TestRecurringRunsManager {...generateProps()} />);
     TestUtils.makeErrorResponseOnce(enableJobSpy, 'cannot enable');
     await (tree.instance() as TestRecurringRunsManager)._setEnabledState('test-run', true);
@@ -157,7 +156,7 @@ describe('RecurringRunsManager', () => {
   });
 
   it('shows error if disable API call fails', async () => {
-    mockedValue = "example1"
+    mockedValue = 'example1';
     tree = shallow(<TestRecurringRunsManager {...generateProps()} />);
     TestUtils.makeErrorResponseOnce(disableJobSpy, 'cannot disable');
     await (tree.instance() as TestRecurringRunsManager)._setEnabledState('test-run', false);

@@ -99,4 +99,3 @@ export class AllRunsList extends Page<{ namespace?: string; t: TFunction }, AllR
   }
 }
 export default withTranslation(['common'])(AllRunsList);
- 

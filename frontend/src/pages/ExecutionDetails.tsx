@@ -55,7 +55,7 @@ interface ExecutionDetailsState {
   artifactTypeMap?: Map<number, ArtifactType>;
 }
 
-class ExecutionDetails extends Page<{t: TFunction}, ExecutionDetailsState> {
+class ExecutionDetails extends Page<{ t: TFunction }, ExecutionDetailsState> {
   public state: ExecutionDetailsState = {};
 
   private get id(): number {
@@ -428,4 +428,4 @@ const css = stylesheet({
   },
 });
 
-export default withTranslation(['executions','common'])(ExecutionDetails);
+export default withTranslation(['executions', 'common'])(ExecutionDetails);

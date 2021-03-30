@@ -21,7 +21,7 @@ import { ListRequest } from '../lib/Apis';
 import { shallow, ReactWrapper, ShallowWrapper } from 'enzyme';
 import { Row } from '../components/CustomTable';
 
-let mockedValue = ""
+let mockedValue = '';
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => Component => {
@@ -87,7 +87,6 @@ describe('ResourceSelector', () => {
       selectionChanged: selectionChangedCbSpy,
       title: testTitle,
       updateDialog: updateDialogSpy,
-     
     };
   }
 
@@ -144,7 +143,7 @@ describe('ResourceSelector', () => {
   it('shows error dialog if listing fails', async () => {
     //can't find a way to mock a different value of T each time
     //instead just return a value for each 't'
-    mockedValue = "mockedT-value"
+    mockedValue = 'mockedT-value';
     TestUtils.makeErrorResponseOnce(listResourceSpy, 'woops!');
     jest.spyOn(console, 'error').mockImplementation();
 
@@ -174,7 +173,7 @@ describe('ResourceSelector', () => {
   });
 
   it('logs error if more than one resource is selected', async () => {
-    mockedValue = "resources were selected somehow"
+    mockedValue = 'resources were selected somehow';
     tree = shallow(<TestResourceSelector {...generateProps()} />);
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
     await (tree.instance() as TestResourceSelector)._load({});
@@ -195,7 +194,7 @@ describe('ResourceSelector', () => {
   });
 
   it('logs error if selected resource ID is not found in list', async () => {
-    mockedValue = "Somehow no resource was found with ID"
+    mockedValue = 'Somehow no resource was found with ID';
     tree = shallow(<TestResourceSelector {...generateProps()} />);
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
     await (tree.instance() as TestResourceSelector)._load({});

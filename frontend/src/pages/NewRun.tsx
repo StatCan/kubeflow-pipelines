@@ -60,7 +60,7 @@ import { PredicateOp, ApiFilter } from '../apis/filter';
 import { HelpButton } from 'src/atoms/HelpButton';
 import { ExternalLink } from 'src/atoms/ExternalLink';
 import { TFunction } from 'i18next';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 interface NewRunState {
   description: string;
@@ -115,7 +115,7 @@ const descriptionCustomRenderer: React.FC<CustomRendererProps<string>> = props =
   return <Description description={props.value || ''} forceInline={true} />;
 };
 
-export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunState> {
+export class NewRun extends Page<{ namespace?: string; t: TFunction }, NewRunState> {
   public state: NewRunState = {
     catchup: true,
     description: '',
@@ -145,7 +145,11 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       label: this.props.t('common:pipelineName'),
       sortKey: PipelineSortKeys.NAME,
     },
-    { label: this.props.t('common:description'), flex: 2, customRenderer: descriptionCustomRenderer },
+    {
+      label: this.props.t('common:description'),
+      flex: 2,
+      customRenderer: descriptionCustomRenderer,
+    },
     { label: this.props.t('common:uploadedOn'), flex: 1, sortKey: PipelineSortKeys.CREATED_AT },
   ];
 
@@ -158,8 +162,16 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     },
     // TODO(jingzhang36): version doesn't have description field; remove it and
     // fix the rendering.
-    { label: this.props.t('common:description'), flex: 1, customRenderer: descriptionCustomRenderer },
-    { label: this.props.t('common:uploadedOn'), flex: 1, sortKey: PipelineVersionSortKeys.CREATED_AT },
+    {
+      label: this.props.t('common:description'),
+      flex: 1,
+      customRenderer: descriptionCustomRenderer,
+    },
+    {
+      label: this.props.t('common:uploadedOn'),
+      flex: 1,
+      sortKey: PipelineVersionSortKeys.CREATED_AT,
+    },
   ];
 
   private experimentSelectorColumns = [
@@ -174,16 +186,16 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
   ];
 
   public getInitialToolbarState(): ToolbarProps {
-  
     return {
       actions: {},
-      breadcrumbs: [{ displayName: this.props.t('common:experiments'), href: RoutePage.EXPERIMENTS }],
+      breadcrumbs: [
+        { displayName: this.props.t('common:experiments'), href: RoutePage.EXPERIMENTS },
+      ],
       pageTitle: this.props.t('startNewRun'),
     };
   }
 
   public render(): JSX.Element {
-   
     const {
       workflowFromRun,
       description,
@@ -228,7 +240,9 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           {!!workflowFromRun && (
             <div>
               <span>{usePipelineFromRunLabel}</span>
-              {!!originalRunId && <Link to={pipelineDetailsUrl}>[{this.props.t('viewPipeline')}]</Link>}
+              {!!originalRunId && (
+                <Link to={pipelineDetailsUrl}>[{this.props.t('viewPipeline')}]</Link>
+              )}
             </div>
           )}
           {!useWorkflowFromRun && (
@@ -536,7 +550,9 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
 
           {/* One-off/Recurring Run Type */}
           <div className={commonCss.header}>{this.props.t('runType')}</div>
-          {isClone && <span>{isRecurringRun ? this.props.t('recurring') : this.props.t('oneOff')}</span>}
+          {isClone && (
+            <span>{isRecurringRun ? this.props.t('recurring') : this.props.t('oneOff')}</span>
+          )}
           {!isClone && (
             <React.Fragment>
               <FormControlLabel
@@ -679,10 +695,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           experimentId = RunUtils.getFirstExperimentReferenceId(originalJob);
         }
       } catch (err) {
-        await this.showPageError(
-          `${t('errorRetrieveOrigRecurrRun')}: ${originalRunId}.`,
-          err,
-        );
+        await this.showPageError(`${t('errorRetrieveOrigRecurrRun')}: ${originalRunId}.`, err);
         logger.error(`Failed to retrieve original recurring run: ${originalRunId}`, err);
       }
     } else if (embeddedRunId) {
@@ -734,10 +747,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           }
         } catch (err) {
           urlParser.clear(QUERY_PARAMS.pipelineId);
-          await this.showPageError(
-            `${t('errorRetrievePipeline')}: ${possiblePipelineId}.`,
-            err,
-          );
+          await this.showPageError(`${t('errorRetrievePipeline')}: ${possiblePipelineId}.`, err);
           logger.error(`Failed to retrieve pipeline: ${possiblePipelineId}`, err);
         }
       }
@@ -755,17 +765,16 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
           href: RoutePage.EXPERIMENT_DETAILS.replace(':' + RouteParams.experimentId, experimentId),
         });
       } catch (err) {
-        await this.showPageError(
-          `${t('errorRetrieveAssocExperiment')}: ${experimentId}.`,
-          err,
-        );
+        await this.showPageError(`${t('errorRetrieveAssocExperiment')}: ${experimentId}.`, err);
         logger.error(`Failed to retrieve associated experiment: ${experimentId}`, err);
       }
     }
 
     const isRecurringRun = urlParser.get(QUERY_PARAMS.isRecurring) === '1';
     const titleVerb = originalRunId ? t('common:clone') : t('common:start');
-    const pageTitle = isRecurringRun ? `${titleVerb} ${t('aRecurringRun')}` : `${titleVerb} ${t('aRun')}`;
+    const pageTitle = isRecurringRun
+      ? `${titleVerb} ${t('aRecurringRun')}`
+      : `${titleVerb} ${t('aRun')}`;
 
     this.props.updateToolbar({ actions: this.props.toolbarProps.actions, breadcrumbs, pageTitle });
 
@@ -874,7 +883,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       this.setStateSafe({ pipelineSelectorOpen: true, uploadDialogOpen: false });
       return false;
     }
-    const { t } =this.props;
+    const { t } = this.props;
     try {
       const uploadedPipeline =
         method === ImportMethod.LOCAL
@@ -905,10 +914,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
       runWithEmbeddedPipeline = await Apis.runServiceApi.getRun(embeddedRunId);
       embeddedPipelineSpec = RunUtils.getWorkflowManifest(runWithEmbeddedPipeline.run);
     } catch (err) {
-      await this.showPageError(
-        `${t('errorRetrieveSpecRun')}: ${embeddedRunId}.`,
-        err,
-      );
+      await this.showPageError(`${t('errorRetrieveSpecRun')}: ${embeddedRunId}.`, err);
       logger.error(`Failed to retrieve the specified run: ${embeddedRunId}`, err);
       return;
     }
@@ -930,10 +936,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         workflowFromRun: workflow,
       });
     } catch (err) {
-      await this.showPageError(
-        `${t('errorParsePipeline')}: ${embeddedPipelineSpec}.`,
-        err,
-      );
+      await this.showPageError(`${t('errorParsePipeline')}: ${embeddedPipelineSpec}.`, err);
       logger.error(`Failed to parse the embedded pipeline's spec from run: ${embeddedRunId}`, err);
       return;
     }
@@ -979,11 +982,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         );
         name = pipeline.name || '';
       } catch (err) {
-        await this.showPageError(
-          t('errorFindPipelineVersion') +
-            ` ${originalRun.id}.`,
-          err,
-        );
+        await this.showPageError(t('errorFindPipelineVersion') + ` ${originalRun.id}.`, err);
         return;
       }
     } else if (referencePipelineId) {
@@ -991,11 +990,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
         pipeline = await Apis.pipelineServiceApi.getPipeline(referencePipelineId);
         name = pipeline.name || '';
       } catch (err) {
-        await this.showPageError(
-          t('errorFindPipeline') +
-            ` ${originalRun.id}.`,
-          err,
-        );
+        await this.showPageError(t('errorFindPipeline') + ` ${originalRun.id}.`, err);
         return;
       }
     } else if (embeddedPipelineSpec) {
@@ -1146,9 +1141,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
     } else {
       const cloneNumber = match[1] ? +match[1] : 1;
       return `${t('common:clone')} (${cloneNumber + 1}) ${t('common:of')} ${match[2]}`;
-
-  }
-
+    }
   }
 
   private _generateRandomString(length: number): string {
@@ -1215,7 +1208,7 @@ export class NewRun extends Page<{ namespace?: string, t: TFunction }, NewRunSta
 const EnhancedNewRun: React.FC<PageProps> = props => {
   const { t } = useTranslation(['experiments', 'common']);
   const namespace = React.useContext(NamespaceContext);
-  return <NewRun {...props} namespace={namespace} t={t}/>;
+  return <NewRun {...props} namespace={namespace} t={t} />;
 };
 
 export default EnhancedNewRun;

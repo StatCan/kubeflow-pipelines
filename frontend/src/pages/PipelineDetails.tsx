@@ -110,7 +110,7 @@ export const css = stylesheet({
   },
 });
 
-class PipelineDetails extends Page<{t: TFunction}, PipelineDetailsState> {
+class PipelineDetails extends Page<{ t: TFunction }, PipelineDetailsState> {
   constructor(props: any) {
     super(props);
 
@@ -309,7 +309,7 @@ class PipelineDetails extends Page<{t: TFunction}, PipelineDetailsState> {
                       <div className={commonCss.page}>
                         {!selectedNodeInfo && (
                           <div className={commonCss.absoluteCenter}>
-                          {t('retrieveNodeInfoFailed')}
+                            {t('retrieveNodeInfoFailed')}
                           </div>
                         )}
                         {!!selectedNodeInfo && (
@@ -425,10 +425,7 @@ class PipelineDetails extends Page<{t: TFunction}, PipelineDetailsState> {
             );
           }
         } catch (err) {
-          await this.showPageError(
-            `${t('parsePipelineSpecFailed')}: ${runDetails.run!.id}.`,
-            err,
-          );
+          await this.showPageError(`${t('parsePipelineSpecFailed')}: ${runDetails.run!.id}.`, err);
           logger.error(
             `Failed to parse pipeline spec JSON from run with ID: ${runDetails.run!.id}.`,
             err,
