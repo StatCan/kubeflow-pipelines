@@ -82,7 +82,7 @@ class RecurringRunsManager extends React.Component<RecurringRunListProps, Recurr
 
     return (
       <React.Fragment>
-        <Toolbar actions={toolbarActions} breadcrumbs={[]} pageTitle={t('recurringRuns')}/>
+        <Toolbar actions={toolbarActions} breadcrumbs={[]} pageTitle={t('recurringRuns')} />
         <CustomTable
           columns={columns}
           rows={rows}
@@ -95,7 +95,7 @@ class RecurringRunsManager extends React.Component<RecurringRunListProps, Recurr
           disableSelection={true}
           emptyMessage={t('noRecurRunsFound')}
           t={t}
-    />
+        />
       </React.Fragment>
     );
   }

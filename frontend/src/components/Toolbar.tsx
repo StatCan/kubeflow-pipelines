@@ -118,15 +118,14 @@ export interface ToolbarProps {
   pageTitle: string | JSX.Element;
   pageTitleTooltip?: string;
   topLevelToolbar?: boolean;
-  t:TFunction
+  t: TFunction;
 }
 
 class Toolbar extends React.Component<ToolbarProps> {
-  public render(): JSX.Element | null 
-  {
-   const{t}=this.props;
+  public render(): JSX.Element | null {
+    const { t } = this.props;
 
-    const { actions, breadcrumbs, pageTitle, pageTitleTooltip} = { ...this.props };
+    const { actions, breadcrumbs, pageTitle, pageTitleTooltip } = { ...this.props };
 
     if (!actions.length && !breadcrumbs.length && !pageTitle) {
       return null;
@@ -154,7 +153,7 @@ class Toolbar extends React.Component<ToolbarProps> {
           <div className={commonCss.flex}>
             {/* Back Arrow */}
             {breadcrumbs.length > 0 && (
-              <Tooltip title = {t('common:back')} enterDelay={300}>
+              <Tooltip title={t('common:back')} enterDelay={300}>
                 <div>
                   {' '}
                   {/* Div needed because we sometimes disable a button within a tooltip */}

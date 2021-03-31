@@ -21,7 +21,6 @@ import { shallow, ShallowWrapper, ReactWrapper } from 'enzyme';
 import { Apis } from '../lib/Apis';
 import { RoutePage, QUERY_PARAMS } from '../components/Router';
 import { ApiResourceType } from '../apis/pipeline';
-import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
@@ -84,8 +83,7 @@ describe('NewPipelineVersion', () => {
         pathname: RoutePage.NEW_PIPELINE_VERSION,
         search: search ?? '',
       },
-      toolbarProps: {} as any,
-     // toolbarProps:defaultToolbarProps(),
+      toolbarProps: defaultToolbarProps(),
       updateBanner: updateBannerSpy,
       updateDialog: updateDialogSpy,
       updateSnackbar: updateSnackbarSpy,
@@ -157,10 +155,10 @@ describe('NewPipelineVersion', () => {
   });
 
   describe('creating version under an existing pipeline', () => {
-    
     it('does not include any action buttons in the toolbar', async () => {
       tree = shallow(
-        <NewPipelineVersion t={(key: any) => key}
+        <NewPipelineVersion
+          t={(key: any) => key}
           {...generateProps(`?${QUERY_PARAMS.pipelineId}=${MOCK_PIPELINE.id}`)}
         />,
       );
@@ -168,9 +166,11 @@ describe('NewPipelineVersion', () => {
 
       expect(updateToolbarSpy).toHaveBeenLastCalledWith({
         actions: {},
-        breadcrumbs: [{"displayName": "pipelines:pipelineVersions", "href": "/pipeline_versions/new"}],
-        pageTitle: "pipelines:uploadPipelineTitle",
-        t:(key: any) => key,
+        breadcrumbs: [
+          { displayName: 'pipelines:pipelineVersions', href: '/pipeline_versions/new' },
+        ],
+        pageTitle: 'pipelines:uploadPipelineTitle',
+        t: expect.any(Function),
       });
       expect(getPipelineSpy).toHaveBeenCalledTimes(1);
     });

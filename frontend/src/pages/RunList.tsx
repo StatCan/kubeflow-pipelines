@@ -30,8 +30,6 @@ import { formatDateString, logger, errorToMessage, getRunDuration } from '../lib
 import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
 import { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
-
 
 interface PipelineVersionInfo {
   displayName?: string;
@@ -78,7 +76,7 @@ export type RunListProps = MaskProps &
     runIdListMask?: string[];
     selectedIds?: string[];
     storageState?: RunStorageState;
-    t:TFunction
+    t: TFunction;
   };
 
 interface RunListState {
@@ -98,7 +96,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
 
   public render(): JSX.Element {
     // Only show the two most prevalent metrics
-    
+
     const metricMetadata: MetricMetadata[] = this.state.metrics.slice(0, 2);
     const columns: Column[] = [
       {
@@ -107,7 +105,11 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
         label: this.props.t('experiments:runName'),
         sortKey: RunSortKeys.NAME,
       },
-      { customRenderer: this._statusCustomRenderer, flex: 0.5, label:this.props.t('common:status') },
+      {
+        customRenderer: this._statusCustomRenderer,
+        flex: 0.5,
+        label: this.props.t('common:status'),
+      },
       { label: this.props.t('common:duration'), flex: 0.5 },
       {
         customRenderer: this._pipelineVersionCustomRenderer,
@@ -149,7 +151,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
         }),
       );
     }
-    const{t}=this.props;
+    const { t } = this.props;
     const rows: Row[] = this.state.runs.map(r => {
       const displayMetrics = metricMetadata.map(metadata => {
         const displayMetric: DisplayMetric = { metadata };
@@ -186,7 +188,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
     return (
       <div>
         <CustomTable
-           t={t}
+          t={t}
           columns={columns}
           rows={rows}
           selectedIds={this.props.selectedIds}

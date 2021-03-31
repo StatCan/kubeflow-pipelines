@@ -62,7 +62,7 @@ describe('Trigger', () => {
   });
 
   it('renders periodic schedule controls if the trigger type is CRON', () => {
-    const tree = shallow(<Trigger t={(key: any) => key}/>);
+    const tree = shallow(<Trigger t={(key: any) => key} />);
     (tree.instance() as Trigger).handleChange('type')({ target: { value: TriggerType.CRON } });
     expect(tree).toMatchSnapshot();
   });

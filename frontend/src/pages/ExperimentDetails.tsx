@@ -138,7 +138,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
         breadcrumbs: [],
         pageTitle: t('runs'),
         topLevelToolbar: false,
-        t
+        t,
       },
       // TODO: remove
       selectedIds: [],
@@ -154,7 +154,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       // TODO: determine what to show if no props.
       pageTitle: this.props ? this.props.match.params[RouteParams.experimentId] : '',
-      t
+      t,
     };
   }
 
@@ -342,7 +342,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
   }
 
   private _selectionChanged(selectedIds: string[]): void {
-    const{t}=this.props;
+    const { t } = this.props;
     const toolbarActions = this.state.runListToolbarProps.actions;
     toolbarActions[ButtonKeys.COMPARE].disabled =
       selectedIds.length <= 1 || selectedIds.length > 10;

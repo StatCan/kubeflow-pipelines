@@ -26,7 +26,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import { classes, stylesheet } from 'typestyle';
 import { color, commonCss, spacing } from '../Css';
 import { TFunction } from 'i18next';
-import {  withTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 export type Mode = 'error' | 'warning' | 'info';
 
@@ -73,7 +73,7 @@ export interface BannerProps {
   mode?: Mode;
   showTroubleshootingGuideLink?: boolean;
   refresh?: () => void;
-  t:TFunction
+  t: TFunction;
 }
 
 interface BannerState {
@@ -91,7 +91,7 @@ class Banner extends React.Component<BannerProps, BannerState> {
 
   public render(): JSX.Element {
     // Default to error styles.
-  
+
     let bannerModeCss = stylesheet({
       mode: { backgroundColor: color.errorBg, color: color.errorText },
     });
@@ -190,4 +190,4 @@ class Banner extends React.Component<BannerProps, BannerState> {
   }
 }
 
-export default withTranslation ('common')(Banner);
+export default withTranslation('common')(Banner);

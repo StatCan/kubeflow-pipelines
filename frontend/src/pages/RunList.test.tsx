@@ -60,7 +60,6 @@ describe('RunList', () => {
   // test enviroments
   const formatDateStringSpy = jest.spyOn(Utils, 'formatDateString');
 
-
   function generateProps(search?: string): any {
     return {
       history: {} as any,
@@ -68,10 +67,10 @@ describe('RunList', () => {
       match: '' as any,
       onError: onErrorSpy,
       toolbarProps: defaultToolbarProps(),
-       t: identiT 
+      t: identiT,
     };
   }
- 
+
   function mockNRuns(n: number, runTemplate: Partial<ApiRunDetail>): void {
     getRunSpy.mockImplementation(id =>
       Promise.resolve(

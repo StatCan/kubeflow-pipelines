@@ -34,13 +34,13 @@ import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
-  t: ((key: string) => key) as any,
+    t: ((key: string) => key) as any,
   }),
   withTranslation: () => (Component: { defaultProps: any }) => {
-  Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
-  return Component;
+    Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
+    return Component;
   },
-  }));
+}));
 describe('ExperimentDetails', () => {
   let tree: ReactWrapper | ShallowWrapper;
   let t: TFunction = (key: string) => key;
@@ -77,7 +77,7 @@ describe('ExperimentDetails', () => {
       updateDialogSpy,
       updateToolbarSpy,
       updateSnackbarSpy,
-      {t}
+      { t },
     );
   }
 
@@ -132,7 +132,7 @@ describe('ExperimentDetails', () => {
     tree = shallow(<ExperimentDetails {...generateProps()} />);
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenCalledTimes(1);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t":{}});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({ t: {} });
     expect(tree).toMatchSnapshot();
   });
 
@@ -228,8 +228,7 @@ describe('ExperimentDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message:
-        "errorRetrieveExperiment: some-mock-experiment-id. common:clickDetails",
+        message: 'errorRetrieveExperiment: some-mock-experiment-id. common:clickDetails',
         mode: 'error',
       }),
     );
@@ -273,8 +272,7 @@ describe('ExperimentDetails', () => {
     expect(updateBannerSpy).toHaveBeenLastCalledWith(
       expect.objectContaining({
         additionalInfo: 'test error',
-        message:
-        "errorRetrieveRecurrRunsExperiment: some-mock-experiment-id. common:clickDetails",
+        message: 'errorRetrieveRecurrRunsExperiment: some-mock-experiment-id. common:clickDetails',
         mode: 'error',
       }),
     );
@@ -378,7 +376,7 @@ describe('ExperimentDetails', () => {
     (tree.instance() as ExperimentDetails).refresh();
 
     // Error banner should be cleared
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t":{}});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({ t: {} });
   });
 
   it('navigates to the compare runs page', async () => {

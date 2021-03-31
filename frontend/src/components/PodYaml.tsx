@@ -5,14 +5,17 @@ import { serviceErrorToString } from 'src/lib/Utils';
 import Banner from './Banner';
 import Editor from './Editor';
 
-import {TFunction} from 'i18next'
+import { TFunction } from 'i18next';
 
 async function getPodYaml(name: string, namespace: string): Promise<string> {
   const response = await Apis.getPodInfo(name, namespace);
   return JsYaml.safeDump(reorderPodJson(response), { skipInvalid: true });
 }
-export const PodInfo: React.FC<{ name: string; namespace: string,t:TFunction}> = ({ name, namespace,t}) => {
-  
+export const PodInfo: React.FC<{ name: string; namespace: string; t: TFunction }> = ({
+  name,
+  namespace,
+  t,
+}) => {
   return (
     <PodYaml
       name={name}
@@ -30,9 +33,8 @@ async function getPodEventsYaml(name: string, namespace: string): Promise<string
 export const PodEvents: React.FC<{
   name: string;
   namespace: string;
-  t:TFunction
-}> = ({ name, namespace,t }) => {
-  
+  t: TFunction;
+}> = ({ name, namespace, t }) => {
   return (
     <PodYaml
       name={name}
@@ -60,7 +62,6 @@ const PodYaml: React.FC<{
   const [refreshes, setRefresh] = React.useState(0);
 
   React.useEffect(() => {
-    
     let aborted = false;
     async function load() {
       setYaml(undefined);
@@ -87,7 +88,7 @@ const PodYaml: React.FC<{
 
   return (
     <>
-      {error &&  (
+      {error && (
         <Banner
           message={error.message}
           mode='warning'
@@ -107,7 +108,6 @@ const PodYaml: React.FC<{
           readOnly={true}
           highlightActiveLine={true}
           showGutter={true}
-        
         />
       )}
     </>

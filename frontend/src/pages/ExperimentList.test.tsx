@@ -221,7 +221,7 @@ describe('ExperimentList', () => {
     await refreshBtn!.action();
     expect(listExperimentsSpy.mock.calls.length).toBe(2);
     expect(listExperimentsSpy).toHaveBeenLastCalledWith(...LIST_EXPERIMENT_DEFAULTS);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({ t: {} });
   });
 
   it('shows error banner when listing experiments fails', async () => {
@@ -294,7 +294,7 @@ describe('ExperimentList', () => {
     listRunsSpy.mockImplementationOnce(() => ({ runs: [{ name: 'run1' }] }));
     await refreshBtn!.action();
     expect(listExperimentsSpy.mock.calls.length).toBe(2);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({ t: {} });
   });
 
   it('can expand an experiment to see its runs', async () => {
@@ -510,7 +510,7 @@ describe('ExperimentList', () => {
       );
       await act(TestUtils.flushPromises);
       expect(updateBannerSpy).toHaveBeenLastCalledWith(
-        {"t": {}}, // Empty object means banner has no error message
+        { t: {} }, // Empty object means banner has no error message
       );
     });
   });

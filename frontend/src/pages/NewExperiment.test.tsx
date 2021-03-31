@@ -25,14 +25,13 @@ import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
-  withTranslation: () => (Component: { defaultProps: any; }) => {
+  withTranslation: () => (Component: { defaultProps: any }) => {
     Component.defaultProps = { ...Component.defaultProps, t: (key: string) => key };
     return Component;
   },
 }));
 
 describe('NewExperiment', () => {
-
   let tree: ReactWrapper | ShallowWrapper;
   const createExperimentSpy = jest.spyOn(Apis.experimentServiceApi, 'createExperiment');
   const historyPushSpy = jest.fn();
@@ -72,30 +71,31 @@ describe('NewExperiment', () => {
   });
 
   afterEach(() => tree.unmount());
- 
+
   it('renders the new experiment page', () => {
     tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
     expect(tree).toMatchSnapshot();
   });
   it('does not include any action buttons in the toolbar', () => {
-    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />); 
+    tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);
     // the received match the expected values but the test fail
-    
-    let t: TFunction = (key: string) => key as any ;
-    let object= {
-      actions:{},
-      breadcrumbs:[{"displayName": "common:experiments", "href": "/experiments"}],
-      pageTitle:"newExperiment",
-      t 
-    };
-    expect(updateToolbarSpy).lastCalledWith(expect.objectContaining ({ 
-      actions:{},
-      breadcrumbs:[{"displayName": "common:experiments", "href": "/experiments"}],
-      pageTitle:"newExperiment",
-      t 
-    }));
-    })
 
+    let t: TFunction = (key: string) => key as any;
+    let object = {
+      actions: {},
+      breadcrumbs: [{ displayName: 'common:experiments', href: '/experiments' }],
+      pageTitle: 'newExperiment',
+      t,
+    };
+    expect(updateToolbarSpy).lastCalledWith(
+      expect.objectContaining({
+        actions: {},
+        breadcrumbs: [{ displayName: 'common:experiments', href: '/experiments' }],
+        pageTitle: 'newExperiment',
+        t: expect.any(Function),
+      }),
+    );
+  });
 
   it("enables the 'Next' button when an experiment name is entered", () => {
     tree = shallow(<NewExperiment t={(key: any) => key} {...(generateProps() as any)} />);

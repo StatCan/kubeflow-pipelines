@@ -97,7 +97,7 @@ class Compare extends Page<{ t: TFunction }, CompareState> {
         .getToolbarActionMap(),
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: t('compareRuns'),
-      t
+      t,
     };
   }
 

@@ -93,7 +93,7 @@ export class ExperimentList extends Page<
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('common:experiments'),
-      t
+      t,
     };
   }
 
@@ -144,7 +144,7 @@ export class ExperimentList extends Page<
           filterLabel={t('filterExperiments')}
           emptyMessage={t('noExperimentsFound')}
           t={t}
-    />
+        />
       </div>
     );
   }

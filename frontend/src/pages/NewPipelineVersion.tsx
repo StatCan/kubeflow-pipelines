@@ -161,7 +161,7 @@ class NewPipelineVersion extends Page<{ t: TFunction }, NewPipelineVersionState>
         { displayName: t('pipelines:pipelineVersions'), href: RoutePage.NEW_PIPELINE_VERSION },
       ],
       pageTitle: t('pipelines:uploadPipelineTitle'),
-      t
+      t,
     };
   }
 

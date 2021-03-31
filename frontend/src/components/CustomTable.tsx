@@ -193,7 +193,7 @@ interface CustomTableProps {
   toggleExpansion?: (rowId: number) => void;
   updateSelection?: (selectedIds: string[]) => void;
   useRadioButtons?: boolean;
-  t:TFunction
+  t: TFunction;
 }
 
 interface CustomTableState {
@@ -284,7 +284,7 @@ export default class CustomTable extends React.Component<CustomTableProps, Custo
   }
 
   public render(): JSX.Element {
-    const{t}=this.props;
+    const { t } = this.props;
     const { filterString, pageSize, sortBy, sortOrder } = this.state;
     const numSelected = (this.props.selectedIds || []).length;
     const totalFlex = this.props.columns.reduce((total, c) => (total += c.flex || 1), 0);

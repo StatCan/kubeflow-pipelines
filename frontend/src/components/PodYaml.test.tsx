@@ -37,7 +37,9 @@ describe('PodInfo', () => {
         },
       }),
     );
-    const { container } = render(<PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />);
+    const { container } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     // Renders nothing when loading
     expect(container).toMatchInlineSnapshot(`<div />`);
 
@@ -68,7 +70,9 @@ describe('PodInfo', () => {
         },
       }),
     );
-    const { container } = render(<PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />);
+    const { container } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     await act(TestUtils.flushPromises);
     expect(container).toMatchInlineSnapshot(`
       <div>
@@ -87,9 +91,11 @@ describe('PodInfo', () => {
   });
 
   it('shows a warning banner when request fails', async () => {
-   // mockedValue = 'Failed to retrieve pod info.';
+    // mockedValue = 'Failed to retrieve pod info.';
     podInfoSpy.mockImplementation(() => Promise.reject('Pod not found'));
-    const { getAllByText } = render(<PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />);
+    const { getAllByText } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     await act(TestUtils.flushPromises);
     getAllByText('common:retrievePodInfoFailed');
   });
@@ -98,7 +104,9 @@ describe('PodInfo', () => {
     // Network was bad initially
     //mockedValue = 'Failed to retrieve pod info.';
     podInfoSpy.mockImplementation(() => Promise.reject('Network failed'));
-    const { getAllByText } = render(<PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />);
+    const { getAllByText } = render(
+      <PodInfo t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     await act(TestUtils.flushPromises);
 
     // Now network gets healthy
@@ -120,7 +128,9 @@ describe('PodInfo', () => {
         metadata: { name: 'pod-1' },
       }),
     );
-    const { getByText, rerender } = render(<PodInfo t={(key: any) => key} name='test-pod-1' namespace='test-ns' />);
+    const { getByText, rerender } = render(
+      <PodInfo t={(key: any) => key} name='test-pod-1' namespace='test-ns' />,
+    );
     expect(podInfoSpy).toHaveBeenLastCalledWith('test-pod-1', 'test-ns');
     await act(TestUtils.flushPromises);
     getByText(/pod-1/);
@@ -150,7 +160,9 @@ describe('PodEvents', () => {
         kind: 'EventList',
       }),
     );
-    const { container } = render(<PodEvents t={(key: any) => key} name='test-pod' namespace='test-ns' />);
+    const { container } = render(
+      <PodEvents t={(key: any) => key} name='test-pod' namespace='test-ns' />,
+    );
     await act(TestUtils.flushPromises);
     expect(container).toMatchInlineSnapshot(`
       <div>
@@ -166,11 +178,11 @@ describe('PodEvents', () => {
 
   it('shows a warning banner when request fails', async () => {
     podEventsSpy.mockImplementation(() => Promise.reject('Pod not found'));
-    const { getByText } = render(<PodEvents t={(key: any) => key} name='test-pod' namespace='test-ns' />);
-    await act(TestUtils.flushPromises);
-    getByText(
-      'common:retrievePodEventsFailed',
+    const { getByText } = render(
+      <PodEvents t={(key: any) => key} name='test-pod' namespace='test-ns' />,
     );
+    await act(TestUtils.flushPromises);
+    getByText('common:retrievePodEventsFailed');
   });
 });
 function getAllByText(arg0: string) {

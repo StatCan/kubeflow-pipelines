@@ -26,11 +26,9 @@ import { ApiPipeline, ApiPipelineVersion } from '../apis/pipeline';
 import { ApiResourceType, ApiRunDetail, ApiParameter, ApiRelationship } from '../apis/run';
 import { MemoryRouter } from 'react-router';
 import { logger } from '../lib/Utils';
-import { NamespaceContext } from '../lib/KubeflowClient';
 import { ApiFilter, PredicateOp } from '../apis/filter';
 import { ExperimentStorageState } from '../apis/experiment';
 import { ApiJob } from 'src/apis/job';
-import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
@@ -255,7 +253,7 @@ describe('NewRun', () => {
     (tree.instance() as TestNewRun).refresh();
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenCalledTimes(2);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({ t: {} });
   });
 
   it('clears the banner when load is called', async () => {
@@ -264,7 +262,7 @@ describe('NewRun', () => {
     (tree.instance() as TestNewRun).load();
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenCalledTimes(2);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({ t: {} });
   });
 
   it('allows updating the run name', async () => {

@@ -38,7 +38,6 @@ import {
 } from '../lib/TriggerUtils';
 import { logger } from 'src/lib/Utils';
 import { TFunction } from 'i18next';
-import { useTranslation } from 'react-i18next';
 
 type TriggerInitialProps = {
   maxConcurrentRuns?: string;
@@ -48,7 +47,7 @@ type TriggerInitialProps = {
 
 interface TriggerProps {
   initialProps?: TriggerInitialProps;
-  t:TFunction;
+  t: TFunction;
   onChange?: (config: {
     trigger?: ApiTrigger;
     maxConcurrentRuns?: string;
@@ -80,9 +79,8 @@ const css = stylesheet({
 });
 
 export default class Trigger extends React.Component<TriggerProps, TriggerState> {
-  
   public state: TriggerState = (() => {
-    const{t}=this.props;
+    const { t } = this.props;
     const { maxConcurrentRuns, catchup, trigger } =
       this.props.initialProps || ({} as TriggerInitialProps);
     let parsedTrigger: Partial<ParsedTrigger> = {};
@@ -135,7 +133,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
   }
 
   public render(): JSX.Element {
-    const{t}=this.props;
+    const { t } = this.props;
     const {
       cron,
       editCron,
@@ -260,15 +258,9 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
             <HelpButton
               helpText={
                 <div>
-                  <p>
-                    {t('experiments:catchupHelpText1')}
-                  </p>
-                  <p>
-                    {t('experiments:catchupHelpText2')}
-                  </p>
-                  <p>
-                    {t('experiments:catchupHelpText3')}
-                  </p>
+                  <p>{t('experiments:catchupHelpText1')}</p>
+                  <p>{t('experiments:catchupHelpText2')}</p>
+                  <p>{t('experiments:catchupHelpText3')}</p>
                 </div>
               }
             />
@@ -302,10 +294,10 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
               variant='outlined'
             >
               {Object.keys(PeriodicInterval).map((interval, i) => (
-                 <MenuItem key={i} value={PeriodicInterval[interval]}>
+                <MenuItem key={i} value={PeriodicInterval[interval]}>
                   {/* Add "s" based on interval */}
-                  {t(PeriodicInterval[interval])+ (type === TriggerType.INTERVALED ? 's' : '')}
-                  </MenuItem>
+                  {t(PeriodicInterval[interval]) + (type === TriggerType.INTERVALED ? 's' : '')}
+                </MenuItem>
               ))}
             </Input>
           </span>
@@ -433,7 +425,6 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
             catchup,
             maxConcurrentRuns: trigger ? this.state.maxConcurrentRuns : undefined,
             trigger,
-            
           });
         }
       },

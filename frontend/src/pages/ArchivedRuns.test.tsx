@@ -72,7 +72,7 @@ describe('ArchivedRuns', () => {
   it('removes error banner on unmount', () => {
     tree = shallow(<ArchivedRuns {...generateProps()} />);
     tree.unmount();
-    expect(updateBannerSpy).toHaveBeenCalledWith({"t": {}});
+    expect(updateBannerSpy).toHaveBeenCalledWith({ t: {} });
   });
 
   it('enables restore and delete button when at least one run is selected', () => {

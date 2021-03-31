@@ -80,7 +80,7 @@ describe('AllRunsList', () => {
   it('removes error banner on unmount', () => {
     shallowMountComponent();
     tree.unmount();
-    expect(updateBannerSpy).toHaveBeenCalledWith({"t":{}});
+    expect(updateBannerSpy).toHaveBeenCalledWith({ t: {} });
   });
 
   it('only enables clone button when exactly one run is selected', () => {

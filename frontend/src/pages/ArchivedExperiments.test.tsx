@@ -69,7 +69,7 @@ describe('ArchivedExperiemnts', () => {
   it('removes error banner on unmount', () => {
     tree = shallow(<ArchivedExperiments {...generateProps()} />);
     tree.unmount();
-    expect(updateBannerSpy).toHaveBeenCalledWith({"t":{}});
+    expect(updateBannerSpy).toHaveBeenCalledWith({ t: {} });
   });
 
   it('refreshes the experiment list when refresh button is clicked', async () => {

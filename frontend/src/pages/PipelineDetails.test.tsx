@@ -362,7 +362,7 @@ describe('PipelineDetails', () => {
 
     (tree.instance() as PipelineDetails).refresh();
 
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({ t: {} });
   });
 
   it('shows empty pipeline details with empty graph', async () => {

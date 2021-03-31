@@ -22,7 +22,6 @@ import { RunStorageState } from '../apis/run';
 import { ToolbarProps } from '../components/Toolbar';
 import { classes } from 'typestyle';
 import { commonCss, padding } from '../Css';
-import { TFunction } from 'i18next';
 import { withTranslation } from 'react-i18next';
 
 interface AllRunsListState {
@@ -30,7 +29,7 @@ interface AllRunsListState {
 }
 
 export class AllRunsList extends Page<{ namespace?: string }, AllRunsListState> {
-  private _runlistRef = React.createRef< any>();
+  private _runlistRef = React.createRef<any>();
   constructor(props: any) {
     super(props);
     this.state = {
@@ -57,7 +56,7 @@ export class AllRunsList extends Page<{ namespace?: string }, AllRunsListState> 
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('common:experiments'),
-      t
+      t,
     };
   }
 
@@ -68,12 +67,11 @@ export class AllRunsList extends Page<{ namespace?: string }, AllRunsListState> 
           onError={this.showPageError.bind(this)}
           selectedIds={this.state.selectedIds}
           onSelectionChange={this._selectionChanged.bind(this)}
-         // ref={this._runlistRef}
+          // ref={this._runlistRef}
           storageState={RunStorageState.AVAILABLE}
           hideMetricMetadata={true}
           namespaceMask={this.props.namespace}
           {...this.props}
-  
         />
       </div>
     );
