@@ -402,7 +402,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
         nextPageToken = response.next_page_token || '';
       } catch (err) {
         const error = new Error(await errorToMessage(err));
-        this.props.onError('Error: failed to fetch runs.', error);
+        this.props.onError(this.props.t('common:errorFetchRuns'), error);
         // No point in continuing if we couldn't retrieve any runs.
         return '';
       }

@@ -288,7 +288,7 @@ describe('RunList', () => {
     tree = shallow(<RunList {...props} />);
     await (tree.instance() as RunListTest)._loadRuns({});
     expect(props.onError).toHaveBeenLastCalledWith(
-      'Error: failed to fetch runs.',
+      "common:errorFetchRuns",
       new Error('bad stuff happened'),
     );
   });
