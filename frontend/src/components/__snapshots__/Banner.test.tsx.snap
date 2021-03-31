@@ -36,7 +36,9 @@ exports[`Banner shows "Details" button and has dialog when there is additional i
     <WithStyles(Button)
       className="button detailsButton"
       onClick={[Function]}
-    />
+    >
+      common:detailsLowercase
+    </WithStyles(Button)>
   </div>
   <WithStyles(Dialog)
     onClose={[Function]}
@@ -80,7 +82,9 @@ exports[`Banner shows "Refresh" button when passed a refresh function 1`] = `
     <WithStyles(Button)
       className="button refreshButton"
       onClick={[Function]}
-    />
+    >
+      common:refresh
+    </WithStyles(Button)>
   </div>
 </div>
 `;

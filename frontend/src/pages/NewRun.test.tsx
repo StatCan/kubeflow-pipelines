@@ -255,7 +255,7 @@ describe('NewRun', () => {
     (tree.instance() as TestNewRun).refresh();
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenCalledTimes(2);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
   });
 
   it('clears the banner when load is called', async () => {
@@ -264,7 +264,7 @@ describe('NewRun', () => {
     (tree.instance() as TestNewRun).load();
     await TestUtils.flushPromises();
     expect(updateBannerSpy).toHaveBeenCalledTimes(2);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
   });
 
   it('allows updating the run name', async () => {

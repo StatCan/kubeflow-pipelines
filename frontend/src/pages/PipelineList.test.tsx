@@ -27,7 +27,7 @@ import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
-  withTranslation: () => Component => {
+  withTranslation: () => (Component: { defaultProps: any; }) => {
     Component.defaultProps = { ...Component.defaultProps, t: (key: string) => key };
     return Component;
   },
@@ -180,7 +180,7 @@ describe('PipelineList', () => {
     await refreshBtn!.action();
     expect(listPipelinesSpy.mock.calls.length).toBe(2);
     expect(listPipelinesSpy).toHaveBeenLastCalledWith('', 10, 'created_at desc', '');
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
   });
 
   it('shows error banner when listing pipelines fails', async () => {
@@ -234,7 +234,7 @@ describe('PipelineList', () => {
     listPipelinesSpy.mockImplementationOnce(() => ({ pipelines: [{ name: 'pipeline1' }] }));
     await refreshBtn!.action();
     expect(listPipelinesSpy.mock.calls.length).toBe(2);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t": {}});
   });
 
   it('renders pipeline names as links to their details pages', async () => {

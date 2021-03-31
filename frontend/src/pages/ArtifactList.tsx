@@ -104,6 +104,7 @@ class ArtifactList extends Page<{ t: TFunction }, ArtifactListState> {
       actions: {},
       breadcrumbs: [],
       pageTitle: t('common:artifacts'),
+      t
     };
   }
 
@@ -124,6 +125,7 @@ class ArtifactList extends Page<{ t: TFunction }, ArtifactListState> {
           getExpandComponent={this.getExpandedArtifactsRow}
           toggleExpansion={this.toggleRowExpand}
           emptyMessage={t('noArtifactsFound')}
+          t={t}
         />
       </div>
     );

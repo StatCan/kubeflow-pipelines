@@ -51,6 +51,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
           },
         ]
       }
+      t={[Function]}
     >
       <div
         className="pageOverflowHidden"
@@ -87,6 +88,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
             className="filterBox"
             height={48}
             id="tableFilterBox"
+            label=""
             maxWidth="100%"
             onChange={[Function]}
             value=""
@@ -122,6 +124,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by cre
               }
               className="filterBox"
               id="tableFilterBox"
+              label=""
               onChange={[Function]}
               required={false}
               select={false}
@@ -4473,6 +4476,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
           },
         ]
       }
+      t={[Function]}
     >
       <div
         className="pageOverflowHidden"
@@ -4509,6 +4513,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
             className="filterBox"
             height={48}
             id="tableFilterBox"
+            label=""
             maxWidth="100%"
             onChange={[Function]}
             value=""
@@ -4544,6 +4549,7 @@ exports[`PipelineVersionList calls Apis to list pipeline versions, sorted by pip
               }
               className="filterBox"
               id="tableFilterBox"
+              label=""
               onChange={[Function]}
               required={false}
               select={false}
@@ -9194,6 +9200,7 @@ exports[`PipelineVersionList renders a list of one pipeline version 1`] = `
         },
       ]
     }
+    t={[Function]}
   />
 </div>
 `;
@@ -9230,6 +9237,7 @@ exports[`PipelineVersionList renders a list of one pipeline version with error 1
         },
       ]
     }
+    t={[Function]}
   />
 </div>
 `;
@@ -9256,6 +9264,7 @@ exports[`PipelineVersionList renders a list of one pipeline version without crea
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
+    t={[Function]}
   />
 </div>
 `;
@@ -9282,6 +9291,7 @@ exports[`PipelineVersionList renders an empty list with empty state message 1`] 
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
+    t={[Function]}
   />
 </div>
 `;

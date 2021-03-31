@@ -95,6 +95,7 @@ class ExecutionList extends Page<{ t: TFunction }, ExecutionListState> {
       actions: {},
       breadcrumbs: [],
       pageTitle: t('common:executions'),
+      t
     };
   }
 
@@ -115,7 +116,8 @@ class ExecutionList extends Page<{ t: TFunction }, ExecutionListState> {
           getExpandComponent={this.getExpandedExecutionsRow}
           toggleExpansion={this.toggleRowExpand}
           emptyMessage={t('noExecutionsFound')}
-        />
+          t={t}
+    />
       </div>
     );
   }

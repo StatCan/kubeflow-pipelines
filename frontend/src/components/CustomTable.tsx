@@ -37,7 +37,7 @@ import { ApiFilter, PredicateOp } from '../apis/filter/api';
 import { debounce } from 'lodash';
 import { InputAdornment } from '@material-ui/core';
 import { CustomTableRow } from './CustomTableRow';
-import i18next from 'i18next'
+import { TFunction } from 'i18next';
 
 export enum ExpandState {
   COLLAPSED,
@@ -193,6 +193,7 @@ interface CustomTableProps {
   toggleExpansion?: (rowId: number) => void;
   updateSelection?: (selectedIds: string[]) => void;
   useRadioButtons?: boolean;
+  t:TFunction
 }
 
 interface CustomTableState {
@@ -283,6 +284,7 @@ export default class CustomTable extends React.Component<CustomTableProps, Custo
   }
 
   public render(): JSX.Element {
+    const{t}=this.props;
     const { filterString, pageSize, sortBy, sortOrder } = this.state;
     const numSelected = (this.props.selectedIds || []).length;
     const totalFlex = this.props.columns.reduce((total, c) => (total += c.flex || 1), 0);
@@ -295,7 +297,7 @@ export default class CustomTable extends React.Component<CustomTableProps, Custo
           <div>
             <Input
               id='tableFilterBox'
-              label={this.props.filterLabel || i18next.t('common:filter')}
+              label={this.props.filterLabel || t('common:filter')}
               height={48}
               maxWidth={'100%'}
               className={css.filterBox}
@@ -431,7 +433,7 @@ export default class CustomTable extends React.Component<CustomTableProps, Custo
         {/* Footer */}
         {!this.props.disablePaging && (
           <div className={css.footer}>
-            <span className={padding(10, 'r')}>{i18next.t('common:rowsperpage')}</span>
+            <span className={padding(10, 'r')}>{t('common:rowsperpage')}</span>
             <TextField
               select={true}
               variant='standard'

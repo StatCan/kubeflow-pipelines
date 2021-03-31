@@ -231,6 +231,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
         .getToolbarActionMap(),
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: this.props.runId!,
+      t
     };
   }
 
@@ -302,7 +303,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                         selectedNodeId={selectedNodeId}
                         onClick={id => this._selectNode(id)}
                         onError={(message, additionalInfo) =>
-                          this.props.updateBanner({ message, additionalInfo, mode: 'error' })
+                          this.props.updateBanner({ message, additionalInfo, mode: 'error',t })
                         }
                         t={t}
                       />
@@ -466,7 +467,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                                   selectedNodeDetails.phase !== NodePhase.SKIPPED && (
                                     <div className={commonCss.page}>
                                       {selectedNodeId && namespace && (
-                                        <PodInfo name={selectedNodeId} namespace={namespace} />
+                                        <PodInfo name={selectedNodeId} namespace={namespace} t={t} />
                                       )}
                                     </div>
                                   )}
@@ -475,7 +476,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
                                   selectedNodeDetails.phase !== NodePhase.SKIPPED && (
                                     <div className={commonCss.page}>
                                       {selectedNodeId && namespace && (
-                                        <PodEvents name={selectedNodeId} namespace={namespace} />
+                                        <PodEvents name={selectedNodeId} namespace={namespace} t={t}/>
                                       )}
                                     </div>
                                   )}
@@ -697,6 +698,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
             message: t('runTerminated'),
             mode: 'warning',
             refresh: undefined,
+            t
           });
         } else {
           this.showPageError(`${t('errorErrorsFoundRun')}: ${runId}.`, new Error(workflowError));

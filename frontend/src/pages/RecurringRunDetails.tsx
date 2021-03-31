@@ -46,6 +46,7 @@ class RecurringRunDetails extends Page<{ t: TFunction }, RecurringRunConfigState
   }
 
   public getInitialToolbarState(): ToolbarProps {
+    const{t}=this.props;
     const buttons = new Buttons(this.props, this.refresh.bind(this));
     return {
       actions: buttons
@@ -62,6 +63,7 @@ class RecurringRunDetails extends Page<{ t: TFunction }, RecurringRunConfigState
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: '',
+      t
     };
   }
 

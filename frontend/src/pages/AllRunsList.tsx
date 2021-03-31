@@ -29,8 +29,8 @@ interface AllRunsListState {
   selectedIds: string[];
 }
 
-export class AllRunsList extends Page<{ namespace?: string; t: TFunction }, AllRunsListState> {
-  private _runlistRef = React.createRef<RunList>();
+export class AllRunsList extends Page<{ namespace?: string }, AllRunsListState> {
+  private _runlistRef = React.createRef< any>();
   constructor(props: any) {
     super(props);
     this.state = {
@@ -57,6 +57,7 @@ export class AllRunsList extends Page<{ namespace?: string; t: TFunction }, AllR
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('common:experiments'),
+      t
     };
   }
 
@@ -67,11 +68,12 @@ export class AllRunsList extends Page<{ namespace?: string; t: TFunction }, AllR
           onError={this.showPageError.bind(this)}
           selectedIds={this.state.selectedIds}
           onSelectionChange={this._selectionChanged.bind(this)}
-          ref={this._runlistRef}
+         // ref={this._runlistRef}
           storageState={RunStorageState.AVAILABLE}
           hideMetricMetadata={true}
           namespaceMask={this.props.namespace}
           {...this.props}
+  
         />
       </div>
     );

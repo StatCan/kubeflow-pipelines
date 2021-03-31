@@ -85,13 +85,13 @@ export default class TestUtils {
       history: { push: historyPushSpy } as any,
       location: location as any,
       match: matchValue,
-      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: '' },
+      toolbarProps: { actions: {}, breadcrumbs: [], pageTitle: '', t: {} as TFunction },
       updateBanner: updateBannerSpy as any,
       updateDialog: updateDialogSpy as any,
       updateSnackbar: updateSnackbarSpy as any,
       updateToolbar: updateToolbarSpy as any,
-      t:{} as TFunction
-    } as PageProps;
+      t: {} as TFunction
+    }  as PageProps;
     const props = {
       ...pageProps,
       ...propOverrides
@@ -164,6 +164,7 @@ export function defaultToolbarProps(): ToolbarProps {
   return {
     pageTitle: '',
     breadcrumbs: [{ displayName: '', href: '' }],
-    actions: {}
+    actions: {},
+    t: {} as TFunction
   }
 }

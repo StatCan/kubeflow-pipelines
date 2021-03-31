@@ -90,6 +90,7 @@ class PipelineList extends Page<{ t: TFunction }, PipelineListState> {
         .getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: t('pipelines'),
+      t
     };
   }
 
@@ -128,6 +129,7 @@ class PipelineList extends Page<{ t: TFunction }, PipelineListState> {
           getExpandComponent={this._getExpandedPipelineComponent.bind(this)}
           filterLabel={t('filterPipelines')}
           emptyMessage={t('noPipelinesFound')}
+          t={t}
         />
 
         <UploadPipelineDialog

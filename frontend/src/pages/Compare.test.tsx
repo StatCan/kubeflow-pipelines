@@ -172,7 +172,7 @@ describe('Compare', () => {
   it('clears banner upon initial load', () => {
     tree = shallow(<Compare {...generateProps()} />);
     expect(updateBannerSpy).toHaveBeenCalledTimes(1);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t":{}});
   });
 
   it('renders a page with no runs', async () => {
@@ -183,7 +183,7 @@ describe('Compare', () => {
     await TestUtils.flushPromises();
 
     expect(updateBannerSpy).toHaveBeenCalledTimes(1);
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t":{}});
 
     expect(tree).toMatchSnapshot();
   });
@@ -258,7 +258,7 @@ describe('Compare', () => {
     (tree.instance() as Compare).refresh();
 
     // Error banner should be cleared
-    expect(updateBannerSpy).toHaveBeenLastCalledWith({});
+    expect(updateBannerSpy).toHaveBeenLastCalledWith({"t":{}});
   });
 
   it("displays run's parameters if the run has any", async () => {

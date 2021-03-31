@@ -72,6 +72,7 @@ exports[`ExperimentList loads multiple experiments 1`] = `
         },
       ]
     }
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>
@@ -113,6 +114,7 @@ exports[`ExperimentList loads one experiment 1`] = `
         },
       ]
     }
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>
@@ -139,6 +141,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
         },
       ],
       "pageTitle": "",
+      "t": Object {},
     }
   }
 >
@@ -165,6 +168,7 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
       initialSortColumn="created_at"
       reload={[Function]}
       rows={Array []}
+      t={[Function]}
       toggleExpansion={[Function]}
     >
       <div
@@ -2391,7 +2395,9 @@ exports[`ExperimentList reloads the experiment when refresh is called 1`] = `
         >
           <span
             className=""
-          />
+          >
+            common:rowsperpage
+          </span>
           <TextField
             InputProps={
               Object {
@@ -3810,6 +3816,7 @@ exports[`ExperimentList renders the empty experience 1`] = `
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>
@@ -3839,6 +3846,7 @@ exports[`ExperimentList renders the empty experience in ARCHIVED state 1`] = `
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>

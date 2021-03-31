@@ -73,7 +73,7 @@ class ResourceSelector extends React.Component<ResourceSelectorProps, ResourceSe
 
   public render(): JSX.Element {
     const { rows, selectedIds, toolbarActionMap } = this.state;
-    const { columns, title, filterLabel, emptyMessage, initialSortColumn } = this.props;
+    const { columns, title, filterLabel, emptyMessage, initialSortColumn,t } = this.props;
 
     return (
       <React.Fragment>
@@ -88,6 +88,7 @@ class ResourceSelector extends React.Component<ResourceSelectorProps, ResourceSe
           initialSortColumn={initialSortColumn}
           reload={this._load.bind(this)}
           emptyMessage={emptyMessage}
+          t={t}
         />
       </React.Fragment>
     );

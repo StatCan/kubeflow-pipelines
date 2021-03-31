@@ -25,7 +25,8 @@ import { Link } from 'react-router-dom';
 import { classes, stylesheet } from 'typestyle';
 import BusyButton from '../atoms/BusyButton';
 import { color, commonCss, dimension, fonts, fontsize, spacing } from '../Css';
-import i18next from 'i18next';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 export interface ToolbarActionMap {
   [key: string]: ToolbarActionConfig;
@@ -117,12 +118,14 @@ export interface ToolbarProps {
   pageTitle: string | JSX.Element;
   pageTitleTooltip?: string;
   topLevelToolbar?: boolean;
+  t:TFunction
 }
 
 class Toolbar extends React.Component<ToolbarProps> {
   public render(): JSX.Element | null 
- 
   {
+   const{t}=this.props;
+
     const { actions, breadcrumbs, pageTitle, pageTitleTooltip} = { ...this.props };
 
     if (!actions.length && !breadcrumbs.length && !pageTitle) {
@@ -151,7 +154,7 @@ class Toolbar extends React.Component<ToolbarProps> {
           <div className={commonCss.flex}>
             {/* Back Arrow */}
             {breadcrumbs.length > 0 && (
-              <Tooltip title = {i18next.t('common:back')} enterDelay={300}>
+              <Tooltip title = {t('common:back')} enterDelay={300}>
                 <div>
                   {' '}
                   {/* Div needed because we sometimes disable a button within a tooltip */}
@@ -214,5 +217,4 @@ class Toolbar extends React.Component<ToolbarProps> {
     );
   }
 }
-
-export default Toolbar;
+export default withTranslation('common')(Toolbar);

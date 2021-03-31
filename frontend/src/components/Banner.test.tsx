@@ -19,6 +19,12 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import Banner, { css } from './Banner';
 
+jest.mock('react-i18next', () => ({
+  withTranslation: () => (Component: { defaultProps: any }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
+    return Component;
+  },
+}));
 describe('Banner', () => {
   it('defaults to error mode', () => {
     const tree = shallow(<Banner message={'Some message'} />);
@@ -92,7 +98,9 @@ describe('Banner', () => {
           <a
             className="troubleShootingLink"
             href="https://www.kubeflow.org/docs/pipelines/troubleshooting"
-          />
+          >
+            common:troubleshooting
+          </a>
         </div>
       </div>
     `);

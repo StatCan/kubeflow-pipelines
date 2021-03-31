@@ -186,12 +186,14 @@ export class NewRun extends Page<{ namespace?: string; t: TFunction }, NewRunSta
   ];
 
   public getInitialToolbarState(): ToolbarProps {
+    const{t}=this.props;
     return {
       actions: {},
       breadcrumbs: [
         { displayName: this.props.t('common:experiments'), href: RoutePage.EXPERIMENTS },
       ],
       pageTitle: this.props.t('startNewRun'),
+      t
     };
   }
 
@@ -218,7 +220,7 @@ export class NewRun extends Page<{ namespace?: string; t: TFunction }, NewRunSta
       usePipelineFromRunLabel,
       useWorkflowFromRun,
     } = this.state;
-
+    const{t}=this.props;
     const urlParser = new URLParser(this.props);
     const originalRunId =
       urlParser.get(QUERY_PARAMS.cloneFromRun) || urlParser.get(QUERY_PARAMS.fromRunId);
@@ -594,6 +596,7 @@ export class NewRun extends Page<{ namespace?: string; t: TFunction }, NewRunSta
                     this._validate.bind(this),
                   )
                 }
+                t={t}
               />
             </React.Fragment>
           )}

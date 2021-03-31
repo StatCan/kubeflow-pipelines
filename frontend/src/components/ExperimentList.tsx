@@ -82,6 +82,7 @@ export class ExperimentList extends React.PureComponent<ExperimentListProps, Exp
           getExpandComponent={this._getExpandedExperimentComponent.bind(this)}
           filterLabel={t('experiments:filterExperiments')}
           emptyMessage={t('experiments:noExperimentsFound')}
+          t={t}
         />
       </div>
     );

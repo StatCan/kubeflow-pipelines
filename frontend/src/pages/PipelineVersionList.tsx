@@ -119,6 +119,7 @@ class PipelineVersionList extends React.PureComponent<
           disableSelection={this.props.disableSelection}
           noFilterBox={this.props.noFilterBox}
           emptyMessage={t('noPipelineVerFound')}
+          t={t}
         />
       </div>
     );

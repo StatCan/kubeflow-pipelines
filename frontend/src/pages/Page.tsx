@@ -67,7 +67,7 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
     if (!this._isMounted) {
       return;
     }
-    this.props.updateBanner({});
+    this.props.updateBanner({t:{} as any});
   }
 
   public showPageError: PageErrorHandler = async (message, error, mode, refresh): Promise<void> => {
@@ -81,6 +81,7 @@ export abstract class Page<P, S> extends React.Component<P & PageProps, S> {
       message: message + ' ' + (errorMessage ? t('common:clickDetails') : ''),
       mode: mode || 'error',
       refresh: refresh || this.refresh.bind(this),
+      t
     });
   };
 

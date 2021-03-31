@@ -17,7 +17,7 @@
 import * as React from 'react';
 import * as Utils from '../lib/Utils';
 import RunList, { RunListProps } from './RunList';
-import TestUtils from '../TestUtils';
+import TestUtils, { defaultToolbarProps } from '../TestUtils';
 import produce from 'immer';
 import { ApiFilter, PredicateOp } from '../apis/filter';
 import {
@@ -33,11 +33,11 @@ import { MetricMetadata } from '../lib/RunUtils';
 import { NodePhase } from '../lib/StatusUtils';
 import { ReactWrapper, ShallowWrapper, shallow } from 'enzyme';
 import { range } from 'lodash';
+import { TFunction } from 'i18next';
 
 jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
   withTranslation: () => (Component: { defaultProps: any }) => {
-    Component.defaultProps = { ...Component.defaultProps, t: () => '' };
+    Component.defaultProps = { ...Component.defaultProps, t: ((key: string) => key) as any };
     return Component;
   },
 }));
@@ -50,7 +50,7 @@ class RunListTest extends RunList {
 
 describe('RunList', () => {
   let tree: ShallowWrapper | ReactWrapper;
-
+  let identiT: TFunction = (key: string) => key;
   const onErrorSpy = jest.fn();
   const listRunsSpy = jest.spyOn(Apis.runServiceApi, 'listRuns');
   const getRunSpy = jest.spyOn(Apis.runServiceApi, 'getRun');
@@ -60,15 +60,18 @@ describe('RunList', () => {
   // test enviroments
   const formatDateStringSpy = jest.spyOn(Utils, 'formatDateString');
 
-  function generateProps(): RunListProps {
+
+  function generateProps(search?: string): any {
     return {
       history: {} as any,
       location: { search: '' } as any,
       match: '' as any,
       onError: onErrorSpy,
+      toolbarProps: defaultToolbarProps(),
+       t: identiT 
     };
   }
-
+ 
   function mockNRuns(n: number, runTemplate: Partial<ApiRunDetail>): void {
     getRunSpy.mockImplementation(id =>
       Promise.resolve(

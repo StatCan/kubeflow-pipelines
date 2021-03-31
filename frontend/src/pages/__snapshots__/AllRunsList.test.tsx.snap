@@ -83,6 +83,7 @@ exports[`AllRunsList renders all runs 1`] = `
         },
         "breadcrumbs": Array [],
         "pageTitle": "common:experiments",
+        "t": [Function],
       }
     }
     updateBanner={[MockFunction]}

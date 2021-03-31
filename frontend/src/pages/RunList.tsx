@@ -29,7 +29,9 @@ import { commonCss, color } from '../Css';
 import { formatDateString, logger, errorToMessage, getRunDuration } from '../lib/Utils';
 import { statusToIcon } from './Status';
 import Tooltip from '@material-ui/core/Tooltip';
-import i18next from 'i18next';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
+
 
 interface PipelineVersionInfo {
   displayName?: string;
@@ -76,6 +78,7 @@ export type RunListProps = MaskProps &
     runIdListMask?: string[];
     selectedIds?: string[];
     storageState?: RunStorageState;
+    t:TFunction
   };
 
 interface RunListState {
@@ -95,34 +98,35 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
 
   public render(): JSX.Element {
     // Only show the two most prevalent metrics
+    
     const metricMetadata: MetricMetadata[] = this.state.metrics.slice(0, 2);
     const columns: Column[] = [
       {
         customRenderer: this._nameCustomRenderer,
         flex: 1.5,
-        label: i18next.t('experiments:runName'),
+        label: this.props.t('experiments:runName'),
         sortKey: RunSortKeys.NAME,
       },
-      { customRenderer: this._statusCustomRenderer, flex: 0.5, label: i18next.t('common:status') },
-      { label: i18next.t('common:duration'), flex: 0.5 },
+      { customRenderer: this._statusCustomRenderer, flex: 0.5, label:this.props.t('common:status') },
+      { label: this.props.t('common:duration'), flex: 0.5 },
       {
         customRenderer: this._pipelineVersionCustomRenderer,
-        label: i18next.t('common:pipelineVersion'),
+        label: this.props.t('common:pipelineVersion'),
         flex: 1,
       },
       {
         customRenderer: this._recurringRunCustomRenderer,
-        label: i18next.t('common:recurringRun'),
+        label: this.props.t('common:recurringRun'),
         flex: 0.5,
       },
-      { label: i18next.t('common:startTime'), flex: 1, sortKey: RunSortKeys.CREATED_AT },
+      { label: this.props.t('common:startTime'), flex: 1, sortKey: RunSortKeys.CREATED_AT },
     ];
 
     if (!this.props.hideExperimentColumn) {
       columns.splice(3, 0, {
         customRenderer: this._experimentCustomRenderer,
         flex: 1,
-        label: i18next.t('common:experiment'),
+        label: this.props.t('common:experiment'),
       });
     }
 
@@ -145,7 +149,7 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
         }),
       );
     }
-
+    const{t}=this.props;
     const rows: Row[] = this.state.runs.map(r => {
       const displayMetrics = metricMetadata.map(metadata => {
         const displayMetric: DisplayMetric = { metadata };
@@ -182,12 +186,13 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
     return (
       <div>
         <CustomTable
+           t={t}
           columns={columns}
           rows={rows}
           selectedIds={this.props.selectedIds}
           initialSortColumn={RunSortKeys.CREATED_AT}
           ref={this._tableRef}
-          filterLabel={i18next.t('experiments:filterRuns')}
+          filterLabel={t('experiments:filterRuns')}
           updateSelection={this.props.onSelectionChange}
           reload={this._loadRuns.bind(this)}
           disablePaging={this.props.disablePaging}
@@ -195,18 +200,18 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
           disableSelection={this.props.disableSelection}
           noFilterBox={this.props.noFilterBox}
           emptyMessage={
-            `${i18next.t('common:no')}` +
+            `${t('common:no')}` +
             `${
               this.props.storageState === RunStorageState.ARCHIVED
-                ? i18next.t('common:archived')
-                : i18next.t('common:available')
+                ? t('common:archived')
+                : t('common:available')
             }` +
-            ` ${i18next.t('common:runFound')}` +
+            ` ${t('common:runFound')}` +
             `${
               this.props.experimentIdMask
-                ? i18next.t('common:forThisExperiment')
+                ? t('common:forThisExperiment')
                 : this.props.namespaceMask
-                ? i18next.t('common:forThisNamespace')
+                ? t('common:forThisNamespace')
                 : ''
             }.`
           }

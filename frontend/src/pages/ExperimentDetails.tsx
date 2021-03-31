@@ -111,7 +111,7 @@ interface ExperimentDetailsState {
 }
 
 export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsState> {
-  private _runlistRef = React.createRef<RunList>();
+  private _runlistRef = React.createRef<any>();
 
   constructor(props: any) {
     super(props);
@@ -138,6 +138,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
         breadcrumbs: [],
         pageTitle: t('runs'),
         topLevelToolbar: false,
+        t
       },
       // TODO: remove
       selectedIds: [],
@@ -153,6 +154,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       // TODO: determine what to show if no props.
       pageTitle: this.props ? this.props.match.params[RouteParams.experimentId] : '',
+      t
     };
   }
 
@@ -236,7 +238,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
               onError={this.showPageError.bind(this)}
               hideExperimentColumn={true}
               experimentIdMask={experiment.id}
-              ref={this._runlistRef}
+              //ref={this._runlistRef}
               selectedIds={this.state.selectedIds}
               storageState={RunStorageState.AVAILABLE}
               onSelectionChange={this._selectionChanged.bind(this)}
@@ -340,6 +342,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
   }
 
   private _selectionChanged(selectedIds: string[]): void {
+    const{t}=this.props;
     const toolbarActions = this.state.runListToolbarProps.actions;
     toolbarActions[ButtonKeys.COMPARE].disabled =
       selectedIds.length <= 1 || selectedIds.length > 10;
@@ -347,6 +350,7 @@ export class ExperimentDetails extends Page<{ t: TFunction }, ExperimentDetailsS
     toolbarActions[ButtonKeys.ARCHIVE].disabled = !selectedIds.length;
     this.setState({
       runListToolbarProps: {
+        t,
         actions: toolbarActions,
         breadcrumbs: this.state.runListToolbarProps.breadcrumbs,
         pageTitle: this.state.runListToolbarProps.pageTitle,

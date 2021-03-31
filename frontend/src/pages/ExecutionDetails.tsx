@@ -87,6 +87,7 @@ class ExecutionDetails extends Page<{ t: TFunction }, ExecutionDetailsState> {
       actions: {},
       breadcrumbs: [{ displayName: t('common:executions'), href: RoutePage.EXECUTIONS }],
       pageTitle: `${this.id} ${t('common:details')}`,
+      t
     };
   }
 
@@ -160,6 +161,7 @@ export class ExecutionDetailsContent extends Component<
       actions: {},
       breadcrumbs: [{ displayName: t('common:executions'), href: RoutePage.EXECUTIONS }],
       pageTitle: `${t('executionNum')}${this.props.id} ${t('common:details')}`,
+      t
     };
   }
 

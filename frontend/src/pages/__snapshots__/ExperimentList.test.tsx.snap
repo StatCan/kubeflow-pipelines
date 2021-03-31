@@ -44,6 +44,7 @@ exports[`ExperimentList renders a list of one experiment 1`] = `
         },
       ]
     }
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>
@@ -80,6 +81,7 @@ exports[`ExperimentList renders a list of one experiment with error 1`] = `
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>
@@ -116,6 +118,7 @@ exports[`ExperimentList renders a list of one experiment with no description 1`]
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>
@@ -152,6 +155,7 @@ exports[`ExperimentList renders an empty list with empty state message 1`] = `
     initialSortColumn="created_at"
     reload={[Function]}
     rows={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
   />
 </div>

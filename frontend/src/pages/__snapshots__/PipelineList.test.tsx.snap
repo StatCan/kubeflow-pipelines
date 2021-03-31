@@ -44,6 +44,7 @@ exports[`PipelineList renders a list of one pipeline 1`] = `
       ]
     }
     selectedIds={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
     updateSelection={[Function]}
   />
@@ -99,6 +100,7 @@ exports[`PipelineList renders a list of one pipeline with error 1`] = `
       ]
     }
     selectedIds={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
     updateSelection={[Function]}
   />
@@ -154,6 +156,7 @@ exports[`PipelineList renders a list of one pipeline with no description or crea
       ]
     }
     selectedIds={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
     updateSelection={[Function]}
   />
@@ -197,6 +200,7 @@ exports[`PipelineList renders an empty list with empty state message 1`] = `
     reload={[Function]}
     rows={Array []}
     selectedIds={Array []}
+    t={[Function]}
     toggleExpansion={[Function]}
     updateSelection={[Function]}
   />

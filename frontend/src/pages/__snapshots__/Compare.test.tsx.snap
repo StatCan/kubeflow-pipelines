@@ -168,6 +168,7 @@ exports[`Compare creates a map of viewers 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -377,6 +378,7 @@ exports[`Compare creates an extra aggregation plot for compatible viewers 1`] = 
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -641,6 +643,7 @@ exports[`Compare displays a run's metrics if the run has any 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -791,6 +794,7 @@ exports[`Compare displays metrics from multiple runs 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -945,6 +949,7 @@ exports[`Compare displays parameters from multiple runs 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -1102,6 +1107,7 @@ exports[`Compare displays run's parameters if the run has any 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -1247,6 +1253,7 @@ exports[`Compare does not show viewers for deselected runs 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -1375,6 +1382,7 @@ exports[`Compare expands all sections if they were collapsed 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -1636,6 +1644,7 @@ exports[`Compare renders a page with multiple runs 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -1766,6 +1775,7 @@ exports[`Compare renders a page with no runs 1`] = `
             },
           ],
           "pageTitle": "compareRuns",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}

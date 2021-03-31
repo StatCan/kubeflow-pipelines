@@ -36,6 +36,7 @@ exports[`CustomTable renders a collapsed row 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -172,7 +173,9 @@ exports[`CustomTable renders a collapsed row 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -268,6 +271,7 @@ exports[`CustomTable renders a collapsed row when selection is disabled 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -394,7 +398,9 @@ exports[`CustomTable renders a collapsed row when selection is disabled 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -490,6 +496,7 @@ exports[`CustomTable renders a table with sorting disabled 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -636,7 +643,9 @@ exports[`CustomTable renders a table with sorting disabled 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -732,6 +741,7 @@ exports[`CustomTable renders an expanded row 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -857,7 +867,9 @@ exports[`CustomTable renders an expanded row 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -953,6 +965,7 @@ exports[`CustomTable renders an expanded row with expanded component below it 1`
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -1094,7 +1107,9 @@ exports[`CustomTable renders an expanded row with expanded component below it 1`
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -1190,6 +1205,7 @@ exports[`CustomTable renders columns with specified widths 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -1269,7 +1285,9 @@ exports[`CustomTable renders columns with specified widths 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -1365,6 +1383,7 @@ exports[`CustomTable renders empty message on no rows 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -1404,7 +1423,9 @@ exports[`CustomTable renders empty message on no rows 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -1500,6 +1521,7 @@ exports[`CustomTable renders new rows after clicking next page, and enables prev
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -1624,7 +1646,9 @@ exports[`CustomTable renders new rows after clicking next page, and enables prev
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -1720,6 +1744,7 @@ exports[`CustomTable renders new rows after clicking previous page, and enables 
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -1888,7 +1913,9 @@ exports[`CustomTable renders new rows after clicking previous page, and enables 
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -1984,6 +2011,7 @@ exports[`CustomTable renders some columns with descending sort order on first co
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -2064,7 +2092,9 @@ exports[`CustomTable renders some columns with descending sort order on first co
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -2160,6 +2190,7 @@ exports[`CustomTable renders some columns with equal widths without rows 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -2239,7 +2270,9 @@ exports[`CustomTable renders some columns with equal widths without rows 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -2335,6 +2368,7 @@ exports[`CustomTable renders some rows 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -2503,7 +2537,9 @@ exports[`CustomTable renders some rows 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -2599,6 +2635,7 @@ exports[`CustomTable renders with default filter label 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -2632,7 +2669,9 @@ exports[`CustomTable renders with default filter label 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -2762,7 +2801,9 @@ exports[`CustomTable renders with provided filter label 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -2853,7 +2894,9 @@ exports[`CustomTable renders without filter box 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -2949,6 +2992,7 @@ exports[`CustomTable renders without rows or columns 1`] = `
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -2982,7 +3026,9 @@ exports[`CustomTable renders without rows or columns 1`] = `
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -3078,6 +3124,7 @@ exports[`CustomTable renders without the checkboxes if disableSelection is true 
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value=""
@@ -3220,7 +3267,9 @@ exports[`CustomTable renders without the checkboxes if disableSelection is true 
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {
@@ -3316,6 +3365,7 @@ exports[`CustomTable updates the filter string in state when the filter box inpu
       className="filterBox"
       height={48}
       id="tableFilterBox"
+      label="common:filter"
       maxWidth="100%"
       onChange={[Function]}
       value="test filter"
@@ -3484,7 +3534,9 @@ exports[`CustomTable updates the filter string in state when the filter box inpu
   >
     <span
       className=""
-    />
+    >
+      common:rowsperpage
+    </span>
     <TextField
       InputProps={
         Object {

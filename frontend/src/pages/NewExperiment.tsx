@@ -29,7 +29,7 @@ import { classes, stylesheet } from 'typestyle';
 import { commonCss, padding, fontsize } from '../Css';
 import { logger, errorToMessage } from '../lib/Utils';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
-import { TFunction } from 'i18next';
+import i18next, { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 interface NewExperimentState {
@@ -70,6 +70,7 @@ export class NewExperiment extends Page<{ namespace?: string; t: TFunction }, Ne
       actions: {},
       breadcrumbs: [{ displayName: t('common:experiments'), href: RoutePage.EXPERIMENTS }],
       pageTitle: t('newExperiment'),
+      t
     };
   }
 

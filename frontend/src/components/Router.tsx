@@ -48,6 +48,8 @@ import NewPipelineVersion from '../pages/NewPipelineVersion';
 import { GettingStarted } from '../pages/GettingStarted';
 import { KFP_FLAGS, Deployments } from '../lib/Flags';
 
+
+
 export type RouteConfig = {
   path: string;
   Component: React.ComponentType<any>;
@@ -232,7 +234,7 @@ class RoutedPage extends React.Component<{ route?: RouteConfig }, RouteComponent
     super(props);
 
     this.state = {
-      bannerProps: {},
+      bannerProps: {t:{} as any},
       dialogProps: { open: false },
       snackbarProps: { autoHideDuration: 5000, open: false },
       toolbarProps: { breadcrumbs: [{ displayName: '', href: '' }], actions: [], ...props },

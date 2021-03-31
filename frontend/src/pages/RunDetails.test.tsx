@@ -722,12 +722,7 @@ describe('RunDetails', () => {
       'phaseMessage',
       'stepStateMessage1 Succeeded stepStateMessage2: some test message',
     );
-    expect(tree.find('Banner')).toMatchInlineSnapshot(`
-      <Banner
-        message="stepStateMessage1 Succeeded stepStateMessage2: some test message"
-        mode="info"
-      />
-    `);
+    expect(tree.find('Banner')).toMatchInlineSnapshot(`null`);
   });
 
   it('shows clicked node output in side pane', async () => {
@@ -1185,7 +1180,7 @@ describe('RunDetails', () => {
           <div
             className="page"
           >
-            <Banner
+            <withI18nextTranslation(Banner)
               additionalInfo="errorPodLogsReasons common:errorResponse: pod not found"
               message="errorPodLogs stackdriverKubernetesMonitoringView"
               mode="info"
@@ -1236,7 +1231,7 @@ describe('RunDetails', () => {
           <div
             className="page"
           >
-            <Banner
+            <withI18nextTranslation(Banner)
               additionalInfo="errorPodLogsReasons common:errorResponse: pod not found"
               message="errorPodLogs"
               mode="info"
@@ -1380,6 +1375,7 @@ describe('RunDetails', () => {
             <PodInfo
               name="node1"
               namespace="ns"
+              t={[Function]}
             />
           </div>
         </div>

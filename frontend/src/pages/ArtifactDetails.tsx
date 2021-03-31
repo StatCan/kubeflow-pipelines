@@ -155,11 +155,12 @@ class ArtifactDetails extends Page<{ t: TFunction }, ArtifactDetailsState> {
   }
 
   public getInitialToolbarState(): ToolbarProps {
-    const { t, i18n } = useTranslation('common');
+    const { t} =this.props;
     return {
       actions: {},
       breadcrumbs: [{ displayName: t('common:artifacts'), href: RoutePage.ARTIFACTS }],
       pageTitle: `${t('artifactNum')}${this.id} ${t('common:details')}`,
+      t
     };
   }
 

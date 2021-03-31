@@ -20,7 +20,21 @@ import { createBrowserHistory, createMemoryHistory } from 'history';
 import Toolbar, { ToolbarActionMap } from './Toolbar';
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
-
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  withTranslation: () => (Component: { defaultProps: any; }) => {
+    Component.defaultProps = { ...Component.defaultProps, t: (key: string) => key };
+    return Component;
+  },
+  useTranslation: () => {
+    return {
+      t: (key: string) => key,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 const action1 = jest.fn();
 const action2 = jest.fn();
 const actions: ToolbarActionMap = {
@@ -62,13 +76,13 @@ describe('Toolbar', () => {
   });
 
   it('renders nothing when there are no breadcrumbs or actions', () => {
-    const tree = shallow(<Toolbar breadcrumbs={[]} actions={{}} history={history} pageTitle='' />);
+    const tree = shallow(<Toolbar  breadcrumbs={[]} actions={{}} history={history} pageTitle='' />);
     expect(tree).toMatchSnapshot();
   });
 
   it('renders without breadcrumbs and a string page title', () => {
     const tree = shallow(
-      <Toolbar breadcrumbs={[]} actions={actions} history={history} pageTitle='test page title' />,
+      <Toolbar  breadcrumbs={[]} actions={actions} history={history} pageTitle='test page title' />,
     );
     expect(tree).toMatchSnapshot();
   });
@@ -97,7 +111,7 @@ describe('Toolbar', () => {
       },
     };
     const tree = shallow(
-      <Toolbar
+      <Toolbar 
         breadcrumbs={[]}
         actions={singleAction}
         history={history}
@@ -121,7 +135,7 @@ describe('Toolbar', () => {
 
   it('renders without actions, one breadcrumb, and a page name', () => {
     const tree = shallow(
-      <Toolbar
+      <Toolbar 
         breadcrumbs={[breadcrumbs[0]]}
         actions={{}}
         history={history}
@@ -140,7 +154,7 @@ describe('Toolbar', () => {
 
   it('fires the right action function when button is clicked', () => {
     const tree = shallow(
-      <Toolbar breadcrumbs={[]} actions={actions} history={history} pageTitle='test page title' />,
+      <Toolbar  breadcrumbs={[]} actions={actions} history={history} pageTitle='test page title' />,
     );
     tree
       .find('BusyButton')
@@ -162,7 +176,7 @@ describe('Toolbar', () => {
     };
 
     const tree = shallow(
-      <Toolbar
+      <Toolbar 
         breadcrumbs={breadcrumbs}
         actions={outlinedActions}
         pageTitle=''
@@ -214,7 +228,7 @@ describe('Toolbar', () => {
 
   it('renders with two breadcrumbs and two actions', () => {
     const tree = shallow(
-      <Toolbar breadcrumbs={breadcrumbs} actions={actions} pageTitle='' history={history} />,
+      <Toolbar  breadcrumbs={breadcrumbs} actions={actions} pageTitle='' history={history} />,
     );
     expect(tree).toMatchSnapshot();
   });
@@ -224,7 +238,7 @@ describe('Toolbar', () => {
     // there is no way to clear its entries which this test requires.
     const emptyHistory = createMemoryHistory();
     const tree = shallow(
-      <Toolbar breadcrumbs={breadcrumbs} actions={actions} history={emptyHistory} pageTitle='' />,
+      <Toolbar  breadcrumbs={breadcrumbs} actions={actions} history={emptyHistory} pageTitle='' />,
     );
     expect(tree).toMatchSnapshot();
   });

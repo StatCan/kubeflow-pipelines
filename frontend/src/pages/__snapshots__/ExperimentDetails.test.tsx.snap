@@ -139,6 +139,7 @@ exports[`ExperimentDetails fetches this experiment's recurring runs 1`] = `
       }
       breadcrumbs={Array []}
       pageTitle="runs"
+      t={[Function]}
       topLevelToolbar={false}
     />
     <RunList
@@ -179,6 +180,7 @@ exports[`ExperimentDetails fetches this experiment's recurring runs 1`] = `
             },
           ],
           "pageTitle": "some-mock-experiment-id",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -229,6 +231,7 @@ exports[`ExperimentDetails fetches this experiment's recurring runs 1`] = `
                 },
               ],
               "pageTitle": "some-mock-experiment-id",
+              "t": [Function],
             }
           }
           updateBanner={[MockFunction]}
@@ -403,6 +406,7 @@ exports[`ExperimentDetails removes all description text after second newline and
       }
       breadcrumbs={Array []}
       pageTitle="runs"
+      t={[Function]}
       topLevelToolbar={false}
     />
     <RunList
@@ -443,6 +447,7 @@ exports[`ExperimentDetails removes all description text after second newline and
             },
           ],
           "pageTitle": "some-mock-experiment-id",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -493,6 +498,7 @@ exports[`ExperimentDetails removes all description text after second newline and
                 },
               ],
               "pageTitle": "some-mock-experiment-id",
+              "t": [Function],
             }
           }
           updateBanner={[MockFunction]}
@@ -654,6 +660,7 @@ exports[`ExperimentDetails renders a page with no runs or recurring runs 1`] = `
       }
       breadcrumbs={Array []}
       pageTitle="runs"
+      t={[Function]}
       topLevelToolbar={false}
     />
     <RunList
@@ -694,6 +701,7 @@ exports[`ExperimentDetails renders a page with no runs or recurring runs 1`] = `
             },
           ],
           "pageTitle": "some-mock-experiment-id",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -744,6 +752,7 @@ exports[`ExperimentDetails renders a page with no runs or recurring runs 1`] = `
                 },
               ],
               "pageTitle": "some-mock-experiment-id",
+              "t": [Function],
             }
           }
           updateBanner={[MockFunction]}
@@ -903,6 +912,7 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
       }
       breadcrumbs={Array []}
       pageTitle="runs"
+      t={[Function]}
       topLevelToolbar={false}
     />
     <RunList
@@ -943,6 +953,7 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
             },
           ],
           "pageTitle": "some-mock-experiment-id",
+          "t": [Function],
         }
       }
       updateBanner={[MockFunction]}
@@ -993,6 +1004,7 @@ exports[`ExperimentDetails uses an empty string if the experiment has no descrip
                 },
               ],
               "pageTitle": "some-mock-experiment-id",
+              "t": [Function],
             }
           }
           updateBanner={[MockFunction]}

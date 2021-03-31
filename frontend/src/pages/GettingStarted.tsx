@@ -110,12 +110,14 @@ export class GettingStarted extends Page<{ t: TFunction }, { links: string[] }> 
   };
 
   public getInitialToolbarState(): ToolbarProps {
+    const{t}=this.props;
     const buttons = new Buttons(this.props, this.refresh.bind(this));
 
     return {
       actions: buttons.getToolbarActionMap(),
       breadcrumbs: [],
       pageTitle: i18next.t('home:gettingStarted'),
+      t
     };
   }
 
