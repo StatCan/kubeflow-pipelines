@@ -140,7 +140,7 @@ class PipelineVersionList extends React.PureComponent<
         );
       } catch (err) {
         const error = new Error(await errorToMessage(err));
-        this.props.onError(t('errorFetchRuns'), error);
+        this.props.onError(t('pipelines:errorFetchRuns'), error);
         // No point in continuing if we couldn't retrieve any runs.
         return '';
       }
