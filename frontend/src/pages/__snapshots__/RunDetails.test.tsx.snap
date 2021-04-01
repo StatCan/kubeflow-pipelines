@@ -358,8 +358,11 @@ exports[`RunDetails keeps side pane open and on same tab when run status changes
   <WithStyles(Tooltip)
     title={
       <div>
-        <div />
         <div>
+          common:executionSuccess
+        </div>
+        <div>
+          common:start
           : 
           1/2/2019, 12:34:56 PM
         </div>
@@ -403,8 +406,11 @@ exports[`RunDetails keeps side pane open and on same tab when run status changes
   <WithStyles(Tooltip)
     title={
       <div>
-        <div />
         <div>
+          common:executeResourceFailed
+        </div>
+        <div>
+          common:start
           : 
           1/2/2019, 12:34:56 PM
         </div>
@@ -1147,8 +1153,11 @@ exports[`RunDetails shows failure run status in page title 1`] = `
   <WithStyles(Tooltip)
     title={
       <div>
-        <div />
         <div>
+          common:executeResourceFailed
+        </div>
+        <div>
+          common:start
           : 
           1/2/2019, 12:34:56 PM
         </div>
@@ -1392,8 +1401,11 @@ exports[`RunDetails shows success run status in page title 1`] = `
   <WithStyles(Tooltip)
     title={
       <div>
-        <div />
         <div>
+          common:executionSuccess
+        </div>
+        <div>
+          common:start
           : 
           1/2/2019, 12:34:56 PM
         </div>

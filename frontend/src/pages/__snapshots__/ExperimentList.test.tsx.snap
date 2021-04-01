@@ -192,7 +192,9 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div />
+          <div>
+            common:executionSuccess
+          </div>
         </div>
       }
     >
@@ -225,7 +227,9 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div />
+          <div>
+            common:executePending
+          </div>
         </div>
       }
     >
@@ -258,7 +262,9 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div />
+          <div>
+            common:executeResourceFailed
+          </div>
         </div>
       }
     >
@@ -291,7 +297,9 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div />
+          <div>
+            common:unknownStatus
+          </div>
         </div>
       }
     >
@@ -324,7 +332,9 @@ exports[`ExperimentList renders last 5 runs statuses 1`] = `
     <WithStyles(Tooltip)
       title={
         <div>
-          <div />
+          <div>
+            common:executionSuccess
+          </div>
         </div>
       }
     >

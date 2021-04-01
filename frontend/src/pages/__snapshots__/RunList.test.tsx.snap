@@ -7675,7 +7675,9 @@ exports[`RunList renders status as icon 1`] = `
 <WithStyles(Tooltip)
   title={
     <div>
-      <div />
+      <div>
+        common:executionSuccess
+      </div>
     </div>
   }
 >

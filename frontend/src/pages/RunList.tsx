@@ -318,7 +318,8 @@ class RunList extends React.PureComponent<RunListProps, RunListState> {
   public _statusCustomRenderer: React.FC<CustomRendererProps<NodePhase>> = (
     props: CustomRendererProps<NodePhase>,
   ) => {
-    return statusToIcon(props.value);
+    const {t} = this.props
+    return statusToIcon(t,props.value);
   };
 
   public _metricBufferCustomRenderer: React.FC<CustomRendererProps<{}>> = (

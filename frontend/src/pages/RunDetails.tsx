@@ -735,7 +735,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
       // Build runtime graph
       const graph =
         workflow && workflow.status && workflow.status.nodes
-          ? WorkflowParser.createRuntimeGraph(workflow)
+          ? WorkflowParser.createRuntimeGraph(t,workflow)
           : undefined;
 
       const breadcrumbs: Array<{ displayName: string; href: string }> = [];
@@ -761,7 +761,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
       }
       const pageTitle = (
         <div className={commonCss.flex}>
-          {statusToIcon(runMetadata.status as NodePhase, runDetail.run!.created_at)}
+          {statusToIcon(t,runMetadata.status as NodePhase, runDetail.run!.created_at)}
           <span style={{ marginLeft: 10 }}>{runMetadata.name!}</span>
         </div>
       );

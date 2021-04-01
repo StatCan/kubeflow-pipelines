@@ -175,11 +175,12 @@ export class ExperimentList extends Page<
   public _last5RunsCustomRenderer: React.FC<CustomRendererProps<ApiRun[]>> = (
     props: CustomRendererProps<ApiRun[]>,
   ) => {
+    const { t } = this.props;
     return (
       <div className={commonCss.flex}>
         {(props.value || []).map((run, i) => (
           <span key={i} style={{ margin: '0 1px' }}>
-            {statusToIcon((run.status as NodePhase) || NodePhase.UNKNOWN, run.created_at)}
+            {statusToIcon(t,(run.status as NodePhase) || NodePhase.UNKNOWN, run.created_at)}
           </span>
         ))}
       </div>
