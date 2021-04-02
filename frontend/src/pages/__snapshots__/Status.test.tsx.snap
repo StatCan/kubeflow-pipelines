@@ -388,12 +388,16 @@ exports[`Status statusToIcon displays start and end dates if both are provided 1
   }
   title={
     <div>
-      <div />
       <div>
+        common:executionSuccess
+      </div>
+      <div>
+        common:start
         : 
         1/2/2019, 9:10:11 AM
       </div>
       <div>
+        common:end
         : 
         1/3/2019, 10:11:12 AM
       </div>
@@ -808,8 +812,11 @@ exports[`Status statusToIcon does not display a end date if none was provided 1`
   }
   title={
     <div>
-      <div />
       <div>
+        common:executionSuccess
+      </div>
+      <div>
+        common:start
         : 
         1/2/2019, 9:10:11 AM
       </div>
@@ -1224,8 +1231,11 @@ exports[`Status statusToIcon does not display a start date if none was provided 
   }
   title={
     <div>
-      <div />
       <div>
+        common:executionSuccess
+      </div>
+      <div>
+        common:end
         : 
         1/3/2019, 10:11:12 AM
       </div>
@@ -1640,7 +1650,9 @@ exports[`Status statusToIcon does not display any dates if neither was provided 
   }
   title={
     <div>
-      <div />
+      <div>
+        common:executionSuccess
+      </div>
     </div>
   }
 >
@@ -2052,7 +2064,9 @@ exports[`Status statusToIcon handles an undefined phase 1`] = `
   }
   title={
     <div>
-      <div />
+      <div>
+        common:unknownStatus
+      </div>
     </div>
   }
 >
@@ -2464,7 +2478,9 @@ exports[`Status statusToIcon handles an unknown phase 1`] = `
   }
   title={
     <div>
-      <div />
+      <div>
+        common:unknownStatus
+      </div>
     </div>
   }
 >
@@ -2876,7 +2892,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: CACHED 1`] 
   }
   title={
     <div>
-      <div />
+      <div>
+        common:executionSkippedCache
+      </div>
     </div>
   }
 >
@@ -3288,7 +3306,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: ERROR 1`] =
   }
   title={
     <div>
-      <div />
+      <div>
+        common:errorRunResource
+      </div>
     </div>
   }
 >
@@ -3700,7 +3720,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: FAILED 1`] 
   }
   title={
     <div>
-      <div />
+      <div>
+        common:executeResourceFailed
+      </div>
     </div>
   }
 >
@@ -4112,7 +4134,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: PENDING 1`]
   }
   title={
     <div>
-      <div />
+      <div>
+        common:executePending
+      </div>
     </div>
   }
 >
@@ -4524,7 +4548,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: RUNNING 1`]
   }
   title={
     <div>
-      <div />
+      <div>
+        common:running
+      </div>
     </div>
   }
 >
@@ -4936,7 +4962,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: SKIPPED 1`]
   }
   title={
     <div>
-      <div />
+      <div>
+        common:executionSkipped
+      </div>
     </div>
   }
 >
@@ -5348,7 +5376,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: SUCCEEDED 1
   }
   title={
     <div>
-      <div />
+      <div>
+        common:executionSuccess
+      </div>
     </div>
   }
 >
@@ -5760,7 +5790,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: TERMINATED 
   }
   title={
     <div>
-      <div />
+      <div>
+        common:runManuallyTerminated
+      </div>
     </div>
   }
 >
@@ -6172,7 +6204,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: TERMINATING
   }
   title={
     <div>
-      <div />
+      <div>
+        common:runTerminating
+      </div>
     </div>
   }
 >
@@ -6584,7 +6618,9 @@ exports[`Status statusToIcon renders an icon with tooltip for phase: UNKNOWN 1`]
   }
   title={
     <div>
-      <div />
+      <div>
+        common:unknownStatus
+      </div>
     </div>
   }
 >
