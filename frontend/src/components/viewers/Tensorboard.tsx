@@ -32,6 +32,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { classes, stylesheet } from 'typestyle';
+import { TFunction } from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 
 export const css = stylesheet({
@@ -65,6 +67,7 @@ interface TensorboardViewerProps {
   configs: TensorboardViewerConfig[];
   // Interval in ms. If not specified, default to 5000.
   intervalOfCheckingTensorboardPodStatus?: number;
+  t:TFunction
 }
 
 interface TensorboardViewerState {
@@ -97,7 +100,7 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
   }
 
   public getDisplayName(): string {
-    return'Tensorboard';
+    return this.props.t('common:tensorboard');
   }
 
   public isAggregatable(): boolean {
@@ -124,6 +127,7 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
   };
 
   public render(): JSX.Element {
+    const{t}=this.props;
     return (
       <div>
         {this.state.errorMessage && <div className={css.errorText}>{this.state.errorMessage}</div>}
@@ -341,4 +345,4 @@ function makeProxyUrl(podAddress: string) {
   return 'apis/v1beta1/_proxy/' + podAddress.replace(/(^\w+:|^)\/\//, '');
 }
 
-export default TensorboardViewer;
+export default withTranslation ('common')(TensorboardViewer);

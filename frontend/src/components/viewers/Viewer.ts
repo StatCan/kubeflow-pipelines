@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { TFunction } from 'i18next';
 import * as React from 'react';
 
 export enum PlotType {
@@ -32,7 +33,7 @@ export interface ViewerConfig {
   type: PlotType;
 }
 
-abstract class Viewer<P, S> extends React.Component<P, S> {
+abstract class Viewer<P, S> extends React.Component< P&{t:TFunction}, S> {
   public isAggregatable(): boolean {
     return false;
   }
