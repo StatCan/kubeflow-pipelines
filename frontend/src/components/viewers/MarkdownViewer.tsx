@@ -67,7 +67,7 @@ interface MarkdownViewerProps {
 
 class MarkdownViewer extends Viewer<MarkdownViewerProps, any> {
   private _config = this.props.configs[0];
-  private _props: MarkdownViewerProps & { t: TFunction }
+  private _props: MarkdownViewerProps
 
   public getDisplayName(): string {
     //const {t,i18n}= useTranslation ('common');
