@@ -38,7 +38,7 @@ abstract class Viewer<P, S> extends React.Component< P&{t:TFunction}, S> {
     return false;
   }
 
-  public abstract getDisplayName(): string;
+  public abstract getDisplayName(t?: TFunction): string;
 }
 
 export default Viewer;

@@ -99,8 +99,8 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
     };
   }
 
-  public getDisplayName(): string {
-    return this.props.t('common:tensorboard');
+  public getDisplayName(t: TFunction): string {
+    return t('common:tensorboard');
   }
 
   public isAggregatable(): boolean {

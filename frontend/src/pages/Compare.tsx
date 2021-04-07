@@ -112,6 +112,11 @@ class Compare extends Page<{ t: TFunction }, CompareState> {
         ? viewersMap.get(viewerType)!.filter(el => selectedIds.indexOf(el.runId) > -1)
         : [];
     };
+    let name = (viewerType: string) => {
+      let a = componentMap[viewerType];
+      console.log(viewerType==='tensorboard'? a.WrappedComponent.prototype.getDisplayName(t) : a.prototype.getDisplayName());
+      return (viewerType==='tensorboard'? a.WrappedComponent.prototype.getDisplayName(t) : a.prototype.getDisplayName());
+    };
 
     return (
       <div className={classes(commonCss.page, padding(20, 'lrt'))}>
@@ -173,15 +178,15 @@ class Compare extends Page<{ t: TFunction }, CompareState> {
                 <CollapseButton
                   collapseSections={collapseSections}
                   compareSetState={this.setStateSafe.bind(this)}
-                  sectionName={componentMap[viewerType].prototype.getDisplayName()}
+                  sectionName={name(viewerType)}
                 />
-                {!collapseSections[componentMap[viewerType].prototype.getDisplayName()] && (
+                {!collapseSections[name(viewerType)] && (
                   <React.Fragment>
                     <div className={classes(commonCss.flex, css.outputsRow)}>
                       {/* If the component allows aggregation, add one more card for
                 its aggregated view. Only do this if there is more than one
                 output, filtering out any unselected runs. */}
-                      {componentMap[viewerType].prototype.isAggregatable() &&
+                      {(viewerType==='tensorboard'? true : componentMap[viewerType].prototype.isAggregatable()) &&
                         runsPerViewerType(viewerType).length > 1 && (
                           <PlotCard
                             configs={runsPerViewerType(viewerType).map(t => t.config)}

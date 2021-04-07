@@ -150,7 +150,7 @@ class PlotCard extends React.Component<PlotCardProps, PlotCardState> {
             >
               <CloseIcon />
             </Button>
-            {componentMap[configs[0].type].prototype.getDisplayName()}
+            {configs[0].type==='tensorboard'? 'Tensorboard' : componentMap[configs[0].type].prototype.getDisplayName()}
             <Separator />
             <span style={{ color: color.inactive }}>({title})</span>
           </div>
