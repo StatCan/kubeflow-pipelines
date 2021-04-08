@@ -18,17 +18,18 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import { PlotType } from './Viewer';
 import ROCCurve from './ROCCurve';
+import { TFunction } from 'i18next';
 
-let mockValue;
-jest.mock("i18next", () => ({ t: () => mockValue }));
+
 describe('ROCCurve', () => {
+  let t: TFunction = (key: string) => key;
   it('does not break on no config', () => {
-    const tree = shallow(<ROCCurve configs={[]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[]} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('does not break on empty data', () => {
-    const tree = shallow(<ROCCurve configs={[{ data: [], type: PlotType.ROC }]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[{ data: [], type: PlotType.ROC }]} />);
     expect(tree).toMatchSnapshot();
   });
 
@@ -41,24 +42,24 @@ describe('ROCCurve', () => {
   ];
 
   it('renders a simple ROC curve given one config', () => {
-    const tree = shallow(<ROCCurve configs={[{ data, type: PlotType.ROC }]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[{ data, type: PlotType.ROC }]} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a reference base line series', () => {
-    const tree = shallow(<ROCCurve configs={[{ data, type: PlotType.ROC }]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[{ data, type: PlotType.ROC }]} />);
     expect(tree.find('LineSeries').length).toBe(2);
   });
 
   it('renders an ROC curve using three configs', () => {
     const config = { data, type: PlotType.ROC };
-    const tree = shallow(<ROCCurve configs={[config, config, config]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[config, config, config]} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('renders three lines with three different colors', () => {
     const config = { data, type: PlotType.ROC };
-    const tree = shallow(<ROCCurve configs={[config, config, config]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[config, config, config]} />);
     expect(tree.find('LineSeries').length).toBe(4); // +1 for baseline
     const [line1Color, line2Color, line3Color] = [
       (tree
@@ -79,13 +80,13 @@ describe('ROCCurve', () => {
 
   it('does not render a legend when there is only one config', () => {
     const config = { data, type: PlotType.ROC };
-    const tree = shallow(<ROCCurve configs={[config]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[config]} />);
     expect(tree.find('DiscreteColorLegendItem').length).toBe(0);
   });
 
   it('renders a legend when there is more than one series', () => {
     const config = { data, type: PlotType.ROC };
-    const tree = shallow(<ROCCurve configs={[config, config, config]} />);
+    const tree = shallow(<ROCCurve t={t} configs={[config, config, config]} />);
     expect(tree.find('DiscreteColorLegendItem').length).toBe(1);
     const legendItems = (tree
       .find('DiscreteColorLegendItem')
@@ -96,8 +97,8 @@ describe('ROCCurve', () => {
   });
 
   it('returns friendly display name', () => {
-    mockValue='common:rocCurve';
-    expect(ROCCurve.prototype.getDisplayName()).toBe('common:rocCurve');
+  
+    expect(ROCCurve.prototype.getDisplayName(t)).toBe('common:rocCurve');
   });
 
   it('is aggregatable', () => {

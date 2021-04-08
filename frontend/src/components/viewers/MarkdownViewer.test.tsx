@@ -24,9 +24,9 @@ let mockValue='';
 jest.mock("i18next", () => ({ t: () => mockValue }));
 
 describe('MarkdownViewer', () => {
- 
+  let t: TFunction = (key: string) => key;
   it('does not break on empty data', () => {
-    const tree = mount(<MarkdownViewer t={(key: any) => key} configs={[]} />).getDOMNode();
+    const tree = mount(<MarkdownViewer  configs={[]} />).getDOMNode();
     expect(tree).toMatchSnapshot();
   });
 
@@ -37,7 +37,7 @@ describe('MarkdownViewer', () => {
       type: PlotType.MARKDOWN,
     };
 
-    const tree = mount(<MarkdownViewer t={(key: any) => key}  configs={[config]} />).getDOMNode();
+    const tree = mount(<MarkdownViewer   configs={[config]} />).getDOMNode();
     expect(tree).toMatchSnapshot();
   });
 
@@ -51,12 +51,12 @@ describe('MarkdownViewer', () => {
       type: PlotType.MARKDOWN,
     };
 
-    const tree = mount(<MarkdownViewer t={(key: any) => key}  configs={[config]} />).getDOMNode();
+    const tree = mount(<MarkdownViewer  configs={[config]} />).getDOMNode();
     expect(tree).toMatchSnapshot();
   });
 
   it('returns a user friendly display name', () => {
     mockValue='common:markdown';
-    expect(MarkdownViewer.prototype.getDisplayName()).toBe('common:markdown');
+    expect(MarkdownViewer.prototype.getDisplayName(t)).toBe('common:markdown');
   });
 });

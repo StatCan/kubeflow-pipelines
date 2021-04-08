@@ -18,10 +18,10 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import HTMLViewer, { HTMLViewerConfig } from './HTMLViewer';
 import { PlotType } from './Viewer';
+import { TFunction } from 'i18next';
 
-let mockValue;
-jest.mock("i18next", () => ({ t: () => mockValue }));
 describe('HTMLViewer', () => {
+  let t: TFunction = (key: string) => key;
   it('does not break on empty data', () => {
     const tree = mount(<HTMLViewer configs={[]} />);
     expect(tree).toMatchSnapshot();
@@ -56,7 +56,6 @@ describe('HTMLViewer', () => {
   });
 
   it('returns a user friendly display name', () => {
-    mockValue='common:staticHtml';
-    expect(HTMLViewer.prototype.getDisplayName()).toBe('common:staticHtml');
+    expect(HTMLViewer.prototype.getDisplayName(t)).toBe('common:staticHtml');
   });
 });
