@@ -20,6 +20,7 @@ import TestUtils, { diff } from '../../TestUtils';
 import { Apis } from '../../lib/Apis';
 import { PlotType } from './Viewer';
 import { ReactWrapper, ShallowWrapper, shallow, mount } from 'enzyme';
+import { TFunction } from 'i18next';
 
 const DEFAULT_CONFIG: TensorboardViewerConfig = {
   type: PlotType.TENSORBOARD,
@@ -28,6 +29,7 @@ const DEFAULT_CONFIG: TensorboardViewerConfig = {
 };
 
 describe('Tensorboard', () => {
+  let t: TFunction = (key: string) => key;
   let tree: ReactWrapper | ShallowWrapper;
   const flushPromisesAndTimers = async () => {
     jest.runOnlyPendingTimers();
@@ -52,7 +54,7 @@ describe('Tensorboard', () => {
   it('base component snapshot', async () => {
     const getAppMock = () => Promise.resolve({ podAddress: '', tfVersion: '' });
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
-    tree = shallow(<TensorboardViewer configs={[]} />);
+    tree = shallow(<TensorboardViewer t={t} configs={[]} />);
     await TestUtils.flushPromises();
     expect(tree).toMatchSnapshot();
   });
@@ -60,7 +62,7 @@ describe('Tensorboard', () => {
   it('does not break on no config', async () => {
     const getAppMock = () => Promise.resolve({ podAddress: '', tfVersion: '' });
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
-    tree = shallow(<TensorboardViewer configs={[]} />);
+    tree = shallow(<TensorboardViewer t={t} configs={[]} />);
     const base = tree.debug();
 
     await TestUtils.flushPromises();
@@ -87,7 +89,7 @@ describe('Tensorboard', () => {
     const getAppMock = () => Promise.resolve({ podAddress: '', tfVersion: '' });
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
     const config = { ...DEFAULT_CONFIG, url: '' };
-    tree = shallow(<TensorboardViewer configs={[config]} />);
+    tree = shallow(<TensorboardViewer t={t} configs={[config]} />);
     const base = tree.debug();
 
     await TestUtils.flushPromises();
@@ -115,7 +117,7 @@ describe('Tensorboard', () => {
     const getAppMock = () => Promise.resolve({ podAddress: 'test/address', tfVersion: '1.14.0' });
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
     jest.spyOn(Apis, 'isTensorboardPodReady').mockImplementation(() => Promise.resolve(true));
-    tree = shallow(<TensorboardViewer configs={[config]} />);
+    tree = shallow(<TensorboardViewer t={t} configs={[config]} />);
 
     await TestUtils.flushPromises();
     await flushPromisesAndTimers();
@@ -128,7 +130,7 @@ describe('Tensorboard', () => {
     const config = DEFAULT_CONFIG;
     const getAppMock = () => Promise.resolve({ podAddress: '', tfVersion: '' });
     const getTensorboardSpy = jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
-    tree = shallow(<TensorboardViewer configs={[DEFAULT_CONFIG]} />);
+    tree = shallow(<TensorboardViewer t={t} configs={[DEFAULT_CONFIG]} />);
     const base = tree.debug();
 
     await TestUtils.flushPromises();
@@ -165,7 +167,7 @@ describe('Tensorboard', () => {
     const startAppMock = jest.fn(() => Promise.resolve(''));
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
     jest.spyOn(Apis, 'startTensorboardApp').mockImplementationOnce(startAppMock);
-    tree = shallow(<TensorboardViewer configs={[config]} />);
+    tree = shallow(<TensorboardViewer t={t} configs={[config]} />);
     await TestUtils.flushPromises();
     tree.find('BusyButton').simulate('click');
     expect(startAppMock).toHaveBeenCalledWith(config.url, '2.0.0', config.namespace);
@@ -178,7 +180,7 @@ describe('Tensorboard', () => {
     const startAppMock = jest.fn(() => Promise.resolve(''));
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
     jest.spyOn(Apis, 'startTensorboardApp').mockImplementationOnce(startAppMock);
-    tree = shallow(<TensorboardViewer configs={[config, config2]} />);
+    tree = shallow(<TensorboardViewer t={t} configs={[config, config2]} />);
     await TestUtils.flushPromises();
     expect(getAppMock).toHaveBeenCalledWith(
       `Series1:${config.url},Series2:${config2.url}`,
@@ -190,7 +192,7 @@ describe('Tensorboard', () => {
   });
 
   it('returns friendly display name', () => {
-    expect(TensorboardViewer.prototype.getDisplayName()).toBe('Tensorboard');
+    expect(TensorboardViewer.prototype.getDisplayName(t)).toBe('common:tensorboard');
   });
 
   it('is aggregatable', () => {
@@ -207,7 +209,7 @@ describe('Tensorboard', () => {
       .spyOn(Apis, 'startTensorboardApp')
       .mockImplementationOnce(startAppMock);
 
-    tree = mount(<TensorboardViewer configs={[config]} />);
+    tree = mount(<TensorboardViewer t={t} configs={[config]} />);
     await TestUtils.flushPromises();
 
     tree
@@ -232,7 +234,7 @@ describe('Tensorboard', () => {
     const deleteAppSpy = jest.spyOn(Apis, 'deleteTensorboardApp').mockImplementation(deleteAppMock);
     const config = { ...DEFAULT_CONFIG };
 
-    tree = mount(<TensorboardViewer configs={[config]} />);
+    tree = mount(<TensorboardViewer t={t} configs={[config]} />);
     await TestUtils.flushPromises();
     expect(!!tree.state('podAddress')).toBeTruthy();
 
@@ -257,7 +259,7 @@ describe('Tensorboard', () => {
     );
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
     const config = DEFAULT_CONFIG;
-    tree = mount(<TensorboardViewer configs={[config]} />);
+    tree = mount(<TensorboardViewer t={t} configs={[config]} />);
     await TestUtils.flushPromises();
     tree.update();
     tree
@@ -273,7 +275,7 @@ describe('Tensorboard', () => {
     );
     jest.spyOn(Apis, 'getTensorboardApp').mockImplementation(getAppMock);
     const config = DEFAULT_CONFIG;
-    tree = mount(<TensorboardViewer configs={[config]} />);
+    tree = mount(<TensorboardViewer t={t} configs={[config]} />);
     await TestUtils.flushPromises();
     tree.update();
     tree
@@ -298,7 +300,7 @@ describe('Tensorboard', () => {
     jest.spyOn(Apis, 'isTensorboardPodReady').mockImplementation(() => Promise.resolve(false));
     jest.spyOn(Apis, 'deleteTensorboardApp').mockImplementation(jest.fn(() => Promise.resolve('')));
     const config = DEFAULT_CONFIG;
-    tree = mount(<TensorboardViewer configs={[config]} />);
+    tree = mount(<TensorboardViewer t={t} configs={[config]} />);
 
     await TestUtils.flushPromises();
     await flushPromisesAndTimers();

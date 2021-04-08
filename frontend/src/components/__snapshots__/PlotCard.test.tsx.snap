@@ -47,7 +47,6 @@ exports[`PlotCard clicking outside full screen dialog closes it 1`] = `
         ]
       }
       maxDimension={100}
-      t={[Function]}
     />
   </WithStyles(Paper)>
   <WithStyles(Dialog)
@@ -68,6 +67,7 @@ exports[`PlotCard clicking outside full screen dialog closes it 1`] = `
       >
         <pure(CloseIcon) />
       </WithStyles(Button)>
+      common:confusionMatrix
       <Separator />
       <span
         style={
@@ -91,7 +91,6 @@ exports[`PlotCard clicking outside full screen dialog closes it 1`] = `
             },
           ]
         }
-        t={[Function]}
       />
     </div>
   </WithStyles(Dialog)>
@@ -145,7 +144,6 @@ exports[`PlotCard close button closes full screen dialog 1`] = `
         ]
       }
       maxDimension={100}
-      t={[Function]}
     />
   </WithStyles(Paper)>
   <WithStyles(Dialog)
@@ -166,6 +164,7 @@ exports[`PlotCard close button closes full screen dialog 1`] = `
       >
         <pure(CloseIcon) />
       </WithStyles(Button)>
+      common:confusionMatrix
       <Separator />
       <span
         style={
@@ -189,7 +188,6 @@ exports[`PlotCard close button closes full screen dialog 1`] = `
             },
           ]
         }
-        t={[Function]}
       />
     </div>
   </WithStyles(Dialog)>
@@ -245,7 +243,6 @@ exports[`PlotCard pops out a full screen view of the viewer 1`] = `
         ]
       }
       maxDimension={100}
-      t={[Function]}
     />
   </WithStyles(Paper)>
   <WithStyles(Dialog)
@@ -266,6 +263,7 @@ exports[`PlotCard pops out a full screen view of the viewer 1`] = `
       >
         <pure(CloseIcon) />
       </WithStyles(Button)>
+      common:confusionMatrix
       <Separator />
       <span
         style={
@@ -289,7 +287,6 @@ exports[`PlotCard pops out a full screen view of the viewer 1`] = `
             },
           ]
         }
-        t={[Function]}
       />
     </div>
   </WithStyles(Dialog)>
@@ -345,7 +342,6 @@ exports[`PlotCard renders on confusion matrix viewer card 1`] = `
         ]
       }
       maxDimension={100}
-      t={[Function]}
     />
   </WithStyles(Paper)>
   <WithStyles(Dialog)
@@ -366,6 +362,7 @@ exports[`PlotCard renders on confusion matrix viewer card 1`] = `
       >
         <pure(CloseIcon) />
       </WithStyles(Button)>
+      common:confusionMatrix
       <Separator />
       <span
         style={
@@ -390,7 +387,6 @@ exports[`PlotCard renders on confusion matrix viewer card 1`] = `
             },
           ]
         }
-        t={[Function]}
       />
     </div>
   </WithStyles(Dialog)>

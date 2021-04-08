@@ -18,11 +18,12 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import PagedTable from './PagedTable';
 import { PlotType } from './Viewer';
+import { TFunction } from 'i18next';
 
 
-let mockValue;
-jest.mock("i18next", () => ({ t: () => mockValue }));
+
 describe('PagedTable', () => {
+  let t: TFunction = (key: string) => key;
   it('does not break on no config', () => {
     const tree = shallow(<PagedTable configs={[]} />);
     expect(tree).toMatchSnapshot();
@@ -74,7 +75,7 @@ describe('PagedTable', () => {
   });
 
   it('returns a user friendly display name', () => {
-    mockValue='common:table';
-    expect(PagedTable.prototype.getDisplayName()).toBe('common:table');
+    
+    expect(PagedTable.prototype.getDisplayName(t)).toBe('common:table');
   });
 });

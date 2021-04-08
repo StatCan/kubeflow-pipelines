@@ -235,7 +235,7 @@ exports[`Compare creates a map of viewers 1`] = `
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
-      sectionName="Tensorboard"
+      sectionName="common:tensorboard"
       t={[Function]}
     />
     <div
@@ -268,7 +268,7 @@ exports[`Compare creates a map of viewers 1`] = `
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
-      sectionName="Table"
+      sectionName="common:table"
       t={[Function]}
     />
     <div
@@ -447,7 +447,7 @@ exports[`Compare creates an extra aggregation plot for compatible viewers 1`] = 
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
-      sectionName="Tensorboard"
+      sectionName="common:tensorboard"
       t={[Function]}
     />
     <div
@@ -511,7 +511,7 @@ exports[`Compare creates an extra aggregation plot for compatible viewers 1`] = 
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
-      sectionName="Table"
+      sectionName="common:rocCurve"
       t={[Function]}
     />
     <div
