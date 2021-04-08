@@ -302,13 +302,14 @@ class Compare extends Page<{ t: TFunction }, CompareState> {
   }
 
   private _collapseAllSections(): void {
+    const { t } = this.props;
     const collapseSections = {
       [overviewSectionName]: true,
       [paramsSectionName]: true,
       [metricsSectionName]: true,
     };
-    Array.from(this.state.viewersMap.keys()).forEach(t => {
-      const sectionName = componentMap[t].prototype.getDisplayName();
+    Array.from(this.state.viewersMap.keys()).forEach(tz => {
+      const sectionName = componentMap[tz].prototype.getDisplayName(t);
       collapseSections[sectionName] = true;
     });
     this.setState({ collapseSections });

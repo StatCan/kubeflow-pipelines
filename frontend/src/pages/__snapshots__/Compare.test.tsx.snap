@@ -7,8 +7,8 @@ exports[`Compare collapses all sections 1`] = `
   <CollapseButton
     collapseSections={
       Object {
-        "Table": true,
-        "Tensorboard": true,
+        "common:table": true,
+        "common:tensorboard": true,
         "experiments:metrics": true,
         "experiments:parameters": true,
         "experiments:runOverview": true,
@@ -24,8 +24,8 @@ exports[`Compare collapses all sections 1`] = `
   <CollapseButton
     collapseSections={
       Object {
-        "Table": true,
-        "Tensorboard": true,
+        "common:table": true,
+        "common:tensorboard": true,
         "experiments:metrics": true,
         "experiments:parameters": true,
         "experiments:runOverview": true,
@@ -38,8 +38,8 @@ exports[`Compare collapses all sections 1`] = `
   <CollapseButton
     collapseSections={
       Object {
-        "Table": true,
-        "Tensorboard": true,
+        "common:table": true,
+        "common:tensorboard": true,
         "experiments:metrics": true,
         "experiments:parameters": true,
         "experiments:runOverview": true,
@@ -58,15 +58,15 @@ exports[`Compare collapses all sections 1`] = `
     <CollapseButton
       collapseSections={
         Object {
-          "Table": true,
-          "Tensorboard": true,
+          "common:table": true,
+          "common:tensorboard": true,
           "experiments:metrics": true,
           "experiments:parameters": true,
           "experiments:runOverview": true,
         }
       }
       compareSetState={[Function]}
-      sectionName="Tensorboard"
+      sectionName="common:tensorboard"
       t={[Function]}
     />
     <Separator
@@ -79,15 +79,15 @@ exports[`Compare collapses all sections 1`] = `
     <CollapseButton
       collapseSections={
         Object {
-          "Table": true,
-          "Tensorboard": true,
+          "common:table": true,
+          "common:tensorboard": true,
           "experiments:metrics": true,
           "experiments:parameters": true,
           "experiments:runOverview": true,
         }
       }
       compareSetState={[Function]}
-      sectionName="Table"
+      sectionName="common:table"
       t={[Function]}
     />
     <Separator
@@ -1451,7 +1451,7 @@ exports[`Compare expands all sections if they were collapsed 1`] = `
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
-      sectionName="Tensorboard"
+      sectionName="common:tensorboard"
       t={[Function]}
     />
     <div
@@ -1515,7 +1515,7 @@ exports[`Compare expands all sections if they were collapsed 1`] = `
     <CollapseButton
       collapseSections={Object {}}
       compareSetState={[Function]}
-      sectionName="Table"
+      sectionName="common:table"
       t={[Function]}
     />
     <div

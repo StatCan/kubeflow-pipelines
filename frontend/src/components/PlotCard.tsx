@@ -102,6 +102,7 @@ class PlotCard extends React.Component<PlotCardProps, PlotCardState> {
     };
   }
 
+  // problem child: TypeError: Converting circular structure to JSON
   public shouldComponentUpdate(nextProps: PlotCardProps, nextState: PlotCardState): boolean {
     return (
       JSON.stringify(nextProps) !== JSON.stringify(this.props) ||

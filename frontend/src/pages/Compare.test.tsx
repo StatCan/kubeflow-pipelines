@@ -42,10 +42,6 @@ jest.mock('react-i18next', () => ({
   },
 }));
 
-// NOTE THAT somewhere down the line in the compare i18next is used
-// as the 'undefined' comes from there.
-jest.mock('i18next', () => ({ t: () => 'Table' }));
-
 const Compare = TEST_ONLY.Compare;
 class TestCompare extends Compare {
   public _selectionChanged(selectedIds: string[]): void {
@@ -445,11 +441,11 @@ describe('Compare', () => {
     collapseBtn!.action();
 
     expect(tree.state('collapseSections')).toEqual({
+      'common:table': true,
+      'common:tensorboard': true,
       'experiments:metrics': true,
       'experiments:parameters': true,
       'experiments:runOverview': true,
-      Table: true,
-      Tensorboard: true,
     });
 
     expect(tree).toMatchSnapshot();
@@ -466,11 +462,11 @@ describe('Compare', () => {
     collapseBtn!.action();
 
     expect(tree.state('collapseSections')).toEqual({
+      'common:table': true,
+      'common:tensorboard': true,
       'experiments:metrics': true,
       'experiments:parameters': true,
       'experiments:runOverview': true,
-      Table: true,
-      Tensorboard: true,
     });
 
     expandBtn!.action();
