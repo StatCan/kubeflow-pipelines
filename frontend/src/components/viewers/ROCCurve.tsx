@@ -33,6 +33,7 @@ import { color, fontsize, commonCss } from '../../Css';
 import { stylesheet } from 'typestyle';
 //import { useTranslation } from 'react-i18next';
 import i18next from 'i18next'
+import { TFunction } from 'i18next';
 
 const css = stylesheet({
   axis: {
@@ -98,9 +99,9 @@ class ROCCurve extends Viewer<ROCCurveProps, ROCCurveState> {
     };
   }
 
-  public getDisplayName(): string {
+  public getDisplayName(t: TFunction): string {
     //const {t,i18n}= useTranslation ('common');
-    return i18next.t('common:rocCurve');
+    return t('common:rocCurve');
   }
 
   public isAggregatable(): boolean {

@@ -1179,7 +1179,7 @@ const VisualizationsTabContent: React.FC<{
             ...viewerConfigs,
             ...generatedVisualizations.map(visualization => visualization.config),
           ].map((config, i) => {
-            const title = componentMap[config.type].prototype.getDisplayName();
+            const title = componentMap[config.type].prototype.getDisplayName(t);
             return (
               <div key={i} className={padding(20, 'lrt')}>
                 <PlotCard configs={[config]} title={title} maxDimension={500} />
@@ -1190,7 +1190,7 @@ const VisualizationsTabContent: React.FC<{
           <div className={padding(20, 'lrt')}>
             <PlotCard
               configs={[visualizationCreatorConfig]}
-              title={VisualizationCreator.prototype.getDisplayName()}
+              title={VisualizationCreator.prototype.getDisplayName(t)}
               maxDimension={500}
             />
             <Hr />

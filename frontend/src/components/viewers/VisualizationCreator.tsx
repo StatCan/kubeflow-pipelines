@@ -30,6 +30,7 @@ import 'brace/mode/json';
 import 'brace/mode/python';
 import 'brace/theme/github';
 import Button from '@material-ui/core/Button';
+import { TFunction } from 'i18next';
 
 export interface VisualizationCreatorConfig extends ViewerConfig {
   allowCustomVisualizations?: boolean;
@@ -63,7 +64,7 @@ class VisualizationCreator extends Viewer<VisualizationCreatorProps, Visualizati
     source: '',
   };
 
-  public getDisplayName(): string {
+  public getDisplayName(t: TFunction): string {
     return 'Visualization Creator';
   }
 

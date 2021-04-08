@@ -173,9 +173,9 @@ class Compare extends Page<{ t: TFunction }, CompareState> {
                 <CollapseButton
                   collapseSections={collapseSections}
                   compareSetState={this.setStateSafe.bind(this)}
-                  sectionName={componentMap[viewerType].prototype.getDisplayName()}
+                  sectionName={componentMap[viewerType].prototype.getDisplayName(t)}
                 />
-                {!collapseSections[componentMap[viewerType].prototype.getDisplayName()] && (
+                {!collapseSections[componentMap[viewerType].prototype.getDisplayName(t)] && (
                   <React.Fragment>
                     <div className={classes(commonCss.flex, css.outputsRow)}>
                       {/* If the component allows aggregation, add one more card for

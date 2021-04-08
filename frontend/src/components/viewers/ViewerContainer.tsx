@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { Context } from '@kubeflow/frontend';
 import React, { ComponentType } from 'react';
 import ConfusionMatrix from './ConfusionMatrix';
 import HTMLViewer from './HTMLViewer';
@@ -21,10 +22,11 @@ import MarkdownViewer from './MarkdownViewer';
 import PagedTable from './PagedTable';
 import ROCCurve from './ROCCurve';
 import TensorboardViewer from './Tensorboard';
-import { PlotType, ViewerConfig } from './Viewer';
+import Viewer, { PlotType, ViewerConfig } from './Viewer';
 import VisualizationCreator from './VisualizationCreator';
 
-export const componentMap: Record<PlotType, ComponentType<any>> = {
+//export const componentMap: Record<PlotType, ComponentType<any>> & Viewer<null,null> = {
+export const componentMap= {
   [PlotType.CONFUSION_MATRIX]: ConfusionMatrix,
   [PlotType.MARKDOWN]: MarkdownViewer,
   [PlotType.ROC]: ROCCurve,
@@ -32,7 +34,9 @@ export const componentMap: Record<PlotType, ComponentType<any>> = {
   [PlotType.TENSORBOARD]: TensorboardViewer,
   [PlotType.VISUALIZATION_CREATOR]: VisualizationCreator,
   [PlotType.WEB_APP]: HTMLViewer,
-};
+
+} as Record<PlotType, ComponentType<any>> ;
+
 
 interface ViewerContainerProps {
   configs: ViewerConfig[];

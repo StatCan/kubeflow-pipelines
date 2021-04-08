@@ -28,6 +28,7 @@ import { color, fontsize, commonCss } from '../../Css';
 import { stylesheet } from 'typestyle';
 //import { useTranslation } from 'react-i18next';
 import i18next from'i18next'
+import { TFunction } from 'i18next';
 
 
 enum SortOrder {
@@ -88,9 +89,9 @@ class PagedTable extends Viewer<PagedTableProps, PagedTableState> {
     };
   }
 
-  public getDisplayName(): string {
+  public getDisplayName(t: TFunction): string {
     //const {t,i18n}= useTranslation ('common');
-    return i18next.t('common:table');
+    return t('common:table');
   }
 
   public render(): JSX.Element | null {

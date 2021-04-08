@@ -69,10 +69,10 @@ class MarkdownViewer extends Viewer<MarkdownViewerProps, any> {
   private _config = this.props.configs[0];
   private _props: MarkdownViewerProps
 
-  public getDisplayName(): string {
+  public getDisplayName(t: TFunction): string {
     //const {t,i18n}= useTranslation ('common');
     //const { t } = this._props
-    return i18next.t('common:markdown');
+    return t('common:markdown');
   }
 
   public render(): JSX.Element | null {

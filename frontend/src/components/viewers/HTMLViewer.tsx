@@ -20,6 +20,7 @@ import { color } from '../../Css';
 import { stylesheet } from 'typestyle';
 //import { useTranslation } from 'react-i18next';
 import i18next from 'i18next'
+import { TFunction } from 'i18next';
 
 export interface HTMLViewerConfig extends ViewerConfig {
   htmlContent: string;
@@ -45,9 +46,9 @@ class HTMLViewer extends Viewer<HTMLViewerProps, any> {
     },
   });
 
-  public getDisplayName(): string {
+  public getDisplayName(t: TFunction): string {
     //const {t,i18n}= useTranslation ('common');
-    return i18next.t('common:staticHtml');
+    return t('common:staticHtml');
   }
 
   public componentDidMount(): void {

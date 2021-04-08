@@ -99,8 +99,9 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
     };
   }
 
-  public getDisplayName(): string {
-    return this.props.t('common:tensorboard');
+  //public getDisplayName(): string {
+  public getDisplayName(t: TFunction): string {
+    return t('common:tensorboard');
   }
 
   public isAggregatable(): boolean {
@@ -345,4 +346,5 @@ function makeProxyUrl(podAddress: string) {
   return 'apis/v1beta1/_proxy/' + podAddress.replace(/(^\w+:|^)\/\//, '');
 }
 
-export default withTranslation ('common')(TensorboardViewer);
+//export default withTranslation ('common')(TensorboardViewer);
+export default TensorboardViewer;

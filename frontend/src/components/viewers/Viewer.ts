@@ -33,12 +33,12 @@ export interface ViewerConfig {
   type: PlotType;
 }
 
-abstract class Viewer<P, S> extends React.Component< P&{t:TFunction}, S> {
+abstract class Viewer<P, S> extends React.Component<P, S> {
   public isAggregatable(): boolean {
     return false;
   }
 
-  public abstract getDisplayName(): string;
+  public abstract getDisplayName(t?:TFunction): string;
 }
 
 export default Viewer;
